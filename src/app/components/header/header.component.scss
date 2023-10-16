@@ -1,0 +1,57 @@
+@import "../../variants";
+
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    padding: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    height: 80px;
+    width: 100%;
+    align-items: center;
+    border-bottom: solid 1px #e9ecef;
+    gap: 70px;
+}
+
+.logo-ctn {
+
+}
+
+.logo {
+    height: 2.5rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link-ctn {
+    padding: 10px;
+
+    &:after {
+        margin-top: 3px;
+        display: block;
+        content: '';
+        border-bottom: solid 2px $primary;  
+        transform: scaleX(0);  
+        transform-origin:  0% 50%;
+        transition: transform 200ms ease-in-out;
+    }
+
+    &:hover:after { 
+        transform: scaleX(1);
+    }
+}
+
+.nav-link {
+    color: $primary;
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0 10px;
+    &:hover {
+        color: #212529;
+    }
+}

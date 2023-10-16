@@ -1,0 +1,61 @@
+@import "../../variants";
+
+.content-w-gutter {
+    display: flex;
+    flex-direction: column;
+    padding: 80px;
+    height: 1000px;
+}
+
+.hero-section {
+    display: flex;
+    gap: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.content {
+    width: 50%;
+}
+
+.hero-phrase {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: $primary;
+}
+
+.hero-img-ctn {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-cta-btn {
+    width: fit-content;
+    margin-top: 40px;
+    padding: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 6px;
+    background-color: $primary;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 200ms ease-in-out;
+    border: none;
+    cursor: pointer;
+    &:hover {
+        background-color: #212529;
+    }
+}
