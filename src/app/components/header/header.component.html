@@ -1,14 +1,20 @@
 <nav>
     <div class="logo-ctn">
-        <img class="logo" src="../../../assets/2560px-Logo_Université_Gustave_Eiffel_2020.svg.png" alt="">
+        <img routerLink="" class="logo" src="../../../assets/2560px-Logo_Université_Gustave_Eiffel_2020.svg.png" alt="">
     </div>
     <div class="nav-links">
-        <div class="nav-link-ctn">
-            <a class="nav-link" routerLink="/home">Visite virtuelle</a>
 
+        <div class="nav-link-ctn" routerLink="/education" routerLinkActive="active">
+            <a class="nav-link">Formations</a>
         </div>
+
         <div class="nav-link-ctn">
-            <a class="nav-link" routerLink="/about">A propos</a>
+            <a class="nav-link" routerLink="/home">Programme</a>
         </div>
+
+        <div class="nav-link-ctn">
+            <a class="nav-link" routerLink="/about">Infos pratiques</a>
+        </div>
+
     </div>
 </nav>
