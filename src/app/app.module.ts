@@ -3,14 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { EducationComponent } from './pages/education/education.component';
-import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
-import { OverviewComponent } from './pages/dashboard/overview/overview.component';
+import { HomeComponent } from './app-sections/website/pages/home/home.component';
+import { HeaderComponent } from './app-sections/website/components/header/header.component';
+import { FooterComponent } from './app-sections/website/components/footer/footer.component';
+import { EducationComponent } from './app-sections/website/pages/education/education.component';
+import { AdminDashboardComponent } from './app-sections/dashboard/admin-dashboard/admin-dashboard.component';
+import { OverviewComponent } from './app-sections/dashboard/overview/overview.component';
 
 import { NgChartsModule } from 'ng2-charts';
+import { IndexComponent } from './app-sections/website/index/index.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NgChartsModule } from 'ng2-charts';
     EducationComponent,
     AdminDashboardComponent,
     OverviewComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
