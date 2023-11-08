@@ -108,8 +108,10 @@ export class OverviewComponent {
     // Location chart configuration
     locationChartLabels = [ [ 'Paris' ], [ 'Meaux' ], 'Marseille' ];
     locationChartDatasets = [ {
-      data: [ 12, 43, 2 ],
-      backgroundColor: [ '#2f2a86', '#d2213c', '#f0b54d'],
+      data: [ 29, 12, 43 ],
+      backgroundColor: [ '#2f2a86',
+      '#d2213c',
+      '#9394ff'],
     } ];
     locationChartLegend = false;
     locationChartPlugins = [];
@@ -126,19 +128,21 @@ export class OverviewComponent {
     ];
 
     // Diploma chart configuration
-    diplomaChartLabels = [ 'Bac S', 'Bac ES', 'Bac L' ];
+    diplomaChartLabels = [ 'Bac L', 'Bac S', 'Bac ES' ];
     diplomaChartDatasets = [ {
-      data: [ 197, 153, 11 ],
-      backgroundColor: [ 'green', 'blue', 'red'],
+      data: [ 12, 153, 87 ],
+      backgroundColor: [ '#2f2a86',
+      '#d2213c',
+      '#9394ff',],
     } ];
     diplomaChartLegend = false;
     diplomaChartPlugins = [];
     diplomaColors=[
       {
         backgroundColor: [
-          'rgba(110, 114, 20, 1)',
-          'rgba(118, 183, 172, 1)',
-          'rgba(0, 148, 97, 1)',
+          '#2f2a86',
+          '#0004ff61',
+          '#9394ff',
           'rgba(129, 78, 40, 1)',
           'rgba(129, 199, 111, 1)'
       ]
@@ -153,7 +157,7 @@ export class OverviewComponent {
         {
           data: [0, 2, 10, 15, 16, 30, 60, 75, 83, 90, 100, 120, 130, 140, 150],
           label: 'Nombre de visiteurs inscrits',
-          backgroundColor: 'rgba(47,42,134,0.7)',
+          backgroundColor: '#9395ffb8',
           borderColor: 'rgba(47,42,134,1)',
           pointBackgroundColor: '#fff',
           pointBorderColor: 'rgba(47,42,134,1)',
