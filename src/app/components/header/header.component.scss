@@ -23,12 +23,13 @@ nav {
 
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 25px;
 }
 
 .nav-link-ctn {
     cursor: pointer;
     padding: 10px;
+    margin-top: 5px;
 
     &:after {
         margin-top: 3px;
@@ -55,4 +56,21 @@ nav {
     text-decoration: none;
     font-weight: 500;
     padding: 0 10px;
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    border-radius: 5px;
+    background-color: $primary;
+    color: white;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 200ms ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $primary-dark;
+    }
 }
