@@ -9,9 +9,20 @@
                 <p class="welcome-detail">Ici, vous pouvez suivre les statistiques de votre visite virtuelle.</p>
             </div>
             <div class="registered-user-data">
-                <p>Données visiteur enregistrées : <span>121 <span><i class="bi bi-person-fill"></i></span></span>
-                </p>
-            </div>
+                <div>
+                    <p>Données visiteur enregistrées : 
+                        <span>150 
+                            <span>
+                                <i class="bi bi-person-fill"></i>
+                            </span>
+                        </span>
+                    </p>
+                </div>
+                <div class="increase-details">
+                    <span class="increase">+10</span>
+                    <span><i class="increase bi bi-arrow-up-right"></i></span>
+                </div>
+           </div>
         </div>
         <svg class="card-welcome-image" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 772.9 531.4"
@@ -128,6 +139,19 @@
         </svg>
     </div>
 
+    <div>
+        <div class="statistics-card">
+            <div>
+                <h1 class="chart-title">Nombre d'inscriptions</h1>
+            </div>
+            <div class="line-chart-canva">
+                <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions"
+                    [type]="lineChartType" (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+            </div>
+        </div>
+    </div>
+
     <div class="statistics-card-grid">
         <div class="statistics-card">
             <div>
@@ -147,19 +171,6 @@
                 <canvas baseChart [type]="'pie'" [datasets]="diplomaChartDatasets" [options]="pieChartOptions" [labels]="diplomaChartLabels" [legend]="diplomaChartLegend"
                     [plugins]="diplomaChartPlugins">
                 </canvas>
-            </div>
-        </div>
-    </div>
-
-    <div>
-        <div class="statistics-card">
-            <div>
-                <h1 class="chart-title">Inscriptions</h1>
-            </div>
-            <div class="line-chart-canva">
-                <canvas baseChart class="chart" [data]="lineChartData" [options]="lineChartOptions"
-                    [type]="lineChartType" (chartHover)="chartHovered($event)"
-                    (chartClick)="chartClicked($event)"></canvas>
             </div>
         </div>
     </div>

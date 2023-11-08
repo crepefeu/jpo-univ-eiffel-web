@@ -39,7 +39,7 @@ export class OverviewComponent {
     diplomaChartLabels = [ 'Bac S', 'Bac ES', 'Bac L' ];
     diplomaChartDatasets = [ {
       data: [ 197, 153, 11 ],
-      backgroundColor: [ '#2f2a86', '#d2213c', '#f0b54d'],
+      backgroundColor: [ 'green', 'blue', 'red'],
     } ];
     diplomaChartLegend = false;
     diplomaChartPlugins = [];
@@ -85,7 +85,7 @@ export class OverviewComponent {
       maintainAspectRatio: false,
       scales: {
         // We use this empty structure as a placeholder for dynamic theming.
-        y: {
+        x: {
           grid: {
             drawOnChartArea: false,
           },

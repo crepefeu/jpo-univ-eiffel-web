@@ -85,6 +85,17 @@
         span {
             font-weight: 600;
         }
+
+        .increase-details {
+            margin-left: 10px;
+            display: flex;
+            gap: 3px;
+        }
+        
+        .increase {
+            font-weight: 400;
+            color: #2ecc71;
+        }
     }
 }
 
@@ -118,6 +129,7 @@
 
 .line-chart-canva {
     width: 100%;
+    height: 300px;
 }
 
 .chart-title {
