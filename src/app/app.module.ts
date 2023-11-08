@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgChartsModule } from 'ng2-charts';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './app-sections/website/pages/home/home.component';
@@ -9,8 +12,6 @@ import { FooterComponent } from './app-sections/website/components/footer/footer
 import { EducationComponent } from './app-sections/website/pages/education/education.component';
 import { AdminDashboardComponent } from './app-sections/dashboard/admin-dashboard/admin-dashboard.component';
 import { OverviewComponent } from './app-sections/dashboard/overview/overview.component';
-
-import { NgChartsModule } from 'ng2-charts';
 import { IndexComponent } from './app-sections/website/index/index.component';
 
 @NgModule({
@@ -27,7 +28,8 @@ import { IndexComponent } from './app-sections/website/index/index.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgChartsModule
+    NgChartsModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
