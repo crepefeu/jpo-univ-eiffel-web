@@ -1,0 +1,30 @@
+<div class="dashboard">
+    <nav class="dashboard-nav">
+
+        <div>
+            <div class="dashboard-logo-ctn">
+                <img class="dashboard-logo" src="../../../assets/2560px-Logo_Université_Gustave_Eiffel_2020.svg.png" alt="">
+            </div>
+            
+            <div class="dashboard-links">
+                <div routerLink="/dashboard" routerLinkActive="active" class="dashboard-nav-link">
+                    <i class="bi bi-columns"></i>
+                    <p>Dashboard</p>
+                </div>
+        
+                <div class="dashboard-nav-link">
+                    <i class="bi bi-gear"></i>
+                    <p>Paramètres</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="dashboard-nav-link">
+                <i class="bi bi-box-arrow-right"></i>
+                <p>Déconnexion</p>
+            </div>
+        </div>
+    </nav>
+    <router-outlet></router-outlet>
+</div>

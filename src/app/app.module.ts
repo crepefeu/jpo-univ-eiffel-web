@@ -7,6 +7,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { EducationComponent } from './pages/education/education.component';
+import { AdminDashboardComponent } from './pages/dashboard/admin-dashboard/admin-dashboard.component';
+import { OverviewComponent } from './pages/dashboard/overview/overview.component';
+
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -15,10 +19,13 @@ import { EducationComponent } from './pages/education/education.component';
     HeaderComponent,
     FooterComponent,
     EducationComponent,
+    AdminDashboardComponent,
+    OverviewComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

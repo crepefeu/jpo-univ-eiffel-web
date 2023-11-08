@@ -1,0 +1,72 @@
+@import "../../../variants";
+
+.dashboard {
+    display: flex;
+}
+
+.dashboard-nav {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    width: 15%;
+    height: 100vh;
+    background-color: #fff;
+    justify-content: space-between;
+    padding: 40px 0 20px;
+}
+
+.dashboard-logo-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    .dashboard-logo {
+        width: 80%;
+    }
+}
+
+.dashboard-links {
+    margin-top: 60px;
+}
+
+.dashboard-nav-link {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    color: rgb(162, 162, 162);
+    
+    &.active {
+        color: black;
+        border-right: 2px solid $primary;
+
+        i {
+            color: $primary;
+        }
+
+        p {
+            color: $primary;
+        }
+    }
+
+    &:hover {
+        color: $primary;
+    }
+
+    i {
+        font-size: 1.2rem;
+    }
+
+    p {
+        width: 60%;
+        font-weight: 500;
+    }
+}
+
