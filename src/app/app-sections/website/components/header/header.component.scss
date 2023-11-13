@@ -5,12 +5,12 @@ nav {
     top: 0;
     display: flex;
     padding: 20px;
-    padding-left: 50px;
-    padding-right: 50px;
-    height: 80px;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 70px;
     width: 100%;
     align-items: center;
-    border-bottom: solid 1px #e9ecef;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
     gap: 70px;
     background-color: white;
     z-index: 100;
@@ -18,12 +18,13 @@ nav {
 
 .logo {
     cursor: pointer;
-    height: 2.5rem;
+    height: 2.2rem;
 }
 
 .nav-links {
     display: flex;
     gap: 25px;
+    align-items: center;
 }
 
 .nav-link-ctn {
@@ -52,20 +53,22 @@ nav {
 
 .nav-link {
     color: $primary;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-decoration: none;
     font-weight: 500;
     padding: 0 10px;
 }
 
 .nav-cta {
+    height: fit-content;
     display: flex;
     align-items: center;
-    padding: 8px 20px;
     border-radius: 5px;
+    padding: 12px 20px;
     background-color: $primary;
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-weight: 400;
     text-decoration: none;
     transition: background-color 200ms ease-in-out;
     cursor: pointer;
