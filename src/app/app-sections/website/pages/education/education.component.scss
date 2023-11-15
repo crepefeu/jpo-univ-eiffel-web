@@ -62,6 +62,11 @@
       border-radius: 20px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
       cursor: default;
+      transition: 0.3s ease-in-out;
+
+      &:hover {
+        transform: translateY(-5px);
+      }
     
       img {
         height: 20px;
@@ -201,18 +206,6 @@
   font-size: 2.5rem;
   font-weight: 800;
   color: $primary;
-
-  // &::after {
-  //   content: "";
-  //   background-color: $secondary;
-  //   -webkit-mask-image: url(https://www.univ-gustave-eiffel.fr/typo3conf/ext/eiffel/Resources/Public/images/header-bottom.svg);
-  //   mask-image: url(https://www.univ-gustave-eiffel.fr/typo3conf/ext/eiffel/Resources/Public/images/header-bottom.svg);
-  //   bottom: -20px;
-  //   left: 0;
-  //   width: 54px;
-  //   height: 19px;
-  //   position: absolute;
-  // }
 }
 
 .white {
@@ -328,19 +321,7 @@
   color: white;
   margin-left: auto;
   margin-right: auto;
-  font-weight: 800;
-
-  // &::after {
-  //   content: "";
-  //   background-color: $secondary;
-  //   -webkit-mask-image: url(https://www.univ-gustave-eiffel.fr/typo3conf/ext/eiffel/Resources/Public/images/header-bottom.svg);
-  //   mask-image: url(https://www.univ-gustave-eiffel.fr/typo3conf/ext/eiffel/Resources/Public/images/header-bottom.svg);
-  //   bottom: -20px;
-  //   left: 0;
-  //   width: 54px;
-  //   height: 19px;
-  //   position: absolute;
-  // }
+  font-weight: 700;
 }
 
 .pop-out-ctn-background {
