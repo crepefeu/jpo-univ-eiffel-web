@@ -12,7 +12,7 @@ const routes: Routes = [
     component: IndexComponent,
     children: [
       { path: '', component: HomeComponent},
-      { path: 'education', component: EducationComponent},
+      { path: 'but-mmi', component: EducationComponent},
     ]
   },
   {
