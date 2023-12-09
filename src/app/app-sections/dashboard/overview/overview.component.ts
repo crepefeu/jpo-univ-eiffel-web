@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Chart, ChartConfiguration, ChartEvent, ChartType, ChartOptions } from 'chart.js';
+import { ChartConfiguration, ChartEvent, ChartType, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 import * as Highcharts from 'highcharts/highmaps';
 import franceMap from "@highcharts/map-collection/countries/fr/fr-all-all.topo.json";
@@ -94,7 +94,7 @@ export class OverviewComponent {
           ['fr-hdf-oi', 103], ['fr-ara-rh', 104], ['fr-occ-ta', 105], ['null', 106],
           ['fr-lre-re', 107], ['fr-may-yt', 108], ['fr-gf-gf', 109],
           ['fr-mq-mq', 110], ['fr-gua-gp', 111]
-      ]
+        ],
       }
     ]
   };
@@ -149,9 +149,6 @@ export class OverviewComponent {
       }
     ];
 
-    constructor() {
-    }
-  
     lineChartData: ChartConfiguration['data'] = {
       datasets: [
         {
@@ -191,6 +188,8 @@ export class OverviewComponent {
     lineChartType: ChartType = 'line';
   
     @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
+
+    constructor() {}
   
     private static generateNumber(i: number): number {
       return Math.floor(Math.random() * (i < 2 ? 100 : 1000) + 1);
