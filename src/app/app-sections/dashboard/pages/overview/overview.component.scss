@@ -114,10 +114,10 @@
 
 .bento-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 20px;
-  height: max-content;
+  height: fit-content;
 
   @mixin bento-ctn {
     display: flex;
@@ -136,9 +136,9 @@
     justify-content: center;
     align-items: center;
     grid-row-start: 1;
-    grid-column-start: 1;
     grid-row-end: 2;
-    grid-column-end: 2;
+    grid-column-start: 1;
+    grid-column-end: 5;
 
     &::before {
       position: absolute;
@@ -165,28 +165,87 @@
   .bento2 {
     @include bento-ctn;
     grid-row-start: 1;
-    grid-column-start: 2;
     grid-row-end: 2;
-    grid-column-end: 4;
+    grid-column-start: 5;
+    grid-column-end: 13;
   }
 
   .bento3 {
     @include bento-ctn;
     grid-row-start: 2;
-    grid-column-start: 1;
     grid-row-end: 3;
-    grid-column-end: 3;
+    grid-column-start: 1;
+    grid-column-end: 9;
   }
 
   .bento4 {
     @include bento-ctn;
     border-radius: 10px;
     grid-row-start: 2;
-    grid-column-start: 3;
     grid-row-end: 3;
-    grid-column-end: 4;
-    padding: 15px 0px 0px 25px;
+    grid-column-start: 9;
+    grid-column-end: 13;
+    padding: 15px 20px 0px 25px;
     gap: 10px;
+
+    .chart-title {
+      margin-bottom: 10px
+    }
+  }
+
+  .bento5 {
+    @include bento-ctn;
+    border-radius: 10px;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 1;
+    grid-column-end: 7;
+    padding: 15px 100px 20px 25px;
+    gap: 10px;
+
+    &.no-legend {
+      padding: 15px 0px 20px 25px;
+    }
+  }
+  
+  .bento6 {
+    @include bento-ctn;
+    border-radius: 10px;
+    grid-row-start: 3;
+    grid-row-end: 4;
+    grid-column-start: 7;
+    grid-column-end: 13;
+    padding: 15px 100px 20px 25px;
+    gap: 10px;
+
+    &.no-legend {
+      padding: 15px 0px 20px 25px;
+    }
+  }
+}
+
+.see-more-btn-ctn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.see-more-btn {
+  z-index: 100;
+  width: fit-content;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 20px;
+  background-color: $primary;
+  color: white;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
+    rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+
+  &:hover {
+    background-color: $primary-dark;
   }
 }
 

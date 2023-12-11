@@ -16,6 +16,7 @@ export class SettingsComponent implements OnInit {
   constructor(private adminsService: AdminsService) {
     this.preferencesForm = new FormGroup({
       showPercentagesOnCharts: new FormControl(this.userPreferences.showPercentagesOnCharts ?? false),
+      showLegendOnCharts: new FormControl(this.userPreferences.showLegendOnCharts ?? false),
     });
   }
 

@@ -2,12 +2,17 @@
     <div class="section-details">
         <h1 class="section-title">Paramètres</h1>
     </div>
-    <div class="settings-section-ctn">
+    <div class="settings-section-ctn" [formGroup]="preferencesForm">
         <h2 class="section-subtitle">Préférences</h2>
         <div class="settings-section">
-            <div class="setting-ctn" [formGroup]="preferencesForm">
+            <div class="setting-ctn">
                 <p-inputSwitch formControlName="showPercentagesOnCharts"></p-inputSwitch>
-                <label class="setting-label" for="showPercentagesOnCharts">Afficher les pourcentages pour les graphiques
+                <label class="setting-label" for="showPercentagesOnCharts">Afficher les pourcentages sur les graphiques
+                    compatibles</label>
+            </div>
+            <div class="setting-ctn">
+                <p-inputSwitch formControlName="showLegendOnCharts"></p-inputSwitch>
+                <label class="setting-label" for="showLegendOnCharts">Afficher les légendes sur les graphiques
                     compatibles</label>
             </div>
         </div>

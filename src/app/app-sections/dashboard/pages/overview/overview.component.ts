@@ -241,6 +241,7 @@ export class OverviewComponent {
     this.analytics.getAllAttendees().subscribe((attendees) => {
       this.attendeesData = attendees;
       this.irlAttendeesRateChart.series = [attendees.irlAttendeesCount, (this.attendeesData.totalAttendeesCount - attendees.irlAttendeesCount)];
+      this.irlAttendeesRateChart.labels = ['Présentiel', 'Non-présentiel'];
     });
 
     this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
@@ -280,7 +281,7 @@ export class OverviewComponent {
           }
         }],
         type: "area",
-        height: 175,
+        height: 200,
         zoom: {
           enabled: false
         }
@@ -354,7 +355,7 @@ export class OverviewComponent {
           }
         }],
         type: "area",
-        height: 175,
+        height: 200,
         zoom: {
           enabled: false
         }
@@ -398,19 +399,20 @@ export class OverviewComponent {
 
     // Irl attendees rate chart configuration
     this.irlAttendeesRateChart = {
-      series: [5, 20],
+      series: [],
       colors: ["#2f2a86", "#9395ff"],
       chart: {
-        height: 175,
+        height: 160,
         type: "donut"
       },
       legend: {
-        show: false
+        show: this.userPreferences.showLegendOnCharts,
+        position: "right",
       },
       dataLabels: {
         enabled: this.userPreferences.showPercentagesOnCharts,
       },
-      labels: ["Participe en présentiel", "Ne participe pas en présentiel"],
+      labels: [],
       responsive: [
         {
           breakpoint: 480,
@@ -435,7 +437,7 @@ export class OverviewComponent {
         type: "donut"
       },
       legend: {
-        show: false
+        show: this.userPreferences.showLegendOnCharts
       },
       dataLabels: {
         enabled: this.userPreferences.showPercentagesOnCharts,
