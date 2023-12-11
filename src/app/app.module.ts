@@ -19,6 +19,8 @@ import { AdminDashboardComponent } from './app-sections/dashboard/admin-dashboar
 import { OverviewComponent } from './app-sections/dashboard/pages/overview/overview.component';
 import { IndexComponent } from './app-sections/website/index/index.component';
 import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.component';
+import { AttendeesComponent } from './app-sections/dashboard/pages/attendees/attendees.component';
+import { SettingsComponent } from './app-sections/dashboard/pages/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.co
     OverviewComponent,
     IndexComponent,
     SignInComponent,
+    AttendeesComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

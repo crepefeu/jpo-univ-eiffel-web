@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { environment } from 'src/environments/environment.development';
 import * as Highcharts from 'highcharts/highmaps';
 import franceMap from "@highcharts/map-collection/countries/fr/fr-all-all.topo.json";
 import idfMap from "@highcharts/map-collection/countries/fr/fr-idf-all.topo.json";
@@ -24,6 +25,8 @@ import { AnalyticsService } from 'src/app/services/analytics.service';
 })
 export class OverviewComponent {
 
+  @ViewChild("irlChart") irlAttendeesRateChart: any;
+
   // Highcharts configuration
   chartConstructor: string = "mapChart";
 
@@ -35,9 +38,11 @@ export class OverviewComponent {
 
   totalAttendeesChart: any;
   totalNewAttendeesChart: any;
-  diplomaPieChart: any;
+  // irlAttendeesRateChart: any;
+  diplomasRateChart: any;
 
   latestSnapshot: any;
+  attendeesData: any;
 
   constructor(private analytics: AnalyticsService) {
 
@@ -218,6 +223,30 @@ export class OverviewComponent {
       this.latestSnapshot = snapshot;
     });
 
+    this.analytics.getAllSnapshots().subscribe((snapshots) => {
+      this.totalAttendeesChart.series = [{
+        name: 'Nombre total de participants',
+        data: snapshots.attendeesCounts
+      }];
+      this.totalAttendeesChart.labels = snapshots.dates;
+
+      this.totalNewAttendeesChart.series = [{
+        name: 'Nombre de nouvelles inscriptions',
+        data: snapshots.numberOfNewAttendees
+      }];
+      this.totalNewAttendeesChart.labels = snapshots.dates;
+    });
+
+    this.analytics.getAllAttendees().subscribe((attendees) => {
+      this.attendeesData = attendees;
+      this.irlAttendeesRateChart.series = [attendees.irlAttendeesCount, (this.attendeesData.totalAttendeesCount - attendees.irlAttendeesCount)];
+    });
+
+    this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
+      this.diplomasRateChart.series = diplomas.counts
+      this.diplomasRateChart.labels = diplomas.names;
+    });
+
     // Total attendees chart configuration
     this.totalAttendeesChart = {
       series: [],
@@ -291,20 +320,6 @@ export class OverviewComponent {
         horizontalAlign: "left"
       }
     };
-
-    this.analytics.getAllSnapshots().subscribe((snapshots) => {
-      this.totalAttendeesChart.series = [{
-        name: 'Nombre total de participants',
-        data: snapshots.attendeesCounts
-      }];
-      this.totalAttendeesChart.labels = snapshots.dates;
-
-      this.totalNewAttendeesChart.series = [{
-        name: 'Nombre de nouvelles inscriptions',
-        data: snapshots.numberOfNewAttendees
-      }];
-      this.totalNewAttendeesChart.labels = snapshots.dates;
-    });
 
     // Total new attendees chart configuration
     this.totalNewAttendeesChart = {
@@ -380,8 +395,8 @@ export class OverviewComponent {
       }
     };
 
-    // Diploma pie chart configuration
-    this.diplomaPieChart = {
+    // Irl attendees rate chart configuration
+    this.irlAttendeesRateChart = {
       series: [5, 20],
       colors: ["#2f2a86", "#9395ff"],
       chart: {
@@ -391,7 +406,37 @@ export class OverviewComponent {
       legend: {
         show: false
       },
+      dataLabels: {
+        enabled: environment.showPercentagesOnCharts,
+      },
       labels: ["Participe en présentiel", "Ne participe pas en présentiel"],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ],
+    };
+
+    // Diplomas rate chart configuration
+    this.diplomasRateChart = {
+      series: [],
+      colors: ["#2f2a86", "#9395ff"],
+      chart: {
+        height: 175,
+        type: "donut"
+      },
+      legend: {
+        show: false
+      },
+      labels: [],
       responsive: [
         {
           breakpoint: 480,

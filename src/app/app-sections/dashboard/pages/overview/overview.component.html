@@ -11,8 +11,8 @@
             <div class="registered-user-data-ctn">
                 <div class="registered-user-data-badge">
                     <p>Données participants enregistrées :
-                        <span *ngIf="latestSnapshot">
-                            {{latestSnapshot.attendeesCount}}
+                        <span *ngIf="attendeesData">
+                            {{attendeesData.totalAttendeesCount}}
                             <span>
                                 <i class="bi bi-person-check-fill"></i>
                             </span>
@@ -144,8 +144,8 @@
 
     <div class="bento-grid">
         <div class="bento1">
-            <div class="bento-content">
-                <p>{{latestSnapshot.attendeesCount}}</p>
+            <div class="bento-content" *ngIf="latestSnapshot">
+                <p>{{attendeesData.totalAttendeesCount}}</p>
                 <p>participants</p>
             </div>
         </div>
@@ -166,15 +166,16 @@
                 [dataLabels]="totalNewAttendeesChart.dataLabels" [yaxis]="totalNewAttendeesChart.yaxis"
                 [labels]="totalNewAttendeesChart.labels" [legend]="totalNewAttendeesChart.legend"
                 [title]="totalNewAttendeesChart.title" [subtitle]="totalNewAttendeesChart.subtitle"
-                [colors]="totalNewAttendeesChart.colors"></apx-chart>
+                [colors]="totalNewAttendeesChart.colors">
+            </apx-chart>
         </div>
 
         <div class="bento4">
             <h1 class="chart-title">Participation en présentiel</h1>
             <div>
-                <apx-chart [series]="diplomaPieChart.series" [chart]="diplomaPieChart.chart"
-                    [labels]="diplomaPieChart.labels" [responsive]="diplomaPieChart.responsive"
-                    [colors]="diplomaPieChart.colors" [legend]="diplomaPieChart.legend">
+                <apx-chart #irlChart [series]="irlAttendeesRateChart.series" [chart]="irlAttendeesRateChart.chart"
+                    [labels]="irlAttendeesRateChart.labels" [responsive]="irlAttendeesRateChart.responsive"
+                    [colors]="irlAttendeesRateChart.colors" [legend]="irlAttendeesRateChart.legend" [dataLabels]="irlAttendeesRateChart.dataLabels">
                 </apx-chart>
             </div>
         </div>
@@ -183,17 +184,19 @@
     <div class="statistics-card-grid">
         <div class="statistics-card">
             <div>
-                <h1 class="chart-title">Âges</h1>
+                <h1 class="chart-title">Catégories de diplômes</h1>
             </div>
-            <apx-chart [series]="diplomaPieChart.series" [chart]="diplomaPieChart.chart"
-                [labels]="diplomaPieChart.labels" [responsive]="diplomaPieChart.responsive"></apx-chart>
+            <apx-chart [series]="irlAttendeesRateChart.series" [chart]="irlAttendeesRateChart.chart"
+                [labels]="irlAttendeesRateChart.labels" [responsive]="irlAttendeesRateChart.responsive">
+            </apx-chart>
         </div>
         <div class="statistics-card">
             <div>
                 <h1 class="chart-title">Diplômes</h1>
             </div>
-            <apx-chart [series]="diplomaPieChart.series" [chart]="diplomaPieChart.chart"
-                [labels]="diplomaPieChart.labels" [responsive]="diplomaPieChart.responsive"></apx-chart>
+            <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
+                [labels]="diplomasRateChart.labels" [responsive]="diplomasRateChart.responsive">
+            </apx-chart>
         </div>
     </div>
 

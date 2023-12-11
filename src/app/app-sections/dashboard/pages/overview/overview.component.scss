@@ -10,11 +10,6 @@
   gap: 40px;
 }
 
-.section-details {
-  display: flex;
-  justify-content: space-between;
-}
-
 .section-title {
   font-size: 1.3rem;
   font-weight: 600;
@@ -22,6 +17,8 @@
 }
 
 .section-detail {
+  display: flex;
+  justify-content: space-between;
   font-size: 1.1rem;
   font-weight: 500;
   color: rgb(117, 117, 117);
@@ -184,7 +181,6 @@
   .bento4 {
     @include bento-ctn;
     border-radius: 10px;
-    background-color: #fff;
     grid-row-start: 2;
     grid-column-start: 3;
     grid-row-end: 3;
@@ -195,6 +191,7 @@
 }
 
 .chart-title {
+  margin-top: 2px;
   font-size: 1.1rem;
   font-weight: 500;
   color: $primary;

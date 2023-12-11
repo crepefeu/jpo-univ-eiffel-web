@@ -7,6 +7,8 @@ import { OverviewComponent } from './app-sections/dashboard/pages/overview/overv
 import { IndexComponent } from './app-sections/website/index/index.component';
 import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.component';
 import { isAuth } from './guards/isAuth.guard';
+import { AttendeesComponent } from './app-sections/dashboard/pages/attendees/attendees.component';
+import { SettingsComponent } from './app-sections/dashboard/pages/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -23,7 +25,10 @@ const routes: Routes = [
     component: AdminDashboardComponent,
     canActivate: [isAuth()],
     children: [
-      { path: '', component: OverviewComponent},
+      { path: '', redirectTo: 'overview', pathMatch: 'full'},
+      { path: 'overview', component: OverviewComponent},
+      { path: 'attendees', component: AttendeesComponent},
+      { path: 'settings', component: SettingsComponent},
     ]
   },
 ];
