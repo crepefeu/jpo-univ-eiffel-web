@@ -8,6 +8,8 @@ import { environment } from 'src/environments/environment.development';
 })
 export class AttendeesComponent implements OnInit {
 
+  userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
+
   constructor() { }
 
   ngOnInit(): void {

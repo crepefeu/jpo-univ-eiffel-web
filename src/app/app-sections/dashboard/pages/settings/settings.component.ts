@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from 'src/environments/environment.development';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
   selector: 'app-settings',
@@ -8,12 +9,32 @@ import { environment } from 'src/environments/environment.development';
 })
 export class SettingsComponent implements OnInit {
 
-  constructor() {}
+  preferencesForm: any;
+  userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
+  isSaving = false;
+
+  constructor(private adminsService: AdminsService) {
+    this.preferencesForm = new FormGroup({
+      showPercentagesOnCharts: new FormControl(this.userPreferences.showPercentagesOnCharts ?? false),
+    });
+  }
 
   ngOnInit(): void {}
 
-  togglePercentagesOnCharts() {
-    environment.showPercentagesOnCharts = !environment.showPercentagesOnCharts;
-    console.log(environment.showPercentagesOnCharts);
+  onSave() {
+    this.isSaving = true;
+
+    this.adminsService.saveUserPreferences(this.preferencesForm.value).subscribe({
+      next: data => {
+        if (data.userPreferences) {
+          localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
+          this.userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
+        } else {
+          console.log(data); // TODO : handle error with a toast
+        }
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => this.isSaving = false
+    });
   }
 }

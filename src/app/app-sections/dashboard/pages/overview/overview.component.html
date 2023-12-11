@@ -5,7 +5,7 @@
     <div class="welcome-card">
         <div class="card-content-ctn">
             <div class="welcome-details">
-                <p class="welcome">Bienvenue sur votre dashboard !</p>
+                <p class="welcome">Bienvenue sur votre dashboard {{displayName}} !</p>
                 <p class="welcome-detail">Ici, vous pouvez suivre les statistiques de votre visite virtuelle.</p>
             </div>
             <div class="registered-user-data-ctn">
@@ -144,7 +144,7 @@
 
     <div class="bento-grid">
         <div class="bento1">
-            <div class="bento-content" *ngIf="latestSnapshot">
+            <div class="bento-content" *ngIf="attendeesData">
                 <p>{{attendeesData.totalAttendeesCount}}</p>
                 <p>participants</p>
             </div>
@@ -187,7 +187,8 @@
                 <h1 class="chart-title">Catégories de diplômes</h1>
             </div>
             <apx-chart [series]="irlAttendeesRateChart.series" [chart]="irlAttendeesRateChart.chart"
-                [labels]="irlAttendeesRateChart.labels" [responsive]="irlAttendeesRateChart.responsive">
+                [labels]="irlAttendeesRateChart.labels" [responsive]="irlAttendeesRateChart.responsive" 
+                [dataLabels]="irlAttendeesRateChart.dataLabels">
             </apx-chart>
         </div>
         <div class="statistics-card">
@@ -195,7 +196,7 @@
                 <h1 class="chart-title">Diplômes</h1>
             </div>
             <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
-                [labels]="diplomasRateChart.labels" [responsive]="diplomasRateChart.responsive">
+                [labels]="diplomasRateChart.labels" [dataLabels]="diplomasRateChart.dataLabels" [responsive]="diplomasRateChart.responsive">
             </apx-chart>
         </div>
     </div>

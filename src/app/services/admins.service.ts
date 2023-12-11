@@ -29,4 +29,14 @@ export class AdminsService {
   signOut() {
     localStorage.removeItem('token');
   }
+
+  saveUserPreferences(userPreferencesData: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    const formData = new FormData();
+
+    formData.append('showPercentagesOnCharts', userPreferencesData.showPercentagesOnCharts);
+
+    return this.http.post<any>(this.baseApiUrl + 'saveUserPreferences', formData, { headers: headers });
+  }
 }

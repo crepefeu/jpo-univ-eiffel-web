@@ -25,7 +25,8 @@ import { AnalyticsService } from 'src/app/services/analytics.service';
 })
 export class OverviewComponent {
 
-  @ViewChild("irlChart") irlAttendeesRateChart: any;
+  displayName = localStorage.getItem('displayName') ?? '';
+  userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
   // Highcharts configuration
   chartConstructor: string = "mapChart";
@@ -38,7 +39,7 @@ export class OverviewComponent {
 
   totalAttendeesChart: any;
   totalNewAttendeesChart: any;
-  // irlAttendeesRateChart: any;
+  irlAttendeesRateChart: any;
   diplomasRateChart: any;
 
   latestSnapshot: any;
@@ -407,7 +408,7 @@ export class OverviewComponent {
         show: false
       },
       dataLabels: {
-        enabled: environment.showPercentagesOnCharts,
+        enabled: this.userPreferences.showPercentagesOnCharts,
       },
       labels: ["Participe en présentiel", "Ne participe pas en présentiel"],
       responsive: [
@@ -435,6 +436,9 @@ export class OverviewComponent {
       },
       legend: {
         show: false
+      },
+      dataLabels: {
+        enabled: this.userPreferences.showPercentagesOnCharts,
       },
       labels: [],
       responsive: [

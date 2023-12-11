@@ -31,6 +31,8 @@ export class SignInComponent {
         next: data => {
           if (data.token) {
             localStorage.setItem('token', data.token);
+            localStorage.setItem('displayName', data.displayName);
+            localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
             this.router.navigate(['/admin/dashboard']);
           } else {
             console.log(data); // TODO : handle error with a toast

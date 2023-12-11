@@ -5,7 +5,18 @@
     <div class="settings-section-ctn">
         <h2 class="section-subtitle">Préférences</h2>
         <div class="settings-section">
-            <button (click)="togglePercentagesOnCharts()">Toggle</button>
+            <div class="setting-ctn" [formGroup]="preferencesForm">
+                <p-inputSwitch formControlName="showPercentagesOnCharts"></p-inputSwitch>
+                <label class="setting-label" for="showPercentagesOnCharts">Afficher les pourcentages pour les graphiques
+                    compatibles</label>
+            </div>
         </div>
+    </div>
+    <div>
+        <button *ngIf="!isSaving" class="form-btn" (click)="onSave()">Sauvegarder</button>
+        <button *ngIf="isSaving" class="form-btn-w-loader" disabled>
+            Sauvegarder
+            <span class="loader"></span>
+        </button>
     </div>
 </div>
