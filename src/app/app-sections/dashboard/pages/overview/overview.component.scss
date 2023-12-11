@@ -1,4 +1,4 @@
-@import "../../../../variants";
+@import "../../../../colors";
 
 .content {
   width: 85vw;
@@ -159,8 +159,8 @@
     }
 
     .bento-content {
-      font-size: 2.7rem;
-      font-weight: 500;
+      font-size: 2.5rem;
+      font-weight: 600;
       color: $primary;
     }
   }
