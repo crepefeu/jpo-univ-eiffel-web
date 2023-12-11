@@ -12,10 +12,14 @@ export class AnalyticsService {
   constructor(private http: HttpClient) {}
 
   getLatestSnapshot() {
-    return this.http.get<any>(this.baseApiUrl + 'getLatestSnapshot');
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'getLatestSnapshot', {headers: headers});
   }
 
   getAllSnapshots() {
-    return this.http.get<any>(this.baseApiUrl + 'getAllSnapshots');
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'getAllSnapshots', {headers: headers});
   }
 }

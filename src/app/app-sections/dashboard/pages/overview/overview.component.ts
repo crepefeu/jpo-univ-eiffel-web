@@ -382,7 +382,7 @@ export class OverviewComponent {
 
     // Diploma pie chart configuration
     this.diplomaPieChart = {
-      series: [25, 75],
+      series: [5, 20],
       colors: ["#2f2a86", "#9395ff"],
       chart: {
         height: 175,
