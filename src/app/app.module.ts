@@ -4,10 +4,13 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// Chart Modules
 import { NgChartsModule } from 'ng2-charts';
 import { HighchartsChartModule } from 'highcharts-angular';
-
 import { NgApexchartsModule } from 'ng-apexcharts';
+
+// PrimeNG Modules
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,7 +47,8 @@ import { SettingsComponent } from './app-sections/dashboard/pages/settings/setti
     HttpClientModule,
     NgChartsModule,
     HighchartsChartModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    InputSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]
