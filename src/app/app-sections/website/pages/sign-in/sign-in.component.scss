@@ -19,100 +19,156 @@
 }
 
 .form-ctn {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 93vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 93vh;
 }
 
 .form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    max-width: 600px;
-    background-color: #fff;
-    padding: 80px 100px;
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #fff;
+  padding: 80px 100px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
-.form-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    margin-bottom: 50px;
-    gap: 30px;
+.form-header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 50px;
+  gap: 30px;
 }
 
 .form-header-img {
-    height: 100%;
-    width: fit-content;
+  height: 100%;
+  width: fit-content;
 }
 
 .form-header-title {
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: $primary;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: $primary;
+}
+
+.form-error-ctn {
+  height: fit-content;
+  border: solid 1px red;
+  background-color: rgba(255, 0, 0, 0.116);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.form-error {
+  font-size: 0.7rem;
+  color: red;
+  text-align: center;
 }
 
 .sign-in-inputs-ctn {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
 }
 
-.form-input-ctn {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 5px;
+.form-input-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
 }
 
 .form-label {
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: $primary;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: $primary;
 }
 
 .form-input {
-    border-radius: 5px;
-    border: 1px solid #e0e0e0;
-    padding: 5px 10px;
-    font-size: 1rem;
-    font-weight: 400;
-    color: #333;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: #333;
 
-    &:focus {
-        outline: none;
-        border: 1px solid $primary;
-    }
+  &:focus {
+    outline: none;
+    border: 1px solid $primary;
+  }
 }
 
 .form-btn {
-    width: fit-content;
-    border: none;
-    padding: 8px 25px;
-    border-radius: 5px;
-    background-color: $primary;
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
+  width: fit-content;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
-    &:hover {
-        background-color: $primary-dark
-    }
+  &:hover {
+    background-color: $primary-dark;
+  }
+}
+
+.form-btn-w-loader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: fit-content;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 5px;
+  background-color: $primary;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+
+  &:disabled {
+    background-color: $primary-disabled;
+  }
+}
+
+.loader {
+  width: 1rem;
+  height: 1rem;
+  border: 1.5px solid #fff;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

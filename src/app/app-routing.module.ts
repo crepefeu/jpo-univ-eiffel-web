@@ -6,6 +6,7 @@ import { AdminDashboardComponent } from './app-sections/dashboard/admin-dashboar
 import { OverviewComponent } from './app-sections/dashboard/pages/overview/overview.component';
 import { IndexComponent } from './app-sections/website/index/index.component';
 import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.component';
+import { isAuth } from './guards/isAuth.guard';
 
 const routes: Routes = [
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
   {
     path: 'admin/dashboard',
     component: AdminDashboardComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [isAuth()],
     children: [
       { path: '', component: OverviewComponent},
     ]
