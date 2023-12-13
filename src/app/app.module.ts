@@ -24,6 +24,7 @@ import { IndexComponent } from './app-sections/website/index/index.component';
 import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.component';
 import { AttendeesComponent } from './app-sections/dashboard/pages/attendees/attendees.component';
 import { SettingsComponent } from './app-sections/dashboard/pages/settings/settings.component';
+import { DiplomasComponent } from './app-sections/dashboard/pages/diplomas/diplomas.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SettingsComponent } from './app-sections/dashboard/pages/settings/setti
     SignInComponent,
     AttendeesComponent,
     SettingsComponent,
+    DiplomasComponent,
   ],
   imports: [
     BrowserModule,
