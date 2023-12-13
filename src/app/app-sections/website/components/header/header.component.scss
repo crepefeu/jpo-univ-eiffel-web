@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../theme";
 
 nav {
     position: sticky;
@@ -36,7 +36,7 @@ nav {
         margin-top: 3px;
         display: block;
         content: '';
-        border-bottom: solid 2px $secondary;  
+        border-bottom: solid 2px var(--secondary);  
         transform: scaleX(0);  
         transform-origin:  0% 50%;
         transition: transform 200ms ease-in-out;
@@ -52,7 +52,7 @@ nav {
 }
 
 .nav-link {
-    color: $primary;
+    color: var(--primary);
     font-size: 0.9rem;
     text-decoration: none;
     font-weight: 500;
@@ -63,8 +63,8 @@ nav {
     display: flex;
     align-items: center;
     border-radius: 5px;
-    padding: 12px 20px;
-    background-color: $primary;
+    padding: 10px 20px;
+    background-color: var(--primary);
     color: white;
     font-size: 0.9rem;
     font-weight: 400;
@@ -73,6 +73,6 @@ nav {
     cursor: pointer;
 
     &:hover {
-        background-color: $primary-dark;
+        background-color: var(--primary-hover);
     }
 }

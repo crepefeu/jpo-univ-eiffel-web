@@ -35,6 +35,7 @@ export class AdminsService {
 
     const formData = new FormData();
 
+    formData.append('useDarkModeByDefault', userPreferencesData.useDarkModeByDefault);
     formData.append('showPercentagesOnCharts', userPreferencesData.showPercentagesOnCharts);
     formData.append('showLegendOnCharts', userPreferencesData.showLegendOnCharts);
 

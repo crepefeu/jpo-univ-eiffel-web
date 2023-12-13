@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../theme";
 
 .background {
 
@@ -26,7 +26,7 @@
 
 .primary {
   padding-top: 0;
-  background-color: $primary;
+  background-color: var(--primary);
 }
 
 .development-section {
@@ -40,9 +40,8 @@
     h1 {
       font-size: 3.5rem;
       font-weight: 600;
-      color: $primary;
+      color: var(--primary);
       line-height: 1.5;
-      // text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
     }
 
     .badges-ctn {
@@ -160,7 +159,7 @@
   h1 {
     font-size: 2.5rem;
     font-weight: 500;
-    color: $primary;
+    color: var(--primary);
     text-align: center;
   }
 
@@ -205,7 +204,7 @@
   text-align: justify;
   font-size: 2.5rem;
   font-weight: 800;
-  color: $primary;
+  color: var(--primary);
 }
 
 .white {
@@ -288,7 +287,7 @@
       text-align: left;
       font-size: 1.2rem;
       font-weight: 500;
-      color: $primary;
+      color: var(--primary);
     }
   }
 }
@@ -369,7 +368,7 @@
 .pop-image-title {
   opacity: 0;
   font-size: 2.5rem;
-  background: linear-gradient(#676497b7, $primary);
+  background: linear-gradient(#676497b7, var(--primary));
   color: transparent;
   background-clip: text;
   view-timeline-name: --popper;
@@ -383,7 +382,7 @@
   opacity: 0;
   font-size: 1.2rem;
   font-weight: 500;
-  background: linear-gradient(#676497b7, $primary);
+  background: linear-gradient(#676497b7, var(--primary));
   color: transparent;
   background-clip: text;
   view-timeline-name: --popper;

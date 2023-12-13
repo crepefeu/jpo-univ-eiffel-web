@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../theme";
 
 footer {
     display: flex;
@@ -6,7 +6,7 @@ footer {
     justify-content: center;
     height: 200px;
     width: 100%;
-    background-color: $primary;
+    background-color: var(--primary);
 }
 
 .placeholder {

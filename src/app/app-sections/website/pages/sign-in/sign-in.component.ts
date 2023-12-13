@@ -34,6 +34,16 @@ export class SignInComponent {
             localStorage.setItem('displayName', data.displayName);
             localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
             this.router.navigate(['/admin/dashboard']);
+            if (data.userPreferences && data.userPreferences.useDarkModeByDefault) {
+              // set localstorage to dark mode
+              localStorage.setItem('currentTheme', 'dark')
+
+              // toggle dark mode
+              document.body.classList.toggle('dark-theme', data.userPreferences.useDarkModeByDefault ?? false);
+            } else {
+              // set localstorage to light mode
+              localStorage.setItem('currentTheme', 'light')
+            }
           } else {
             console.log(data); // TODO : handle error with a toast
           }

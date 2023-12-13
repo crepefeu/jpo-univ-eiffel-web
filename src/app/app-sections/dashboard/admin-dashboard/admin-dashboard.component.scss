@@ -1,4 +1,4 @@
-@import "../../../colors";
+@import "../../../theme";
 
 .dashboard {
     display: flex;
@@ -11,7 +11,7 @@
     top: 0;
     width: 15%;
     height: 100vh;
-    background-color: #fff;
+    background-color: var(--bkg);
     justify-content: space-between;
     align-items: center;
     padding: 40px 0 30px;
@@ -26,6 +26,7 @@
 
     .dashboard-logo {
         width: 80%;
+        fill: var(--logo);
     }
 }
 
@@ -47,19 +48,19 @@
     
     &.active {
         color: black;
-        border-right: 2px solid $primary;
+        border-right: 2px solid var(--primary);
 
         i {
-            color: $primary;
+            color: var(--primary);
         }
 
         p {
-            color: $primary;
+            color:  var(--primary);
         }
     }
 
     &:hover {
-        color: $primary;
+        color: var(--primary);
     }
 
     i {
@@ -72,6 +73,19 @@
     }
 }
 
+.dark-mode-switch-ctn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    color: rgb(162, 162, 162);
+}
+
 .dashboard-nav-btn {
     display: flex;
     justify-content: center;
@@ -82,11 +96,12 @@
     transition: all 200ms ease-in-out;
     color: #fff;
     border: none;
-    background-color: $primary;
+    background-color: var(--btn-dark);
     border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     
     &:hover {
-        background-color: $primary-dark;
+        background-color: var(--btn-hover-dark);
     }
 
     i {

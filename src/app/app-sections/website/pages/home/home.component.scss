@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../theme";
 
 .background {
   &::before {
@@ -48,11 +48,11 @@
   font-size: 4rem;
   font-weight: 700;
   line-height: 1.5;
-  color: $primary;
+  color: var(--primary);
 
   &::after {
     content: "";
-    background-color: $secondary;
+    background-color: var(--secondary);
     -webkit-mask-image: url(../../../../../assets/header-bottom.svg);
     mask-image: url(../../../../../assets/header-bottom.svg);
     bottom: -5px;
@@ -84,7 +84,7 @@
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 5px;
-  background-color: $primary;
+  background-color: var(--primary);
   color: #fff;
   font-size: 1rem;
   font-weight: 500;
@@ -95,7 +95,7 @@
   border: none;
   cursor: pointer;
   &:hover {
-    background-color: $primary-dark;
+    background-color: var(--primary-hover);
   }
 }
 
@@ -116,7 +116,7 @@
   width: 120%;
   border-top-right-radius: 50%;
   border-top-left-radius: 50%;
-  background-color: $primary;
+  background-color: var(--primary);
   animation: pulse 2s linear infinite;
 
   .mouse {
@@ -216,11 +216,11 @@
   text-align: justify;
   font-size: 2.5rem;
   font-weight: 700;
-  color: $primary;
+  color: var(--primary);
 
   &::after {
     content: "";
-    background-color: $secondary;
+    background-color: var(--secondary);
     -webkit-mask-image: url(../../../../../assets/header-bottom.svg);
     mask-image: url(../../../../../assets/header-bottom.svg);
     bottom: -20px;
@@ -232,7 +232,7 @@
 }
 
 .primary {
-  background-color: $primary;
+  background-color: var(--primary);
   margin-top: 300px;
   padding: 0 80px;
 }
@@ -283,7 +283,7 @@
 .pop-image-title {
   opacity: 0;
   font-size: 2.5rem;
-  background: linear-gradient(#676497b7, $primary);
+  background: linear-gradient(#676497b7, var(--primary));
   color: transparent;
   background-clip: text;
   view-timeline-name: --popper;
@@ -297,7 +297,7 @@
   opacity: 0;
   font-size: 1.2rem;
   font-weight: 500;
-  background: linear-gradient(#676497b7, $primary);
+  background: linear-gradient(#676497b7, var(--primary));
   color: transparent;
   background-clip: text;
   view-timeline-name: --popper;

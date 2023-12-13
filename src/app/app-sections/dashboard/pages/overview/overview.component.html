@@ -159,7 +159,7 @@
                 [dataLabels]="totalAttendeesChart.dataLabels" [yaxis]="totalAttendeesChart.yaxis"
                 [labels]="totalAttendeesChart.labels" [legend]="totalAttendeesChart.legend"
                 [title]="totalAttendeesChart.title" [subtitle]="totalAttendeesChart.subtitle"
-                [colors]="totalAttendeesChart.colors">
+                [colors]="totalAttendeesChart.colors" [theme]="totalAttendeesChart.theme">
             </apx-chart>
         </div>
 
@@ -222,22 +222,4 @@
             </div>
         </ng-container>
     </div>
-
-    <!-- <div class="statistics-card">
-        <div>
-            <h1 class="chart-title">Provenance des participants (France)</h1>
-        </div>
-        <highcharts-chart id="container" [Highcharts]="frenchDepMap" [constructorType]="chartConstructor"
-            [options]="frenchDepChartOptions" style="width: 100%; height: 600px; display: block;">
-        </highcharts-chart>
-    </div>
-
-    <div class="statistics-card">
-        <div>
-            <h1 class="chart-title">Provenance des participants (Île de France)</h1>
-        </div>
-        <highcharts-chart id="container" [Highcharts]="idfMap" [constructorType]="chartConstructor"
-            [options]="idfChartOptions" style="width: 100%; height: 600px; display: block;">
-        </highcharts-chart>
-    </div> -->
 </div>

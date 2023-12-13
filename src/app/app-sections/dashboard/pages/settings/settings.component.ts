@@ -17,6 +17,7 @@ export class SettingsComponent implements OnInit {
     this.preferencesForm = new FormGroup({
       showPercentagesOnCharts: new FormControl(this.userPreferences.showPercentagesOnCharts ?? false),
       showLegendOnCharts: new FormControl(this.userPreferences.showLegendOnCharts ?? false),
+      useDarkModeByDefault: new FormControl(this.userPreferences.useDarkModeByDefault ?? false)
     });
   }
 

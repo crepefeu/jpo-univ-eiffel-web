@@ -5,6 +5,8 @@
 
 @import "/node_modules//bootstrap-icons//font/bootstrap-icons.css";
 
+@import "/src/app/theme";
+
 * {
     margin: 0;
     padding: 0;
@@ -14,4 +16,23 @@
 
 .p-inputswitch {
     display: flex;
+}
+
+.small-switch-btn {
+    .p-inputswitch {
+        height: 1.4rem;
+        width: 2.6rem;
+
+        &.p-inputswitch-checked {
+            .p-inputswitch-slider::before {
+                transform: translateX(1rem);
+            }
+        }
+    
+        .p-inputswitch-slider::before {
+            width: 0.9rem;
+            height: 0.9rem;
+            margin-top: -0.45rem;
+        }
+      }
 }

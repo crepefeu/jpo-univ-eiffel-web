@@ -1,4 +1,4 @@
-@import "../../../../colors";
+@import "../../../../theme";
 
 .content {
   width: 85vw;
@@ -13,7 +13,7 @@
 .section-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: $primary;
+  color: var(--primary);
 }
 
 .section-detail {
