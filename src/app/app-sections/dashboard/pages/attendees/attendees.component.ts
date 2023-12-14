@@ -243,7 +243,7 @@ export class AttendeesComponent implements OnInit {
         ...this.idfChartOptions,
         chart: {
           ...idfChart,
-          backgroundColor: "#393939",
+          backgroundColor: "#fff",
         }
       }
     }
