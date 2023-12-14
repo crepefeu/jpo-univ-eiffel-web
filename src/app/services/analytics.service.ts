@@ -29,6 +29,12 @@ export class AnalyticsService {
     return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', {headers: headers});
   }
 
+  getDiplomaCategoriesAnalytics() {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'getDiplomaCategoriesAnalytics', {headers: headers});
+  }
+
   getDiplomasAnalytics() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 

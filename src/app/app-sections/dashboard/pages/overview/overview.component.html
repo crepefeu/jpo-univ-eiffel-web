@@ -185,8 +185,8 @@
         <ng-container *ngIf="!this.userPreferences.showLegendOnCharts">
             <div class="bento5 no-legend">
                 <h1 class="chart-title">Catégories de diplômes</h1>
-                <apx-chart [series]="irlAttendeesRateChart.series" [chart]="diplomasRateChart.chart"
-                    [labels]="irlAttendeesRateChart.labels" [legend]="diplomasRateChart.legend"
+                <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
+                    [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomasRateChart.legend"
                     [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="irlAttendeesRateChart.dataLabels">
                 </apx-chart>
             </div>
@@ -195,9 +195,9 @@
         <ng-container *ngIf="this.userPreferences.showLegendOnCharts">
             <div class="bento5">
                 <h1 class="chart-title">Catégories de diplômes</h1>
-                <apx-chart [series]="irlAttendeesRateChart.series" [chart]="diplomasRateChart.chart"
-                    [labels]="irlAttendeesRateChart.labels" [legend]="diplomasRateChart.legend"
-                    [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="irlAttendeesRateChart.dataLabels">
+                <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
+                    [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomaCategoriesRateChart.legend"
+                    [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="diplomaCategoriesRateChart.dataLabels">
                 </apx-chart>
             </div>
         </ng-container>

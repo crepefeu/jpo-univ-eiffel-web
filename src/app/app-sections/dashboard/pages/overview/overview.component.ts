@@ -16,6 +16,7 @@ export class OverviewComponent {
   totalAttendeesChart: any;
   totalNewAttendeesChart: any;
   irlAttendeesRateChart: any;
+  diplomaCategoriesRateChart: any;
   diplomasRateChart: any;
 
   latestSnapshot: any;
@@ -48,6 +49,11 @@ export class OverviewComponent {
       this.attendeesData = attendees;
       this.irlAttendeesRateChart.series = [attendees.irlAttendeesCount, (this.attendeesData.totalAttendeesCount - attendees.irlAttendeesCount)];
       this.irlAttendeesRateChart.labels = ['Présentiel', 'Non-présentiel'];
+    });
+
+    this.analytics.getDiplomaCategoriesAnalytics().subscribe((diplomaCategories) => {
+      this.diplomaCategoriesRateChart.series = diplomaCategories.counts
+      this.diplomaCategoriesRateChart.labels = diplomaCategories.names;
     });
 
     this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
@@ -234,6 +240,37 @@ export class OverviewComponent {
       ],
     };
 
+    // Irl attendees rate chart configuration
+    this.diplomaCategoriesRateChart = {
+      series: [],
+      colors: ["#2f2a86", "#9395ff"],
+      chart: {
+        height: 160,
+        type: "donut",
+      },
+      legend: {
+        show: this.userPreferences.showLegendOnCharts,
+        position: "right"
+      },
+      dataLabels: {
+        enabled: this.userPreferences.showPercentagesOnCharts,
+      },
+      labels: [],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ],
+    };
+
     // Diplomas rate chart configuration
     this.diplomasRateChart = {
       series: [],
@@ -272,6 +309,7 @@ export class OverviewComponent {
       const totalNewAttendeesChartChart = this.totalNewAttendeesChart.chart;
 
       const irlAttendeesRateChartChart = this.irlAttendeesRateChart.chart;
+      const diplomaCategoriesRateChartChart = this.diplomaCategoriesRateChart.chart;
       const diplomasRateChartChart = this.diplomasRateChart.chart;
 
       this.totalAttendeesChart = {
@@ -312,6 +350,14 @@ export class OverviewComponent {
         ...this.irlAttendeesRateChart,
         chart: {
           ...irlAttendeesRateChartChart,
+          foreColor: '#fff',
+        }
+      }
+
+      this.diplomaCategoriesRateChart = {
+        ...this.diplomaCategoriesRateChart,
+        chart: {
+          ...diplomaCategoriesRateChartChart,
           foreColor: '#fff',
         }
       }
@@ -332,6 +378,7 @@ export class OverviewComponent {
       const totalNewAttendeesChartChart = this.totalNewAttendeesChart.chart;
 
       const irlAttendeesRateChartChart = this.irlAttendeesRateChart.chart;
+      const diplomaCategoriesRateChartChart = this.diplomaCategoriesRateChart.chart;
       const diplomasRateChartChart = this.diplomasRateChart.chart;
 
       this.totalAttendeesChart = {
@@ -372,6 +419,14 @@ export class OverviewComponent {
         ...this.irlAttendeesRateChart,
         chart: {
           ...irlAttendeesRateChartChart,
+          foreColor: '#2f2a86',
+        }
+      }
+
+      this.diplomaCategoriesRateChart = {
+        ...this.diplomaCategoriesRateChart,
+        chart: {
+          ...diplomaCategoriesRateChartChart,
           foreColor: '#2f2a86',
         }
       }
@@ -394,6 +449,7 @@ export class OverviewComponent {
         const totalNewAttendeesChartChart = this.totalNewAttendeesChart.chart;
 
         const irlAttendeesRateChartChart = this.irlAttendeesRateChart.chart;
+        const diplomaCategoriesRateChartChart = this.diplomaCategoriesRateChart.chart;
         const diplomasRateChartChart = this.diplomasRateChart.chart;
 
         this.totalAttendeesChart = {
@@ -434,6 +490,14 @@ export class OverviewComponent {
           ...this.irlAttendeesRateChart,
           chart: {
             ...irlAttendeesRateChartChart,
+            foreColor: '#fff',
+          }
+        }
+
+        this.diplomaCategoriesRateChart = {
+          ...this.diplomaCategoriesRateChart,
+          chart: {
+            ...diplomaCategoriesRateChartChart,
             foreColor: '#fff',
           }
         }
@@ -454,6 +518,7 @@ export class OverviewComponent {
         const totalNewAttendeesChartChart = this.totalNewAttendeesChart.chart;
 
         const irlAttendeesRateChartChart = this.irlAttendeesRateChart.chart;
+        const diplomaCategoriesRateChartChart = this.diplomaCategoriesRateChart.chart;
         const diplomasRateChartChart = this.diplomasRateChart.chart;
 
         this.totalAttendeesChart = {
@@ -494,6 +559,14 @@ export class OverviewComponent {
           ...this.irlAttendeesRateChart,
           chart: {
             ...irlAttendeesRateChartChart,
+            foreColor: '#2f2a86',
+          }
+        }
+
+        this.diplomaCategoriesRateChart = {
+          ...this.diplomaCategoriesRateChart,
+          chart: {
+            ...diplomaCategoriesRateChartChart,
             foreColor: '#2f2a86',
           }
         }
