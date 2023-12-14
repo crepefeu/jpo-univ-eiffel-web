@@ -10,6 +10,8 @@ import { isAuth } from './guards/isAuth.guard';
 import { AttendeesComponent } from './app-sections/dashboard/pages/attendees/attendees.component';
 import { SettingsComponent } from './app-sections/dashboard/pages/settings/settings.component';
 import { DiplomasComponent } from './app-sections/dashboard/pages/diplomas/diplomas.component';
+import { AttendeesAnalyticsComponent } from './app-sections/dashboard/pages/attendees/attendees-analytics/attendees-analytics.component';
+import { AttendeesManageComponent } from './app-sections/dashboard/pages/attendees/attendees-manage/attendees-manage.component';
 
 const routes: Routes = [
   {
@@ -28,7 +30,11 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'overview', pathMatch: 'full'},
       { path: 'overview', component: OverviewComponent},
-      { path: 'attendees', component: AttendeesComponent},
+      { path: 'attendees', component: AttendeesComponent, children: [
+        { path: '', redirectTo: 'analytics', pathMatch: 'full'},
+        { path: 'analytics', component: AttendeesAnalyticsComponent},
+        { path: 'manage', component: AttendeesManageComponent},
+      ]},
       { path: 'diplomas', component: DiplomasComponent},
       { path: 'settings', component: SettingsComponent},
     ]

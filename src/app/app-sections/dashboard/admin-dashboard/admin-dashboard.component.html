@@ -116,12 +116,12 @@
                     </div>
                 </div>
 
-                <div routerLink="attendees" routerLinkActive="active" class="dashboard-nav-link">
+                <div routerLinkActive="active" class="dashboard-nav-link">
                     <div routerLink="attendees" routerLinkActive="active" class="primary-nav-link">
                         <i class="bi bi-person-raised-hand"></i>
                         <p>Participants</p>
                     </div>
-                    <div class="secondary-nav-links">
+                    <div class="secondary-nav-links" *ngIf="true">
                         <div routerLink="attendees/analytics" routerLinkActive="active" class="secondary-nav-link">
                             <!-- <i class="bi bi-bar-chart-fill"></i> -->
                             <p>Statistiques</p>

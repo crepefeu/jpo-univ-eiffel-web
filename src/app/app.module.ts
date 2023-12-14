@@ -25,6 +25,8 @@ import { SignInComponent } from './app-sections/website/pages/sign-in/sign-in.co
 import { AttendeesComponent } from './app-sections/dashboard/pages/attendees/attendees.component';
 import { SettingsComponent } from './app-sections/dashboard/pages/settings/settings.component';
 import { DiplomasComponent } from './app-sections/dashboard/pages/diplomas/diplomas.component';
+import { AttendeesAnalyticsComponent } from './app-sections/dashboard/pages/attendees/attendees-analytics/attendees-analytics.component';
+import { AttendeesManageComponent } from './app-sections/dashboard/pages/attendees/attendees-manage/attendees-manage.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { DiplomasComponent } from './app-sections/dashboard/pages/diplomas/diplo
     AttendeesComponent,
     SettingsComponent,
     DiplomasComponent,
+    AttendeesAnalyticsComponent,
+    AttendeesManageComponent,
   ],
   imports: [
     BrowserModule,

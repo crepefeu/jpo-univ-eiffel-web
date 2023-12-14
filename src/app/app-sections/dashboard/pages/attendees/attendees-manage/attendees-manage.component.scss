@@ -1,0 +1,13 @@
+@import "../../../../../theme";
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.sub-section-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--primary);
+}
