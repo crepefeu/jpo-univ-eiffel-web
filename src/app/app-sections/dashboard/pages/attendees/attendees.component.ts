@@ -14,6 +14,7 @@ import {
   ApexTitleSubtitle,
   ApexLegend
 } from "ng-apexcharts";
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-attendees',
@@ -24,13 +25,16 @@ export class AttendeesComponent implements OnInit {
 
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
+  // Highcharts configuration
+  chartConstructor: string = "mapChart";
+
   idfMap: typeof Highcharts = Highcharts;
   idfChartOptions?: Highcharts.Options;
 
   frenchDepMap: typeof Highcharts = Highcharts;
   frenchDepChartOptions?: Highcharts.Options;
 
-  constructor() { }
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
     // idf map configuration
@@ -124,7 +128,8 @@ export class AttendeesComponent implements OnInit {
         map: franceMap,
         style: {
           fontFamily: "Inter, sans-serif",
-        }
+        },
+        backgroundColor: "#fff"
       },
       mapNavigation: {
         enabled: true,
@@ -202,5 +207,87 @@ export class AttendeesComponent implements OnInit {
         }
       ]
     };
+
+    if (localStorage.getItem('currentTheme') === 'dark') {
+      const franceDepChart = this.frenchDepChartOptions.chart;
+      const idfChart = this.idfChartOptions.chart;
+
+      this.frenchDepChartOptions = {
+        ...this.frenchDepChartOptions,
+        chart: {
+          ...franceDepChart,
+          backgroundColor: "#393939",
+        }
+      }
+
+      this.idfChartOptions = {
+        ...this.idfChartOptions,
+        chart: {
+          ...idfChart,
+          backgroundColor: "#393939",
+        }
+      }
+    } else {
+      const franceDepChart = this.frenchDepChartOptions.chart;
+      const idfChart = this.idfChartOptions.chart;
+
+      this.frenchDepChartOptions = {
+        ...this.frenchDepChartOptions,
+        chart: {
+          ...franceDepChart,
+          backgroundColor: "#fff",
+        }
+      }
+
+      this.idfChartOptions = {
+        ...this.idfChartOptions,
+        chart: {
+          ...idfChart,
+          backgroundColor: "#393939",
+        }
+      }
+    }
+
+    this.sharedService.themeChanges().subscribe((isDarkMode: boolean) => {
+      if (isDarkMode) {
+        const franceDepChart = this.frenchDepChartOptions?.chart;
+        const idfChart = this.idfChartOptions?.chart;
+
+        this.frenchDepChartOptions = {
+          ...this.frenchDepChartOptions,
+          chart: {
+            ...franceDepChart,
+            backgroundColor: "#393939",
+          }
+        }
+
+        this.idfChartOptions = {
+          ...this.idfChartOptions,
+          chart: {
+            ...idfChart,
+            backgroundColor: "#393939",
+          }
+        }
+      } else {
+        const franceDepChart = this.frenchDepChartOptions?.chart;
+        const idfChart = this.idfChartOptions?.chart;
+
+        this.frenchDepChartOptions = {
+          ...this.frenchDepChartOptions,
+          chart: {
+            ...franceDepChart,
+            backgroundColor: "#fff",
+          }
+        }
+
+        this.idfChartOptions = {
+          ...this.idfChartOptions,
+          chart: {
+            ...idfChart,
+            backgroundColor: "#fff",
+          }
+        }
+      }
+    });
   }
 }

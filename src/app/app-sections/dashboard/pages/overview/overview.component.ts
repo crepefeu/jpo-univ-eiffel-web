@@ -13,9 +13,6 @@ export class OverviewComponent {
   displayName = localStorage.getItem('displayName') ?? '';
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
-  // Highcharts configuration
-  chartConstructor: string = "mapChart";
-
   totalAttendeesChart: any;
   totalNewAttendeesChart: any;
   irlAttendeesRateChart: any;
@@ -328,8 +325,6 @@ export class OverviewComponent {
       }
 
     } else {
-      localStorage.setItem('currentTheme', 'light')
-
       const totalAttendeesChartTitle = this.totalAttendeesChart.title;
       const totalAttendeesChartChart = this.totalAttendeesChart.chart;
 
@@ -390,7 +385,7 @@ export class OverviewComponent {
       }
     }
 
-    this.sharedService.themeChanges().subscribe((darkMode: any) => {
+    this.sharedService.themeChanges().subscribe((darkMode: boolean) => {
       if (darkMode) {
         const totalAttendeesChartTitle = this.totalAttendeesChart.title;
         const totalAttendeesChartChart = this.totalAttendeesChart.chart;
@@ -452,8 +447,6 @@ export class OverviewComponent {
         }
 
       } else {
-        localStorage.setItem('currentTheme', 'light')
-
         const totalAttendeesChartTitle = this.totalAttendeesChart.title;
         const totalAttendeesChartChart = this.totalAttendeesChart.chart;
 

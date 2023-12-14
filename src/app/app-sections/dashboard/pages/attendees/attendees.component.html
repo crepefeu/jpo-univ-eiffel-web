@@ -2,21 +2,25 @@
     <div class="section-details">
         <h1 class="section-title">Participants</h1>
     </div>
-        <!-- <div class="statistics-card">
+        <div class="statistics-card">
         <div>
             <h1 class="chart-title">Provenance des participants (France)</h1>
         </div>
-        <highcharts-chart id="container" [Highcharts]="frenchDepMap" [constructorType]="chartConstructor"
+        <ng-container *ngIf="frenchDepChartOptions">
+            <highcharts-chart id="container" [Highcharts]="frenchDepMap" [constructorType]="chartConstructor"
             [options]="frenchDepChartOptions" style="width: 100%; height: 600px; display: block;">
         </highcharts-chart>
+        </ng-container>
     </div>
 
     <div class="statistics-card">
         <div>
             <h1 class="chart-title">Provenance des participants (Île de France)</h1>
         </div>
-        <highcharts-chart id="container" [Highcharts]="idfMap" [constructorType]="chartConstructor"
+        <ng-container *ngIf="idfChartOptions">
+            <highcharts-chart id="container" [Highcharts]="idfMap" [constructorType]="chartConstructor"
             [options]="idfChartOptions" style="width: 100%; height: 600px; display: block;">
         </highcharts-chart>
-    </div> -->
+        </ng-container>
+    </div>
 </div>
