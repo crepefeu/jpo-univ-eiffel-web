@@ -31,13 +31,13 @@ export class AdminDashboardComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  onToggleDarkMode($event: any) {
-    if ($event.checked) {
+  onToggleDarkMode(darkModeSwitch: any) {
+    if (darkModeSwitch.checked) {
       localStorage.setItem('currentTheme', 'dark');
     } else {
       localStorage.setItem('currentTheme', 'light');
     }
     document.body.classList.toggle('dark-theme');
-    this.sharedService.changeTheme($event.checked);
+    this.sharedService.changeTheme(darkModeSwitch.checked);
   }
 }
