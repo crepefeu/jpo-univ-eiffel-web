@@ -12,6 +12,8 @@ import { SettingsComponent } from './app-sections/dashboard/pages/settings/setti
 import { DiplomasComponent } from './app-sections/dashboard/pages/diplomas/diplomas.component';
 import { AttendeesAnalyticsComponent } from './app-sections/dashboard/pages/attendees/attendees-analytics/attendees-analytics.component';
 import { AttendeesManageComponent } from './app-sections/dashboard/pages/attendees/attendees-manage/attendees-manage.component';
+import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas/diplomas-manage/diplomas-manage.component';
+import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplomas/diplomas-analytics/diplomas-analytics.component';
 
 const routes: Routes = [
   {
@@ -35,7 +37,11 @@ const routes: Routes = [
         { path: 'analytics', component: AttendeesAnalyticsComponent},
         { path: 'manage', component: AttendeesManageComponent},
       ]},
-      { path: 'diplomas', component: DiplomasComponent},
+      { path: 'diplomas', component: DiplomasComponent, children: [
+        { path: '', redirectTo: 'analytics', pathMatch: 'full'},
+        { path: 'analytics', component: DiplomasAnalyticsComponent},
+        { path: 'manage', component: DiplomasManageComponent},
+      ]},
       { path: 'settings', component: SettingsComponent},
     ]
   },

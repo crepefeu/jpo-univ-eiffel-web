@@ -121,7 +121,7 @@
                         <i class="bi bi-person-raised-hand"></i>
                         <p>Participants</p>
                     </div>
-                    <div class="secondary-nav-links" *ngIf="true">
+                    <div class="secondary-nav-links" *ngIf="activeTab == 'attendees'">
                         <div routerLink="attendees/analytics" routerLinkActive="active" class="secondary-nav-link">
                             <p>Statistiques</p>
                         </div>
@@ -132,10 +132,19 @@
                     </div>
                 </div>
 
-                <div routerLink="diplomas" routerLinkActive="active" class="dashboard-nav-link">
-                    <div class="primary-nav-link">
+                <div routerLinkActive="active" class="dashboard-nav-link">
+                    <div routerLink="diplomas" routerLinkActive="active" class="primary-nav-link">
                         <i class="bi bi-file-earmark-text"></i>
                         <p>Diplômes</p>
+                    </div>
+                    <div class="secondary-nav-links" *ngIf="activeTab == 'diplomas'">
+                        <div routerLink="diplomas/analytics" routerLinkActive="active" class="secondary-nav-link">
+                            <p>Statistiques</p>
+                        </div>
+
+                        <div routerLink="diplomas/manage" routerLinkActive="active" class="secondary-nav-link">
+                            <p>Gestion</p>
+                        </div>
                     </div>
                 </div>
 

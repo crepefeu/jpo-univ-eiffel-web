@@ -12,6 +12,7 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class AdminDashboardComponent implements OnInit {
 
+  activeTab = 'overview';
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
   isDarkMode = localStorage.getItem('currentTheme') === 'dark' ? true : false;
 
@@ -24,6 +25,20 @@ export class AdminDashboardComponent implements OnInit {
     } else {
       document.body.classList.toggle('dark-theme', false);
     }
+
+    // subscribe to url changes to update the active tab
+    this.router.events.subscribe((val) => {
+      if (this.router.url.includes('overview')) {
+        this.activeTab = 'overview';
+      }
+      else if (this.router.url.includes('attendees')) {
+        this.activeTab = 'attendees';
+      } else if (this.router.url.includes('diplomas')) {
+        this.activeTab = 'diplomas';
+      } else if (this.router.url.includes('settings')) {
+        this.activeTab = 'settings';
+      }
+    });
   }
 
   signOut() {

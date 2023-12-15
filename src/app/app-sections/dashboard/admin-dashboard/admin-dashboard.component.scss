@@ -42,7 +42,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   transition: all 200ms ease-in-out;
   color: rgb(162, 162, 162);
 
@@ -52,6 +51,7 @@
 }
 
 .primary-nav-link {
+  cursor: pointer;
   display: flex;
   gap: 30px;
   transition: all 200ms ease-in-out;
@@ -80,6 +80,7 @@
 }
 
 .secondary-nav-link {
+  cursor: pointer;
   display: flex;
   gap: 10px;
   transition: all 200ms ease-in-out;
