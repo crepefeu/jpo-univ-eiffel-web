@@ -29,6 +29,10 @@ import { AttendeesAnalyticsComponent } from './app-sections/dashboard/pages/atte
 import { AttendeesManageComponent } from './app-sections/dashboard/pages/attendees/attendees-manage/attendees-manage.component';
 import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplomas/diplomas-analytics/diplomas-analytics.component';
 import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas/diplomas-manage/diplomas-manage.component';
+import { ManageListComponent } from './app-sections/dashboard/components/manage-list/manage-list.component';
+import { PaginationComponent } from './app-sections/dashboard/components/pagination/pagination.component';
+import { DropdownDirective } from './directives/dropdown.directive';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +52,10 @@ import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas
     AttendeesManageComponent,
     DiplomasAnalyticsComponent,
     DiplomasManageComponent,
+    ManageListComponent,
+    PaginationComponent,
+    DropdownDirective,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,

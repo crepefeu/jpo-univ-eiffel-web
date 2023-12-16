@@ -4,6 +4,15 @@ body {
 
     // text
     --font-color : #2f2a86;
+    --white: #fff;
+
+    // borders
+    --border : #e7e7e7;
+
+    //inputs
+    --input-bkg: #efefef;
+    --input-txt: #000;
+    --input-placeholder: #a7a7a7;
 
     // colors
     --primary : #2f2a86;
@@ -23,6 +32,11 @@ body {
     --card-bkg: #fff;
     --card-secondary-bkg: #0004ff61;
 
+    // lists
+    --list-bkg: #fff;
+    --list-header: #fff;
+    --list-item-bkg: #fff;
+
     // dash pages background
     --dash-bkg : rgb(240, 238, 251);
 
@@ -35,9 +49,22 @@ body {
 
     // badges
     --badges-ctn: #fff;
-
+    --badge-info: #2f2a86;
     --badge-increase: #14da6639;
     --bagde-increase-txt: #2ecc71;
+
+    // pagination
+    --pagination-item: #fff;
+    --pagination-item-border: #2f2a86;
+    --pagination-item-hover: #2f2a86;
+    --pagination-item-active: #2f2a86;
+    --pagination-item-active-hover: #211d5d;
+    --pagination-item-txt: #2f2a86;
+    --pagination-item-txt-active: #fff;
+
+    // dropdown
+    --dropdown-bkg: #fff;
+    --dropdown-item-hover: #f8f8f8;
 }
 
 body.dark-theme {
@@ -46,6 +73,14 @@ body.dark-theme {
 
     // text
     --font-color : #fff;
+
+    // borders
+    --border : red;
+
+    //inputs
+    --input-bkg: #1d1d1d;
+    --input-txt: #fff;
+    --input-placeholder: #a7a7a7;
 
     // colors
     --primary : #fff;
@@ -65,6 +100,11 @@ body.dark-theme {
     --card-bkg: #393939;
     --card-secondary-bkg: #393939;
 
+    // lists
+    --list-bkg: #393939;
+    --list-header: #393939;
+    --list-item-bkg: #393939;
+
     // dash pages background
     --dash-bkg : #2a2a2a;
 
@@ -77,8 +117,21 @@ body.dark-theme {
 
     // badges
     --badges-ctn: #2a2a2a;
-
+    --badge-info: #1d1d1d;
     --badge-increase: #14da6639;
     --bagde-increase-txt: #2ecc71;
+
+    // pagination
+    --pagination-item: #393939;
+    --pagination-item-hover: #1d1d1d;
+    --pagination-item-border: #1d1d1d;
+    --pagination-item-active: #1d1d1d;
+    --pagination-item-active-hover: #211d5d;
+    --pagination-item-txt: #fff;
+    --pagination-item-txt-active: #fff;
+
+    // dropdown
+    --dropdown-bkg: #1d1d1d;
+    --dropdown-item-hover: #393939;
 }
 

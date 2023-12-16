@@ -3,11 +3,32 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+}
+
+.section-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgb(117, 117, 117);
 }
 
 .sub-section-title {
     font-size: 1.1rem;
     font-weight: 400;
     color: var(--primary);
+}
+
+.data-badge {
+    font-size: 0.7rem;
+    color: var(--white);
+    padding: 5px 15px;
+    background-color: var(--badge-info);
+    border-radius: 10px;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

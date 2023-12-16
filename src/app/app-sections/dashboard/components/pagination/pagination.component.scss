@@ -1,0 +1,48 @@
+@import "../../../../theme";
+
+.pagination-ctn {
+    width: 100%;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+
+  .page-item {
+    margin: 0 5px;
+
+    &.active {
+      .page-link {
+        color: white;
+        background-color: var(--pagination-item-active);
+
+        &:hover {
+          background-color: var(--pagination-item-active-hover);
+        }
+      }
+    }
+    &.disabled {
+      .page-link {
+        display: none;
+      }
+    }
+    .page-link {
+      cursor: pointer;
+      color: var(--pagination-item-txt);
+      background-color: var(--pagination-item);
+      border: solid 1px var(--pagination-item-border);
+      border-radius: 5px;
+      padding: 6px 10px;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        z-index: 2;
+        text-decoration: none;
+        background-color: var(--pagination-item-hover);
+        color: white;
+      }
+    }
+  }
+}

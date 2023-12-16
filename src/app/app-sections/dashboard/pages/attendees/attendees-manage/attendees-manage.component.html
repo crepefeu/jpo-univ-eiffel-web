@@ -1,5 +1,9 @@
 <div class="content">
-    <div class="section-details">
-        <h1 class="sub-section-title">Gestion</h1>
+    <div class="section">
+        <div class="section-details">
+            <h2 class="sub-section-title">Gestion</h2>
+            <div class="data-badge">{{attendeesData.dataList.length}} données participants</div>
+        </div>
+        <app-manage-list [data]="attendeesData.dataList"></app-manage-list>
     </div>
 </div>

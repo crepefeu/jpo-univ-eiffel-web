@@ -1,0 +1,55 @@
+<div class="manage-list-ctn">
+    <div class="list-header">
+        <input class="search-input" type="text" placeholder="Rechercher"
+        [(ngModel)]="searchString" (ngModelChange)="updateSearchString(searchString)">
+        <button class="header-btn">
+            <i class="bi bi-database-fill-add"></i>
+        </button>
+        <button class="header-btn" dropdown [open]="open" (clickOutside)="closeDropDown()" (click)="open = !open">
+            <i class="bi bi-funnel-fill"></i>
+            <div class="dropdown-menu">
+                <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
+                    <i class="bi bi-sort-alpha-down"></i>
+                </div>
+                <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
+                    <i class="bi bi-sort-alpha-down"></i>
+                </div>
+            </div>
+        </button>
+    </div>
+    <table class="data-table">
+        <thead class="table-header">
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Participation <i class="bi bi bi-filter filter-btn"  dropdown [open]="open" (clickOutside)="closeDropDown()" (click)="open = !open"></i></th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <ng-container *ngIf="data">
+            <tbody class="table-body">
+                <tr class="data-row" *ngFor="let item of data | slice
+                : (pagination.currentPage - 1) * pagination.pageSize
+                : pagination.currentPage * pagination.pageSize | search: searchString">
+                    <td class="data">{{item.firstName}}</td>
+                    <td class="data">{{item.lastName}}</td>
+                    <td class="data">{{item.email}}</td>
+                    <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
+                    <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
+                    <td class="action-buttons-ctn">
+                        <button class="action-btn">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                        <button class="action-btn">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </ng-container>
+    </table>
+    <div class="pagination-ctn">
+        <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+    </div>
+</div>
