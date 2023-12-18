@@ -65,6 +65,12 @@ body {
     // dropdown
     --dropdown-bkg: #fff;
     --dropdown-item-hover: #f8f8f8;
+
+    // modals
+    --modal-bkg: #fff;
+    --modal-border: #e7e7e7;
+    --modal-close-btn: #2f2a86;
+    --modal-header: #fff;
 }
 
 body.dark-theme {
@@ -133,5 +139,11 @@ body.dark-theme {
     // dropdown
     --dropdown-bkg: #1d1d1d;
     --dropdown-item-hover: #393939;
+
+    // modals
+    --modal-bkg: #393939;
+    --modal-border: #1d1d1d;
+    --modal-close-btn: #fff;
+    --modal-header: #393939;
 }
 

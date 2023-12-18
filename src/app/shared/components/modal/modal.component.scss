@@ -24,16 +24,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px 15px 30px;
-  border-bottom: rgb(227, 227, 227) 1px solid;
+  border-bottom: solid 1px var(--modal-border);
 }
 
 .modal-title {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: var(--primary);
 }
 
 .close-btn {
+    color: var(--modal-close-btn);
     font-size: 1.5rem;
     border: none;
     background-color: transparent;
@@ -46,9 +47,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   transform-origin: left;
-  border: rgb(227, 227, 227) 1px solid;
-  background-color: white;
-  border-radius: 0.3rem;
+  border: solid 1px var(--modal-border);
+  background-color: var(--modal-bkg);
+  border-radius: 10px;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 2;

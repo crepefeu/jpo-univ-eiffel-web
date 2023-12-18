@@ -34,6 +34,7 @@ import { PaginationComponent } from './app-sections/dashboard/components/paginat
 import { SearchPipe } from './pipes/search.pipe';
 import { PageHeaderComponent } from './app-sections/dashboard/components/page-header/page-header.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
+import { AddAttendeeFormComponent } from './app-sections/dashboard/components/add-attendee-form/add-attendee-form.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ModalComponent } from './shared/components/modal/modal.component';
     PaginationComponent,
     SearchPipe,
     PageHeaderComponent,
-    ModalComponent
+    ModalComponent,
+    AddAttendeeFormComponent
   ],
   imports: [
     BrowserModule,

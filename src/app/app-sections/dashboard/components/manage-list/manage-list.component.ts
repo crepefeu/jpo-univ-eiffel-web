@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
-import { HomeComponent } from 'src/app/app-sections/website/pages/home/home.component';
+import { AddAttendeeFormComponent } from '../add-attendee-form/add-attendee-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -73,7 +73,7 @@ export class ManageListComponent implements OnInit {
   }
 
   openModalComponent() { 
-    this.modalService.open(HomeComponent, {
+    this.modalService.open(AddAttendeeFormComponent, {
       title: 'Ajouter un participant',
       animations: {
         modal: {
