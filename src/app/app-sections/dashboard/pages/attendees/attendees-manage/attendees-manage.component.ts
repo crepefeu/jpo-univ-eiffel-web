@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AttendeesService } from 'src/app/services/attendees.service';
+import { ManageListTypes } from 'src/app/models/manage-list-types';
 
 @Component({
   selector: 'app-attendees-manage',
@@ -9,6 +10,7 @@ import { AttendeesService } from 'src/app/services/attendees.service';
 export class AttendeesManageComponent implements OnInit {
 
   attendeesData: any;
+  listType: ManageListTypes = ManageListTypes.Attendees;
 
   constructor(private attendeesService: AttendeesService) { }
 

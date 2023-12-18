@@ -1,65 +1,135 @@
-<div class="manage-list-ctn">
-    <div class="list-header">
-        <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
-            (ngModelChange)="updateSearchString(searchString)">
-        <button class="header-btn">
-            <i class="bi bi-database-fill-add"></i>
-        </button>
-        <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
-            <i class="bi bi-funnel-fill"></i>
-            <div #headerBtnDropdown class="dropdown-menu">
-                <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
-                    <i class="bi bi-sort-alpha-down"></i>
-                </div>
-                <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
-                    <i class="bi bi-sort-alpha-down"></i>
-                </div>
-            </div>
-        </button>
-    </div>
-    <table class="data-table">
-        <thead class="table-header">
-            <tr>
-                <th class="header-badge">Prénom</th>
-                <th class="header-badge">Nom</th>
-                <th class="header-badge">Email</th>
-                <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
-                    <div class="header-badge-inner">
-                        Participation
-                        <i class="bi bi bi-filter filter-btn"></i>
+<ng-container *ngIf="listType === 'Attendees'">
+    <div class="manage-list-ctn">
+        <div class="list-header">
+            <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
+                (ngModelChange)="updateSearchString(searchString)">
+            <button class="header-btn">
+                <i class="bi bi-database-fill-add"></i>
+            </button>
+            <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
+                <i class="bi bi-funnel-fill"></i>
+                <div #headerBtnDropdown class="dropdown-menu">
+                    <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
+                        <i class="bi bi-sort-alpha-down"></i>
                     </div>
-                    <div #participationDropdownList class="dropdown-menu">
-                        <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
-                        <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
-                        <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>
+                    <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
+                        <i class="bi bi-sort-alpha-down"></i>
                     </div>
-                </th>
-                <th class="header-badge">Actions</th>
-            </tr>
-        </thead>
-        <ng-container *ngIf="originalData">
-            <tbody class="table-body">
-                <tr class="data-row" *ngFor="let item of data | slice
-                : (pagination.currentPage - 1) * pagination.pageSize
-                : pagination.currentPage * pagination.pageSize | search: searchString">
-                    <td class="data">{{item.firstName}}</td>
-                    <td class="data">{{item.lastName}}</td>
-                    <td class="data">{{item.email}}</td>
-                    <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
-                    <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
-                    <td class="action-buttons-ctn">
-                        <button class="action-btn">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button class="action-btn">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
+                </div>
+            </button>
+        </div>
+        <table class="data-table">
+            <thead class="table-header">
+                <tr>
+                    <th class="header-badge">Prénom</th>
+                    <th class="header-badge">Nom</th>
+                    <th class="header-badge">Email</th>
+                    <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
+                        <div class="header-badge-inner">
+                            Participation
+                            <i class="bi bi bi-filter filter-btn"></i>
+                        </div>
+                        <div #participationDropdownList class="dropdown-menu">
+                            <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
+                            <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
+                            <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>
+                        </div>
+                    </th>
+                    <th class="header-badge">Actions</th>
                 </tr>
-            </tbody>
-        </ng-container>
-    </table>
-    <div class="pagination-ctn">
-        <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+            </thead>
+            <ng-container *ngIf="originalData">
+                <tbody class="table-body">
+                    <tr class="data-row" *ngFor="let item of data | slice
+                    : (pagination.currentPage - 1) * pagination.pageSize
+                    : pagination.currentPage * pagination.pageSize | search: searchString">
+                        <td class="data">{{item.firstName}}</td>
+                        <td class="data">{{item.lastName}}</td>
+                        <td class="data">{{item.email}}</td>
+                        <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
+                        <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
+                        <td class="action-buttons-ctn">
+                            <button class="action-btn">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </ng-container>
+        </table>
+        <div class="pagination-ctn">
+            <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+        </div>
     </div>
-</div>
+</ng-container>
+
+<ng-container *ngIf="listType === 'Diplomas'">
+    <div class="manage-list-ctn">
+        <div class="list-header">
+            <input class="search-input" type="text" placeholder="Rechercher un diplôme" [(ngModel)]="searchString"
+                (ngModelChange)="updateSearchString(searchString)">
+            <button class="header-btn">
+                <i class="bi bi-database-fill-add"></i>
+            </button>
+            <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
+                <i class="bi bi-funnel-fill"></i>
+                <div #headerBtnDropdown class="dropdown-menu">
+                    <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
+                        <i class="bi bi-sort-alpha-down"></i>
+                    </div>
+                    <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
+                        <i class="bi bi-sort-alpha-down"></i>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <table class="data-table">
+            <thead class="table-header">
+                <tr>
+                    <th class="header-badge">Prénom</th>
+                    <th class="header-badge">Nom</th>
+                    <th class="header-badge">Email</th>
+                    <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
+                        <div class="header-badge-inner">
+                            Participation
+                            <i class="bi bi bi-filter filter-btn"></i>
+                        </div>
+                        <div #participationDropdownList class="dropdown-menu">
+                            <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
+                            <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
+                            <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>
+                        </div>
+                    </th>
+                    <th class="header-badge">Actions</th>
+                </tr>
+            </thead>
+            <ng-container *ngIf="originalData">
+                <tbody class="table-body">
+                    <tr class="data-row" *ngFor="let item of data | slice
+                    : (pagination.currentPage - 1) * pagination.pageSize
+                    : pagination.currentPage * pagination.pageSize | search: searchString">
+                        <td class="data">{{item.firstName}}</td>
+                        <td class="data">{{item.lastName}}</td>
+                        <td class="data">{{item.email}}</td>
+                        <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
+                        <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
+                        <td class="action-buttons-ctn">
+                            <button class="action-btn">
+                                <i class="bi bi-pencil-fill"></i>
+                            </button>
+                            <button class="action-btn">
+                                <i class="bi bi-trash-fill"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </ng-container>
+        </table>
+        <div class="pagination-ctn">
+            <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+        </div>
+    </div>
+</ng-container>

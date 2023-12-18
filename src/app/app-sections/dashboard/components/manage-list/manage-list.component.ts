@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
+import { ManageListTypes } from 'src/app/models/manage-list-types';
 
 @Component({
   selector: 'app-manage-list',
@@ -9,6 +10,8 @@ import { SearchService } from 'src/app/services/search.service';
 export class ManageListComponent implements OnInit {
 
   @Input() originalData: any[] = [];
+  @Input() listType?: ManageListTypes;
+
   data: any[] = [];
   searchString: string = "";
 
