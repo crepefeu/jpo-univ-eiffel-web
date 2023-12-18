@@ -1,0 +1,12 @@
+<div class="modal-wrapper">
+    <section class="modal" #modal>
+        <div class="modal-header">
+            <h2 class="modal-title">{{title}}</h2>
+            <button class="close-btn" (click)="onClose()"><i class="bi bi-x-lg"></i></button>
+        </div>
+
+        <!--  Content will be projected here    -->
+        <ng-content></ng-content>
+    </section>
+</div>
+<div class="modal-overlay" #overlay (click)="onClose()"></div>

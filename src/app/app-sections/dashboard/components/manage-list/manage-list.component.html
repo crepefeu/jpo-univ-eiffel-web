@@ -3,7 +3,7 @@
         <div class="list-header">
             <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
                 (ngModelChange)="updateSearchString(searchString)">
-            <button class="header-btn">
+            <button class="header-btn" (click)="openModalComponent()">
                 <i class="bi bi-database-fill-add"></i>
             </button>
             <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">

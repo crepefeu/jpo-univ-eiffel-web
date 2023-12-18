@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
+import { ModalService } from 'src/app/services/modal.service';
+import { HomeComponent } from 'src/app/app-sections/website/pages/home/home.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -15,7 +17,8 @@ export class ManageListComponent implements OnInit {
   data: any[] = [];
   searchString: string = "";
 
-  constructor(private search: SearchService) {
+  constructor(private search: SearchService,
+    private modalService: ModalService) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
   }
 
@@ -67,5 +70,29 @@ export class ManageListComponent implements OnInit {
 
   updateSearchString(string: string) {
     this.search.setSearchString(string);
+  }
+
+  openModalComponent() { 
+    this.modalService.open(HomeComponent, {
+      title: 'Ajouter un participant',
+      animations: {
+        modal: {
+          enter: 'enter-scaling 0.1s ease-out',
+          leave: 'exit-scaling 0.1s ease-out',
+        },
+        overlay: {
+          enter: 'fade-in 0.1s',
+          leave: 'fade-out 0.1s forwards',
+        },
+      },
+      size: {
+        width: '80vw',
+        height: '80vh',
+      }
+    });
+  }
+
+  close() {
+    this.modalService.close();
   }
 }

@@ -7,6 +7,9 @@
 
 @import "/src/app/theme";
 
+// custom modal animations
+@import "src/app/shared/components/modal/modal-animations.scss";
+
 * {
     margin: 0;
     padding: 0;

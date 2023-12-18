@@ -33,6 +33,7 @@ import { ManageListComponent } from './app-sections/dashboard/components/manage-
 import { PaginationComponent } from './app-sections/dashboard/components/pagination/pagination.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { PageHeaderComponent } from './app-sections/dashboard/components/page-header/page-header.component';
+import { ModalComponent } from './shared/components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PageHeaderComponent } from './app-sections/dashboard/components/page-he
     ManageListComponent,
     PaginationComponent,
     SearchPipe,
-    PageHeaderComponent
+    PageHeaderComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
