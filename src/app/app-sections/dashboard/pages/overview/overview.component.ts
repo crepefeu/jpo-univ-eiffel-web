@@ -216,7 +216,7 @@ export class OverviewComponent {
       series: [],
       colors: ["#2f2a86", "#9395ff"],
       chart: {
-        height: 160,
+        height: 170,
         type: "donut",
       },
       legend: {
@@ -247,7 +247,7 @@ export class OverviewComponent {
       series: [],
       colors: ["#2f2a86", "#211d5d", "#3f3aa6", "#d2213c", "#a41f32"],
       chart: {
-        height: 160,
+        height: 170,
         type: "donut",
       },
       legend: {
@@ -278,7 +278,7 @@ export class OverviewComponent {
       series: [],
       colors: ["#2f2a86", "#9395ff"],
       chart: {
-        height: 175,
+        height: 170,
         type: "donut"
       },
       legend: {
