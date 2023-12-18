@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AttendeesService } from 'src/app/services/attendees.service';
-import { ManageListTypes } from 'src/app/models/manage-list-types';
+import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 
 @Component({
   selector: 'app-attendees-manage',

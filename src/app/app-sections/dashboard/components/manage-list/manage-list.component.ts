@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
-import { ManageListTypes } from 'src/app/models/manage-list-types';
+import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 
 @Component({
   selector: 'app-manage-list',
