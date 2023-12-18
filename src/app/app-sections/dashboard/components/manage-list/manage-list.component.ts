@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 
 @Component({
@@ -6,20 +6,26 @@ import { SearchService } from 'src/app/services/search.service';
   templateUrl: './manage-list.component.html',
   styleUrls: ['./manage-list.component.scss']
 })
-export class ManageListComponent {
+export class ManageListComponent implements OnInit {
 
-  @Input() data: any[] = [];
-
-  open = false;
+  @Input() originalData: any[] = [];
+  data: any[] = [];
   searchString: string = "";
 
   constructor(private search: SearchService) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
   }
 
-  closeDropDown() {
+  ngOnInit(): void {
+    this.data = this.originalData;
   }
-  closeOnClick() {
+
+  closeDropDown(dropdownList: HTMLDivElement) {
+    dropdownList.classList.remove('show');
+  }
+
+  toggleDropdown(dropdownList: HTMLDivElement) {
+    dropdownList.classList.toggle('show');
   }
 
   onOrderByChange(key: string) {
@@ -43,6 +49,16 @@ export class ManageListComponent {
         }
         return 0;
       });
+    }
+  }
+
+  onFilterChange(key: string) {
+    if (key === 'all') {
+      this.data = this.originalData;
+    } else if (key === 'irl') {
+      this.data = this.originalData.filter((attendee: any) => attendee.isIrlAttendee);
+    } else if (key === 'dist') {
+      this.data = this.originalData.filter((attendee: any) => !attendee.isIrlAttendee);
     }
   }
 

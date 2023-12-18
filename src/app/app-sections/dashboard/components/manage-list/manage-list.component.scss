@@ -4,7 +4,7 @@
     display: flex;
     height: fit-content;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     padding: 15px 15px 15px 15px;
     border-radius: 10px;
     background-color: var(--list-bkg);
@@ -15,6 +15,7 @@
 }
 
 .list-header {
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,10 +45,9 @@
 }
 
 .header-btn {
-    position: relative;
     height: 100%;
+    position: relative;
     width: fit-content;
-    padding: 10px 13px;
     border-radius: 5px;
     border: none;
     background-color: var(--btn-dark);
@@ -58,6 +58,7 @@
     transition: all 0.2s ease-in-out;
 
     i {
+        padding: 0px 13px;
         font-size: 1rem;
     }
 
@@ -90,8 +91,25 @@
     color: var(--primary);
 }
 
+.header-badge {
+    position: relative;
+    gap: 5px;
+    border-radius: 10px;
+    background-color: var(--badge-info);
+    color: white;
+    font-size: 0.8rem;
+}
+
+.header-badge-inner {
+    padding: 3px 0px;
+}
+
 .filter-btn {
     margin-left: 10px;
+    cursor: pointer;
+}
+
+.filter {
     cursor: pointer;
 }
 
@@ -145,12 +163,11 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    left: -70px;
-    top: 40px;
     z-index: 1000;
     display: none;
-    float: left;
-    min-width: 10rem;
+    width: max-content;
+    min-width: 100%;
+    max-width: max-content;
     padding: 5px 0;
     margin: 0.125rem 0 0;
     font-size: 1rem;
@@ -168,6 +185,7 @@
     display: block;
     padding: 5px 10px;
     width: 100%;
+    font-style: normal;
     font-weight: 400;
     text-align: inherit;
     background-color: transparent;

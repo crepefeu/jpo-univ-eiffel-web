@@ -1,13 +1,13 @@
 <div class="manage-list-ctn">
     <div class="list-header">
-        <input class="search-input" type="text" placeholder="Rechercher"
-        [(ngModel)]="searchString" (ngModelChange)="updateSearchString(searchString)">
+        <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
+            (ngModelChange)="updateSearchString(searchString)">
         <button class="header-btn">
             <i class="bi bi-database-fill-add"></i>
         </button>
-        <button class="header-btn" dropdown [open]="open" (clickOutside)="closeDropDown()" (click)="open = !open">
+        <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
             <i class="bi bi-funnel-fill"></i>
-            <div class="dropdown-menu">
+            <div #headerBtnDropdown class="dropdown-menu">
                 <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
                     <i class="bi bi-sort-alpha-down"></i>
                 </div>
@@ -20,14 +20,24 @@
     <table class="data-table">
         <thead class="table-header">
             <tr>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Participation <i class="bi bi bi-filter filter-btn"  dropdown [open]="open" (clickOutside)="closeDropDown()" (click)="open = !open"></i></th>
-                <th>Actions</th>
+                <th class="header-badge">Prénom</th>
+                <th class="header-badge">Nom</th>
+                <th class="header-badge">Email</th>
+                <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
+                    <div class="header-badge-inner">
+                        Participation
+                        <i class="bi bi bi-filter filter-btn"></i>
+                    </div>
+                    <div #participationDropdownList class="dropdown-menu">
+                        <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
+                        <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
+                        <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>
+                    </div>
+                </th>
+                <th class="header-badge">Actions</th>
             </tr>
         </thead>
-        <ng-container *ngIf="data">
+        <ng-container *ngIf="originalData">
             <tbody class="table-body">
                 <tr class="data-row" *ngFor="let item of data | slice
                 : (pagination.currentPage - 1) * pagination.pageSize

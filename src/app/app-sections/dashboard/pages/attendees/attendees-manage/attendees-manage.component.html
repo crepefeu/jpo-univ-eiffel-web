@@ -2,8 +2,8 @@
     <div class="section">
         <div class="section-details">
             <h2 class="sub-section-title">Gestion</h2>
-            <div class="data-badge">{{attendeesData.dataList.length}} données participants</div>
+            <div class="data-badge" *ngIf="attendeesData">{{attendeesData.dataList.length}} données participants</div>
         </div>
-        <app-manage-list [data]="attendeesData.dataList"></app-manage-list>
+        <app-manage-list *ngIf="attendeesData" [originalData]="attendeesData.dataList"></app-manage-list>
     </div>
 </div>

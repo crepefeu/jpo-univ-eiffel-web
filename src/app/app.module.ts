@@ -31,7 +31,6 @@ import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplo
 import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas/diplomas-manage/diplomas-manage.component';
 import { ManageListComponent } from './app-sections/dashboard/components/manage-list/manage-list.component';
 import { PaginationComponent } from './app-sections/dashboard/components/pagination/pagination.component';
-import { DropdownDirective } from './directives/dropdown.directive';
 import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
@@ -54,8 +53,7 @@ import { SearchPipe } from './pipes/search.pipe';
     DiplomasManageComponent,
     ManageListComponent,
     PaginationComponent,
-    DropdownDirective,
-    SearchPipe,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
