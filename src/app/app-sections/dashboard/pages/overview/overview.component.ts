@@ -9,6 +9,8 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class OverviewComponent {
 
+  title = "Vue d'ensemble";
+
   storedSnapshots: any;
   displayName = localStorage.getItem('displayName') ?? '';
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
@@ -243,7 +245,7 @@ export class OverviewComponent {
     // Irl attendees rate chart configuration
     this.diplomaCategoriesRateChart = {
       series: [],
-      colors: ["#2f2a86", "#9395ff"],
+      colors: ["#2f2a86", "#211d5d", "#3f3aa6", "#d2213c", "#a41f32"],
       chart: {
         height: 160,
         type: "donut",

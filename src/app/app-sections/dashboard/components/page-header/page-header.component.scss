@@ -1,0 +1,76 @@
+@import "../../../../theme";
+
+.section-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(117, 117, 117);
+  background-color: var(--dash-bkg);
+}
+
+.section-title {
+  width: fit-content;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle-ctn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px 2px 8px;
+  height: 2rem;
+  width: 4.5rem;
+  border-radius: 1rem;
+  background-color: rgb(241, 241, 241);
+  border: 1px solid rgb(218, 218, 218);
+  cursor: pointer;
+}
+
+.switch-btn {
+  z-index: 1;
+  position: absolute;
+  left: 3px;
+  height: 1.6rem;
+  width: 1.6rem;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.sun-icon {
+  z-index: 100;
+  font-size: 1rem;
+  color: #ffbb52;
+}
+
+.moon-icon {
+  z-index: 100;
+  font-size: 1rem;
+  color: rgb(198, 198, 198);
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn {
+  background-color: var(--btn-dark);
+  border: solid 1px #151515;
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .moon-icon {
+  color: white;
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
+  background-color: var(--btn);
+  transform: translateX(39px);
+}

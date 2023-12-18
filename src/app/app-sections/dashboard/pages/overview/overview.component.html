@@ -1,7 +1,5 @@
 <div class="content">
-    <div class="section-details">
-        <h1 class="section-title">Vue d'ensemble</h1>
-    </div>
+    <app-page-header [title]="title"></app-page-header>
     <div class="welcome-card">
         <div class="card-content-ctn">
             <div class="welcome-details">
@@ -186,7 +184,7 @@
             <div class="bento5 no-legend">
                 <h1 class="chart-title">Catégories de diplômes</h1>
                 <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
-                    [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomasRateChart.legend"
+                    [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomasRateChart.legend"
                     [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="irlAttendeesRateChart.dataLabels">
                 </apx-chart>
             </div>
@@ -196,7 +194,7 @@
             <div class="bento5">
                 <h1 class="chart-title">Catégories de diplômes</h1>
                 <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
-                    [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomaCategoriesRateChart.legend"
+                    [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomaCategoriesRateChart.legend"
                     [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="diplomaCategoriesRateChart.dataLabels">
                 </apx-chart>
             </div>
@@ -206,7 +204,7 @@
             <div class="bento6 no-legend">
                 <h1 class="chart-title">Diplômes</h1>
                 <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
-                    [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
+                    [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
                     [dataLabels]="diplomasRateChart.dataLabels" [responsive]="diplomasRateChart.responsive">
                 </apx-chart>
             </div>
@@ -216,7 +214,7 @@
             <div class="bento6">
                 <h1 class="chart-title">Diplômes</h1>
                 <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
-                    [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
+                    [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
                     [dataLabels]="diplomasRateChart.dataLabels" [responsive]="diplomasRateChart.responsive">
                 </apx-chart>
             </div>

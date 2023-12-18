@@ -6,5 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attendees.component.scss']
 })
 export class AttendeesComponent {
-
+  
+  title = 'Participants';
 }

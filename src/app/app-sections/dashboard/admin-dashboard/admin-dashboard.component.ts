@@ -14,7 +14,6 @@ export class AdminDashboardComponent implements OnInit {
 
   activeTab = 'overview';
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
-  isDarkMode = localStorage.getItem('currentTheme') === 'dark' ? true : false;
 
   constructor(private adminsService: AdminsService, private router: Router, private sharedService: SharedService) { }
 
@@ -44,15 +43,5 @@ export class AdminDashboardComponent implements OnInit {
   signOut() {
     this.adminsService.signOut()
     this.router.navigate(['']);
-  }
-
-  onToggleDarkMode(darkModeSwitch: any) {
-    if (darkModeSwitch.checked) {
-      localStorage.setItem('currentTheme', 'dark');
-    } else {
-      localStorage.setItem('currentTheme', 'light');
-    }
-    document.body.classList.toggle('dark-theme');
-    this.sharedService.changeTheme(darkModeSwitch.checked);
   }
 }

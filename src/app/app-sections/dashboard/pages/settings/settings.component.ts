@@ -9,6 +9,8 @@ import { AdminsService } from 'src/app/services/admins.service';
 })
 export class SettingsComponent implements OnInit {
 
+  title = "Paramètres";
+
   preferencesForm: any;
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
   isSaving = false;

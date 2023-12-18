@@ -32,6 +32,7 @@ import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas
 import { ManageListComponent } from './app-sections/dashboard/components/manage-list/manage-list.component';
 import { PaginationComponent } from './app-sections/dashboard/components/pagination/pagination.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { PageHeaderComponent } from './app-sections/dashboard/components/page-header/page-header.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { SearchPipe } from './pipes/search.pipe';
     DiplomasManageComponent,
     ManageListComponent,
     PaginationComponent,
-    SearchPipe
+    SearchPipe,
+    PageHeaderComponent
   ],
   imports: [
     BrowserModule,
