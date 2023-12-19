@@ -3,7 +3,7 @@
         <div class="list-header">
             <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
                 (ngModelChange)="updateSearchString(searchString)">
-            <button class="header-btn" (click)="openModalComponent()">
+            <button class="header-btn" (click)="openAddModal()">
                 <i class="bi bi-database-fill-add"></i>
             </button>
             <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
@@ -49,7 +49,7 @@
                         <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
                         <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
                         <td class="action-buttons-ctn">
-                            <button class="action-btn">
+                            <button class="action-btn" (click)="openUpdateModal()">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
                             <button class="action-btn">

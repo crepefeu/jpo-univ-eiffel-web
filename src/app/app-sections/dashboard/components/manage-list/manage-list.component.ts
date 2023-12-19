@@ -72,9 +72,29 @@ export class ManageListComponent implements OnInit {
     this.search.setSearchString(string);
   }
 
-  openModalComponent() { 
+  openAddModal() { 
     this.modalService.open(AddAttendeeFormComponent, {
       title: 'Ajouter un participant',
+      animations: {
+        modal: {
+          enter: 'enter-scaling 0.1s ease-out',
+          leave: 'exit-scaling 0.1s ease-out',
+        },
+        overlay: {
+          enter: 'fade-in 0.1s',
+          leave: 'fade-out 0.1s forwards',
+        },
+      },
+      size: {
+        width: '80vw',
+        height: '80vh',
+      }
+    });
+  }
+
+  openUpdateModal() { 
+    this.modalService.open(AddAttendeeFormComponent, {
+      title: 'Modifier le participant',
       animations: {
         modal: {
           enter: 'enter-scaling 0.1s ease-out',
