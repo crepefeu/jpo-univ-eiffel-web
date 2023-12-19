@@ -1,0 +1,110 @@
+@import "../../../../theme";
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  justify-content: space-between;
+}
+.card {
+  --hue: 243;
+  position: relative;
+  border: 1px solid #fff1;
+  background-color: var(--card-bkg);
+  padding: 1.75em;
+  border-radius: 1em;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: center;
+  //text-align: center;
+  box-shadow: inset 0px 0px 16px #fff1, inset 0px -16px 50px -16px #0001,
+    0px 0px 16px #0001;
+  transition: var(--transition);
+  > * {
+    position: relative;
+  }
+  h3 {
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  p {
+    line-height: 1.65;
+    opacity: 0.7;
+    font-size: 15px;
+    font-weight: 200;
+    text-wrap: balance;
+  }
+  &-icon {
+    font-size: 1.3rem;
+    color: var(--primary);
+    background: hsl(var(--hue), 61%, 50%, 0.025);
+    border: 1px solid hsl(var(--hue), 61%, 50%, 0.05);
+    border-radius: 4px;
+    display: inline-flex;
+    padding: 0.5em;
+    backdrop-filter: blur(1px);
+    margin-bottom: 20px;
+  }
+  &:before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background-image: radial-gradient(
+      circle at calc(var(--mx) * 1px) calc(var(--my) * 1px),
+      hsla(var(--hue), 60%, 70%, 1) 0%,
+      transparent 30%
+    );
+    background-attachment: fixed;
+    mask-image: radial-gradient(
+      white 0px,
+      white 0.5px,
+      transparent 0.5px,
+      transparent 5px
+    );
+    filter: saturate(0);
+    mask-size: 3px 3px;
+    animation: maskpos 50s reverse infinite linear;
+    opacity: 0.3;
+    transition: var(--transition);
+  }
+  &:after {
+    content: "";
+    inset: -3px;
+    position: absolute;
+    background-image: radial-gradient(
+      circle at calc(var(--mx) * 1px) calc(var(--my) * 1px),
+      hsla(var(--hue), 61%, 80%, 1) 0%,
+      hsla(var(--hue), 61%, 50%, 1) 5%,
+      hsla(var(--hue), 61%, 50%, 0.1) 20%
+    );
+    z-index: -1;
+    border-radius: 1.1em;
+    background-attachment: fixed;
+    transition: var(--transition);
+    opacity: 0.3;
+  }
+  &:hover {
+    &:after {
+      opacity: 1;
+    }
+  }
+  &:hover {
+    i {
+      filter: brightness(120%);
+    }
+  }
+}
+
+.card-external-link {
+  margin-left: 5px;
+  font-weight: 400;
+  cursor: pointer;
+
+  a {
+    text-decoration: none;
+    color: var(--primary);
+  }
+}

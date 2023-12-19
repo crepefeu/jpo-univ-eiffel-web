@@ -36,6 +36,7 @@ import { PageHeaderComponent } from './app-sections/dashboard/components/page-he
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { AddAttendeeFormComponent } from './app-sections/dashboard/components/add-attendee-form/add-attendee-form.component';
 import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components/modify-attendee-form/modify-attendee-form.component';
+import { CardsComponent } from './app-sections/website/components/cards/cards.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components
     PageHeaderComponent,
     ModalComponent,
     AddAttendeeFormComponent,
-    ModifyAttendeeFormComponent
+    ModifyAttendeeFormComponent,
+    CardsComponent
   ],
   imports: [
     BrowserModule,
