@@ -3,6 +3,7 @@ import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
 import { AddAttendeeFormComponent } from '../add-attendee-form/add-attendee-form.component';
+import { ModifyAttendeeFormComponent } from '../modify-attendee-form/modify-attendee-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -92,8 +93,8 @@ export class ManageListComponent implements OnInit {
     });
   }
 
-  openUpdateModal() { 
-    this.modalService.open(AddAttendeeFormComponent, {
+  openModifyModal() { 
+    this.modalService.open(ModifyAttendeeFormComponent, {
       title: 'Modifier le participant',
       animations: {
         modal: {

@@ -35,6 +35,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { PageHeaderComponent } from './app-sections/dashboard/components/page-header/page-header.component';
 import { ModalComponent } from './shared/components/modal/modal.component';
 import { AddAttendeeFormComponent } from './app-sections/dashboard/components/add-attendee-form/add-attendee-form.component';
+import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components/modify-attendee-form/modify-attendee-form.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AddAttendeeFormComponent } from './app-sections/dashboard/components/ad
     SearchPipe,
     PageHeaderComponent,
     ModalComponent,
-    AddAttendeeFormComponent
+    AddAttendeeFormComponent,
+    ModifyAttendeeFormComponent
   ],
   imports: [
     BrowserModule,

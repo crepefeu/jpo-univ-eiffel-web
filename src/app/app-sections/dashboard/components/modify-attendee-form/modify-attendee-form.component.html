@@ -1,0 +1,37 @@
+<div class="content">
+    <form [formGroup]="modifyAttendeeForm">
+        <div>
+            <div class="name-inputs-ctn">
+                <div>
+                    <label>Prénom</label>
+                    <input type="text" formControlName="firstName">
+                </div>
+        
+                <div>
+                    <label>Nom</label>
+                    <input type="text" formControlName="lastName">
+                </div>
+            </div>
+    
+            <div>
+                <label>Email</label>
+                <input type="email" formControlName="email">
+            </div>
+        </div>
+
+        <div>
+            <label>Diplôme</label>
+            <input type="text" formControlName="diploma">
+        </div>
+
+        <div>
+            <label>Participation à la JPO physique</label>
+            <input type="text" formControlName="isIrlAttendee">
+        </div>
+
+        <div>
+            <label>Région</label>
+            <input type="text" formControlName="region">
+        </div>
+    </form>
+</div>
