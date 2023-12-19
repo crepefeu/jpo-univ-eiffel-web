@@ -5,13 +5,13 @@ nav {
     top: 0;
     display: flex;
     flex-wrap: wrap;
-    padding-left: 60px;
-    padding-right: 60px;
+    padding-left: 70px;
+    padding-right: 70px;
     height: 70px;
     width: 100%;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    gap: 50px;
+    gap: 80px;
     background-color: white;
     z-index: 100;
 }
@@ -62,7 +62,7 @@ nav {
     height: fit-content;
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 10px 20px;
     background-color: var(--primary);
     color: white;

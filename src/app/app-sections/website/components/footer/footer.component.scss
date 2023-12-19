@@ -2,11 +2,11 @@
 
 footer {
     display: flex;
-    gap: 40px;
+    gap: 80px;
     flex-direction: column;
     width: 100%;
     background-color: var(--primary);
-    padding: 40px 170px 20px 200px;
+    padding: 40px 170px 40px 200px;
     border-top: solid 1px var(--primary-hover);
 }
 
