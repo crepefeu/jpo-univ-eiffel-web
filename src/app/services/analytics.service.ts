@@ -40,4 +40,10 @@ export class AnalyticsService {
 
     return this.http.get<any>(this.baseApiUrl + 'getDiplomasAnalytics', {headers: headers});
   }
+
+  getMapAnalytics() {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'getMapAnalytics', {headers: headers});
+  }
 }
