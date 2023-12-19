@@ -214,7 +214,13 @@ export class OverviewComponent {
     // Irl attendees rate chart configuration
     this.irlAttendeesRateChart = {
       series: [],
-      colors: ["#2f2a86", "#9395ff"],
+      colors: [
+        "#2F2A86",
+        "#5B4DAF",
+        "#8572DA",
+        "#B09AFF",
+        "#DCC3FF"
+        ],
       chart: {
         height: 170,
         type: "donut",
@@ -245,7 +251,13 @@ export class OverviewComponent {
     // Irl attendees rate chart configuration
     this.diplomaCategoriesRateChart = {
       series: [],
-      colors: ["#2f2a86", "#211d5d", "#3f3aa6", "#d2213c", "#a41f32"],
+      colors: [
+        "#2F2A86",
+        "#5B4DAF",
+        "#8572DA",
+        "#B09AFF",
+        "#DCC3FF"
+        ],
       chart: {
         height: 170,
         type: "donut",
@@ -276,7 +288,13 @@ export class OverviewComponent {
     // Diplomas rate chart configuration
     this.diplomasRateChart = {
       series: [],
-      colors: ["#2f2a86", "#9395ff"],
+      colors: [
+        "#2F2A86",
+        "#5B4DAF",
+        "#8572DA",
+        "#B09AFF",
+        "#DCC3FF"
+        ],
       chart: {
         height: 170,
         type: "donut"
