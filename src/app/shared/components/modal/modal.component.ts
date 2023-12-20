@@ -13,8 +13,11 @@ export class ModalComponent implements AfterViewInit, OnInit {
   @ViewChild('modal') modal!: ElementRef<HTMLDivElement>;
   @ViewChild('overlay') overlay!: ElementRef<HTMLDivElement>;
 
-  title!: string;
+  title?: string;
+  displayHeader: boolean = false;
+  data: any;
   options?: ModalOptions | undefined;
+
   modalAnimationEnd!: Observable<Event>;
   modalLeaveAnimation!: string;
   overlayLeaveAnimation!: string;
@@ -45,8 +48,22 @@ export class ModalComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // Getting title from options
-    this.title = this.options?.title || '';
+    // Initializing variables from options passed to the modal
+    if (!this.options) {
+      return;
+    }
+
+    if (this.options?.title) {
+      this.title = this.options?.title;
+    }
+
+    if (this.options?.displayHeader) {
+      this.displayHeader = this.options?.displayHeader;
+    }
+
+    if (this.options?.data) {
+      this.data = this.options?.data;
+    }
   }
 
   addEnterAnimations() {

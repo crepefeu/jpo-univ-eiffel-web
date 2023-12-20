@@ -1,5 +1,7 @@
 export interface ModalOptions {
     title?: string;
+    displayHeader?: boolean;
+    data?: any;
     animations?: {
       modal?: {
         enter?: string;
