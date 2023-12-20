@@ -2,18 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts/highmaps';
 import franceMap from "@highcharts/map-collection/countries/fr/fr-all-all.topo.json";
 import idfMap from "@highcharts/map-collection/countries/fr/fr-idf-all.topo.json";
-import {
-  ChartComponent,
-  ApexAxisChartSeries,
-  ApexNonAxisChartSeries,
-  ApexChart,
-  ApexXAxis,
-  ApexDataLabels,
-  ApexStroke,
-  ApexYAxis,
-  ApexTitleSubtitle,
-  ApexLegend
-} from "ng-apexcharts";
 import { SharedService } from 'src/app/services/shared.service';
 import { AnalyticsService } from 'src/app/services/analytics.service';
 
