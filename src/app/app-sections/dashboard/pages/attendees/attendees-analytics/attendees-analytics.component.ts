@@ -68,6 +68,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
     // French department map configuration
     this.frenchDepChartOptions = {
       chart: {
+        animation: false,
         map: franceMap,
         style: {
           fontFamily: "Inter, sans-serif",
@@ -119,6 +120,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
     // idf map configuration
     this.idfChartOptions = {
       chart: {
+        animation: false,
         map: idfMap,
         style: {
           fontFamily: "Inter, sans-serif",
