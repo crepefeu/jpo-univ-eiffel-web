@@ -76,6 +76,7 @@ export class ManageListComponent implements OnInit {
   openAddModal() { 
     this.modalService.open(AddAttendeeFormComponent, {
       title: 'Ajouter un participant',
+      displayHeader: true,
       animations: {
         modal: {
           enter: 'enter-scaling 0.1s ease-out',
@@ -96,6 +97,7 @@ export class ManageListComponent implements OnInit {
   openModifyModal() { 
     this.modalService.open(ModifyAttendeeFormComponent, {
       title: 'Modifier le participant',
+      displayHeader: true,
       animations: {
         modal: {
           enter: 'enter-scaling 0.1s ease-out',
