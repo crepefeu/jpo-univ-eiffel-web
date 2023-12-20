@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+// Material Modules
+import { MatStepperModule } from '@angular/material/stepper';
+
 // Chart Modules
 import { NgChartsModule } from 'ng2-charts';
 import { HighchartsChartModule } from 'highcharts-angular';
@@ -37,6 +40,8 @@ import { ModalComponent } from './shared/components/modal/modal.component';
 import { AddAttendeeFormComponent } from './app-sections/dashboard/components/add-attendee-form/add-attendee-form.component';
 import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components/modify-attendee-form/modify-attendee-form.component';
 import { CardsComponent } from './app-sections/website/components/cards/cards.component';
+import { MultiStepFormComponent } from './app-sections/website/components/multi-step-form/multi-step-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,8 @@ import { CardsComponent } from './app-sections/website/components/cards/cards.co
     ModalComponent,
     AddAttendeeFormComponent,
     ModifyAttendeeFormComponent,
-    CardsComponent
+    CardsComponent,
+    MultiStepFormComponent
   ],
   imports: [
     BrowserModule,
@@ -71,10 +77,12 @@ import { CardsComponent } from './app-sections/website/components/cards/cards.co
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatStepperModule,
     NgChartsModule,
     HighchartsChartModule,
     NgApexchartsModule,
-    InputSwitchModule
+    InputSwitchModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

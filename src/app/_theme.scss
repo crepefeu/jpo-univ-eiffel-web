@@ -14,6 +14,7 @@ body {
 
     // inputs
     --input-bkg: #efefef;
+    --input-border: #c3c3c3;
     --input-txt: #000;
     --input-placeholder: #a7a7a7;
 
@@ -91,8 +92,9 @@ body.dark-theme {
 
     //inputs
     --input-bkg: #1d1d1d;
+    --input-border: #1d1d1d;
     --input-txt: #fff;
-    --input-placeholder: #a7a7a7;
+    --input-placeholder: #8b8b8b;
 
     // colors
     --primary : #fff;
