@@ -1,5 +1,8 @@
 <div>
     <mat-stepper labelPosition="bottom" #stepper>
+        <ng-template matStepperIcon="edit">
+            <i class="bi bi-pencil-fill"></i>
+        </ng-template>
         <mat-step [stepControl]="infosForm">
             <ng-template matStepLabel>Informations</ng-template>
             <h1 class="section-title">Informations personnelles</h1>
