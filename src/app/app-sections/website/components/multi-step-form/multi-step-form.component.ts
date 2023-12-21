@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { ModalService } from 'src/app/services/modal.service';
+import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-multi-step-form',
@@ -14,7 +16,7 @@ export class MultiStepFormComponent implements OnInit {
   virtualTourSatisfactionForm: FormGroup;
   websiteSatisfactionForm: FormGroup;
 
-  constructor() {
+  constructor(private modal: ModalService) {
     this.infosForm = new FormGroup({
       firstName: new FormControl(''),
       lastName: new FormControl(''),
@@ -37,7 +39,8 @@ export class MultiStepFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   goToNextStep(stepper: MatStepper) {
     stepper.next();
