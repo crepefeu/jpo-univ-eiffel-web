@@ -15,25 +15,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.modalService.open(MultiStepFormComponent, {
-      title: 'Formulaire',
-      displayHeader: true,
-      animations: {
-        modal: {
-          enter: 'enter-scaling 0.1s ease-out',
-          leave: 'exit-scaling 0.1s ease-out',
-        },
-        overlay: {
-          enter: 'fade-in 0.1s',
-          leave: 'fade-out 0.1s forwards',
-        },
-      },
-      size: {
-        width: '60vw',
-        height: 'fit-content',
-      }
-    });
-
     // select element with .text-block class
     const text = document.querySelector('.text-block') as HTMLSpanElement;
 
