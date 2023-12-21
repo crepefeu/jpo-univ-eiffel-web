@@ -1,8 +1,7 @@
-import { AfterViewInit, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { ModalService } from 'src/app/services/modal.service';
-import { ModalComponent } from 'src/app/shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-multi-step-form',
@@ -18,31 +17,48 @@ export class MultiStepFormComponent implements OnInit {
 
   constructor(private modal: ModalService) {
     this.infosForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      email: new FormControl(''),
-      diploma: new FormControl(''),
-      isIrlAttendee: new FormControl(false),
-      region: new FormControl(''),
+      email: new FormControl('', Validators.required),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      diploma: new FormControl('', Validators.required),
+      region: new FormControl('', Validators.required),
     });
 
     this.jpoForm = new FormGroup({
-      firstName: new FormControl(''),
+      isIrlAttendee: new FormControl(''),
     });
 
     this.virtualTourSatisfactionForm = new FormGroup({
-      firstName: new FormControl(''),
+      virtualTourSatisfaction: new FormControl(''),
     });
 
     this.websiteSatisfactionForm = new FormGroup({
-      firstName: new FormControl(''),
+      websiteSatisfaction: new FormControl(''),
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  submit() {
+    if (this.infosForm.valid && this.jpoForm.valid && this.virtualTourSatisfactionForm.valid && this.websiteSatisfactionForm.valid) {
+      console.log('infosForm', this.infosForm.value);
+      console.log('jpoForm', this.jpoForm.value);
+      console.log('virtualTourSatisfactionForm', this.virtualTourSatisfactionForm.value);
+      console.log('websiteSatisfactionForm', this.websiteSatisfactionForm.value);
+      this.modal.close();
+    }
   }
 
   goToNextStep(stepper: MatStepper) {
-    stepper.next();
+    let currentStep = stepper.selectedIndex; // store the current step index to prevent the stepper from skipping steps
+    setTimeout(() => {
+      stepper.selectedIndex = currentStep + 1; // go to current step + 1 (next step) after 350ms
+    }, 350);
+  }
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    (<any>Object).values(formGroup.controls).forEach((control: any) => {
+      control.markAsDirty();
+    });
   }
 }

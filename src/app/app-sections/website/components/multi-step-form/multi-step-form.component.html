@@ -3,55 +3,64 @@
         <ng-template matStepperIcon="edit">
             <i class="bi bi-pencil-fill"></i>
         </ng-template>
+
         <mat-step [stepControl]="infosForm">
             <ng-template matStepLabel>Informations</ng-template>
             <h1 class="section-title">Informations personnelles</h1>
             <div class="form-ctn">
                 <form [formGroup]="infosForm">
+                    <div class="input-ctn full">
+                        <label for="">Email</label>
+                        <input type="text" formControlName="email">
+                    </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
                             <label for="">Prénom</label>
-                            <input type="text" formControlName="firstName" id="">
+                            <input type="text" formControlName="firstName">
                         </div>
                         <div class="input-ctn">
                             <label for="">Nom</label>
-                            <input type="text" formControlName="lastName" id="">
+                            <input type="text" formControlName="lastName">
                         </div>
-                    </div>
-                    <div class="input-ctn full">
-                        <label for="">Email</label>
-                        <input type="text" name="" id="">
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
                             <label for="">Diplôme possédé</label>
-                            <input type="text" name="" id="">
+                            <input type="text" formControlName="diploma">
                         </div>
                         <div class="input-ctn">
                             <label for="">Région</label>
-                            <input type="text" name="" id="">
+                            <input type="text" formControlName="region">
                         </div>
                     </div>
+
                     <div class="step-btns-ctn unique">
                         <button class="step-btn" matStepperNext type="button">Suivant</button>
                     </div>
                 </form>
             </div>
         </mat-step>
+
         <mat-step [stepControl]="jpoForm">
             <ng-template matStepLabel>JPO</ng-template>
             <h1 class="section-title">Prévoyez vous de participer à la JPO physique ce 4 Février 2024 ?</h1>
             <div class="form-ctn">
                 <form [formGroup]="jpoForm">
                     <div class="satisfaction-ctn">
-                        <div class="satisfaction" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-laughing"></i>
-                            <p>Oui, comptez sur moi !</p>
-                        </div>
-                        <div class="satisfaction" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-frown"></i>
-                            <p>Non, malheureusement</p>
-                        </div>  
+                        <label class="radio-ctn" (click)="goToNextStep(stepper)">
+                            <input type="radio" formControlName="isIrlAttendee" [value]="true">
+                            <div class="satisfaction">
+                                <i class="bi bi-emoji-laughing"></i>
+                                <p>Oui, comptez sur moi !</p>    
+                            </div>
+                        </label>
+                        <label class="radio-ctn" (click)="goToNextStep(stepper)">
+                            <input type="radio" formControlName="isIrlAttendee" [value]="false">
+                            <div class="satisfaction">
+                                <i class="bi bi-emoji-frown"></i>
+                                <p>Non, malheureusement</p>   
+                            </div>
+                        </label>
                     </div>
 
                     <div class="step-btns-ctn">
@@ -61,22 +70,34 @@
                 </form>
             </div>
         </mat-step>
+
         <mat-step [stepControl]="virtualTourSatisfactionForm">
             <ng-template matStepLabel>Visite virtuelle</ng-template>
             <h1 class="section-title">Comment qualifiriez-vous votre expérience lors de la visite virtuelle ?</h1>
             <div class="form-ctn">
                 <form [formGroup]="virtualTourSatisfactionForm">
                     <div class="satisfaction-ctn">
-                        <div class="satisfaction happy" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-laughing"></i>
-                            <p>Agréable</p>
-                        </div>
-                        <div class="satisfaction neutral" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-grimace"></i>
-                            <p>Neutre</p></div>
-                        <div class="satisfaction sad" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-frown"></i>
-                            <p>Désagréable</p></div>    
+                        <label class="radio-ctn" (click)="goToNextStep(stepper)">
+                            <input type="radio" formControlName="virtualTourSatisfaction" [value]="0">
+                                <div class="satisfaction happy">
+                                    <i class="bi bi-emoji-laughing"></i>
+                                    <p>Agréable</p>
+                                </div>
+                        </label>
+                        <label class="radio-ctn" (click)="goToNextStep(stepper)">
+                            <input type="radio" formControlName="virtualTourSatisfaction" [value]="1">
+                                <div class="satisfaction neutral">
+                                    <i class="bi bi-emoji-grimace"></i>
+                                    <p>Neutre</p>
+                                </div>
+                        </label>
+                        <label class="radio-ctn" (click)="goToNextStep(stepper)">
+                            <input type="radio" formControlName="virtualTourSatisfaction" [value]="2">
+                                <div class="satisfaction sad">
+                                    <i class="bi bi-emoji-frown"></i>
+                                    <p>Désagréable</p>
+                                </div>
+                        </label>
                     </div>
 
                     <div class="step-btns-ctn">
@@ -86,27 +107,39 @@
                 </form>
             </div>
         </mat-step>
+
         <mat-step [stepControl]="websiteSatisfactionForm">
             <ng-template matStepLabel>Site</ng-template>
             <h1 class="section-title">Comment qualifiriez-vous votre navigation sur le site ?</h1>
             <div class="form-ctn">
                 <form [formGroup]="websiteSatisfactionForm">
                     <div class="satisfaction-ctn">
-                        <div class="satisfaction happy" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-laughing"></i>
-                            <p>Agréable</p>
-                        </div>
-                        <div class="satisfaction neutral" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-grimace"></i>
-                            <p>Neutre</p></div>
-                        <div class="satisfaction sad" (click)="goToNextStep(stepper)">
-                            <i class="bi bi-emoji-frown"></i>
-                            <p>Désagréable</p></div>    
+                        <label class="radio-ctn">
+                            <input type="radio" formControlName="websiteSatisfaction" [value]="0">
+                                <div class="satisfaction happy">
+                                    <i class="bi bi-emoji-laughing"></i>
+                                    <p>Agréable</p>
+                                </div>
+                        </label>
+                        <label class="radio-ctn">
+                            <input type="radio" formControlName="websiteSatisfaction" [value]="1">
+                                <div class="satisfaction neutral">
+                                    <i class="bi bi-emoji-grimace"></i>
+                                    <p>Neutre</p>
+                                </div>
+                        </label>
+                        <label class="radio-ctn">
+                            <input type="radio" formControlName="websiteSatisfaction" [value]="2">
+                                <div class="satisfaction sad">
+                                    <i class="bi bi-emoji-frown"></i>
+                                    <p>Désagréable</p>
+                                </div>
+                        </label>
                     </div>
 
                     <div class="step-btns-ctn">
                         <button class="step-btn" matStepperPrevious type="button">Précédent</button>
-                        <button class="step-btn" matStepperNext type="button">Envoyer</button>
+                        <button class="step-btn" matStepperNext type="button" (click)="submit()">Envoyer</button>
                     </div>
                 </form>
             </div>
