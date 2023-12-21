@@ -15,6 +15,25 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.modalService.open(MultiStepFormComponent, {
+      title: 'Formulaire',
+      displayHeader: true,
+      animations: {
+        modal: {
+          enter: 'enter-scaling 0.1s ease-out',
+          leave: 'exit-scaling 0.1s ease-out',
+        },
+        overlay: {
+          enter: 'fade-in 0.1s',
+          leave: 'fade-out 0.1s forwards',
+        },
+      },
+      size: {
+        width: '60vw',
+        height: 'fit-content',
+      }
+    });
+
     // select element with .text-block class
     const text = document.querySelector('.text-block') as HTMLSpanElement;
 
@@ -52,7 +71,7 @@ export class HomeComponent implements OnInit {
     TEXT_CONTEXT!.textAlign = 'center'
     TEXT_CONTEXT!.textBaseline = 'middle'
     TEXT_CONTEXT!.font = `700 ${getFontSize() * DPI}px Inter`
-    TEXT_CONTEXT!.shadowColor = 'rgba(0, 0, 0, 0.2)'
+    TEXT_CONTEXT!.shadowColor = 'rgba(10, 10, 10, 0.2)'
     TEXT_CONTEXT!.fillText(TEXT, TEXT_CANVAS.width / 2, TEXT_CANVAS.height / 2)
 
     const RINGS: { id: number; hue: number; spread: number; angle: number; }[] = []
@@ -60,7 +79,7 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < 150; i++) {
       RINGS.push({
         id: i,
-        hue: gsap.utils.random(243, 243, 1),
+        hue: gsap.utils.random(250, 230, 1),
         spread: gsap.utils.random(75, 359, 1),
         angle: 0,
       })
@@ -74,11 +93,11 @@ export class HomeComponent implements OnInit {
       RING_CONTEXT!.clearRect(0, 0, RING_CANVAS.width, RING_CANVAS.height)
       RING_CONTEXT!.fillStyle = '#2f2a86'
       RING_CONTEXT!.fillRect(0, 0, CANVAS!.width, CANVAS!.height)
-      RING_CONTEXT!.lineWidth = 1 * DPI
+      RING_CONTEXT!.lineWidth = 2 * DPI
       RING_CONTEXT!.lineCap = 'round'
       // Draw the rings
       for (const ring of RINGS) {
-        RING_CONTEXT!.strokeStyle = `hsl(0, 0%, 100%)`
+        RING_CONTEXT!.strokeStyle = `hsl(${ring.hue}, 50%, 50%)`
         RING_CONTEXT!.save()
         RING_CONTEXT!.translate(ORIGIN.x, ORIGIN.y)
         RING_CONTEXT!.rotate((ring.angle * Math.PI) / 180)
@@ -87,7 +106,7 @@ export class HomeComponent implements OnInit {
         RING_CONTEXT!.arc(
           ORIGIN.x,
           ORIGIN.y,
-          ring.id * (10 * DPI),
+          ring.id * (4 * DPI),
           0,
           (ring.spread * Math.PI) / 180
         )
