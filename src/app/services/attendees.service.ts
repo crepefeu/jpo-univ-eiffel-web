@@ -14,4 +14,19 @@ export class AttendeesService {
   getAllAttendees() {
     return this.http.get<any>(this.baseApiUrl + 'getAllAttendees');
   }
+
+  registerAttendee(attendeeInfos: any) {
+    const formData = new FormData();
+
+    formData.append('email', attendeeInfos.email);
+    formData.append('firstName', attendeeInfos.firstName);
+    formData.append('lastName', attendeeInfos.lastName);
+    formData.append('diplomaId', attendeeInfos.diploma);
+    formData.append('regionalCode', attendeeInfos.region);
+    formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
+    formData.append('virtualTourSatisfaction', attendeeInfos.virtualTourSatisfaction);
+    formData.append('websiteSatisfaction', attendeeInfos.websiteSatisfaction);
+
+    return this.http.post<any>(this.baseApiUrl + 'registerAttendee', formData);
+  }
 }

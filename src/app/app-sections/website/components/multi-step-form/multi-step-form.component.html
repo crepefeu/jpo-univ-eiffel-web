@@ -28,7 +28,7 @@
                             <label for="">Diplôme possédé*</label>
                             <select class="input" formControlName="diploma">
                                 <option value="" selected disabled hidden>Choisissez un diplôme</option>
-                                <option *ngFor="let diploma of diplomasList" [value]="diploma.diplomaId">
+                                <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
                                     {{diploma.name}}
                                 </option>
                             </select>

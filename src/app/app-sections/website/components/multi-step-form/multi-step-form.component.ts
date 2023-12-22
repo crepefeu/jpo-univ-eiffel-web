@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { AttendeesService } from 'src/app/services/attendees.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { RegionsService } from 'src/app/services/regions.service';
@@ -22,7 +23,8 @@ export class MultiStepFormComponent implements OnInit {
 
   constructor(private modal: ModalService,
     private diplomas: DiplomasService,
-    private regions: RegionsService) {
+    private regions: RegionsService,
+    private attendees: AttendeesService) {
     this.infosForm = new FormGroup({
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -63,13 +65,29 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   submit() {
-    if (this.infosForm.valid && this.jpoForm.valid && this.virtualTourSatisfactionForm.valid && this.websiteSatisfactionForm.valid) {
-      console.log('infosForm', this.infosForm.value);
-      console.log('jpoForm', this.jpoForm.value);
-      console.log('virtualTourSatisfactionForm', this.virtualTourSatisfactionForm.value);
-      console.log('websiteSatisfactionForm', this.websiteSatisfactionForm.value);
-      this.modal.close();
-    }
+    let attendeeInfos = {
+      email: this.infosForm.controls['email'].value,
+      firstName: this.infosForm.controls['firstName'].value,
+      lastName: this.infosForm.controls['lastName'].value,
+      diploma: this.infosForm.controls['diploma'].value,
+      region: this.infosForm.controls['region'].value,
+      isIrlAttendee: this.jpoForm.controls['isIrlAttendee'].value,
+      virtualTourSatisfaction: this.virtualTourSatisfactionForm.controls['virtualTourSatisfaction'].value,
+      websiteSatisfaction: this.websiteSatisfactionForm.controls['websiteSatisfaction'].value
+    };
+
+    console.log(attendeeInfos);
+
+    this.attendees.registerAttendee(attendeeInfos).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => {
+        console.log('registerAttendee() completed');
+        this.modal.close();
+      }
+    });
   }
 
   goToNextStep(stepper: MatStepper) {
