@@ -74,7 +74,7 @@ export class HomeComponent implements OnInit {
       RING_CONTEXT!.clearRect(0, 0, RING_CANVAS.width, RING_CANVAS.height)
       RING_CONTEXT!.fillStyle = '#2f2a86'
       RING_CONTEXT!.fillRect(0, 0, CANVAS!.width, CANVAS!.height)
-      RING_CONTEXT!.lineWidth = 2 * DPI
+      RING_CONTEXT!.lineWidth = 3 * DPI
       RING_CONTEXT!.lineCap = 'round'
       // Draw the rings
       for (const ring of RINGS) {
