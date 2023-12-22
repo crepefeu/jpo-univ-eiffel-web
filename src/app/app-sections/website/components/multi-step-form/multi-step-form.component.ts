@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { RegionsService } from 'src/app/services/regions.service';
 
 @Component({
   selector: 'app-multi-step-form',
@@ -15,7 +17,12 @@ export class MultiStepFormComponent implements OnInit {
   virtualTourSatisfactionForm: FormGroup;
   websiteSatisfactionForm: FormGroup;
 
-  constructor(private modal: ModalService) {
+  diplomasList?: any[];
+  regionsList?: any[];
+
+  constructor(private modal: ModalService,
+    private diplomas: DiplomasService,
+    private regions: RegionsService) {
     this.infosForm = new FormGroup({
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -37,7 +44,23 @@ export class MultiStepFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.diplomas.getAllDiplomas().subscribe({
+      next: data => {
+        this.diplomasList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => console.log('getAllDiplomas() completed')
+    });
+
+    this.regions.getAllRegions().subscribe({
+      next: data => {
+        this.regionsList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => console.log('getAllRegions() completed')
+    })
+  }
 
   submit() {
     if (this.infosForm.valid && this.jpoForm.valid && this.virtualTourSatisfactionForm.valid && this.websiteSatisfactionForm.valid) {

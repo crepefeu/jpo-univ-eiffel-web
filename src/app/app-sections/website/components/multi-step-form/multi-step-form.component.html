@@ -11,26 +11,36 @@
                 <form [formGroup]="infosForm">
                     <div class="input-ctn full">
                         <label for="">Email</label>
-                        <input type="text" formControlName="email">
+                        <input type="text" formControlName="email" placeholder="Email">
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
                             <label for="">Prénom</label>
-                            <input type="text" formControlName="firstName">
+                            <input type="text" formControlName="firstName" placeholder="Prénom">
                         </div>
                         <div class="input-ctn">
                             <label for="">Nom</label>
-                            <input type="text" formControlName="lastName">
+                            <input type="text" formControlName="lastName" placeholder="Nom">
                         </div>
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
                             <label for="">Diplôme possédé</label>
-                            <input type="text" formControlName="diploma">
+                            <select class="input" form>
+                                <option value="" selected disabled hidden>Choisissez un diplôme</option>
+                                <option *ngFor="let diploma of diplomasList" [value]="diploma.diplomaId">
+                                    {{diploma.name}}
+                                </option>
+                            </select>
                         </div>
                         <div class="input-ctn">
-                            <label for="">Région</label>
-                            <input type="text" formControlName="region">
+                            <label for="">Département de résidence</label>
+                            <select class="input" form>
+                                <option value="" selected disabled hidden>Choisissez un département</option>
+                                <option *ngFor="let region of regionsList" [value]="region.code">
+                                    {{region.name}}
+                                </option>
+                            </select>
                         </div>
                     </div>
 
