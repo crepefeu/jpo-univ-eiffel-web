@@ -42,6 +42,7 @@ import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components
 import { CardsComponent } from './app-sections/website/components/cards/cards.component';
 import { MultiStepFormComponent } from './app-sections/website/components/multi-step-form/multi-step-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AddAttendeeFormComponent,
     ModifyAttendeeFormComponent,
     CardsComponent,
-    MultiStepFormComponent
+    MultiStepFormComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

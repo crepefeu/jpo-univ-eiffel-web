@@ -14,6 +14,7 @@ import { AttendeesAnalyticsComponent } from './app-sections/dashboard/pages/atte
 import { AttendeesManageComponent } from './app-sections/dashboard/pages/attendees/attendees-manage/attendees-manage.component';
 import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas/diplomas-manage/diplomas-manage.component';
 import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplomas/diplomas-analytics/diplomas-analytics.component';
+import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent},
       { path: 'but-mmi', component: EducationComponent},
+      { path: 'faq', component: FaqComponent},
       { path: 'admin/sign-in', component: SignInComponent}
     ]
   },
