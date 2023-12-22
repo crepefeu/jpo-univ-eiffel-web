@@ -32,15 +32,15 @@ export class MultiStepFormComponent implements OnInit {
     });
 
     this.jpoForm = new FormGroup({
-      isIrlAttendee: new FormControl(''),
+      isIrlAttendee: new FormControl(null, Validators.required)
     });
 
     this.virtualTourSatisfactionForm = new FormGroup({
-      virtualTourSatisfaction: new FormControl(''),
+      virtualTourSatisfaction: new FormControl(null, Validators.required),
     });
 
     this.websiteSatisfactionForm = new FormGroup({
-      websiteSatisfaction: new FormControl(''),
+      websiteSatisfaction: new FormControl(null, Validators.required),
     });
   }
 
@@ -83,5 +83,9 @@ export class MultiStepFormComponent implements OnInit {
     (<any>Object).values(formGroup.controls).forEach((control: any) => {
       control.markAsDirty();
     });
+  }
+
+  checkIfAllFormsAreValid() {
+    return !(this.infosForm.valid && this.jpoForm.valid && this.virtualTourSatisfactionForm.valid && this.websiteSatisfactionForm.valid);
   }
 }

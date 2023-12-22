@@ -59,7 +59,7 @@ input {
   border-radius: 10px;
   padding: 5px 10px;
   border: solid 1px var(--input-border);
-  font-size: 1rem;
+  font-size: 0.9rem;
   transition: border 200ms ease-in-out;
 
   &::placeholder {
@@ -114,6 +114,11 @@ select {
 
   &:hover {
     background-color: var(--primary-hover);
+  }
+
+  &:disabled {
+    background-color: var(--btn-disabled);
+    cursor: default;
   }
 }
 

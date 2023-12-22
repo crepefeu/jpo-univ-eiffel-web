@@ -10,23 +10,23 @@
             <div class="form-ctn">
                 <form [formGroup]="infosForm">
                     <div class="input-ctn full">
-                        <label for="">Email</label>
+                        <label for="">Email*</label>
                         <input type="text" formControlName="email" placeholder="Email">
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
-                            <label for="">Prénom</label>
+                            <label for="">Prénom*</label>
                             <input type="text" formControlName="firstName" placeholder="Prénom">
                         </div>
                         <div class="input-ctn">
-                            <label for="">Nom</label>
+                            <label for="">Nom*</label>
                             <input type="text" formControlName="lastName" placeholder="Nom">
                         </div>
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
-                            <label for="">Diplôme possédé</label>
-                            <select class="input" form>
+                            <label for="">Diplôme possédé*</label>
+                            <select class="input" formControlName="diploma">
                                 <option value="" selected disabled hidden>Choisissez un diplôme</option>
                                 <option *ngFor="let diploma of diplomasList" [value]="diploma.diplomaId">
                                     {{diploma.name}}
@@ -34,8 +34,8 @@
                             </select>
                         </div>
                         <div class="input-ctn">
-                            <label for="">Département de résidence</label>
-                            <select class="input" form>
+                            <label for="">Département de résidence*</label>
+                            <select class="input" formControlName="region">
                                 <option value="" selected disabled hidden>Choisissez un département</option>
                                 <option *ngFor="let region of regionsList" [value]="region.code">
                                     {{region.name}}
@@ -57,6 +57,7 @@
             <div class="form-ctn">
                 <form [formGroup]="jpoForm">
                     <div class="satisfaction-ctn">
+                        <input type="radio" formControlName="isIrlAttendee" [value]="null" hidden>
                         <label class="radio-ctn" (click)="goToNextStep(stepper)">
                             <input type="radio" formControlName="isIrlAttendee" [value]="true">
                             <div class="satisfaction">
@@ -87,6 +88,7 @@
             <div class="form-ctn">
                 <form [formGroup]="virtualTourSatisfactionForm">
                     <div class="satisfaction-ctn">
+                        <input type="radio" formControlName="virtualTourSatisfaction" [value]="null" hidden>
                         <label class="radio-ctn" (click)="goToNextStep(stepper)">
                             <input type="radio" formControlName="virtualTourSatisfaction" [value]="0">
                                 <div class="satisfaction happy">
@@ -124,6 +126,7 @@
             <div class="form-ctn">
                 <form [formGroup]="websiteSatisfactionForm">
                     <div class="satisfaction-ctn">
+                        <input type="radio" formControlName="websiteSatisfaction" [value]="null" hidden>
                         <label class="radio-ctn">
                             <input type="radio" formControlName="websiteSatisfaction" [value]="0">
                                 <div class="satisfaction happy">
@@ -149,7 +152,7 @@
 
                     <div class="step-btns-ctn">
                         <button class="step-btn" matStepperPrevious type="button">Précédent</button>
-                        <button class="step-btn" matStepperNext type="button" (click)="submit()">Envoyer</button>
+                        <button class="step-btn" matStepperNext type="button" (click)="submit()" [disabled]="checkIfAllFormsAreValid()">Envoyer</button>
                     </div>
                 </form>
             </div>
