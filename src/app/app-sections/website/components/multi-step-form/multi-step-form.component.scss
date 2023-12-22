@@ -162,25 +162,25 @@ input {
 }
 
 .radio-ctn input:checked ~ .satisfaction {
-  background-color: var(--primary);
+  background-color: #2f2a86d6;
   color: white;
 
   &.happy {
-    background-color: #24a258;
+    background-color: #16c65fc5;
     color: white;
     box-shadow: inset 0px 0px 16px #0000000b,
       inset 0px -16px 50px -16px #0000000b, 0px 0px 16px #0001;
   }
 
   &.neutral {
-    background-color: #ffa500;
+    background-color: #ffa500c5;
     color: white;
     box-shadow: inset 0px 0px 16px #0000000b,
       inset 0px -16px 50px -16px #0000000b, 0px 0px 16px #0001;
   }
 
   &.sad {
-    background-color: #ec0000;
+    background-color: #ec0000c5;
     color: white;
     box-shadow: inset 0px 0px 16px #0000000b,
       inset 0px -16px 50px -16px #0000000b, 0px 0px 16px #0001;
