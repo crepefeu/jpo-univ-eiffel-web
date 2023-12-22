@@ -19,7 +19,11 @@
 .content-w-gutter {
   display: flex;
   flex-direction: column;
-  padding: 50px 80px;
+  min-height: 65vh;
+  overflow: hidden;
+  font-family: "Geist Sans", sans-serif;
+  font-weight: 80;
+  color: hsl(0 0% 100%);
 }
 
 .section-title {
@@ -27,17 +31,18 @@
   font-size: 3rem;
   font-weight: 700;
   color: var(--primary);
-  margin-top: 20px;
+  margin-top: 100px;
   margin-bottom: 40px;
 }
 
-.faq-accordions-ctn {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
+.horizontal-scroller-ctn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: scroll;
+    gap: 20px;
+    padding: 20px 0px;
 }
 
 .faq-accordion {
@@ -47,17 +52,9 @@
   background-color: white;
   border-radius: 10px;
   border: solid 1px var(--primary);
-  box-shadow: inset 0px 0px 16px rgba(0, 26, 255, 0.05), inset 0px -16px 50px -16px rgba(0, 26, 255, 0.05),
-    0px 0px 16px rgba(0, 26, 255, 0.10);
-
-    // & .accordion-answer.expanded {
-    //   padding-bottom: 15px;
-    // }
-
-  i {
-    font-size: 1.5rem;
-    color: var(--primary);
-  }
+  box-shadow: inset 0px 0px 16px rgba(0, 26, 255, 0.05),
+    inset 0px -16px 50px -16px rgba(0, 26, 255, 0.05),
+    0px 0px 16px rgba(0, 26, 255, 0.1);
 }
 
 .accordion-header {
@@ -67,6 +64,11 @@
   cursor: pointer;
   padding: 15px 30px;
   gap: 20px;
+
+  i {
+    font-size: 1.5rem;
+    color: var(--primary);
+  }
 }
 
 .accordion-question {
@@ -77,16 +79,175 @@
 
 .accordion-answer {
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   text-align: justify;
   max-height: 0;
-  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
   overflow: hidden;
-  padding: 0px 30px;
+  color: black;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
 
+  p {
+    padding: 0px 30px 20px;
+  }
 
   &.expanded {
     max-height: 1000px;
-    transition: max-height 1s ease-in-out;
+    transition: max-height 1s linear;
   }
+}
+
+.accordion-link {
+    text-decoration: none;
+    color: var(--primary);
+}
+
+// test
+
+article {
+  border-radius: calc(var(--radius) * 1px);
+  gap: 1rem;
+  position: relative;
+  width: var(--card-size);
+  height: max-content;
+}
+
+ul {
+  display: flex;
+  gap: 4rem;
+  margin: 0;
+  mask: linear-gradient(90deg, transparent, white, transparent);
+  overflow: auto;
+  padding-block: 2rem;
+  padding-inline: calc(50vw - (var(--card-size) * 0.5));
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+}
+
+li {
+  place-items: center;
+  scroll-snap-align: center;
+  position: relative;
+  height: 100%;
+}
+
+section {
+  width: 100vw;
+}
+
+section::after,
+section::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: radial-gradient(hsla(243, 80%, 50%, 0.60), transparent);
+  filter: blur(100px);
+  width: calc(var(--card-size) * 1.5);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  opacity: 0.0875;
+  z-index: -1;
+}
+
+section::after {
+  width: calc(var(--card-size) * 0.5);
+  opacity: 0.25;
+  translate: -50% -75%;
+}
+
+@supports (animation-timeline: scroll()) {
+  @property --base {
+    inherits: true;
+    syntax: "<number>";
+    initial-value: 0;
+  }
+  @keyframes change-accent {
+    to {
+      --base: 320;
+    }
+  }
+  @property --sat {
+    inherits: true;
+    syntax: "<number>";
+    initial-value: 0;
+  }
+  @keyframes saturate {
+    0%,
+    25%,
+    75%,
+    100% {
+      --sat: 0;
+    }
+    50% {
+      --sat: 100;
+    }
+  }
+  section {
+    timeline-scope: --list;
+    animation: change-accent both linear;
+    animation-timeline: --list;
+  }
+  ul {
+    scroll-timeline: --list inline;
+  }
+  li {
+    animation: saturate both linear;
+    animation-timeline: view(inline);
+  }
+}
+
+/* Glow specific styles */
+[data-glow] {
+  background-color: white;
+  --border-size: calc(var(--border, 2) * 1px);
+  --spotlight-size: calc(var(--card-size) * 3);
+  --hue: 243;
+}
+
+[data-glow]::before,
+[data-glow]::after {
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size)))
+    calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  z-index: -1;
+}
+
+/* This is the emphasis light */
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+      var(--x) var(--y),
+    hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),
+    transparent 100%
+  );
+  filter: brightness(1);
+}
+
+/* This is the spotlight */
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.4) calc(var(--spotlight-size) * 0.4) at
+      var(--x) var(--y),
+    hsl(243 50% 90% / var(--border-light-opacity, 1)),
+    transparent 50%
+  );
 }

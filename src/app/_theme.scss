@@ -1,157 +1,170 @@
 body {
-    // logo
-    --logo: #2f2a86;
+  // logo
+  --logo: #2f2a86;
 
-    // text
-    --font-color : #2f2a86;
-    --white: #fff;
+  // text
+  --font-color: #2f2a86;
+  --white: #fff;
 
-    // borders
-    --border : #e7e7e7;
+  // borders
+  --border: #e7e7e7;
 
-    // forms
-    --form: #fff;
+  // forms
+  --form: #fff;
 
-    // inputs
-    --input-bkg: #efefef;
-    --input-border: #c3c3c3;
-    --input-txt: #000;
-    --input-placeholder: #a7a7a7;
+  // inputs
+  --input-bkg: #efefef;
+  --input-border: #c3c3c3;
+  --input-txt: #000;
+  --input-placeholder: #a7a7a7;
 
-    // colors
-    --primary : #2f2a86;
-    --primary-hover : #211d5d;
-    --primary-light : #3f3aa6;
-    --primary-disabled : #2f2a86a0;
-    --secondary : #d2213c;
-    --secondary-hover : #a41f32;
+  // colors
+  --primary: #2f2a86;
+  --primary-hover: #211d5d;
+  --primary-light: #3f3aa6;
+  --primary-disabled: #2f2a86a0;
+  --secondary: #d2213c;
+  --secondary-hover: #a41f32;
 
-    // background
-    --bkg : #fff;
+  // background
+  --bkg: #fff;
 
-    // lines
-    --line: hsla(243, 100%, 50%, 0.185);
+  // lines
+  --line: hsla(243, 100%, 50%, 0.185);
 
-    // cards
-    --card-bkg: #fff;
-    --card-secondary-bkg: #0004ff61;
+  // cards
+  --card-bkg: #fff;
+  --card-secondary-bkg: #0004ff61;
 
-    // lists
-    --list-bkg: #fff;
-    --list-header: #fff;
-    --list-item-bkg: #fff;
+  // lists
+  --list-bkg: #fff;
+  --list-header: #fff;
+  --list-item-bkg: #fff;
 
-    // dash pages background
-    --dash-bkg : rgb(240, 238, 251);
+  // dash pages background
+  --dash-bkg: rgb(240, 238, 251);
 
-    // buttons
-    --btn : #2f2a86;
-    --btn-hover : #211d5d;
-    --btn-disabled: #2f2a86a0;
-    --btn-dark : #2f2a86;
-    --btn-hover-dark : #211d5d;
+  // buttons
+  --btn: #2f2a86;
+  --btn-hover: #211d5d;
+  --btn-disabled: #2f2a86a0;
+  --btn-dark: #2f2a86;
+  --btn-hover-dark: #211d5d;
 
-    // badges
-    --badges-ctn: #fff;
-    --badge-info: #2f2a86;
-    --badge-increase: #14da6639;
-    --bagde-increase-txt: #2ecc71;
+  // badges
+  --badges-ctn: #fff;
+  --badge-info: #2f2a86;
+  --badge-increase: #14da6639;
+  --bagde-increase-txt: #2ecc71;
 
-    // pagination
-    --pagination-item: #fff;
-    --pagination-item-border: #2f2a86;
-    --pagination-item-hover: #2f2a86;
-    --pagination-item-active: #2f2a86;
-    --pagination-item-active-hover: #211d5d;
-    --pagination-item-txt: #2f2a86;
-    --pagination-item-txt-active: #fff;
+  // pagination
+  --pagination-item: #fff;
+  --pagination-item-border: #2f2a86;
+  --pagination-item-hover: #2f2a86;
+  --pagination-item-active: #2f2a86;
+  --pagination-item-active-hover: #211d5d;
+  --pagination-item-txt: #2f2a86;
+  --pagination-item-txt-active: #fff;
 
-    // dropdown
-    --dropdown-bkg: #fff;
-    --dropdown-item-hover: #f8f8f8;
+  // dropdown
+  --dropdown-bkg: #fff;
+  --dropdown-item-hover: #f8f8f8;
 
-    // modals
-    --modal-bkg: #fff;
-    --modal-border: #e7e7e7;
-    --modal-close-btn: #2f2a86;
-    --modal-header: #fff;
+  // modals
+  --modal-bkg: #fff;
+  --modal-border: #e7e7e7;
+  --modal-close-btn: #2f2a86;
+  --modal-header: #fff;
+
+  // faq
+  --card-size: clamp(350px, 40vw, 450px);
+  --x: calc(50vw * 1);
+  --y: calc((50vh - (var(--card-size) * 0.25)) * 1);
+  --spotlight: 50vmin;
+  --backdrop: black;
+  --radius: 14;
+  --border: 3;
+  --backup-border: hsl(0 0% 10% / 0.2);
+  --size: 200;
+  --bg-spot-opacity: 0.16;
+  --border-light-opacity: 1;
+  --border-spot-opacity: 0.75;
 }
 
 body.dark-theme {
-    // logo
-    --logo: #fff;
+  // logo
+  --logo: #fff;
 
-    // text
-    --font-color : #fff;
+  // text
+  --font-color: #fff;
 
-    // borders
-    --border : red;
+  // borders
+  --border: red;
 
-    // forms
-    --form: #1d1d1d;
+  // forms
+  --form: #1d1d1d;
 
-    //inputs
-    --input-bkg: #1d1d1d;
-    --input-border: #1d1d1d;
-    --input-txt: #fff;
-    --input-placeholder: #8b8b8b;
+  //inputs
+  --input-bkg: #1d1d1d;
+  --input-border: #1d1d1d;
+  --input-txt: #fff;
+  --input-placeholder: #8b8b8b;
 
-    // colors
-    --primary : #fff;
-    --primary-hover : #211d5d;
-    --primary-light : #3f3aa6;
-    --primary-disabled : #2f2a86a0;
-    --secondary : #d2213c;
-    --secondary-hover : #a41f32;
+  // colors
+  --primary: #fff;
+  --primary-hover: #211d5d;
+  --primary-light: #3f3aa6;
+  --primary-disabled: #2f2a86a0;
+  --secondary: #d2213c;
+  --secondary-hover: #a41f32;
 
-    // background
-    --bkg : #393939;
+  // background
+  --bkg: #393939;
 
-    // lines
-    --line: #ffffff9e;
+  // lines
+  --line: #ffffff9e;
 
-    // cards
-    --card-bkg: #393939;
-    --card-secondary-bkg: #393939;
+  // cards
+  --card-bkg: #393939;
+  --card-secondary-bkg: #393939;
 
-    // lists
-    --list-bkg: #393939;
-    --list-header: #393939;
-    --list-item-bkg: #393939;
+  // lists
+  --list-bkg: #393939;
+  --list-header: #393939;
+  --list-item-bkg: #393939;
 
-    // dash pages background
-    --dash-bkg : #2a2a2a;
+  // dash pages background
+  --dash-bkg: #2a2a2a;
 
-    // buttons
-    --btn : #393939;
-    --btn-dark : #1d1d1d;
-    --btn-hover : #4b4b4b;
-    --btn-hover-dark : #0b0b0b;
-    --btn-disabled: #494949;
+  // buttons
+  --btn: #393939;
+  --btn-dark: #1d1d1d;
+  --btn-hover: #4b4b4b;
+  --btn-hover-dark: #0b0b0b;
+  --btn-disabled: #494949;
 
-    // badges
-    --badges-ctn: #2a2a2a;
-    --badge-info: #1d1d1d;
-    --badge-increase: #14da6639;
-    --bagde-increase-txt: #2ecc71;
+  // badges
+  --badges-ctn: #2a2a2a;
+  --badge-info: #1d1d1d;
+  --badge-increase: #14da6639;
+  --bagde-increase-txt: #2ecc71;
 
-    // pagination
-    --pagination-item: #393939;
-    --pagination-item-hover: #1d1d1d;
-    --pagination-item-border: #1d1d1d;
-    --pagination-item-active: #1d1d1d;
-    --pagination-item-active-hover: #211d5d;
-    --pagination-item-txt: #fff;
-    --pagination-item-txt-active: #fff;
+  // pagination
+  --pagination-item: #393939;
+  --pagination-item-hover: #1d1d1d;
+  --pagination-item-border: #1d1d1d;
+  --pagination-item-active: #1d1d1d;
+  --pagination-item-active-hover: #211d5d;
+  --pagination-item-txt: #fff;
+  --pagination-item-txt-active: #fff;
 
-    // dropdown
-    --dropdown-bkg: #1d1d1d;
-    --dropdown-item-hover: #393939;
+  // dropdown
+  --dropdown-bkg: #1d1d1d;
+  --dropdown-item-hover: #393939;
 
-    // modals
-    --modal-bkg: #393939;
-    --modal-border: #1d1d1d;
-    --modal-close-btn: #fff;
-    --modal-header: #393939;
+  // modals
+  --modal-bkg: #393939;
+  --modal-border: #1d1d1d;
+  --modal-close-btn: #fff;
+  --modal-header: #393939;
 }
-
