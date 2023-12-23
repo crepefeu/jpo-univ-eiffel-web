@@ -40,9 +40,9 @@
             </thead>
             <ng-container *ngIf="originalData">
                 <tbody class="table-body">
-                    <tr class="data-row" *ngFor="let item of data | slice
+                    <tr class="data-row" *ngFor="let item of (data | search: searchString) | slice
                     : (pagination.currentPage - 1) * pagination.pageSize
-                    : pagination.currentPage * pagination.pageSize | search: searchString">
+                    : pagination.currentPage * pagination.pageSize">
                         <td class="data">{{item.firstName}}</td>
                         <td class="data">{{item.lastName}}</td>
                         <td class="data">{{item.email}}</td>
@@ -61,7 +61,8 @@
             </ng-container>
         </table>
         <div class="pagination-ctn">
-            <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+            <app-pagination #pagination [collectionSize]="(data | search: searchString).length"
+                [pageSize]="10"></app-pagination>
         </div>
     </div>
 </ng-container>
@@ -108,9 +109,9 @@
             </thead>
             <ng-container *ngIf="originalData">
                 <tbody class="table-body">
-                    <tr class="data-row" *ngFor="let item of data | slice
+                    <tr class="data-row" *ngFor="let item of (data | search: searchString) | slice
                     : (pagination.currentPage - 1) * pagination.pageSize
-                    : pagination.currentPage * pagination.pageSize | search: searchString">
+                    : pagination.currentPage * pagination.pageSize">
                         <td class="data">{{item.firstName}}</td>
                         <td class="data">{{item.lastName}}</td>
                         <td class="data">{{item.email}}</td>
@@ -129,7 +130,8 @@
             </ng-container>
         </table>
         <div class="pagination-ctn">
-            <app-pagination #pagination [collectionSize]="data.length" [pageSize]="10"></app-pagination>
+            <app-pagination #pagination [collectionSize]="(data | search: searchString).length"
+                [pageSize]="10"></app-pagination>
         </div>
     </div>
 </ng-container>
