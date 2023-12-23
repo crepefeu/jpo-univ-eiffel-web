@@ -93,7 +93,7 @@ export class ManageListComponent implements OnInit {
       },
       size: {
         width: '80vw',
-        height: '80vh',
+        height: 'fit-content',
       }
     });
   }
