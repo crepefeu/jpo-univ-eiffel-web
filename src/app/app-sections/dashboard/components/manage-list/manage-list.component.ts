@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
 import { AddAttendeeFormComponent } from '../add-attendee-form/add-attendee-form.component';
 import { ModifyAttendeeFormComponent } from '../modify-attendee-form/modify-attendee-form.component';
+import { PaginationComponent } from '../pagination/pagination.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -11,6 +12,8 @@ import { ModifyAttendeeFormComponent } from '../modify-attendee-form/modify-atte
   styleUrls: ['./manage-list.component.scss']
 })
 export class ManageListComponent implements OnInit {
+
+  @ViewChild('pagination') pagination?: PaginationComponent;
 
   @Input() originalData: any[] = [];
   @Input() listType?: ManageListTypes;
@@ -71,6 +74,7 @@ export class ManageListComponent implements OnInit {
 
   updateSearchString(string: string) {
     this.search.setSearchString(string);
+    this.pagination?.selectPageNumber(1);
   }
 
   openAddModal() { 

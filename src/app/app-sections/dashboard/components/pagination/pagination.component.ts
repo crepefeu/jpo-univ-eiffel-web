@@ -59,5 +59,4 @@ export class PaginationComponent {
     const previousPage = this.currentPage - 1;
     previousPage >= 1 && this.selectPageNumber(previousPage);
   }
-
 }
