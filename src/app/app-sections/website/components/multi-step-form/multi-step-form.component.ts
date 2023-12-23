@@ -18,6 +18,8 @@ export class MultiStepFormComponent implements OnInit {
   virtualTourSatisfactionForm: FormGroup;
   websiteSatisfactionForm: FormGroup;
 
+  isSubmitting = true;
+
   diplomasList?: any[];
   regionsList?: any[];
 
@@ -65,6 +67,9 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   submit() {
+
+    this.isSubmitting = true;
+
     let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
     
     let attendeeInfos = {
@@ -79,8 +84,6 @@ export class MultiStepFormComponent implements OnInit {
       websiteSatisfaction: this.websiteSatisfactionForm.controls['websiteSatisfaction'].value
     };
 
-    console.log(attendeeInfos);
-
     this.attendees.registerAttendee(attendeeInfos).subscribe({
       next: data => {
         console.log(data);
@@ -88,6 +91,7 @@ export class MultiStepFormComponent implements OnInit {
       error: err => console.error('An error occurred :', err),
       complete: () => {
         console.log('registerAttendee() completed');
+        this.isSubmitting = false;
         this.modal.close();
       }
     });

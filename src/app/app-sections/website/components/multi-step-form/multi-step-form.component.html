@@ -152,7 +152,12 @@
 
                     <div class="step-btns-ctn">
                         <button class="step-btn" matStepperPrevious type="button">Précédent</button>
-                        <button class="step-btn" matStepperNext type="button" (click)="submit()" [disabled]="checkIfAllFormsAreValid()">Envoyer</button>
+
+                        <button *ngIf="!isSubmitting" class="step-btn" type="button" (click)="submit()" [disabled]="checkIfAllFormsAreValid()">Envoyer</button>
+                        <button *ngIf="isSubmitting" class="step-btn-w-loader" type="button" disabled>
+                            Envoyer
+                            <span class="loader"></span>
+                        </button>
                     </div>
                 </form>
             </div>
