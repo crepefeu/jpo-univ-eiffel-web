@@ -51,6 +51,8 @@ input {
   border: solid 1px var(--input-border);
   font-size: 0.9rem;
   transition: border 200ms ease-in-out;
+  background-color: var(--input-bkg);
+  color: var(--input-txt);
 
   &::placeholder {
     font-size: 0.9rem;
@@ -69,6 +71,8 @@ select {
   border: solid 1px var(--input-border);
   font-size: 0.9rem;
   transition: border 200ms ease-in-out;
+  background-color: var(--input-bkg);
+  color: var(--input-txt);
   cursor: pointer;
 
   &:focus {
