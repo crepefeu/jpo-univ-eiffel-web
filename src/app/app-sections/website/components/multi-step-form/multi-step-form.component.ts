@@ -18,7 +18,7 @@ export class MultiStepFormComponent implements OnInit {
   virtualTourSatisfactionForm: FormGroup;
   websiteSatisfactionForm: FormGroup;
 
-  isSubmitting = true;
+  isSubmitting = false;
 
   diplomasList?: any[];
   regionsList?: any[];

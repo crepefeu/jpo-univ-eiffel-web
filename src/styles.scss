@@ -108,14 +108,14 @@ $jpo-univ-eiffel-theme: mat.define-light-theme(
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 @import "/node_modules//bootstrap-icons//font/bootstrap-icons.css";
 
 @import "/src/app/theme";
 
 // custom modal animations
 @import "src/app/shared/components/modal/modal-animations.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 * {
   margin: 0;
