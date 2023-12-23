@@ -89,6 +89,12 @@ body {
   --bg-spot-opacity: 0.16;
   --border-light-opacity: 1;
   --border-spot-opacity: 0.75;
+
+  // toasts
+  --toast-bkg: #fff;
+  --toast-txt: #000;
+  --toast-success: #24a258;
+  --toast-error: #ec0000;
 }
 
 body.dark-theme {
@@ -167,4 +173,10 @@ body.dark-theme {
   --modal-border: #1d1d1d;
   --modal-close-btn: #fff;
   --modal-header: #393939;
+
+  // toasts
+  --toast-bkg: #1d1d1d;
+  --toast-txt: #fff;
+  --toast-success: #24a258;
+  --toast-error: #ec0000;
 }

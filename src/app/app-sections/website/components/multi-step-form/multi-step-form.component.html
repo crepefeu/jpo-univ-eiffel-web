@@ -44,6 +44,8 @@
                         </div>
                     </div>
 
+                    <small class="section-help" *ngIf="!websiteSatisfactionForm.valid">*Champs obligatoires</small>
+
                     <div class="step-btns-ctn unique">
                         <button class="step-btn" matStepperNext type="button">Suivant</button>
                     </div>
@@ -53,7 +55,10 @@
 
         <mat-step [stepControl]="jpoForm">
             <ng-template matStepLabel>JPO</ng-template>
-            <h1 class="section-title">Prévoyez vous de participer à la JPO physique ce 4 Février 2024 ?</h1>
+            <div class="section-head">
+                <h1 class="section-title">Prévoyez vous de participer à la JPO physique ce 4 Février 2024 ?</h1>
+                <small class="section-help" *ngIf="!jpoForm.valid">Choisissez une proposition*</small>
+            </div>
             <div class="form-ctn">
                 <form [formGroup]="jpoForm">
                     <div class="satisfaction-ctn">
@@ -84,7 +89,11 @@
 
         <mat-step [stepControl]="virtualTourSatisfactionForm">
             <ng-template matStepLabel>Visite virtuelle</ng-template>
-            <h1 class="section-title">Comment qualifiriez-vous votre expérience lors de la visite virtuelle ?</h1>
+            <div class="section-head">
+                <h1 class="section-title">Comment qualifiriez-vous votre expérience lors de la visite virtuelle ?</h1>
+                <small class="section-help" *ngIf="!virtualTourSatisfactionForm.valid">Choisissez une proposition*</small>
+            </div>
+            
             <div class="form-ctn">
                 <form [formGroup]="virtualTourSatisfactionForm">
                     <div class="satisfaction-ctn">
@@ -122,7 +131,10 @@
 
         <mat-step [stepControl]="websiteSatisfactionForm">
             <ng-template matStepLabel>Site</ng-template>
-            <h1 class="section-title">Comment qualifiriez-vous votre navigation sur le site ?</h1>
+            <div class="section-head">
+                <h1 class="section-title">Comment qualifiriez-vous votre navigation sur le site ?</h1>
+                <small class="section-help" *ngIf="!websiteSatisfactionForm.valid">Choisissez une proposition*</small>
+            </div>
             <div class="form-ctn">
                 <form [formGroup]="websiteSatisfactionForm">
                     <div class="satisfaction-ctn">

@@ -92,8 +92,11 @@ export class MultiStepFormComponent implements OnInit {
             duration: 4000,
             position: 'bottom-center',
             style: {
+              backgroundColor: 'var(--toast-bkg)',
+              color: 'var(--toast-txt)',
               borderRadius: '30px',
-              border: '1.5px solid #ec0000',
+              border: '1.5px solid var(--toast-error)',
+              fontWeight: '400'
             }
           });
           return;
@@ -102,8 +105,11 @@ export class MultiStepFormComponent implements OnInit {
             duration: 4000,
             position: 'bottom-center',
             style: {
+              backgroundColor: 'var(--toast-bkg)',
+              color: 'var(--toast-txt)',
               borderRadius: '30px',
-              border: '1.5px solid #24a258',
+              border: '1.5px solid var(--toast-success)',
+              fontWeight: '400'
             }
           });
           this.modal.close();
@@ -112,8 +118,11 @@ export class MultiStepFormComponent implements OnInit {
             duration: 4000,
             position: 'bottom-center',
             style: {
+              backgroundColor: 'var(--toast-bkg)',
+              color: 'var(--toast-txt)',
               borderRadius: '30px',
-              border: '1.5px solid #ec0000',
+              border: '1.5px solid var(--toast-error)',
+              fontWeight: '400'
             }
           });
         }
@@ -122,8 +131,11 @@ export class MultiStepFormComponent implements OnInit {
         duration: 4000,
         position: 'bottom-center',
         style: {
+          backgroundColor: 'var(--toast-bkg)',
+          color: 'var(--toast-txt)',
           borderRadius: '30px',
-          border: '1.5px solid #ec0000',
+          border: '1.5px solid var(--toast-error)',
+          fontWeight: '400'
         }
       }),
       complete: () => {

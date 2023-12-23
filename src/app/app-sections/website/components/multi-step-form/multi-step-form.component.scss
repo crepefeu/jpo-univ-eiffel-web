@@ -1,9 +1,18 @@
+.section-head {
+  margin-bottom: 20px;
+}
+
 .section-title {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--primary);
   margin-top: 20px;
-  margin-bottom: 20px;
+}
+
+.section-help {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--primary);
 }
 
 .form-ctn {
