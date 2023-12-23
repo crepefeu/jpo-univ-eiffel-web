@@ -29,7 +29,7 @@ export class MultiStepFormComponent implements OnInit {
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
-      diploma: new FormControl('', Validators.required),
+      diplomaId: new FormControl('', Validators.required),
       region: new FormControl('', Validators.required),
     });
 
@@ -65,11 +65,14 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   submit() {
+    let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
+    
     let attendeeInfos = {
       email: this.infosForm.controls['email'].value,
       firstName: this.infosForm.controls['firstName'].value,
       lastName: this.infosForm.controls['lastName'].value,
-      diploma: this.infosForm.controls['diploma'].value,
+      diplomaId: diploma.id,
+      diplomaCategoryId: diploma.category.id,
       region: this.infosForm.controls['region'].value,
       isIrlAttendee: this.jpoForm.controls['isIrlAttendee'].value,
       virtualTourSatisfaction: this.virtualTourSatisfactionForm.controls['virtualTourSatisfaction'].value,

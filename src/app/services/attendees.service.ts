@@ -21,7 +21,8 @@ export class AttendeesService {
     formData.append('email', attendeeInfos.email);
     formData.append('firstName', attendeeInfos.firstName);
     formData.append('lastName', attendeeInfos.lastName);
-    formData.append('diplomaId', attendeeInfos.diploma);
+    formData.append('diplomaId', attendeeInfos.diplomaId);
+    formData.append('diplomaCategoryId', attendeeInfos.diplomaCategoryId)
     formData.append('regionalCode', attendeeInfos.region);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
     formData.append('virtualTourSatisfaction', attendeeInfos.virtualTourSatisfaction);

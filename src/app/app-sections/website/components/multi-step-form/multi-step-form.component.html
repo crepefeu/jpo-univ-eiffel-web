@@ -26,7 +26,7 @@
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
                             <label for="">Diplôme possédé*</label>
-                            <select class="input" formControlName="diploma">
+                            <select class="input" formControlName="diplomaId">
                                 <option value="" selected disabled hidden>Choisissez un diplôme</option>
                                 <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
                                     {{diploma.name}}
