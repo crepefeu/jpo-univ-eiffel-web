@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -26,7 +27,8 @@ export class MultiStepFormComponent implements OnInit {
   constructor(private modal: ModalService,
     private diplomas: DiplomasService,
     private regions: RegionsService,
-    private attendees: AttendeesService) {
+    private attendees: AttendeesService,
+    private toast: HotToastService) {
     this.infosForm = new FormGroup({
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -67,7 +69,6 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   submit() {
-
     this.isSubmitting = true;
 
     let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
@@ -86,13 +87,47 @@ export class MultiStepFormComponent implements OnInit {
 
     this.attendees.registerAttendee(attendeeInfos).subscribe({
       next: data => {
-        console.log(data);
+        if (data.status == 'error') {
+          this.toast.error(data.message, {
+            duration: 4000,
+            position: 'bottom-center',
+            style: {
+              borderRadius: '30px',
+              border: '1.5px solid #ec0000',
+            }
+          });
+          return;
+        } else if (data.status == 'success') {
+          this.toast.success(data.message, {
+            duration: 4000,
+            position: 'bottom-center',
+            style: {
+              borderRadius: '30px',
+              border: '1.5px solid #24a258',
+            }
+          });
+          this.modal.close();
+        } else {
+          this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
+            duration: 4000,
+            position: 'bottom-center',
+            style: {
+              borderRadius: '30px',
+              border: '1.5px solid #ec0000',
+            }
+          });
+        }
       },
-      error: err => console.error('An error occurred :', err),
+      error: err => this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
+        duration: 4000,
+        position: 'bottom-center',
+        style: {
+          borderRadius: '30px',
+          border: '1.5px solid #ec0000',
+        }
+      }),
       complete: () => {
-        console.log('registerAttendee() completed');
         this.isSubmitting = false;
-        this.modal.close();
       }
     });
   }

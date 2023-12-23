@@ -43,6 +43,7 @@ import { CardsComponent } from './app-sections/website/components/cards/cards.co
 import { MultiStepFormComponent } from './app-sections/website/components/multi-step-form/multi-step-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
+import { provideHotToastConfig } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,7 @@ import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
     InputSwitchModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [provideHotToastConfig()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

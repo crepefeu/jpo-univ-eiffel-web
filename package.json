@@ -21,6 +21,8 @@
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
     "@highcharts/map-collection": "^2.1.0",
+    "@ngneat/hot-toast": "^6.0.2",
+    "@ngneat/overview": "5.1.1",
     "@types/gsap": "^3.0.0",
     "apexcharts": "^3.44.2",
     "bootstrap-icons": "^1.11.1",
