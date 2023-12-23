@@ -30,7 +30,7 @@ body {
   --bkg: #fff;
 
   // lines
-  --line: hsla(243, 100%, 50%, 0.185);
+  --line: hsla(243, 100%, 50%, 0.35);
 
   // cards
   --card-bkg: #fff;
@@ -128,7 +128,7 @@ body.dark-theme {
   --bkg: #393939;
 
   // lines
-  --line: #ffffff9e;
+  --line: hsla(0, 0%, 100%, 0.5);
 
   // cards
   --card-bkg: #393939;
