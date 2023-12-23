@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DiplomasService } from 'src/app/services/diplomas.service';
+import { RegionsService } from 'src/app/services/regions.service';
 
 @Component({
   selector: 'app-modify-attendee-form',
@@ -8,17 +10,43 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ModifyAttendeeFormComponent implements OnInit {
 
-  modifyAttendeeForm: FormGroup = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl(''),
-    diploma: new FormControl(''),
-    isIrlAttendee: new FormControl(false),
-    region: new FormControl(''),
-  }); 
+  data: any;
+  modifyAttendeeForm!: FormGroup;
 
-  constructor() {}
+  isSubmitting = false;
 
-  ngOnInit(): void {}
+  diplomasList?: any[];
+  regionsList?: any[];
+
+  constructor(private diplomas: DiplomasService,
+    private regions: RegionsService) {}
+
+  ngOnInit(): void {
+
+    this.modifyAttendeeForm = new FormGroup({
+      firstName: new FormControl(this.data?.listItem.firstName ?? '', Validators.required),
+      lastName: new FormControl(this.data?.listItem.lastName ?? '', Validators.required),
+      email: new FormControl(this.data?.listItem.email ?? '', Validators.required),
+      diplomaId: new FormControl(this.data?.listItem.diplomaId ?? '', Validators.required),
+      region: new FormControl(this.data?.listItem.regionalCode ?? '', Validators.required),
+      isIrlAttendee: new FormControl(this.data?.listItem.isIrlAttendee ?? '', Validators.required),
+    });
+
+    this.diplomas.getAllDiplomas().subscribe({
+      next: data => {
+        this.diplomasList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => console.log('getAllDiplomas() completed')
+    });
+
+    this.regions.getAllRegions().subscribe({
+      next: data => {
+        this.regionsList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: err => console.error('An error occurred :', err),
+      complete: () => console.log('getAllRegions() completed')
+    })
+  }
 
 }

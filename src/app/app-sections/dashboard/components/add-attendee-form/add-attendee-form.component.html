@@ -35,8 +35,8 @@
             </div>
             <div class="input-ctn">
                 <label for="">Participation à la JPO*</label>
-                <select class="input" formControlName="region">
-                    <option value="" selected disabled hidden>Choisissez une valeur</option>
+                <select class="input" formControlName="isIrlAttendee">
+                    <option [value]="null" selected disabled hidden>Choisissez une valeur</option>
                     <option [value]="true">Présentielle</option>
                     <option [value]="false">Distancielle</option>
                 </select>

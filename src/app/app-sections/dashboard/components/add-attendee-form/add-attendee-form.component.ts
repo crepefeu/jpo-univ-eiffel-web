@@ -25,6 +25,7 @@ export class AddAttendeeFormComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       diplomaId: new FormControl('', Validators.required),
       region: new FormControl('', Validators.required),
+      isIrlAttendee: new FormControl(null, Validators.required),
     });
   }
 

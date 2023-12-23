@@ -1,37 +1,56 @@
-<div class="content">
+<div class="form-ctn">
     <form [formGroup]="modifyAttendeeForm">
-        <div>
-            <div class="name-inputs-ctn">
-                <div>
-                    <label>Prénom</label>
-                    <input type="text" formControlName="firstName">
-                </div>
-        
-                <div>
-                    <label>Nom</label>
-                    <input type="text" formControlName="lastName">
-                </div>
+        <div class="input-ctn full">
+            <label for="">Email*</label>
+            <input type="text" formControlName="email" placeholder="Email">
+        </div>
+        <div class="inputs-ctn flex">
+            <div class="input-ctn">
+                <label for="">Prénom*</label>
+                <input type="text" formControlName="firstName" placeholder="Prénom">
             </div>
-    
-            <div>
-                <label>Email</label>
-                <input type="email" formControlName="email">
+            <div class="input-ctn">
+                <label for="">Nom*</label>
+                <input type="text" formControlName="lastName" placeholder="Nom">
             </div>
         </div>
-
-        <div>
-            <label>Diplôme</label>
-            <input type="text" formControlName="diploma">
+        <div class="inputs-ctn flex">
+            <div class="input-ctn">
+                <label for="">Diplôme possédé*</label>
+                <select class="input" formControlName="diplomaId">
+                    <option value="" selected disabled hidden>Choisissez un diplôme</option>
+                    <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
+                        {{diploma.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-ctn">
+                <label for="">Département de résidence*</label>
+                <select class="input" formControlName="region">
+                    <option value="" selected disabled hidden>Choisissez un département</option>
+                    <option *ngFor="let region of regionsList" [value]="region.code">
+                        {{region.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="input-ctn">
+                <label for="">Participation à la JPO*</label>
+                <select class="input" formControlName="isIrlAttendee">
+                    <option value="" selected disabled hidden>Choisissez une valeur</option>
+                    <option [value]="true">Présentielle</option>
+                    <option [value]="false">Distancielle</option>
+                </select>
+            </div>
         </div>
 
-        <div>
-            <label>Participation à la JPO physique</label>
-            <input type="text" formControlName="isIrlAttendee">
-        </div>
+        <small class="form-help">*Champs obligatoires</small>
 
-        <div>
-            <label>Région</label>
-            <input type="text" formControlName="region">
+        <div class="form-btns-ctn">
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyAttendeeForm.valid">Modifier</button>
+            <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
+                Modifier
+                <span class="loader"></span>
+            </button>
         </div>
     </form>
 </div>

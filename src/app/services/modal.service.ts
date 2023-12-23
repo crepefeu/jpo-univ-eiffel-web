@@ -40,9 +40,13 @@ export class ModalService {
       this.openWithTemplate(vcrOrComponent, param2 as TemplateRef<Element>);
       this.options = options;
     } else {
-      this.openWithComponent(vcrOrComponent);
-      // Same story here : for the second approach, the second param will be of type Options or undefined, since optional 
+      // For the second approach, we know that the second param will be of type ModalOptions, so we have to cast it
       this.options = param2 as ModalOptions | undefined;
+
+      // Then we pass it to the component by adding it to the arguments of the openWithComponent function
+      this.openWithComponent(vcrOrComponent, this.options);
+      
+      // Same story here : for the second approach, the second param will be of type Options or undefined, since optional 
       this.modalComponent.instance.options = this.options;
     }
   }
@@ -60,12 +64,17 @@ export class ModalService {
     });
   }
 
-  private openWithComponent(component: Type<unknown>) {
+  private openWithComponent(component: Type<any>, options: ModalOptions | undefined) {
     // create the desired component, the content of the modal box
     const newComponent = createComponent(component, {
       environmentInjector: this.injector,
     });
-    
+
+    // pass the data to the component if any
+    if (options?.data) {
+      newComponent.instance.data = options?.data;
+    }
+
     // create the modal component and project the instance of the desired component in the ng-content
     this.modalComponent = createComponent(ModalComponent, {
       environmentInjector: this.injector,

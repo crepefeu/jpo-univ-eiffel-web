@@ -98,10 +98,13 @@ export class ManageListComponent implements OnInit {
     });
   }
 
-  openModifyModal() { 
+  openModifyModal(item: any) { 
     this.modalService.open(ModifyAttendeeFormComponent, {
       title: 'Modifier le participant',
       displayHeader: true,
+      data : {
+        listItem: item
+      },
       animations: {
         modal: {
           enter: 'enter-scaling 0.1s ease-out',
@@ -114,7 +117,7 @@ export class ManageListComponent implements OnInit {
       },
       size: {
         width: '80vw',
-        height: '80vh',
+        height: 'fit-content',
       }
     });
   }

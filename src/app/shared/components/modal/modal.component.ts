@@ -60,10 +60,6 @@ export class ModalComponent implements AfterViewInit, OnInit {
     if (this.options?.displayHeader) {
       this.displayHeader = this.options?.displayHeader;
     }
-
-    if (this.options?.data) {
-      this.data = this.options?.data;
-    }
   }
 
   addEnterAnimations() {
