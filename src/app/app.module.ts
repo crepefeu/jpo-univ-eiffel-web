@@ -12,9 +12,6 @@ import { NgChartsModule } from 'ng2-charts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
-// PrimeNG Modules
-import { InputSwitchModule } from 'primeng/inputswitch';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './app-sections/website/pages/home/home.component';
@@ -84,7 +81,6 @@ import { provideHotToastConfig } from '@ngneat/hot-toast';
     NgChartsModule,
     HighchartsChartModule,
     NgApexchartsModule,
-    InputSwitchModule,
     BrowserAnimationsModule
   ],
   providers: [provideHotToastConfig()],

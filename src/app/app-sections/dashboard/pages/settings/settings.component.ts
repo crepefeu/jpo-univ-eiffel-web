@@ -41,7 +41,8 @@ export class SettingsComponent implements OnInit {
               color: 'var(--toast-txt)',
               borderRadius: '30px',
               border: '1.5px solid var(--toast-error)',
-              fontWeight: '400'
+              fontWeight: '400',
+              padding: '3px 10px'
             }
           });
           return;
@@ -57,7 +58,8 @@ export class SettingsComponent implements OnInit {
               color: 'var(--toast-txt)',
               borderRadius: '30px',
               border: '1.5px solid var(--toast-success)',
-              fontWeight: '400'
+              fontWeight: '400',
+              padding: '3px 10px'
             }
           });
         } else {
@@ -69,7 +71,8 @@ export class SettingsComponent implements OnInit {
               color: 'var(--toast-txt)',
               borderRadius: '30px',
               border: '1.5px solid var(--toast-error)',
-              fontWeight: '400'
+              fontWeight: '400',
+              padding: '3px 10px'
             }
           });
         }

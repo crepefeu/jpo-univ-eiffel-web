@@ -53,6 +53,47 @@
   gap: 20px;
 }
 
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle-ctn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px 2px 8px;
+  height: 1.8rem;
+  width: 4rem;
+  border-radius: 1rem;
+  background-color: var(--switch-toggle);
+  border: 1px solid var(--switch-toggle-border);
+  cursor: pointer;
+}
+
+.switch-btn {
+  position: absolute;
+  left: 3px;
+  height: 1.3rem;
+  width: 1.3rem;
+  border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: var(--switch-toggle-btn);
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn {
+  background-color: var(--switch-toggle-toggled);
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
+  transform: translateX(34px);
+}
+
 .setting-label {
   font-size: 1rem;
   font-weight: 400;

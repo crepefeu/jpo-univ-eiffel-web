@@ -51,6 +51,12 @@ body {
   --btn-dark: #2f2a86;
   --btn-hover-dark: #211d5d;
 
+  // switch
+  --switch-toggle: rgb(241, 241, 241);
+  --switch-toggle-btn: white;
+  --switch-toggle-toggled: #2f2a86;
+  --switch-toggle-border: #c3c3c3;
+
   // badges
   --badges-ctn: #fff;
   --badge-info: #2f2a86;
@@ -148,6 +154,12 @@ body.dark-theme {
   --btn-hover: #4b4b4b;
   --btn-hover-dark: #0b0b0b;
   --btn-disabled: #494949;
+
+  // switch
+  --switch-toggle: #2a2a2a;
+  --switch-toggle-btn: #fff;
+  --switch-toggle-toggled: #1d1d1d;
+  --switch-toggle-border: #1d1d1d;
 
   // badges
   --badges-ctn: #2a2a2a;
