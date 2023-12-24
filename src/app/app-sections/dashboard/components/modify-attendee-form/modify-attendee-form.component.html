@@ -46,7 +46,7 @@
         <small class="form-help">*Champs obligatoires</small>
 
         <div class="form-btns-ctn">
-            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyAttendeeForm.valid">Modifier</button>
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyAttendeeForm.valid || !modifyAttendeeForm.dirty">Modifier</button>
             <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
                 Modifier
                 <span class="loader"></span>
