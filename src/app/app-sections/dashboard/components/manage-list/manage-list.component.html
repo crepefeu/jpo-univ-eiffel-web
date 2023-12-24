@@ -13,7 +13,7 @@
                         <i class="bi bi-sort-alpha-down"></i>
                     </div>
                     <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
-                        <i class="bi bi-sort-alpha-down"></i>
+                        <i class="bi bi-sort-alpha-down-alt"></i>
                     </div>
                 </div>
             </button>
@@ -70,40 +70,40 @@
 <ng-container *ngIf="listType === 'Diplomas'">
     <div class="manage-list-ctn">
         <div class="list-header">
-            <input class="search-input" type="text" placeholder="Rechercher un diplôme" [(ngModel)]="searchString"
-                (ngModelChange)="updateSearchString(searchString)">
-            <button class="header-btn">
-                <i class="bi bi-database-fill-add"></i>
+            <button #dropdownBtn1 class="header-btn" (click)="toggleDropdown(dropdownMenu1)">
+                <div #dropdownMenu1 class="dropdown-menu left">
+                    <div class="dropdown-item" (click)="openAddModal('diploma')">
+                        <p>Ajouter un diplôme</p>
+                        <i class="bi bi-file-text"></i>
+                    </div>
+                    <div class="dropdown-item" (click)="openAddModal('category')">
+                        <p>Ajouter une catégorie</p>
+                        <i class="bi bi-files"></i>
+                    </div>
+                </div>
+                <i #dropdownIcon1 class="bi bi-database-fill-add"></i>
             </button>
-            <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown)">
+            <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown2)">
                 <i class="bi bi-funnel-fill"></i>
-                <div #headerBtnDropdown class="dropdown-menu">
-                    <div class="dropdown-item" (click)="onOrderByChange('asc')">A-Z
+                <div #headerBtnDropdown2 class="dropdown-menu">
+                    <div class="dropdown-item" (click)="onOrderByChange('asc')">
+                        <p>A-Z</p>
                         <i class="bi bi-sort-alpha-down"></i>
                     </div>
-                    <div class="dropdown-item" (click)="onOrderByChange('desc')">Z-A
-                        <i class="bi bi-sort-alpha-down"></i>
+                    <div class="dropdown-item" (click)="onOrderByChange('desc')">
+                        <p>Z-A</p>
+                        <i class="bi bi-sort-alpha-down-alt"></i>
                     </div>
                 </div>
             </button>
+            <input class="search-input" type="text" placeholder="Rechercher un diplôme" [(ngModel)]="searchString"
+                (ngModelChange)="updateSearchString(searchString)">
         </div>
         <table class="data-table">
             <thead class="table-header">
                 <tr>
-                    <th class="header-badge">Prénom</th>
-                    <th class="header-badge">Nom</th>
-                    <th class="header-badge">Email</th>
-                    <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
-                        <div class="header-badge-inner">
-                            Participation
-                            <i class="bi bi bi-filter filter-btn"></i>
-                        </div>
-                        <div #participationDropdownList class="dropdown-menu">
-                            <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
-                            <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
-                            <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>
-                        </div>
-                    </th>
+                    <th class="header-badge">Diplôme</th>
+                    <th class="header-badge">Catégorie</th>
                     <th class="header-badge">Actions</th>
                 </tr>
             </thead>
@@ -112,11 +112,8 @@
                     <tr class="data-row" *ngFor="let item of (data | search: searchString) | slice
                     : (pagination.currentPage - 1) * pagination.pageSize
                     : pagination.currentPage * pagination.pageSize">
-                        <td class="data">{{item.firstName}}</td>
-                        <td class="data">{{item.lastName}}</td>
-                        <td class="data">{{item.email}}</td>
-                        <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
-                        <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
+                        <td class="data">{{item.name}}</td>
+                        <td class="data">{{item.category.name}}</td>
                         <td class="action-buttons-ctn">
                             <button class="action-btn">
                                 <i class="bi bi-pencil-fill"></i>

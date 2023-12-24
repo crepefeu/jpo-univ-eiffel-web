@@ -45,7 +45,6 @@
 .header-btn {
     height: 100%;
     position: relative;
-    width: fit-content;
     border-radius: 5px;
     border: none;
     background-color: var(--btn-dark);
@@ -54,10 +53,12 @@
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+    padding: 0px 12px;
+    z-index: 2;
 
     i {
-        padding: 0px 13px;
         font-size: 1rem;
+        z-index: 1;
     }
 
     &:hover {
@@ -96,10 +97,7 @@
     background-color: var(--badge-info);
     color: white;
     font-size: 0.8rem;
-}
-
-.header-badge-inner {
-    padding: 3px 0px;
+    padding: 4px 0px;
 }
 
 .filter-btn {
@@ -158,6 +156,9 @@
 
 .dropdown-menu {
     position: absolute;
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     z-index: 1000;
@@ -174,12 +175,15 @@
     background-color: var(--dropdown-bkg);
     background-clip: padding-box;
     border: 1px solid rgba(0, 0, 0, 0.15);
-    border-radius: 0.25rem;
+    border-radius: 10px;
+    border: solid 1px var(--dropdown-border);
     cursor: default;
 }
 
 .dropdown-item {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
     padding: 5px 10px;
     width: 100%;
     font-style: normal;

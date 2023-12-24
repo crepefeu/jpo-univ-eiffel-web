@@ -1,5 +1,9 @@
 <div class="content">
-    <div class="section-details">
-        <h1 class="sub-section-title">Gestion</h1>
+    <div class="section">
+        <div class="section-details">
+            <h2 class="sub-section-title">Gestion</h2>
+            <div class="data-badge" *ngIf="diplomasData">{{diplomasData.length}} types de diplômes</div>
+        </div>
+        <app-manage-list *ngIf="diplomasData" [originalData]="diplomasData" [listType]="listType"></app-manage-list>
     </div>
 </div>

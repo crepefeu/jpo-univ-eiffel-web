@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
@@ -15,6 +15,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class ManageListComponent implements OnInit {
 
+  // @ViewChild('dropdownMenu1') dropdownMenu1?: ElementRef;
+  // @ViewChild('dropdownBtn1') dropdownBtn1?: ElementRef;
+  // @ViewChild('dropdownIcon1') dropdownIcon1?: ElementRef;
   @ViewChild('pagination') pagination?: PaginationComponent;
 
   @Input() originalData: any[] = [];
@@ -26,8 +29,16 @@ export class ManageListComponent implements OnInit {
   constructor(private search: SearchService,
     private modalService: ModalService,
     private attendees: AttendeesService,
-    private toast: HotToastService) {
+    private toast: HotToastService,
+    private renderer: Renderer2) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
+
+    // this.renderer.listen('window', 'click', (e: Event) => {
+    //   if (e.target !== this.dropdownMenu1?.nativeElement && e.target !== this.dropdownBtn1?.nativeElement && e.target !== this.dropdownIcon1?.nativeElement) {
+    //     this.dropdownMenu1?.nativeElement.classList.remove('show');
+    //     console.log(this.dropdownMenu1);
+    //   }
+    // });
   }
 
   ngOnInit(): void {
@@ -39,6 +50,15 @@ export class ManageListComponent implements OnInit {
   }
 
   toggleDropdown(dropdownList: HTMLDivElement) {
+    // remove all other dropdowns
+    const dropdowns = document.querySelectorAll('.dropdown-menu.show');
+    dropdowns.forEach((dropdown: any) => {
+      if (dropdown !== dropdownList) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    // toggle selected dropdown
     dropdownList.classList.toggle('show');
   }
 
@@ -81,49 +101,115 @@ export class ManageListComponent implements OnInit {
     this.pagination?.selectPageNumber(1);
   }
 
-  openAddModal() { 
-    this.modalService.open(AddAttendeeFormComponent, {
-      title: 'Ajouter un participant',
-      displayHeader: true,
-      animations: {
-        modal: {
-          enter: 'enter-scaling 0.1s ease-out',
-          leave: 'exit-scaling 0.1s ease-out',
+  openAddModal(entity?: string) {
+    if (this.listType === ManageListTypes.Attendees) {
+      this.modalService.open(AddAttendeeFormComponent, {
+        title: 'Ajouter un participant',
+        displayHeader: true,
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
         },
-        overlay: {
-          enter: 'fade-in 0.1s',
-          leave: 'fade-out 0.1s forwards',
-        },
-      },
-      size: {
-        width: '80vw',
-        height: 'fit-content',
+        size: {
+          width: '80vw',
+          height: 'fit-content',
+        }
+      });
+    } else if (this.listType === ManageListTypes.Diplomas) {
+      if (entity === 'diploma') {
+        this.modalService.open(AddAttendeeFormComponent, {
+          title: 'Ajouter un diplôme',
+          displayHeader: true,
+          animations: {
+            modal: {
+              enter: 'enter-scaling 0.1s ease-out',
+              leave: 'exit-scaling 0.1s ease-out',
+            },
+            overlay: {
+              enter: 'fade-in 0.1s',
+              leave: 'fade-out 0.1s forwards',
+            },
+          },
+          size: {
+            width: '80vw',
+            height: 'fit-content',
+          }
+        });
+      } else if (entity === 'category') {
+        this.modalService.open(AddAttendeeFormComponent, {
+          title: 'Ajouter une catégorie',
+          displayHeader: true,
+          animations: {
+            modal: {
+              enter: 'enter-scaling 0.1s ease-out',
+              leave: 'exit-scaling 0.1s ease-out',
+            },
+            overlay: {
+              enter: 'fade-in 0.1s',
+              leave: 'fade-out 0.1s forwards',
+            },
+          },
+          size: {
+            width: '80vw',
+            height: 'fit-content',
+          }
+        });
       }
-    });
+    }
   }
 
-  openModifyModal(item: any) { 
-    this.modalService.open(ModifyAttendeeFormComponent, {
-      title: 'Modifier le participant',
-      displayHeader: true,
-      data : {
-        listItem: item
-      },
-      animations: {
-        modal: {
-          enter: 'enter-scaling 0.1s ease-out',
-          leave: 'exit-scaling 0.1s ease-out',
+  openModifyModal(item: any) {
+    if (this.listType === ManageListTypes.Attendees) {
+      this.modalService.open(ModifyAttendeeFormComponent, {
+        title: 'Modifier le participant',
+        displayHeader: true,
+        data: {
+          listItem: item
         },
-        overlay: {
-          enter: 'fade-in 0.1s',
-          leave: 'fade-out 0.1s forwards',
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
         },
-      },
-      size: {
-        width: '80vw',
-        height: 'fit-content',
-      }
-    });
+        size: {
+          width: '80vw',
+          height: 'fit-content',
+        }
+      });
+    } else if (this.listType === ManageListTypes.Diplomas) {
+      this.modalService.open(ModifyAttendeeFormComponent, {
+        title: 'Modifier le diplôme',
+        displayHeader: true,
+        data: {
+          listItem: item
+        },
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
+        },
+        size: {
+          width: '80vw',
+          height: 'fit-content',
+        }
+      });
+    }
   }
 
   close() {
@@ -181,4 +267,6 @@ export class ManageListComponent implements OnInit {
     this.originalData = this.originalData.filter((item: any) => item.id !== itemId);
     this.data = this.data.filter((item: any) => item.id !== itemId);
   }
+
+
 }

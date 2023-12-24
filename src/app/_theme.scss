@@ -103,6 +103,9 @@ body {
   --toast-txt: #000;
   --toast-success: #24a258;
   --toast-error: #ec0000;
+
+  // dropdown
+  --dropdown-border: #bfbfbf;
 }
 
 body.dark-theme {
@@ -194,4 +197,7 @@ body.dark-theme {
   --toast-txt: #fff;
   --toast-success: #24a258;
   --toast-error: #ec0000;
+
+  // dropdown
+  --dropdown-border: #090909;
 }
