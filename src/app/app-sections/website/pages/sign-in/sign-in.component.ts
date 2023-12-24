@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
@@ -14,7 +15,9 @@ export class SignInComponent {
   form: any;
   submitted = false
 
-  constructor(private adminsService: AdminsService, private router: Router) {
+  constructor(private adminsService: AdminsService,
+    private router: Router,
+    private toast: HotToastService) {
     this.form = new FormGroup({
       login: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -48,7 +51,21 @@ export class SignInComponent {
             console.log(data); // TODO : handle error with a toast
           }
         },
-        error: err => console.error('An error occurred :', err),
+        error: err => {
+          this.toast.error('Une erreur est survenue', {
+            duration: 4000,
+            position: 'bottom-center',
+            style: {
+              backgroundColor: 'var(--toast-bkg)',
+              color: 'var(--toast-txt)',
+              borderRadius: '30px',
+              border: '1.5px solid var(--toast-error)',
+              fontWeight: '400',
+              padding: '3px 10px'
+            }
+          });
+          this.isSubmitting = false;
+        },
         complete: () => this.isSubmitting = false
       });
     } else {
