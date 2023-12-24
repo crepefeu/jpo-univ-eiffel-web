@@ -17,6 +17,8 @@ body {
   --input-border: #c3c3c3;
   --input-txt: #000;
   --input-placeholder: #a7a7a7;
+  --input-disabled: #bbbbbb;
+  --input-border-disabled: #898989;
 
   // colors
   --primary: #2f2a86;
@@ -121,6 +123,7 @@ body.dark-theme {
   --input-border: #1d1d1d;
   --input-txt: #fff;
   --input-placeholder: #8b8b8b;
+  --input-disabled: #494949;
 
   // colors
   --primary: rgb(255 255 255);

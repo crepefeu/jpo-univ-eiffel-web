@@ -50,7 +50,7 @@ export class OverviewComponent {
     this.analytics.getAllAttendees().subscribe((attendees) => {
       this.attendeesData = attendees;
       this.irlAttendeesRateChart.series = [attendees.irlAttendeesCount, (this.attendeesData.totalAttendeesCount - attendees.irlAttendeesCount)];
-      this.irlAttendeesRateChart.labels = ['Présentiel', 'Non-présentiel'];
+      this.irlAttendeesRateChart.labels = ['Présentiel', 'Distanciel'];
     });
 
     this.analytics.getDiplomaCategoriesAnalytics().subscribe((diplomaCategories) => {

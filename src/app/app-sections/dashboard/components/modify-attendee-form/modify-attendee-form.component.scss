@@ -62,6 +62,11 @@ input {
     outline: none;
     border: solid 1px var(--primary);
   }
+
+  &:disabled {
+    cursor: default;
+    background-color: var(--btn-disabled);
+  }
 }
 
 select {
@@ -74,6 +79,12 @@ select {
   background-color: var(--input-bkg);
   color: var(--input-txt);
   cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+    background-color: var(--input-disabled);
+    border: solid 1px var(--input-border-disabled);
+  }
 
   &:focus {
     outline: none;

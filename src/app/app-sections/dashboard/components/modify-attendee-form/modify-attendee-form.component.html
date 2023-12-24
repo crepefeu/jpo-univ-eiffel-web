@@ -43,10 +43,35 @@
             </div>
         </div>
 
+        <div class="inputs-ctn flex">
+            <div class="input-ctn">
+                <label for="">Satisfaction visite virtuelle</label>
+                <select formControlName="virtualTourSatisfaction">
+                    <option value="" selected disabled hidden>Pas répondu</option>
+                    <option [value]="0">Agréable</option>
+                    <option [value]="1">Neutre</option>
+                    <option [value]="2">Désagréable</option>
+                </select>
+            </div>
+    
+            <div class="input-ctn">
+                <label for="">Satisfaction site</label>
+                <select formControlName="websiteSatisfaction">
+                    <option value="" selected disabled hidden>Pas répondu</option>
+                    <option [value]="0">Agréable</option>
+                    <option [value]="1">Neutre</option>
+                    <option [value]="2">Désagréable</option>
+                </select>
+            </div>
+        </div>
+
         <small class="form-help">*Champs obligatoires</small>
 
         <div class="form-btns-ctn">
-            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyAttendeeForm.valid || !modifyAttendeeForm.dirty">Modifier</button>
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" 
+            [disabled]="!modifyAttendeeForm.valid || !modifyAttendeeForm.dirty" 
+            (click)="onSubmit()">Modifier</button>
+
             <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
                 Modifier
                 <span class="loader"></span>

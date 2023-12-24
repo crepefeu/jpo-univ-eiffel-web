@@ -36,6 +36,21 @@ export class AttendeesService {
     return this.http.post<any>(this.baseApiUrl + 'registerAttendee', formData);
   }
 
+  updateAttendee(attendeeInfos: any) {
+    const formData = new FormData();
+
+    formData.append('id', attendeeInfos.id);
+    formData.append('email', attendeeInfos.email);
+    formData.append('firstName', attendeeInfos.firstName);
+    formData.append('lastName', attendeeInfos.lastName);
+    formData.append('diplomaId', attendeeInfos.diplomaId);
+    formData.append('diplomaCategoryId', attendeeInfos.diplomaCategoryId)
+    formData.append('regionalCode', attendeeInfos.regionalCode);
+    formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
+    
+    return this.http.post<any>(this.baseApiUrl + 'updateAttendee', formData);
+  }
+
   deleteAttendee(attendeeId: number) {
     const formData = new FormData();
 
