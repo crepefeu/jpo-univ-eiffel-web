@@ -30,4 +30,12 @@ export class AttendeesService {
 
     return this.http.post<any>(this.baseApiUrl + 'registerAttendee', formData);
   }
+
+  deleteAttendee(attendeeId: number) {
+    const formData = new FormData();
+
+    formData.append('attendeeId', attendeeId.toString());
+
+    return this.http.post<any>(this.baseApiUrl + 'deleteAttendee', formData);
+  }
 }
