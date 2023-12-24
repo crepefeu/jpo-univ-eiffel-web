@@ -25,8 +25,13 @@ export class AttendeesService {
     formData.append('diplomaCategoryId', attendeeInfos.diplomaCategoryId)
     formData.append('regionalCode', attendeeInfos.region);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
-    formData.append('virtualTourSatisfaction', attendeeInfos.virtualTourSatisfaction);
-    formData.append('websiteSatisfaction', attendeeInfos.websiteSatisfaction);
+
+    if (attendeeInfos.virtualTourSatisfaction !== null) {
+      formData.append('virtualTourSatisfaction', attendeeInfos.virtualTourSatisfaction);
+    }
+    if (attendeeInfos.websiteSatisfaction !== null) {
+      formData.append('websiteSatisfaction', attendeeInfos.websiteSatisfaction);
+    }
 
     return this.http.post<any>(this.baseApiUrl + 'registerAttendee', formData);
   }

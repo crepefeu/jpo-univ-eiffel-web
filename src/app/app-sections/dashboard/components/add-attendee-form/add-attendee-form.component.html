@@ -25,7 +25,7 @@
                 </select>
             </div>
             <div class="input-ctn">
-                <label for="">Département de résidence*</label>
+                <label>Département de résidence*</label>
                 <select class="input" formControlName="region">
                     <option value="" selected disabled hidden>Choisissez un département</option>
                     <option *ngFor="let region of regionsList" [value]="region.code">
@@ -34,7 +34,7 @@
                 </select>
             </div>
             <div class="input-ctn">
-                <label for="">Participation à la JPO*</label>
+                <label>Participation à la JPO*</label>
                 <select class="input" formControlName="isIrlAttendee">
                     <option [value]="null" selected disabled hidden>Choisissez une valeur</option>
                     <option [value]="true">Présentielle</option>
@@ -46,7 +46,7 @@
         <small class="form-help">*Champs obligatoires</small>
 
         <div class="form-btns-ctn">
-            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!addAttendeeForm.valid">Ajouter</button>
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!addAttendeeForm.valid" (click)="onSubmit()">Ajouter</button>
             <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
                 Ajouter
                 <span class="loader"></span>
