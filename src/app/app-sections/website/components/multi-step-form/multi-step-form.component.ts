@@ -72,7 +72,7 @@ export class MultiStepFormComponent implements OnInit {
     this.isSubmitting = true;
 
     let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
-    
+
     let attendeeInfos = {
       email: this.infosForm.controls['email'].value,
       firstName: this.infosForm.controls['firstName'].value,
@@ -114,8 +114,10 @@ export class MultiStepFormComponent implements OnInit {
               padding: '3px 10px'
             }
           });
+          this.isSubmitting = false;
           this.modal.close();
         } else {
+          this.isSubmitting = false;
           this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
             duration: 4000,
             position: 'bottom-center',
@@ -130,18 +132,21 @@ export class MultiStepFormComponent implements OnInit {
           });
         }
       },
-      error: err => this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
-        duration: 4000,
-        position: 'bottom-center',
-        style: {
-          backgroundColor: 'var(--toast-bkg)',
-          color: 'var(--toast-txt)',
-          borderRadius: '30px',
-          border: '1.5px solid var(--toast-error)',
-          fontWeight: '400',
-          padding: '3px 10px'
-        }
-      }),
+      error: err => {
+        this.isSubmitting = false;
+        this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        })
+      },
       complete: () => {
         this.isSubmitting = false;
       }
