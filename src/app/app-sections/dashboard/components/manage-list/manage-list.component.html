@@ -40,19 +40,19 @@
             </thead>
             <ng-container *ngIf="originalData">
                 <tbody class="table-body">
-                    <tr class="data-row" *ngFor="let item of (data | search: searchString) | slice
+                    <tr class="data-row" *ngFor="let attendee of (data | search: searchString) | slice
                     : (pagination.currentPage - 1) * pagination.pageSize
                     : pagination.currentPage * pagination.pageSize">
-                        <td class="data">{{item.firstName}}</td>
-                        <td class="data">{{item.lastName}}</td>
-                        <td class="data">{{item.email}}</td>
-                        <td class="data" *ngIf="item.isIrlAttendee">Présentielle</td>
-                        <td class="data" *ngIf="!item.isIrlAttendee">Distancielle</td>
+                        <td class="data">{{attendee.firstName}}</td>
+                        <td class="data">{{attendee.lastName}}</td>
+                        <td class="data">{{attendee.email}}</td>
+                        <td class="data" *ngIf="attendee.isIrlAttendee">Présentielle</td>
+                        <td class="data" *ngIf="!attendee.isIrlAttendee">Distancielle</td>
                         <td class="action-buttons-ctn">
-                            <button class="action-btn" (click)="openModifyModal(item)">
+                            <button class="action-btn" (click)="openModifyModal(attendee)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
-                            <button class="action-btn" (click)="deleteItem(item.id)">
+                            <button class="action-btn" (click)="deleteItem(attendee.id)">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </td>
@@ -109,16 +109,16 @@
             </thead>
             <ng-container *ngIf="originalData">
                 <tbody class="table-body">
-                    <tr class="data-row" *ngFor="let item of (data | search: searchString) | slice
+                    <tr class="data-row" *ngFor="let diploma of (data | search: searchString) | slice
                     : (pagination.currentPage - 1) * pagination.pageSize
                     : pagination.currentPage * pagination.pageSize">
-                        <td class="data">{{item.name}}</td>
-                        <td class="data">{{item.category.name}}</td>
+                        <td class="data">{{diploma.name}}</td>
+                        <td class="data">{{diploma.category.name}}</td>
                         <td class="action-buttons-ctn">
                             <button class="action-btn">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
-                            <button class="action-btn">
+                            <button class="action-btn" (click)="deleteItem(diploma.id)">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </td>

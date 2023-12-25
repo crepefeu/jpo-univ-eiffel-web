@@ -27,4 +27,12 @@ export class DiplomasService {
 
     return this.httpClient.post<any>(this.baseApiUrl + 'addDiploma', formData);
   }
+
+  deleteDiploma(diplomaId: number) {
+    const formData = new FormData();
+
+    formData.append('diplomaId', diplomaId.toString());
+    
+    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiploma', formData);
+  }
 }

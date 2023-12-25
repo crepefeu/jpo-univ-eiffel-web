@@ -8,6 +8,7 @@ import { PaginationComponent } from '../pagination/pagination.component';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AddDiplomaFormComponent } from '../add-diploma-form/add-diploma-form.component';
+import { DiplomasService } from 'src/app/services/diplomas.service';
 
 @Component({
   selector: 'app-manage-list',
@@ -28,7 +29,8 @@ export class ManageListComponent implements OnInit {
     private modalService: ModalService,
     private attendees: AttendeesService,
     private toast: HotToastService,
-    private renderer: Renderer2) {
+    private renderer: Renderer2,
+    private diplomas: DiplomasService) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
   }
 
@@ -208,56 +210,101 @@ export class ManageListComponent implements OnInit {
   }
 
   deleteItem(itemId: any) {
-    this.attendees.deleteAttendee(itemId).subscribe({
-      next: data => {
-        if (data.status == 'error') {
-          this.toast.error(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-error)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
-          });
-        } else if (data.status == 'success') {
-          this.toast.success(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-success)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
-          });
-          this.deleteItemFromList(itemId);
-        }
-      },
-      error: err => this.toast.error('Une erreur est survenue', {
-        duration: 4000,
-        position: 'bottom-center',
-        style: {
-          backgroundColor: 'var(--toast-bkg)',
-          color: 'var(--toast-txt)',
-          borderRadius: '30px',
-          border: '1.5px solid var(--toast-error)',
-          fontWeight: '400',
-          padding: '3px 10px'
-        }
-      }),
-    });
+    if (this.listType === ManageListTypes.Attendees) {
+      this.attendees.deleteAttendee(itemId).subscribe({
+        next: data => {
+          if (data.status == 'error') {
+            this.toast.error(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-error)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+          } else if (data.status == 'success') {
+            this.toast.success(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-success)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+            this.deleteItemFromList(itemId);
+          }
+        },
+        error: err => this.toast.error('Une erreur est survenue', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        }),
+      });
+    } else if (this.listType === ManageListTypes.Diplomas) {
+      this.diplomas.deleteDiploma(itemId).subscribe({
+        next: data => {
+          if (data.status == 'error') {
+            this.toast.error(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-error)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+          } else if (data.status == 'success') {
+            this.toast.success(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-success)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+            this.deleteItemFromList(itemId);
+          }
+        },
+        error: err => this.toast.error('Une erreur est survenue', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        }),
+      });
+    }
   }
 
   deleteItemFromList(itemId: any) {
     this.originalData = this.originalData.filter((item: any) => item.id !== itemId);
     this.data = this.data.filter((item: any) => item.id !== itemId);
   }
-
-
 }
