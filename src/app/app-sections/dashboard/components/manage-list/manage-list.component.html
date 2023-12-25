@@ -1,8 +1,6 @@
 <ng-container *ngIf="listType === 'Attendees'">
     <div class="manage-list-ctn">
         <div class="list-header">
-            <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
-                (ngModelChange)="updateSearchString(searchString)">
             <button class="header-btn" (click)="openAddModal()">
                 <i class="bi bi-database-fill-add"></i>
             </button>
@@ -17,6 +15,8 @@
                     </div>
                 </div>
             </button>
+            <input class="search-input" type="text" placeholder="Rechercher un participant" [(ngModel)]="searchString"
+                (ngModelChange)="updateSearchString(searchString)">
         </div>
         <table class="data-table">
             <thead class="table-header">
@@ -29,7 +29,7 @@
                             Participation
                             <i class="bi bi bi-filter filter-btn"></i>
                         </div>
-                        <div #participationDropdownList class="dropdown-menu">
+                        <div #participationDropdownList class="dropdown-menu filter">
                             <div class="dropdown-item" (click)="onFilterChange('all')">Tous</div>
                             <div class="dropdown-item" (click)="onFilterChange('irl')">Présentielle</div>
                             <div class="dropdown-item" (click)="onFilterChange('dist')">Distancielle</div>

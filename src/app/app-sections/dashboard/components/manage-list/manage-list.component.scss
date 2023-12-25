@@ -178,6 +178,10 @@
     border-radius: 10px;
     border: solid 1px var(--dropdown-border);
     cursor: default;
+
+    &.filter {
+        top: 25px;
+    }
 }
 
 .dropdown-item {
