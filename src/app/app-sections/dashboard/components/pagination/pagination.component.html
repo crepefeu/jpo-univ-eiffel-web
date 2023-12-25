@@ -28,7 +28,7 @@
       <!-- next button -->
       <li
         [class]="
-          currentPage === totalPages.length ? 'page-item disabled' : 'page-item'
+          currentPage === totalPages.length || totalPages.length == 0 ? 'page-item disabled' : 'page-item'
         "
         *ngIf="nextPreviousButtons"
       >

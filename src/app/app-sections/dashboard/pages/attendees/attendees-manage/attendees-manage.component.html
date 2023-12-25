@@ -7,6 +7,6 @@
                 <div class="data-badge" *ngIf="attendeesData?.dataList?.length < 1">Aucunes données participants</div>    
             </ng-container>
         </div>
-        <app-manage-list [isLoading]="isLoading" [originalData]="attendeesData?.dataList" [listType]="listType"></app-manage-list>
+        <app-manage-list [isLoading]="isLoading" [originalData]="attendeesData.dataList" [listType]="listType"></app-manage-list>
     </div>
 </div>
