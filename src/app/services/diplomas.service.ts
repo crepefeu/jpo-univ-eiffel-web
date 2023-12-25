@@ -32,7 +32,15 @@ export class DiplomasService {
     const formData = new FormData();
 
     formData.append('diplomaId', diplomaId.toString());
-    
+
     return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiploma', formData);
+  }
+
+  addDiplomaCategory(diplomaCategory: any) {
+    const formData = new FormData();
+
+    formData.append('diplomaCategoryName', diplomaCategory.diplomaCategoryName);
+
+    return this.httpClient.post<any>(this.baseApiUrl + 'addDiplomaCategory', formData);
   }
 }

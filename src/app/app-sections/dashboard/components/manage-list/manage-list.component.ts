@@ -9,6 +9,7 @@ import { AttendeesService } from 'src/app/services/attendees.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AddDiplomaFormComponent } from '../add-diploma-form/add-diploma-form.component';
 import { DiplomasService } from 'src/app/services/diplomas.service';
+import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/add-diploma-category-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -135,7 +136,7 @@ export class ManageListComponent implements OnInit {
           }
         });
       } else if (entity === 'category') {
-        this.modalService.open(AddAttendeeFormComponent, {
+        this.modalService.open(AddDiplomaCategoryFormComponent, {
           title: 'Ajouter une catégorie',
           displayHeader: true,
           animations: {

@@ -1,0 +1,20 @@
+<div class="form-ctn">
+    <form [formGroup]="addDiplomaCategoryForm">
+        <div class="inputs-ctn">
+            <div class="input-ctn">
+                <label for="">Nom de la catégorie*</label>
+                <input type="text" formControlName="diplomaCategoryName" placeholder="Nom de la catégorie">
+            </div>
+        </div>
+
+        <small class="form-help">*Champs obligatoires</small>
+
+        <div class="form-btns-ctn">
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!addDiplomaCategoryForm.valid" (click)="onSubmit()">Ajouter</button>
+            <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
+                Ajouter
+                <span class="loader"></span>
+            </button>
+        </div>
+    </form>
+</div>
