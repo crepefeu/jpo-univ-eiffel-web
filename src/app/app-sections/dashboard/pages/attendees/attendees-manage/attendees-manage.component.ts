@@ -12,14 +12,17 @@ export class AttendeesManageComponent implements OnInit {
 
   attendeesData: any;
   listType: ManageListTypes = ManageListTypes.Attendees;
+  isLoading = false;
 
   constructor(private attendeesService: AttendeesService,
     private toast: HotToastService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.attendeesService.getAllAttendees().subscribe({
       next: data => {
         this.attendeesData = data;
+        this.isLoading = false;
       },
       error: err => {
         this.toast.error('Une erreur est survenue lors du chargement des données.', {
@@ -34,6 +37,7 @@ export class AttendeesManageComponent implements OnInit {
             padding: '3px 10px'
           }
         });
+        this.isLoading = false;
       }
     });
   }

@@ -21,6 +21,7 @@ export class ManageListComponent implements OnInit {
 
   @Input() originalData: any[] = [];
   @Input() listType?: ManageListTypes;
+  @Input() isLoading?: boolean;
 
   data: any[] = [];
   searchString: string = "";
@@ -29,7 +30,6 @@ export class ManageListComponent implements OnInit {
     private modalService: ModalService,
     private attendees: AttendeesService,
     private toast: HotToastService,
-    private renderer: Renderer2,
     private diplomas: DiplomasService) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
   }
