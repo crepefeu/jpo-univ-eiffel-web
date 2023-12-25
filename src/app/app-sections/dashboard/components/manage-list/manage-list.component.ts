@@ -7,6 +7,7 @@ import { ModifyAttendeeFormComponent } from '../modify-attendee-form/modify-atte
 import { PaginationComponent } from '../pagination/pagination.component';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { AddDiplomaFormComponent } from '../add-diploma-form/add-diploma-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -15,9 +16,6 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class ManageListComponent implements OnInit {
 
-  // @ViewChild('dropdownMenu1') dropdownMenu1?: ElementRef;
-  // @ViewChild('dropdownBtn1') dropdownBtn1?: ElementRef;
-  // @ViewChild('dropdownIcon1') dropdownIcon1?: ElementRef;
   @ViewChild('pagination') pagination?: PaginationComponent;
 
   @Input() originalData: any[] = [];
@@ -32,13 +30,6 @@ export class ManageListComponent implements OnInit {
     private toast: HotToastService,
     private renderer: Renderer2) {
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
-
-    // this.renderer.listen('window', 'click', (e: Event) => {
-    //   if (e.target !== this.dropdownMenu1?.nativeElement && e.target !== this.dropdownBtn1?.nativeElement && e.target !== this.dropdownIcon1?.nativeElement) {
-    //     this.dropdownMenu1?.nativeElement.classList.remove('show');
-    //     console.log(this.dropdownMenu1);
-    //   }
-    // });
   }
 
   ngOnInit(): void {
@@ -123,7 +114,7 @@ export class ManageListComponent implements OnInit {
       });
     } else if (this.listType === ManageListTypes.Diplomas) {
       if (entity === 'diploma') {
-        this.modalService.open(AddAttendeeFormComponent, {
+        this.modalService.open(AddDiplomaFormComponent, {
           title: 'Ajouter un diplôme',
           displayHeader: true,
           animations: {

@@ -1,0 +1,29 @@
+<div class="form-ctn">
+    <form [formGroup]="addDiplomaForm">
+        <div class="inputs-ctn flex">
+            <div class="input-ctn">
+                <label for="">Nom du diplôme*</label>
+                <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme">
+            </div>
+            <div class="input-ctn">
+                <label>Catégorie du diplôme*</label>
+                <select class="input" formControlName="diplomaCategoryId">
+                    <option value="" selected disabled hidden>Choisissez une catégorie</option>
+                    <option *ngFor="let category of diplomaCategories" [value]="category.id">
+                        {{category.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        <small class="form-help">*Champs obligatoires</small>
+
+        <div class="form-btns-ctn">
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!addDiplomaForm.valid" (click)="onSubmit()">Ajouter</button>
+            <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
+                Ajouter
+                <span class="loader"></span>
+            </button>
+        </div>
+    </form>
+</div>

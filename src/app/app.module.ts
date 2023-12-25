@@ -41,6 +41,7 @@ import { MultiStepFormComponent } from './app-sections/website/components/multi-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
+import { AddDiplomaFormComponent } from './app-sections/dashboard/components/add-diploma-form/add-diploma-form.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { provideHotToastConfig } from '@ngneat/hot-toast';
     ModifyAttendeeFormComponent,
     CardsComponent,
     MultiStepFormComponent,
-    FaqComponent
+    FaqComponent,
+    AddDiplomaFormComponent
   ],
   imports: [
     BrowserModule,

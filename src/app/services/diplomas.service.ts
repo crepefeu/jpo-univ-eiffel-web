@@ -14,4 +14,17 @@ export class DiplomasService {
   getAllDiplomas() {
     return this.httpClient.get<any>(this.baseApiUrl + 'getAllDiplomas');
   }
+
+  getAllDiplomaCategories() {
+    return this.httpClient.get<any>(this.baseApiUrl + 'getAllDiplomaCategories');
+  }
+
+  addDiploma(diploma: any) {
+    const formData = new FormData();
+
+    formData.append('diplomaName', diploma.diplomaName);
+    formData.append('diplomaCategoryId', diploma.diplomaCategoryId);
+
+    return this.httpClient.post<any>(this.baseApiUrl + 'addDiploma', formData);
+  }
 }
