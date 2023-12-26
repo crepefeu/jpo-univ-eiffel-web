@@ -47,4 +47,12 @@ export class DiplomasService {
 
     return this.httpClient.post<any>(this.baseApiUrl + 'addDiplomaCategory', formData);
   }
+
+  deleteDiplomaCategory(diplomaCategoryId: number) {
+    const formData = new FormData();
+
+    formData.append('diplomaCategoryId', diplomaCategoryId.toString());
+
+    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiplomaCategory', formData);
+  }
 }

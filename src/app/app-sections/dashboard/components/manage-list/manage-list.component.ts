@@ -302,6 +302,51 @@ export class ManageListComponent implements OnInit {
           }
         }),
       });
+    } else if (this.listType === ManageListTypes.DiplomaCategories) {
+      this.diplomas.deleteDiplomaCategory(itemId).subscribe({
+        next: data => {
+          if (data.status == 'error') {
+            this.toast.error(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-error)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+          } else if (data.status == 'success') {
+            this.toast.success(data.message, {
+              duration: 4000,
+              position: 'bottom-center',
+              style: {
+                backgroundColor: 'var(--toast-bkg)',
+                color: 'var(--toast-txt)',
+                borderRadius: '30px',
+                border: '1.5px solid var(--toast-success)',
+                fontWeight: '400',
+                padding: '3px 10px'
+              }
+            });
+            this.deleteItemFromList(itemId);
+          }
+        },
+        error: err => this.toast.error('Une erreur est survenue', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        }),
+      });
     }
   }
 
