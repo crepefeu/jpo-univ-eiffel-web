@@ -6,6 +6,7 @@
 .section-details {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 1.1rem;
     font-weight: 500;
     color: rgb(117, 117, 117);
@@ -22,7 +23,7 @@
     color: var(--white);
     padding: 5px 15px;
     background-color: var(--badge-info);
-    border-radius: 10px;
+    border-radius: 30px;
     cursor: default;
 }
 
@@ -50,10 +51,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 2px 8px 2px 8px;
-  height: 1.8rem;
+  height: 2rem;
   width: fit-content;
   border-radius: 1rem;
-  background-color: var(--switch-toggle);
+  background-color: var(--list-switch-bkg);
   border: 1px solid var(--switch-toggle-border);
   cursor: pointer;
 }
@@ -61,12 +62,12 @@
 .switch-btn {
   position: absolute;
   left: 3px;
-  height: 1.3rem;
-  width: 44%;
+  height: 1.5rem;
+  width: 45%;
   border-radius: 30px;
   transition: all 0.2s ease-in-out;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
-  background-color: var(--primary);
+  background-color: var(--list-switch-toggled);
   z-index: 1;
 }
 
@@ -76,6 +77,7 @@
 }
 
 .toggle-value {
+  padding: 0px 5px;
   font-size: 0.7rem;
   color: white;
   z-index: 2;
@@ -83,6 +85,7 @@
 }
 
 .toggle-value2 {
+  padding: 0px 5px;
   font-size: 0.7rem;
   color: rgb(145, 145, 145);
   z-index: 2;
@@ -90,7 +93,7 @@
 }
 
 .toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
-  transform: translateX(60px);
+  transform: translateX(71px);
   width: 50%;
 }
 

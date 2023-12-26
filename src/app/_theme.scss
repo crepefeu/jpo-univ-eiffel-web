@@ -106,6 +106,12 @@ body {
 
   // dropdown
   --dropdown-border: #bfbfbf;
+
+  // list switch btn
+  --list-switch-bkg: rgb(241, 241, 241);
+  --list-switch-toggled: #2f2a86;
+  --list-switch-text-toggled: #fff;
+  --list-switch-text-untoggled: rgb(145, 145, 145);
 }
 
 body.dark-theme {
@@ -200,4 +206,10 @@ body.dark-theme {
 
   // dropdown
   --dropdown-border: #090909;
+
+  // list switch btn
+  --list-switch-bkg: #393939;
+  --list-switch-toggled: #0b0b0b;
+  --list-switch-text-toggled: #fff;
+  --list-switch-text-untoggled: rgb(145, 145, 145);
 }
