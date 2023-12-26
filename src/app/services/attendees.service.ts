@@ -36,7 +36,7 @@ export class AttendeesService {
     return this.http.post<any>(this.baseApiUrl + 'registerAttendee', formData);
   }
 
-  updateAttendee(attendeeInfos: any) {
+  modifyAttendee(attendeeInfos: any) {
     const formData = new FormData();
 
     formData.append('id', attendeeInfos.id);
@@ -48,7 +48,7 @@ export class AttendeesService {
     formData.append('regionalCode', attendeeInfos.regionalCode);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
     
-    return this.http.post<any>(this.baseApiUrl + 'updateAttendee', formData);
+    return this.http.post<any>(this.baseApiUrl + 'modifyAttendee', formData);
   }
 
   deleteAttendee(attendeeId: number) {

@@ -43,6 +43,7 @@ import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
 import { provideHotToastConfig } from '@ngneat/hot-toast';
 import { AddDiplomaFormComponent } from './app-sections/dashboard/components/add-diploma-form/add-diploma-form.component';
 import { AddDiplomaCategoryFormComponent } from './app-sections/dashboard/components/add-diploma-category-form/add-diploma-category-form.component';
+import { ModifyDiplomaFormComponent } from './app-sections/dashboard/components/modify-diploma-form/modify-diploma-form.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { AddDiplomaCategoryFormComponent } from './app-sections/dashboard/compon
     MultiStepFormComponent,
     FaqComponent,
     AddDiplomaFormComponent,
-    AddDiplomaCategoryFormComponent
+    AddDiplomaCategoryFormComponent,
+    ModifyDiplomaFormComponent
   ],
   imports: [
     BrowserModule,

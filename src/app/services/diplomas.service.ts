@@ -32,6 +32,16 @@ export class DiplomasService {
     return this.httpClient.post<any>(this.baseApiUrl + 'addDiploma', formData);
   }
 
+  modifyDiploma(diploma: any) {
+    const formData= new FormData();
+
+    formData.append('id', diploma.id);
+    formData.append('diplomaName', diploma.diplomaName);
+    formData.append('diplomaCategoryId', diploma.diplomaCategoryId);
+
+    return this.httpClient.post<any>(this.baseApiUrl + 'modifyDiploma', formData);
+  }
+
   deleteDiploma(diplomaId: number) {
     const formData = new FormData();
 

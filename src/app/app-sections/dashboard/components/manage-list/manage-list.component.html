@@ -115,7 +115,7 @@
                         <td class="data">{{diploma.name}}</td>
                         <td class="data">{{diploma.category.name}}</td>
                         <td class="action-buttons-ctn">
-                            <button class="action-btn">
+                            <button class="action-btn" (click)="openModifyModal(diploma)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
                             <button class="action-btn" (click)="deleteItem(diploma.id)">

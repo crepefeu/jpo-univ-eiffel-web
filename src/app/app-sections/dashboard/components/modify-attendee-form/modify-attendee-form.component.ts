@@ -32,14 +32,14 @@ export class ModifyAttendeeFormComponent implements OnInit {
   ngOnInit(): void {
 
     this.modifyAttendeeForm = new FormGroup({
-      firstName: new FormControl(this.data?.listItem.firstName ?? '', Validators.required),
-      lastName: new FormControl(this.data?.listItem.lastName ?? '', Validators.required),
-      email: new FormControl(this.data?.listItem.email ?? '', Validators.required),
-      diplomaId: new FormControl(this.data?.listItem.diplomaId ?? '', Validators.required),
-      region: new FormControl(this.data?.listItem.regionalCode ?? '', Validators.required),
-      isIrlAttendee: new FormControl(this.data?.listItem.isIrlAttendee ?? '', Validators.required),
-      virtualTourSatisfaction: new FormControl(this.data?.listItem.virtualTourSatisfaction ?? '', Validators.required),
-      websiteSatisfaction: new FormControl(this.data?.listItem.websiteSatisfaction ?? '', Validators.required),
+      firstName: new FormControl(this.data?.item.firstName ?? '', Validators.required),
+      lastName: new FormControl(this.data?.item.lastName ?? '', Validators.required),
+      email: new FormControl(this.data?.item.email ?? '', Validators.required),
+      diplomaId: new FormControl(this.data?.item.diplomaId ?? '', Validators.required),
+      region: new FormControl(this.data?.item.regionalCode ?? '', Validators.required),
+      isIrlAttendee: new FormControl(this.data?.item.isIrlAttendee ?? '', Validators.required),
+      virtualTourSatisfaction: new FormControl(this.data?.item.virtualTourSatisfaction ?? '', Validators.required),
+      websiteSatisfaction: new FormControl(this.data?.item.websiteSatisfaction ?? '', Validators.required),
     });
 
     this.modifyAttendeeForm.controls['virtualTourSatisfaction'].disable();
@@ -68,7 +68,7 @@ export class ModifyAttendeeFormComponent implements OnInit {
     let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.modifyAttendeeForm.controls['diplomaId'].value));
     
     let attendee = {
-      id: this.data.listItem.id,
+      id: this.data.item.id,
       firstName: this.modifyAttendeeForm.controls['firstName'].value,
       lastName: this.modifyAttendeeForm.controls['lastName'].value,
       email: this.modifyAttendeeForm.controls['email'].value,
@@ -78,7 +78,7 @@ export class ModifyAttendeeFormComponent implements OnInit {
       regionalCode: this.modifyAttendeeForm.controls['region'].value
     };
 
-    this.attendees.updateAttendee(attendee).subscribe({
+    this.attendees.modifyAttendee(attendee).subscribe({
       next: data => {
         if (data.status === 'success') {
           this.toast.success(data.message, {

@@ -11,6 +11,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { AddDiplomaFormComponent } from '../add-diploma-form/add-diploma-form.component';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/add-diploma-category-form.component';
+import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -116,7 +117,7 @@ export class ManageListComponent implements OnInit {
           height: 'fit-content',
         }
       });
-    } else if (this.listType === ManageListTypes.Diplomas) {
+    } else if (this.listType === ManageListTypes.Diplomas || this.listType === ManageListTypes.DiplomaCategories) {
       if (entity === 'diploma') {
         this.modalService.open(AddDiplomaFormComponent, {
           title: 'Ajouter un diplôme',
@@ -165,7 +166,7 @@ export class ManageListComponent implements OnInit {
         title: 'Modifier le participant',
         displayHeader: true,
         data: {
-          listItem: item
+          item
         },
         animations: {
           modal: {
@@ -183,11 +184,11 @@ export class ManageListComponent implements OnInit {
         }
       });
     } else if (this.listType === ManageListTypes.Diplomas) {
-      this.modalService.open(ModifyAttendeeFormComponent, {
+      this.modalService.open(ModifyDiplomaFormComponent, {
         title: 'Modifier le diplôme',
         displayHeader: true,
         data: {
-          listItem: item
+          item
         },
         animations: {
           modal: {
