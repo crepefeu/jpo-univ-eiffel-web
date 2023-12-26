@@ -31,3 +31,71 @@
     flex-direction: column;
     gap: 20px;
 }
+
+.list-toggle {
+  width: fit-content;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.toggle-ctn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px 2px 8px;
+  height: 1.8rem;
+  width: fit-content;
+  border-radius: 1rem;
+  background-color: var(--switch-toggle);
+  border: 1px solid var(--switch-toggle-border);
+  cursor: pointer;
+}
+
+.switch-btn {
+  position: absolute;
+  left: 3px;
+  height: 1.3rem;
+  width: 44%;
+  border-radius: 30px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  background-color: var(--primary);
+  z-index: 1;
+}
+
+.toggle-values-ctn {
+  display: flex;
+  gap: 10px;
+}
+
+.toggle-value {
+  font-size: 0.7rem;
+  color: white;
+  z-index: 2;
+}
+
+.toggle-value2 {
+  font-size: 0.7rem;
+  color: rgb(145, 145, 145);
+  z-index: 2;
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
+  transform: translateX(60px);
+  width: 50%;
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .toggle-value {
+  color: rgb(145, 145, 145);
+}
+
+.toggle-checkbox:checked ~ .toggle-ctn .toggle-value2 {
+  color: white;
+}

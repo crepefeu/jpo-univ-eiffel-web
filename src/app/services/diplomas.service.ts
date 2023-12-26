@@ -19,6 +19,10 @@ export class DiplomasService {
     return this.httpClient.get<any>(this.baseApiUrl + 'getAllDiplomaCategories');
   }
 
+  getAllDiplomaCategoriesWithDiplomas() {
+    return this.httpClient.get<any>(this.baseApiUrl + 'getAllDiplomaCategoriesWithDiplomas')
+  }
+
   addDiploma(diploma: any) {
     const formData = new FormData();
 

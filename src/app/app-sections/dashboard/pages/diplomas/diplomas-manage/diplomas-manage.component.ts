@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 
@@ -11,16 +12,66 @@ export class DiplomasManageComponent implements OnInit {
 
   listType = ManageListTypes.Diplomas;
   diplomasData: any;
+  diplomaCategoriesData: any;
+  isDiplomasLoading = false;
+  isDiplomaCategoriesLoading = false;
 
-  constructor(private diplomas: DiplomasService) { }
+  constructor(private diplomas: DiplomasService,
+    private toast: HotToastService) { }
 
   ngOnInit(): void {
+    this.isDiplomasLoading = true;
     this.diplomas.getAllDiplomas().subscribe({
       next: data => {
-        this.diplomasData = data.sort((a: any, b: any) => a.category.name.localeCompare(b.category.name))
+        this.diplomasData = data.sort((a: any, b: any) => a.category.name.localeCompare(b.category.name));
       },
-      error: err => console.error('An error occurred :', err),
-      complete: () => console.log('getAllDiplomas() completed')
+      error: err => {
+        this.toast.error('Une erreur est survenue', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        });
+        this.isDiplomasLoading = false
+      },
+      complete: () => this.isDiplomasLoading = false
     });
+
+    this.isDiplomaCategoriesLoading = true
+    this.diplomas.getAllDiplomaCategoriesWithDiplomas().subscribe({
+      next: data => {
+        this.diplomaCategoriesData = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+      },
+      error: err => {
+        this.toast.error('Une erreur est survenue', {
+          duration: 4000,
+          position: 'bottom-center',
+          style: {
+            backgroundColor: 'var(--toast-bkg)',
+            color: 'var(--toast-txt)',
+            borderRadius: '30px',
+            border: '1.5px solid var(--toast-error)',
+            fontWeight: '400',
+            padding: '3px 10px'
+          }
+        });
+        this.isDiplomaCategoriesLoading = false
+      },
+      complete: () => this.isDiplomaCategoriesLoading = false
+    })
+  }
+
+  onListTypeChange(switchToggle: HTMLInputElement) {
+    if (switchToggle.checked) {
+      this.listType = ManageListTypes.DiplomaCategories;
+    } else {
+      this.listType = ManageListTypes.Diplomas;
+    }
   }
 }
