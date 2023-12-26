@@ -147,7 +147,8 @@
                 <p>participants</p>
             </div>
             <div class="see-more-btn-ctn">
-                <button routerLink="/admin/dashboard/attendees/manage" routerLinkActive="router-link-active"  class="see-more-btn">Voir plus</button>
+                <button routerLink="/admin/dashboard/attendees/manage" routerLinkActive="router-link-active"
+                    class="see-more-btn">Voir plus</button>
             </div>
         </div>
 
@@ -180,44 +181,22 @@
             </apx-chart>
         </div>
 
-        <ng-container *ngIf="!this.userPreferences.showLegendOnCharts">
-            <div class="bento5 no-legend">
-                <h1 class="chart-title">Catégories de diplômes</h1>
-                <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
-                    [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomasRateChart.legend"
-                    [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="irlAttendeesRateChart.dataLabels">
-                </apx-chart>
-            </div>
-        </ng-container>
+        <div class="bento5" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <h1 class="chart-title">Catégories de diplômes</h1>
+            <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
+                [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels"
+                [legend]="diplomasRateChart.legend" [responsive]="irlAttendeesRateChart.responsive"
+                [dataLabels]="irlAttendeesRateChart.dataLabels">
+            </apx-chart>
+        </div>
 
-        <ng-container *ngIf="this.userPreferences.showLegendOnCharts">
-            <div class="bento5">
-                <h1 class="chart-title">Catégories de diplômes</h1>
-                <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
-                    [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels" [legend]="diplomaCategoriesRateChart.legend"
-                    [responsive]="irlAttendeesRateChart.responsive" [dataLabels]="diplomaCategoriesRateChart.dataLabels">
-                </apx-chart>
-            </div>
-        </ng-container>
-
-        <ng-container *ngIf="!this.userPreferences.showLegendOnCharts">
-            <div class="bento6 no-legend">
-                <h1 class="chart-title">Diplômes</h1>
-                <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
-                    [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
-                    [dataLabels]="diplomasRateChart.dataLabels" [responsive]="diplomasRateChart.responsive">
-                </apx-chart>
-            </div>
-        </ng-container>
-
-        <ng-container *ngIf="this.userPreferences.showLegendOnCharts">
-            <div class="bento6">
-                <h1 class="chart-title">Diplômes</h1>
-                <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
-                    [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels" [legend]="diplomasRateChart.legend"
-                    [dataLabels]="diplomasRateChart.dataLabels" [responsive]="diplomasRateChart.responsive">
-                </apx-chart>
-            </div>
-        </ng-container>
+        <div class="bento6" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <h1 class="chart-title">Diplômes</h1>
+            <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
+                [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels"
+                [legend]="diplomasRateChart.legend" [dataLabels]="diplomasRateChart.dataLabels"
+                [responsive]="diplomasRateChart.responsive">
+            </apx-chart>
+        </div>
     </div>
 </div>
