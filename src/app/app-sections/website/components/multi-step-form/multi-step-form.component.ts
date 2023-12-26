@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Diploma } from 'src/app/models/diploma';
+import { Region } from 'src/app/models/region';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -21,8 +23,8 @@ export class MultiStepFormComponent implements OnInit {
 
   isSubmitting = false;
 
-  diplomasList?: any[];
-  regionsList?: any[];
+  diplomasList: Diploma[] = [];
+  regionsList: Region[] = [];
 
   constructor(private modal: ModalService,
     private diplomas: DiplomasService,
@@ -53,7 +55,7 @@ export class MultiStepFormComponent implements OnInit {
   ngOnInit(): void {
     this.diplomas.getAllDiplomas().subscribe({
       next: data => {
-        this.diplomasList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
       error: err => console.error('An error occurred :', err),
       complete: () => console.log('getAllDiplomas() completed')
@@ -61,7 +63,7 @@ export class MultiStepFormComponent implements OnInit {
 
     this.regions.getAllRegions().subscribe({
       next: data => {
-        this.regionsList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
       error: err => console.error('An error occurred :', err),
       complete: () => console.log('getAllRegions() completed')
@@ -71,14 +73,14 @@ export class MultiStepFormComponent implements OnInit {
   submit() {
     this.isSubmitting = true;
 
-    let diploma = this.diplomasList!.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
+    let diploma = this.diplomasList.find(diploma => diploma.id === Number(this.infosForm.controls['diplomaId'].value));
 
     let attendeeInfos = {
       email: this.infosForm.controls['email'].value,
       firstName: this.infosForm.controls['firstName'].value,
       lastName: this.infosForm.controls['lastName'].value,
-      diplomaId: diploma.id,
-      diplomaCategoryId: diploma.category.id,
+      diplomaId: diploma?.id,
+      diplomaCategoryId: diploma?.category.id,
       region: this.infosForm.controls['region'].value,
       isIrlAttendee: this.jpoForm.controls['isIrlAttendee'].value,
       virtualTourSatisfaction: this.virtualTourSatisfactionForm.controls['virtualTourSatisfaction'].value,
@@ -161,7 +163,7 @@ export class MultiStepFormComponent implements OnInit {
   }
 
   markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach((control: any) => {
+    (<any>Object).values(formGroup.controls).forEach((control: FormControl) => {
       control.markAsDirty();
     });
   }

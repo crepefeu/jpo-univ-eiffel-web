@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Attendee } from 'src/app/models/attendee';
 
 @Component({
   selector: 'app-attendees-manage',
@@ -10,7 +11,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 })
 export class AttendeesManageComponent implements OnInit {
 
-  attendeesData: any;
+  attendeesList: Attendee[] = [];
   listType: ManageListTypes = ManageListTypes.Attendees;
   isLoading = false;
 
@@ -21,7 +22,7 @@ export class AttendeesManageComponent implements OnInit {
     this.isLoading = true;
     this.attendeesService.getAllAttendees().subscribe({
       next: data => {
-        this.attendeesData = data;
+        this.attendeesList = data;
         this.isLoading = false;
       },
       error: err => {

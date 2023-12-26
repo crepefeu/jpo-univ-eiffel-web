@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Diploma } from 'src/app/models/diploma';
+import { Region } from 'src/app/models/region';
 import { AttendeesService } from 'src/app/services/attendees.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -17,8 +19,8 @@ export class AddAttendeeFormComponent implements OnInit {
   
   isSubmitting = false;
 
-  diplomasList?: any[];
-  regionsList?: any[];
+  diplomasList?: Diploma[];
+  regionsList?: Region[];
 
   constructor(private diplomas: DiplomasService,
     private regions: RegionsService,
@@ -38,7 +40,7 @@ export class AddAttendeeFormComponent implements OnInit {
   ngOnInit(): void {
     this.diplomas.getAllDiplomas().subscribe({
       next: data => {
-        this.diplomasList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
       error: err => console.error('An error occurred :', err),
       complete: () => console.log('getAllDiplomas() completed')
@@ -46,7 +48,7 @@ export class AddAttendeeFormComponent implements OnInit {
 
     this.regions.getAllRegions().subscribe({
       next: data => {
-        this.regionsList = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
       error: err => console.error('An error occurred :', err),
       complete: () => console.log('getAllRegions() completed')
@@ -62,8 +64,8 @@ export class AddAttendeeFormComponent implements OnInit {
       email: this.addAttendeeForm.controls['email'].value,
       firstName: this.addAttendeeForm.controls['firstName'].value,
       lastName: this.addAttendeeForm.controls['lastName'].value,
-      diplomaId: diploma.id,
-      diplomaCategoryId: diploma.category.id,
+      diplomaId: diploma?.id,
+      diplomaCategoryId: diploma?.category.id,
       region: this.addAttendeeForm.controls['region'].value,
       isIrlAttendee: this.addAttendeeForm.controls['isIrlAttendee'].value,
       virtualTourSatisfaction: null,

@@ -9,8 +9,8 @@
             <div class="registered-user-data-ctn">
                 <div class="registered-user-data-badge">
                     <p>Données participants enregistrées :
-                        <span *ngIf="attendeesData">
-                            {{attendeesData.totalAttendeesCount}}
+                        <span *ngIf="attendeesList">
+                            {{attendeesList.length}}
                             <span>
                                 <i class="bi bi-person-check-fill"></i>
                             </span>
@@ -142,8 +142,8 @@
 
     <div class="bento-grid">
         <div class="bento1">
-            <div class="bento-content" *ngIf="attendeesData">
-                <p>{{attendeesData.totalAttendeesCount}}</p>
+            <div class="bento-content" *ngIf="attendeesList">
+                <p>{{attendeesList.length}}</p>
                 <p>participants</p>
             </div>
             <div class="see-more-btn-ctn">

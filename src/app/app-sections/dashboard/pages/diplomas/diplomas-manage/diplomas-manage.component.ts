@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
+import { Diploma } from 'src/app/models/diploma';
+import { DiplomaCategory } from 'src/app/models/diplomaCategory';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 
 @Component({
@@ -11,8 +13,8 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
 export class DiplomasManageComponent implements OnInit {
 
   listType = ManageListTypes.Diplomas;
-  diplomasData: any;
-  diplomaCategoriesData: any;
+  diplomasList: Diploma[] = [];
+  diplomaCategoriesList: DiplomaCategory[] = [];
   isDiplomasLoading = false;
   isDiplomaCategoriesLoading = false;
 
@@ -23,7 +25,7 @@ export class DiplomasManageComponent implements OnInit {
     this.isDiplomasLoading = true;
     this.diplomas.getAllDiplomas().subscribe({
       next: data => {
-        this.diplomasData = data.sort((a: any, b: any) => a.category.name.localeCompare(b.category.name));
+        this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.category.name.localeCompare(b.category.name));
       },
       error: err => {
         this.toast.error('Une erreur est survenue', {
@@ -46,7 +48,7 @@ export class DiplomasManageComponent implements OnInit {
     this.isDiplomaCategoriesLoading = true
     this.diplomas.getAllDiplomaCategoriesWithDiplomas().subscribe({
       next: data => {
-        this.diplomaCategoriesData = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.diplomaCategoriesList = data.sort((a: DiplomaCategory, b: DiplomaCategory) => a.name.localeCompare(b.name));
       },
       error: err => {
         this.toast.error('Une erreur est survenue', {

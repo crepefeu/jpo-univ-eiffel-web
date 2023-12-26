@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
+import { DiplomaCategory } from 'src/app/models/diplomaCategory';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
 export class AddDiplomaFormComponent implements OnInit {
 
   addDiplomaForm: FormGroup;
-  diplomaCategories: any;
+  diplomaCategories?: DiplomaCategory[];
 
   isSubmitting = false;
 
@@ -26,7 +27,7 @@ export class AddDiplomaFormComponent implements OnInit {
   ngOnInit(): void {
     this.diplomas.getAllDiplomaCategories().subscribe({
       next: data => {
-        this.diplomaCategories = data.sort((a: any, b: any) => a.name.localeCompare(b.name));
+        this.diplomaCategories = data.sort((a: DiplomaCategory, b: DiplomaCategory) => a.name.localeCompare(b.name));
       },
       error: err => this.toast.error('Une erreur est survenue', {
         duration: 4000,

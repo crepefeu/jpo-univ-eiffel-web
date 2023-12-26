@@ -8,19 +8,19 @@
                     <h1 class="form-header-title">Accès au tableau de bord</h1>    
                 </div>
 
-                <ng-container *ngIf="form.controls.login.dirty && form.get('login').hasError('required')">
+                <ng-container *ngIf="form.controls['login'].dirty && form.controls['login'].hasError('required')">
                     <div class="form-error-ctn">
                         <p class="form-error"
-                            *ngIf="form.controls.login.dirty && form.get('login').hasError('required')">Veuillez entrer votre
+                            *ngIf="form.controls['login'].dirty && form.controls['login'].hasError('required')">Veuillez entrer votre
                             identifiant
                         </p>
                     </div>
                 </ng-container>
 
-                <ng-container *ngIf="form.controls.login.dirty && !form.get('login').hasError('required') && form.controls.password.dirty && form.get('password').hasError('required')">
+                <ng-container *ngIf="form.controls['login'].dirty && form.controls['login'].hasError('required') && form.controls['password'].dirty && form.controls['password'].hasError('required')">
                     <div class="form-error-ctn">
                         <p class="form-error"
-                            *ngIf="form.controls.login.dirty && form.get('password').hasError('required')">Veuillez entrer votre
+                            *ngIf="form.controls['login'].dirty && form.controls['password'].hasError('required')">Veuillez entrer votre
                             mot de passe
                         </p>
                     </div>

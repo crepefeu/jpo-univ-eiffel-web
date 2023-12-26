@@ -12,7 +12,7 @@ import { AdminsService } from 'src/app/services/admins.service';
 export class SignInComponent {
 
   isSubmitting = false;
-  form: any;
+  form: FormGroup;
   submitted = false
 
   constructor(private adminsService: AdminsService,
@@ -75,7 +75,7 @@ export class SignInComponent {
   }
 
   markFormGroupTouched(formGroup: FormGroup) {
-    (<any>Object).values(formGroup.controls).forEach((control: any) => {
+    (<any>Object).values(formGroup.controls).forEach((control: FormControl) => {
       control.markAsDirty();
     });
   }

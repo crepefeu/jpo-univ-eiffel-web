@@ -19,16 +19,16 @@
             </label>
 
             <div>
-                <div class="data-badge" *ngIf="diplomasData && listType === 'Diplomas'">{{diplomasData.length}} types de diplômes</div>
-                <div class="data-badge" *ngIf="diplomasData && listType === 'DiplomaCategories'">{{diplomaCategoriesData.length}} catégories de diplômes</div>
+                <div class="data-badge" *ngIf="diplomasList && listType === 'Diplomas'">{{diplomasList.length}} types de diplômes</div>
+                <div class="data-badge" *ngIf="diplomasList && listType === 'DiplomaCategories'">{{diplomasList.length}} catégories de diplômes</div>
             </div>
         </div>
 
-        <app-manage-list *ngIf="diplomasData && listType === 'Diplomas'" 
-            [isLoading]="isDiplomasLoading" [originalData]="diplomasData" [listType]="listType">
+        <app-manage-list *ngIf="diplomasList && listType === 'Diplomas'" 
+            [isLoading]="isDiplomasLoading" [originalData]="diplomasList" [listType]="listType">
         </app-manage-list>
-        <app-manage-list *ngIf="diplomasData && listType === 'DiplomaCategories'" 
-            [isLoading]="isDiplomaCategoriesLoading" [originalData]="diplomaCategoriesData" [listType]="listType">
+        <app-manage-list *ngIf="diplomasList && listType === 'DiplomaCategories'" 
+            [isLoading]="isDiplomaCategoriesLoading" [originalData]="diplomaCategoriesList" [listType]="listType">
         </app-manage-list>
     </div>
 </div>

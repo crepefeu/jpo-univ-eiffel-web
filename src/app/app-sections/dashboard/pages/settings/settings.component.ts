@@ -12,7 +12,7 @@ export class SettingsComponent implements OnInit {
 
   title = "Paramètres";
 
-  preferencesForm: any;
+  preferencesForm: FormGroup;
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
   isSaving = false;
 

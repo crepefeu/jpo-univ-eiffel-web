@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Attendee } from './../../../../models/attendee';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
@@ -58,7 +59,7 @@ export class ManageListComponent implements OnInit {
 
   onOrderByChange(key: string) {
     if (key === 'asc') {
-      this.data.sort(function (a, b) {
+      this.data?.sort(function (a, b) {
         if (a.firstName < b.firstName) {
           return -1;
         }
@@ -68,7 +69,7 @@ export class ManageListComponent implements OnInit {
         return 0;
       });
     } else if (key === 'desc') {
-      this.data.sort(function (a, b) {
+      this.data?.sort(function (a, b) {
         if (a.firstName < b.firstName) {
           return 1;
         }
@@ -84,9 +85,9 @@ export class ManageListComponent implements OnInit {
     if (key === 'all') {
       this.data = this.originalData;
     } else if (key === 'irl') {
-      this.data = this.originalData.filter((attendee: any) => attendee.isIrlAttendee);
+      this.data = this.originalData?.filter((attendee: any) => attendee.isIrlAttendee);
     } else if (key === 'dist') {
-      this.data = this.originalData.filter((attendee: any) => !attendee.isIrlAttendee);
+      this.data = this.originalData?.filter((attendee: any) => !attendee.isIrlAttendee);
     }
   }
 
@@ -210,7 +211,7 @@ export class ManageListComponent implements OnInit {
     this.modalService.close();
   }
 
-  deleteItem(itemId: any) {
+  deleteItem(itemId: number) {
     if (this.listType === ManageListTypes.Attendees) {
       this.attendees.deleteAttendee(itemId).subscribe({
         next: data => {
@@ -304,8 +305,8 @@ export class ManageListComponent implements OnInit {
     }
   }
 
-  deleteItemFromList(itemId: any) {
-    this.originalData = this.originalData.filter((item: any) => item.id !== itemId);
-    this.data = this.data.filter((item: any) => item.id !== itemId);
+  deleteItemFromList(itemId: number) {
+    this.originalData = this.originalData?.filter((item: any) => item.id !== itemId);
+    this.data = this.data?.filter((item: any) => item.id !== itemId);
   }
 }

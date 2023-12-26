@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input } from '@angular/core';
+import { Attendee } from 'src/app/models/attendee';
 import { AnalyticsService } from 'src/app/services/analytics.service';
 import { SharedService } from 'src/app/services/shared.service';
 
@@ -22,7 +23,7 @@ export class OverviewComponent {
   diplomasRateChart: any;
 
   latestSnapshot: any;
-  attendeesData: any;
+  attendeesList: Attendee[] = [];
 
   constructor(private analytics: AnalyticsService, private sharedService: SharedService) { }
 
@@ -47,9 +48,17 @@ export class OverviewComponent {
       this.totalNewAttendeesChart.labels = snapshots.dates;
     });
 
-    this.analytics.getAllAttendees().subscribe((attendees) => {
-      this.attendeesData = attendees;
-      this.irlAttendeesRateChart.series = [attendees.irlAttendeesCount, (this.attendeesData.totalAttendeesCount - attendees.irlAttendeesCount)];
+    this.analytics.getAllAttendees().subscribe((attendees: Attendee[]) => {
+      this.attendeesList = attendees;
+
+      let irlAttendeesCount = 0;
+      attendees.forEach((attendee: Attendee) => {
+        if (attendee.isIrlAttendee) {
+          irlAttendeesCount++;
+        }
+      });
+
+      this.irlAttendeesRateChart.series = [irlAttendeesCount, (this.attendeesList.length - irlAttendeesCount)];
       this.irlAttendeesRateChart.labels = ['Présentiel', 'Distanciel'];
     });
 

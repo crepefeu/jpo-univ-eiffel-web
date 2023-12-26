@@ -2,11 +2,11 @@
     <div class="section">
         <div class="section-details">
             <h2 class="sub-section-title">Gestion</h2>
-            <ng-container *ngIf="attendeesData">
-                <div class="data-badge" *ngIf="attendeesData.dataList">{{attendeesData.dataList.length}} données participants</div>
-                <div class="data-badge" *ngIf="attendeesData?.dataList?.length < 1">Aucunes données participants</div>    
+            <ng-container *ngIf="attendeesList">
+                <div class="data-badge" *ngIf="attendeesList">{{attendeesList.length}} données participants</div>
+                <div class="data-badge" *ngIf="attendeesList.length < 1">Aucunes données participants</div>    
             </ng-container>
         </div>
-        <app-manage-list [isLoading]="isLoading" [originalData]="attendeesData.dataList" [listType]="listType"></app-manage-list>
+        <app-manage-list [isLoading]="isLoading" [originalData]="attendeesList" [listType]="listType"></app-manage-list>
     </div>
 </div>

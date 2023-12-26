@@ -14,7 +14,7 @@ export class PageHeaderComponent {
 
   isDarkMode = localStorage.getItem('currentTheme') === 'dark' ? true : false;
 
-  onToggleDarkMode(darkModeSwitch: any) {
+  onToggleDarkMode(darkModeSwitch: HTMLInputElement) {
     if (darkModeSwitch.checked) {
       localStorage.setItem('currentTheme', 'dark');
     } else {
