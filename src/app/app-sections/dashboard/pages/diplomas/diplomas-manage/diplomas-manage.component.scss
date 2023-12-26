@@ -79,12 +79,14 @@
   font-size: 0.7rem;
   color: white;
   z-index: 2;
+  transition: color 0.3s ease-in-out;
 }
 
 .toggle-value2 {
   font-size: 0.7rem;
   color: rgb(145, 145, 145);
   z-index: 2;
+  transition: color 0.3s ease-in-out;
 }
 
 .toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
