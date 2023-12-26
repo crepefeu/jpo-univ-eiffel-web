@@ -13,7 +13,7 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
 export class DiplomasManageComponent implements OnInit {
 
   listType = ManageListTypes.Diplomas;
-  diplomasList: Diploma[] = [];
+  diplomasList?: Diploma[];
   diplomaCategoriesList: DiplomaCategory[] = [];
   isDiplomasLoading = false;
   isDiplomaCategoriesLoading = false;
