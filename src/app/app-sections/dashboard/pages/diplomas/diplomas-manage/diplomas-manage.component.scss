@@ -25,6 +25,7 @@
     background-color: var(--badge-info);
     border-radius: 30px;
     cursor: default;
+    user-select: none;
 }
 
 .section {
@@ -74,6 +75,7 @@
 .toggle-values-ctn {
   display: flex;
   gap: 10px;
+  user-select: none;
 }
 
 .toggle-value {
