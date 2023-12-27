@@ -14,7 +14,7 @@ export class DiplomasManageComponent implements OnInit {
 
   listType = ManageListTypes.Diplomas;
   diplomasList?: Diploma[];
-  diplomaCategoriesList: DiplomaCategory[] = [];
+  diplomaCategoriesList?: DiplomaCategory[];
   isDiplomasLoading = false;
   isDiplomaCategoriesLoading = false;
 

@@ -11,7 +11,7 @@ import { Attendee } from 'src/app/models/attendee';
 })
 export class AttendeesManageComponent implements OnInit {
 
-  attendeesList: Attendee[] = [];
+  attendeesList?: Attendee[];
   listType: ManageListTypes = ManageListTypes.Attendees;
   isLoading = false;
 
@@ -20,13 +20,14 @@ export class AttendeesManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
+
     this.attendeesService.getAllAttendees().subscribe({
       next: data => {
         this.attendeesList = data;
         this.isLoading = false;
       },
       error: err => {
-        this.toast.error('Une erreur est survenue lors du chargement des données.', {
+        this.toast.error('Erreur lors du chargement des données.', {
           duration: 4000,
           position: 'bottom-center',
           style: {

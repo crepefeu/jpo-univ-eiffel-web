@@ -27,7 +27,8 @@
         <app-manage-list *ngIf="diplomasList && listType === 'Diplomas'" 
             [isLoading]="isDiplomasLoading" [originalData]="diplomasList" [listType]="listType">
         </app-manage-list>
-        <app-manage-list *ngIf="diplomasList && listType === 'DiplomaCategories'" 
+
+        <app-manage-list *ngIf="diplomaCategoriesList && listType === 'DiplomaCategories'" 
             [isLoading]="isDiplomaCategoriesLoading" [originalData]="diplomaCategoriesList" [listType]="listType">
         </app-manage-list>
     </div>
