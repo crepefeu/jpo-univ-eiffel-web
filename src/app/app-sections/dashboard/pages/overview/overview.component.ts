@@ -257,7 +257,7 @@ export class OverviewComponent {
       ],
     };
 
-    // Irl attendees rate chart configuration
+    // Diploma categories rate chart configuration
     this.diplomaCategoriesRateChart = {
       series: [],
       colors: [

@@ -2,4 +2,25 @@
     <div class="section-details">
         <h1 class="sub-section-title">Statistiques</h1>
     </div>
+
+    <div class="statistics-card-grid">
+        <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <h1 class="chart-title">Catégories de diplômes</h1>
+            <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
+                [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels"
+                [legend]="diplomasRateChart.legend" [responsive]="diplomaCategoriesRateChart.responsive"
+                [dataLabels]="diplomaCategoriesRateChart.dataLabels">
+            </apx-chart>
+        </div>
+
+        <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <h1 class="chart-title">Diplômes</h1>
+            <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
+                [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels"
+                [legend]="diplomasRateChart.legend" [dataLabels]="diplomasRateChart.dataLabels"
+                [responsive]="diplomasRateChart.responsive">
+            </apx-chart>
+        </div>
+    </div>
+
 </div>
