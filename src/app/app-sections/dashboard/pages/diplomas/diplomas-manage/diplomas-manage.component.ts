@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { Diploma } from 'src/app/models/diploma';
@@ -18,10 +19,23 @@ export class DiplomasManageComponent implements OnInit {
   isDiplomasLoading = false;
   isDiplomaCategoriesLoading = false;
 
+  isSwitchToggled = false;
+
   constructor(private diplomas: DiplomasService,
-    private toast: HotToastService) { }
+    private toast: HotToastService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit(): void {
+    this.route.queryParamMap.subscribe(params => {
+      if (params.get('listType') == 'diplomaCategories') {
+        this.isSwitchToggled = true;
+        this.listType = ManageListTypes.DiplomaCategories;
+      } else {
+        this.listType = ManageListTypes.Diplomas;
+      }
+    });
+
     this.isDiplomasLoading = true;
     this.diplomas.getAllDiplomas().subscribe({
       next: data => {
@@ -71,8 +85,10 @@ export class DiplomasManageComponent implements OnInit {
 
   onListTypeChange(switchToggle: HTMLInputElement) {
     if (switchToggle.checked) {
+      this.router.navigate([], {relativeTo: this.route, queryParams: { listType: 'diplomaCategories' } });
       this.listType = ManageListTypes.DiplomaCategories;
     } else {
+      this.router.navigate([], {relativeTo: this.route, queryParams: {} });
       this.listType = ManageListTypes.Diplomas;
     }
   }

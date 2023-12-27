@@ -4,7 +4,7 @@
 
         <div class="section-details">
             <label class="list-toggle">
-                <input #listTypeSwitch class="toggle-checkbox" type="checkbox" (click)="onListTypeChange(listTypeSwitch)">
+                <input #listTypeSwitch class="toggle-checkbox" type="checkbox" (click)="onListTypeChange(listTypeSwitch)" [ngModel]="isSwitchToggled">
                 <div class="toggle-ctn">
                     <div class="switch-btn"></div>
                     <div class="toggle-values-ctn">

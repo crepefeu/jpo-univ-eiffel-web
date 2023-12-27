@@ -12,6 +12,7 @@ import { AddDiplomaFormComponent } from '../add-diploma-form/add-diploma-form.co
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/add-diploma-category-form.component';
 import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
+import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-form/modify-diploma-category-form.component';
 
 @Component({
   selector: 'app-manage-list',
@@ -186,6 +187,28 @@ export class ManageListComponent implements OnInit {
     } else if (this.listType === ManageListTypes.Diplomas) {
       this.modalService.open(ModifyDiplomaFormComponent, {
         title: 'Modifier le diplôme',
+        displayHeader: true,
+        data: {
+          item
+        },
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
+        },
+        size: {
+          width: '80vw',
+          height: 'fit-content',
+        }
+      });
+    } else if (this.listType === ManageListTypes.DiplomaCategories) {
+      this.modalService.open(ModifyDiplomaCategoryFormComponent, {
+        title: 'Modifier la catégorie',
         displayHeader: true,
         data: {
           item

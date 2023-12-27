@@ -203,7 +203,7 @@
                         <td *ngIf="diplomaCategory.diplomas === null" class="data">Catégorie vide</td>
 
                         <td class="action-buttons-ctn">
-                            <button class="action-btn">
+                            <button class="action-btn" (click)="openModifyModal(diplomaCategory)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
                             <button class="action-btn" (click)="deleteItem(diplomaCategory.id)">

@@ -19,9 +19,9 @@
         <small class="form-help">*Champs obligatoires</small>
 
         <div class="form-btns-ctn">
-            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyDiplomaForm.valid" (click)="onSubmit()">Ajouter</button>
+            <button *ngIf="!isSubmitting" class="form-btn" type="button" [disabled]="!modifyDiplomaForm.valid" (click)="onSubmit()">Modifier</button>
             <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
-                Ajouter
+                Modifier
                 <span class="loader"></span>
             </button>
         </div>
