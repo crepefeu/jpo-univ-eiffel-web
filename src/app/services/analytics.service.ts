@@ -46,4 +46,10 @@ export class AnalyticsService {
 
     return this.http.get<any>(this.baseApiUrl + 'getMapAnalytics', {headers: headers});
   }
+
+  getSatisfactionAnalytics() {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'getSatisfactionAnalytics', {headers: headers});
+  }
 }

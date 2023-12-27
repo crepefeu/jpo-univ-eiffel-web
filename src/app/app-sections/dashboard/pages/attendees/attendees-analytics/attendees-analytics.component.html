@@ -2,24 +2,52 @@
     <div class="section-details">
         <h1 class="sub-section-title">Statistiques</h1>
     </div>
-    <div class="statistics-card">
-        <div>
-            <h1 class="chart-title">Provenance des participants (Départements)</h1>
+    <div class="statistics-card-grid">
+        <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <div class="chart-infos">
+                <h1 class="chart-title">Taux de satifaction</h1>
+                <h2 class="chart-subtitle">Visite virtuelle</h2>
+            </div>            
+            <apx-chart [series]="virtualTourSatisfactionRateChart.series" [chart]="virtualTourSatisfactionRateChart.chart"
+                [colors]="virtualTourSatisfactionRateChart.colors" [labels]="virtualTourSatisfactionRateChart.labels"
+                [legend]="virtualTourSatisfactionRateChart.legend" [responsive]="virtualTourSatisfactionRateChart.responsive"
+                [dataLabels]="virtualTourSatisfactionRateChart.dataLabels">
+            </apx-chart>
         </div>
-        <ng-container *ngIf="frenchDepChartOptions">
-            <highcharts-chart id="container" [Highcharts]="frenchDepMap" [constructorType]="chartConstructor"
-            [options]="frenchDepChartOptions" style="width: 100%; height: 600px; display: block;">
-        </highcharts-chart>
-        </ng-container>
+
+        <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
+            <div class="chart-infos">
+                <h1 class="chart-title">Taux de satifaction</h1>
+                <h2 class="chart-subtitle">Site</h2>
+            </div>
+            <apx-chart [series]="websiteTourSatisfactionRateChart.series" [chart]="websiteTourSatisfactionRateChart.chart"
+                [colors]="websiteTourSatisfactionRateChart.colors" [labels]="websiteTourSatisfactionRateChart.labels"
+                [legend]="websiteTourSatisfactionRateChart.legend" [dataLabels]="websiteTourSatisfactionRateChart.dataLabels"
+                [responsive]="websiteTourSatisfactionRateChart.responsive">
+            </apx-chart>
+        </div>
     </div>
-    
+
     <div class="statistics-card">
-        <div>
-            <h1 class="chart-title">Provenance des participants (Île de France)</h1>
+        <div class="chart-infos">
+            <h1 class="chart-title">Provenance</h1>
+            <h2 class="chart-subtitle">Île-de-France</h2>
         </div>
         <ng-container *ngIf="idfChartOptions">
             <highcharts-chart id="container" [Highcharts]="idfMap" [constructorType]="chartConstructor"
             [options]="idfChartOptions" style="width: 100%; height: 600px; display: block;">
+        </highcharts-chart>
+        </ng-container>
+    </div>
+
+    <div class="statistics-card">
+        <div class="chart-infos">
+            <h1 class="chart-title">Provenance</h1>
+            <h2 class="chart-subtitle">France</h2>
+        </div>
+        <ng-container *ngIf="frenchDepChartOptions">
+            <highcharts-chart id="container" [Highcharts]="frenchDepMap" [constructorType]="chartConstructor"
+            [options]="frenchDepChartOptions" style="width: 100%; height: 600px; display: block;">
         </highcharts-chart>
         </ng-container>
     </div>

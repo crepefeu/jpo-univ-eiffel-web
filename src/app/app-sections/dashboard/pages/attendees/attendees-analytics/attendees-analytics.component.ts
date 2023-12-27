@@ -23,12 +23,25 @@ export class AttendeesAnalyticsComponent implements OnInit {
   frenchDepMap: typeof Highcharts = Highcharts;
   frenchDepChartOptions?: Highcharts.Options;
 
+  virtualTourSatisfactionRateChart: any;
+  websiteTourSatisfactionRateChart: any;
+
   constructor(
     private sharedService: SharedService,
     private analytics: AnalyticsService
   ) { }
 
   ngOnInit(): void {
+    // retrieve satisfaction rate data from API
+    this.analytics.getSatisfactionAnalytics().subscribe((satisfactionAnalytics) => {
+      this.virtualTourSatisfactionRateChart.labels = satisfactionAnalytics.labels;
+      this.websiteTourSatisfactionRateChart.labels = satisfactionAnalytics.labels;
+
+      this.virtualTourSatisfactionRateChart.series = satisfactionAnalytics.virtualTourSatisfaction
+      this.websiteTourSatisfactionRateChart.series = satisfactionAnalytics.websiteSatisfaction
+    });
+
+
     // retrieve map data from API
     this.analytics.getMapAnalytics().subscribe({
       next: mapAnalytics => {
@@ -51,6 +64,118 @@ export class AttendeesAnalyticsComponent implements OnInit {
         }
       },
       error: err => console.error('An error occurred :', err)
+    });
+
+    // diplomaCategories rate chart configuration
+    this.virtualTourSatisfactionRateChart = {
+      series: [],
+      colors: [
+        "#29c66b",
+        "#ffa600",
+        "#de3c3c"
+      ],
+      chart: {
+        height: 170,
+        type: "donut",
+      },
+      legend: {
+        show: this.userPreferences.showLegendOnCharts,
+        position: "right"
+      },
+      dataLabels: {
+        enabled: this.userPreferences.showPercentagesOnCharts,
+      },
+      labels: [],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ],
+    };
+
+    // Diplomas rate chart configuration
+    this.websiteTourSatisfactionRateChart = {
+      series: [],
+      colors: [
+        "#29c66b",
+        "#ffa600",
+        "#de3c3c"
+      ],
+      chart: {
+        height: 170,
+        type: "donut"
+      },
+      legend: {
+        show: this.userPreferences.showLegendOnCharts
+      },
+      dataLabels: {
+        enabled: this.userPreferences.showPercentagesOnCharts,
+      },
+      labels: [],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: "bottom"
+            }
+          }
+        }
+      ],
+    };
+
+    this.sharedService.themeChanges().subscribe((darkMode: boolean) => {
+      if (darkMode) {
+        const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+        const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
+
+        this.virtualTourSatisfactionRateChart = {
+          ...this.virtualTourSatisfactionRateChart,
+          chart: {
+            ...virtualTourSatisfactionRateChartChart,
+            foreColor: '#fff',
+          }
+        }
+
+        this.websiteTourSatisfactionRateChart = {
+          ...this.websiteTourSatisfactionRateChart,
+          chart: {
+            ...websiteTourSatisfactionRateChartChart,
+            foreColor: '#fff',
+          }
+        }
+
+      } else {
+        const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+        const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
+
+        this.virtualTourSatisfactionRateChart = {
+          ...this.virtualTourSatisfactionRateChart,
+          chart: {
+            ...virtualTourSatisfactionRateChartChart,
+            foreColor: '#2f2a86',
+          }
+        }
+
+        this.websiteTourSatisfactionRateChart = {
+          ...this.websiteTourSatisfactionRateChart,
+          chart: {
+            ...websiteTourSatisfactionRateChartChart,
+            foreColor: '#2f2a86',
+          }
+        }
+      }
     });
 
     // French department map configuration
@@ -157,8 +282,26 @@ export class AttendeesAnalyticsComponent implements OnInit {
     };
 
     if (localStorage.getItem('currentTheme') === 'dark') {
+      const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+      const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
       const franceDepChart = this.frenchDepChartOptions.chart;
       const idfChart = this.idfChartOptions.chart;
+
+      this.virtualTourSatisfactionRateChart = {
+        ...this.virtualTourSatisfactionRateChart,
+        chart: {
+          ...virtualTourSatisfactionRateChartChart,
+          foreColor: '#fff',
+        }
+      }
+
+      this.websiteTourSatisfactionRateChart = {
+        ...this.websiteTourSatisfactionRateChart,
+        chart: {
+          ...websiteTourSatisfactionRateChartChart,
+          foreColor: '#fff',
+        }
+      }
 
       this.frenchDepChartOptions = {
         ...this.frenchDepChartOptions,
@@ -176,8 +319,26 @@ export class AttendeesAnalyticsComponent implements OnInit {
         }
       }
     } else {
+      const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+      const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
       const franceDepChart = this.frenchDepChartOptions.chart;
       const idfChart = this.idfChartOptions.chart;
+
+      this.virtualTourSatisfactionRateChart = {
+        ...this.virtualTourSatisfactionRateChart,
+        chart: {
+          ...virtualTourSatisfactionRateChartChart,
+          foreColor: '#2f2a86',
+        }
+      }
+
+      this.websiteTourSatisfactionRateChart = {
+        ...this.websiteTourSatisfactionRateChart,
+        chart: {
+          ...websiteTourSatisfactionRateChartChart,
+          foreColor: '#2f2a86',
+        }
+      }
 
       this.frenchDepChartOptions = {
         ...this.frenchDepChartOptions,
@@ -198,8 +359,26 @@ export class AttendeesAnalyticsComponent implements OnInit {
 
     this.sharedService.themeChanges().subscribe((isDarkMode: boolean) => {
       if (isDarkMode) {
+        const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+        const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
         const franceDepChart = this.frenchDepChartOptions?.chart;
         const idfChart = this.idfChartOptions?.chart;
+
+        this.virtualTourSatisfactionRateChart = {
+          ...this.virtualTourSatisfactionRateChart,
+          chart: {
+            ...virtualTourSatisfactionRateChartChart,
+            foreColor: '#fff',
+          }
+        }
+
+        this.websiteTourSatisfactionRateChart = {
+          ...this.websiteTourSatisfactionRateChart,
+          chart: {
+            ...websiteTourSatisfactionRateChartChart,
+            foreColor: '#fff',
+          }
+        }
 
         this.frenchDepChartOptions = {
           ...this.frenchDepChartOptions,
@@ -217,8 +396,26 @@ export class AttendeesAnalyticsComponent implements OnInit {
           }
         }
       } else {
+        const virtualTourSatisfactionRateChartChart = this.virtualTourSatisfactionRateChart.chart;
+        const websiteTourSatisfactionRateChartChart = this.websiteTourSatisfactionRateChart.chart;
         const franceDepChart = this.frenchDepChartOptions?.chart;
         const idfChart = this.idfChartOptions?.chart;
+
+        this.virtualTourSatisfactionRateChart = {
+          ...this.virtualTourSatisfactionRateChart,
+          chart: {
+            ...virtualTourSatisfactionRateChartChart,
+            foreColor: '#2f2a86',
+          }
+        }
+
+        this.websiteTourSatisfactionRateChart = {
+          ...this.websiteTourSatisfactionRateChart,
+          chart: {
+            ...websiteTourSatisfactionRateChartChart,
+            foreColor: '#2f2a86',
+          }
+        }
 
         this.frenchDepChartOptions = {
           ...this.frenchDepChartOptions,
