@@ -5,7 +5,10 @@
 
     <div class="statistics-card-grid">
         <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
-            <h1 class="chart-title">Catégories de diplômes</h1>
+            <div class="chart-infos">
+                <h1 class="chart-title">Taux de catégories de diplômes</h1>
+                <h2 class="chart-subtitle">En nombre de participants</h2>
+            </div>
             <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
                 [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels"
                 [legend]="diplomasRateChart.legend" [responsive]="diplomaCategoriesRateChart.responsive"
@@ -14,7 +17,10 @@
         </div>
 
         <div class="statistics-card" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
-            <h1 class="chart-title">Diplômes</h1>
+            <div class="chart-infos">
+                <h1 class="chart-title">Taux de diplômes</h1>
+                <h2 class="chart-subtitle">En nombre de participants</h2>
+            </div>
             <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
                 [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels"
                 [legend]="diplomasRateChart.legend" [dataLabels]="diplomasRateChart.dataLabels"

@@ -182,7 +182,7 @@
         </div>
 
         <div class="bento5" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
-            <h1 class="chart-title">Catégories de diplômes</h1>
+            <h1 class="chart-title">Taux de catégories de diplômes</h1>
             <apx-chart [series]="diplomaCategoriesRateChart.series" [chart]="diplomaCategoriesRateChart.chart"
                 [colors]="diplomaCategoriesRateChart.colors" [labels]="diplomaCategoriesRateChart.labels"
                 [legend]="diplomasRateChart.legend" [responsive]="irlAttendeesRateChart.responsive"
@@ -191,7 +191,7 @@
         </div>
 
         <div class="bento6" [ngClass]="{'no-legend' : !this.userPreferences.showLegendOnCharts}">
-            <h1 class="chart-title">Diplômes</h1>
+            <h1 class="chart-title">Taux de diplômes</h1>
             <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
                 [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels"
                 [legend]="diplomasRateChart.legend" [dataLabels]="diplomasRateChart.dataLabels"

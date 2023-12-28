@@ -10,11 +10,24 @@
     color: var(--primary);
 }
 
+.chart-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
 .chart-title {
+  margin-top: 2px;
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--font-color);
-  margin-bottom: 10px;
+}
+
+.chart-subtitle {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--font-color);
 }
 
 .statistics-card-grid {
