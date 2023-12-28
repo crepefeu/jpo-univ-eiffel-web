@@ -112,6 +112,12 @@ body {
   --list-switch-toggled: #2f2a86;
   --list-switch-text-toggled: #fff;
   --list-switch-text-untoggled: rgb(145, 145, 145);
+
+  // settings
+  --setting-badge: #2f2a86;
+  --theme-border: #ffffff;
+  --theme-border-selected: #3f3aa6;
+  --separator: #eaeaea;
 }
 
 body.dark-theme {
@@ -120,6 +126,7 @@ body.dark-theme {
 
   // text
   --font-color: #fff;
+  --white: #fff;
 
   // borders
   --border: red;
@@ -212,4 +219,10 @@ body.dark-theme {
   --list-switch-toggled: #0b0b0b;
   --list-switch-text-toggled: #fff;
   --list-switch-text-untoggled: rgb(145, 145, 145);
+
+  // settings
+  --setting-badge: #1d1d1d;
+  --theme-border: #1d1d1d;
+  --theme-border-selected: #8984ed;
+  --separator: #1d1d1d;
 }

@@ -37,18 +37,38 @@ export class SignInComponent {
             localStorage.setItem('displayName', data.displayName);
             localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
             this.router.navigate(['/admin/dashboard']);
-            if (data.userPreferences && data.userPreferences.useDarkModeByDefault) {
+            if (data.userPreferences && data.userPreferences.defaultTheme == 'dark') {
               // set localstorage to dark mode
               localStorage.setItem('currentTheme', 'dark')
 
               // toggle dark mode
-              document.body.classList.toggle('dark-theme', data.userPreferences.useDarkModeByDefault ?? false);
-            } else {
+              document.body.classList.toggle('dark-theme', true);
+            } else if (data.userPreferences && data.userPreferences.defaultTheme == 'light') {
               // set localstorage to light mode
               localStorage.setItem('currentTheme', 'light')
+            } else if (data.userPreferences && data.userPreferences.defaultTheme == 'system') {
+              // set localstorage to system mode
+              localStorage.setItem('currentTheme', 'system')
+
+              if (window.matchMedia) {
+                // Check if the dark-mode Media-Query matches
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                  // set localstorage to dark mode
+                  localStorage.setItem('currentTheme', 'dark')
+
+                  // toggle dark mode
+                  document.body.classList.toggle('dark-theme', true);
+                } else {
+                  // set localstorage to light mode
+                  localStorage.setItem('currentTheme', 'light')
+                }
+              } else {
+                // set localstorage to light mode
+                localStorage.setItem('currentTheme', 'light')
+              }
+            } else {
+              console.log(data); // TODO : handle error with a toast
             }
-          } else {
-            console.log(data); // TODO : handle error with a toast
           }
         },
         error: err => {

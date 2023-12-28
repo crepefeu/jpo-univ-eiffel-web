@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -6,13 +6,27 @@ import { SharedService } from 'src/app/services/shared.service';
   templateUrl: './page-header.component.html',
   styleUrls: ['./page-header.component.scss']
 })
-export class PageHeaderComponent {
+export class PageHeaderComponent implements OnInit {
 
   @Input() title: string = '';
 
+  isDarkMode = localStorage.getItem('currentTheme') === 'dark' ? true : false;
+  userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
+
   constructor(private sharedService: SharedService) {}
 
-  isDarkMode = localStorage.getItem('currentTheme') === 'dark' ? true : false;
+  ngOnInit(): void {
+    if (this.userPreferences && this.userPreferences.defaultTheme == 'system') {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        // toggle dark mode based on system preferences
+        if (event.matches) {
+          this.isDarkMode = true;
+        } else {
+          this.isDarkMode = false;
+        }
+      });
+    }
+  }
 
   onToggleDarkMode(darkModeSwitch: HTMLInputElement) {
     if (darkModeSwitch.checked) {

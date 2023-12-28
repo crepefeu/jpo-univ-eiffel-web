@@ -18,6 +18,19 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private adminsService: AdminsService, private router: Router, private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    if (this.userPreferences && this.userPreferences.defaultTheme == 'system') {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+        // toggle dark mode based on system preferences
+        if (event.matches) {
+          document.body.classList.toggle('dark-theme', true);
+          localStorage.setItem('currentTheme', 'dark');
+        } else {
+          document.body.classList.toggle('dark-theme', false);
+          localStorage.setItem('currentTheme', 'light');
+        }
+      });
+    }
+
     // toggle dark mode based on localstorage 
     if (localStorage.getItem('currentTheme') === 'dark') {
       document.body.classList.toggle('dark-theme', true);

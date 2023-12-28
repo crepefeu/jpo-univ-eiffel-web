@@ -16,12 +16,13 @@ export class SettingsComponent implements OnInit {
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
   isSaving = false;
 
+  selectedTheme = this.userPreferences.defaultTheme ?? 'system';
+
   constructor(private adminsService: AdminsService,
     private toast: HotToastService) {
     this.preferencesForm = new FormGroup({
       showPercentagesOnCharts: new FormControl(this.userPreferences.showPercentagesOnCharts ?? false),
-      showLegendOnCharts: new FormControl(this.userPreferences.showLegendOnCharts ?? false),
-      useDarkModeByDefault: new FormControl(this.userPreferences.useDarkModeByDefault ?? false)
+      showLegendOnCharts: new FormControl(this.userPreferences.showLegendOnCharts ?? false)
     });
   }
 
@@ -30,7 +31,13 @@ export class SettingsComponent implements OnInit {
   onSave() {
     this.isSaving = true;
 
-    this.adminsService.saveUserPreferences(this.preferencesForm.value).subscribe({
+    let newUserPreferences = {
+      defaultTheme: this.selectedTheme,
+      showPercentagesOnCharts: this.preferencesForm.value.showPercentagesOnCharts,
+      showLegendOnCharts: this.preferencesForm.value.showLegendOnCharts
+    };
+
+    this.adminsService.saveUserPreferences(newUserPreferences).subscribe({
       next: data => {
         if (data.status == 'error') {
           this.toast.error(data.message, {
@@ -80,5 +87,18 @@ export class SettingsComponent implements OnInit {
       error: err => console.error('An error occurred :', err),
       complete: () => this.isSaving = false
     });
+  }
+
+  switchSelectedTheme(theme: string) {
+    if (theme == 'dark') {
+      // set localstorage to dark mode
+      this.selectedTheme = 'dark';
+    } else if (theme == 'light') {
+      // set localstorage to light mode
+      this.selectedTheme = 'light';
+    } else if (theme == 'system') {
+      // set localstorage to system mode
+      this.selectedTheme = 'system';
+    }
   }
 }
