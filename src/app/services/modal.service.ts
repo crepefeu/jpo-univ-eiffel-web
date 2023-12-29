@@ -1,4 +1,4 @@
-import { ApplicationRef, Component, ComponentRef, EnvironmentInjector, Injectable, TemplateRef, Type, ViewContainerRef, createComponent, Input } from '@angular/core';
+import { ApplicationRef, ComponentRef, EnvironmentInjector, Injectable, TemplateRef, Type, ViewContainerRef, createComponent, Input } from '@angular/core';
 import { ModalComponent } from '../shared/components/modals/generic-modal/modal.component';
 import { ModalOptions } from '../models/modalOptions';
 import { ConfirmationModalComponent } from '../shared/components/modals/confirmation-modal/confirmation-modal.component';
