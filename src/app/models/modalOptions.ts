@@ -1,5 +1,8 @@
 export interface ModalOptions {
     title?: string;
+    confirmationSentence?: string;
+    confirmationLabel?: string;
+    onConfirm?: () => void;
     displayHeader?: boolean;
     data?: any;
     animations?: {

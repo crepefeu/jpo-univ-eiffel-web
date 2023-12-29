@@ -1,6 +1,7 @@
 import { ApplicationRef, Component, ComponentRef, EnvironmentInjector, Injectable, TemplateRef, Type, ViewContainerRef, createComponent, Input } from '@angular/core';
-import { ModalComponent } from '../shared/components/modal/modal.component';
+import { ModalComponent } from '../shared/components/modals/generic-modal/modal.component';
 import { ModalOptions } from '../models/modalOptions';
+import { ConfirmationModalComponent } from '../shared/components/modals/confirmation-modal/confirmation-modal.component';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class ModalService {
 
   // Create a reference to our modal component
   modalComponent!: ComponentRef<ModalComponent>;
+  confirmationModalComponent!: ComponentRef<ConfirmationModalComponent>;
 
   // Optional content passed at the creation : animation, size, ... 
   options!: ModalOptions | undefined;
@@ -90,5 +92,25 @@ export class ModalService {
 
   close() {
     this.modalComponent.instance.close();
+  }
+
+  closeConfirmationModal() {
+    this.confirmationModalComponent.instance.close();
+  }
+
+  openConfirmationModal(options: ModalOptions | undefined) {
+    // create the modal component and project the instance of the desired component in the ng-content
+    this.confirmationModalComponent = createComponent(ConfirmationModalComponent, {
+      environmentInjector: this.injector,
+    });
+
+    document.body.appendChild(this.confirmationModalComponent.location.nativeElement);
+
+    // Attach views to the changeDetection cycle
+    this.appRef.attachView(this.confirmationModalComponent.hostView);
+
+    this.options = options;
+
+    this.confirmationModalComponent.instance.options = this.options;
   }
 }

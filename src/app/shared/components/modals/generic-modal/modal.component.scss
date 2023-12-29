@@ -8,15 +8,6 @@
   z-index: 101;
 }
 
-.modal-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 102;
-}
-
 .modal-header {
   position: relative;
   display: flex;
@@ -55,7 +46,7 @@
   border-radius: 10px;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 2;
+  z-index: 1000;
 }
 
 .modal-content {

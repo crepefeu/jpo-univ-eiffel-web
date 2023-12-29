@@ -33,7 +33,7 @@ import { ManageListComponent } from './app-sections/dashboard/components/manage-
 import { PaginationComponent } from './app-sections/dashboard/components/pagination/pagination.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { PageHeaderComponent } from './app-sections/dashboard/components/page-header/page-header.component';
-import { ModalComponent } from './shared/components/modal/modal.component';
+import { ModalComponent } from './shared/components/modals/generic-modal/modal.component';
 import { AddAttendeeFormComponent } from './app-sections/dashboard/components/add-attendee-form/add-attendee-form.component';
 import { ModifyAttendeeFormComponent } from './app-sections/dashboard/components/modify-attendee-form/modify-attendee-form.component';
 import { CardsComponent } from './app-sections/website/components/cards/cards.component';
@@ -45,6 +45,7 @@ import { AddDiplomaFormComponent } from './app-sections/dashboard/components/add
 import { AddDiplomaCategoryFormComponent } from './app-sections/dashboard/components/add-diploma-category-form/add-diploma-category-form.component';
 import { ModifyDiplomaFormComponent } from './app-sections/dashboard/components/modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from './app-sections/dashboard/components/modify-diploma-category-form/modify-diploma-category-form.component';
+import { ConfirmationModalComponent } from './shared/components/modals/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { ModifyDiplomaCategoryFormComponent } from './app-sections/dashboard/com
     AddDiplomaFormComponent,
     AddDiplomaCategoryFormComponent,
     ModifyDiplomaFormComponent,
-    ModifyDiplomaCategoryFormComponent
+    ModifyDiplomaCategoryFormComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,

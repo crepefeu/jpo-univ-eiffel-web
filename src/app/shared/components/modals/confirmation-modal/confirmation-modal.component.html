@@ -1,0 +1,14 @@
+<div class="modal" #confirmationModal>
+    <div class="modal-content">
+        <div class="modal-content-infos">
+            <i class="bi bi-exclamation-circle-fill"></i>
+            <h1 class="confirmation-sentence">{{confirmationSentence}}</h1>
+        </div>
+
+        <div class="btns-ctn">
+            <button class="btn cancel" (click)="onClose()">Annuler</button>
+            <button class="btn confirm" (click)="onConfirm()">{{confirmationLabel}}</button>
+        </div>
+    </div>
+</div>
+<div class="modal-overlay" #overlay (click)="onClose()"></div>

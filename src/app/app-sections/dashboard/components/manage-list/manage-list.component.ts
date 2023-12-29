@@ -266,6 +266,7 @@ export class ManageListComponent implements OnInit {
               }
             });
             this.deleteItemFromList(itemId);
+            this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
@@ -377,5 +378,69 @@ export class ManageListComponent implements OnInit {
   deleteItemFromList(itemId: number) {
     this.originalData = this.originalData?.filter((item: any) => item.id !== itemId);
     this.data = this.data?.filter((item: any) => item.id !== itemId);
+  }
+
+  openConfirmationModal(itemId: number) {
+    if (this.listType === ManageListTypes.Attendees) {
+      this.modalService.openConfirmationModal({
+        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce participant ?',
+        confirmationLabel: 'Supprimer',
+        onConfirm: () => this.deleteItem(itemId),
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
+        },
+        size: {
+          width: 'fit-content',
+          height: 'fit-content',
+        }
+      });
+    } else if (this.listType === ManageListTypes.Diplomas) {
+      this.modalService.openConfirmationModal({
+        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce diplôme ?',
+        confirmationLabel: 'Supprimer',
+        onConfirm: () => this.deleteItem(itemId),
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
+        },
+        size: {
+          width: 'fit-content',
+          height: 'fit-content',
+        }
+      });
+    } else if (this.listType === ManageListTypes.DiplomaCategories) {
+      this.modalService.openConfirmationModal({
+        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer cette catégorie ?',
+        confirmationLabel: 'Supprimer',
+        onConfirm: () => this.deleteItem(itemId),
+        animations: {
+          modal: {
+            enter: 'enter-scaling 0.1s ease-out',
+            leave: 'exit-scaling 0.1s ease-out',
+          },
+          overlay: {
+            enter: 'fade-in 0.1s',
+            leave: 'fade-out 0.1s forwards',
+          },
+        },
+        size: {
+          width: 'fit-content',
+          height: 'fit-content',
+        }
+      });
+    }
   }
 }

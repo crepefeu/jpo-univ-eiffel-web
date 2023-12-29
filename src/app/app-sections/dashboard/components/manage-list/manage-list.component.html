@@ -52,7 +52,7 @@
                             <button class="action-btn" (click)="openModifyModal(attendee)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
-                            <button class="action-btn" (click)="deleteItem(attendee.id)">
+                            <button class="action-btn" (click)="openConfirmationModal(attendee.id)">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </td>
@@ -127,7 +127,7 @@
                                 <button class="action-btn" (click)="openModifyModal(diploma)">
                                     <i class="bi bi-pencil-fill"></i>
                                 </button>
-                                <button class="action-btn" (click)="deleteItem(diploma.id)">
+                                <button class="action-btn" (click)="openConfirmationModal(diploma.id)">
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                             </td>
@@ -206,7 +206,7 @@
                             <button class="action-btn" (click)="openModifyModal(diplomaCategory)">
                                 <i class="bi bi-pencil-fill"></i>
                             </button>
-                            <button class="action-btn" (click)="deleteItem(diplomaCategory.id)">
+                            <button class="action-btn" (click)="openConfirmationModal(diplomaCategory.id)">
                                 <i class="bi bi-trash-fill"></i>
                             </button>
                         </td>

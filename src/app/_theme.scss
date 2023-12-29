@@ -3,7 +3,7 @@ body {
   --logo: #2f2a86;
 
   // text
-  --font-color: #2f2a86;
+  --font-color: rgb(14, 14, 14);
   --white: #fff;
 
   // borders
@@ -27,6 +27,10 @@ body {
   --primary-disabled: #2f2a86a0;
   --secondary: #d2213c;
   --secondary-hover: #a41f32;
+  --danger: #e23232;
+  --danger-hover: rgb(212, 0, 0);
+  --warn: #ffa500;
+  --success: #24a258;
 
   // background
   --bkg: #fff;
@@ -91,7 +95,7 @@ body {
 
   // modals
   --modal-bkg: #fff;
-  --modal-border: #e7e7e7;
+  --modal-border: #fff;
   --modal-close-btn: #2f2a86;
   --modal-header: #fff;
 
@@ -158,6 +162,10 @@ body.dark-theme {
   --primary-disabled: #2f2a86a0;
   --secondary: #d2213c;
   --secondary-hover: #a41f32;
+  --danger: #e23232;
+  --danger-hover: rgb(212, 0, 0);
+  --warn: #ffa500;
+  --success: #24a258;
 
   // background
   --bkg: rgb(31, 31, 33);
