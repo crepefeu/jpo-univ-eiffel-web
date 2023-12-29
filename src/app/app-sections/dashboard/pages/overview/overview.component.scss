@@ -6,6 +6,7 @@
   background-color: var(--dash-bkg);
   padding: 50px 50px;
   gap: 40px;
+  transition: all 200ms ease-in-out;
 }
 
 .welcome-card {
@@ -16,21 +17,25 @@
   padding: 30px 40px;
   width: 100%;
   background-color: var(--card-secondary-bkg);
+  border: solid 1px var(--card-border);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  transition: all 200ms ease-in-out;
 
   .welcome-details {
     display: flex;
     flex-direction: column;
     gap: 10px;
     color: white;
+    transition: all 200ms ease-in-out;
   }
 
   .welcome {
     font-size: 1.2rem;
     font-weight: 500;
     color: var(--primary);
+    transition: all 200ms ease-in-out;
   }
 
   .card-image-ctn {
@@ -66,8 +71,10 @@
     width: fit-content;
     background-color: var(--badges-ctn);
     color: var(--primary);
+    border: solid 1px var(--badge-border);
     border-radius: 20px;
     padding: 3px;
+    transition: all 200ms ease-in-out;
 
     .registered-user-data-badge {
       padding: 4px 15px;
@@ -84,11 +91,13 @@
       border-radius: 17px;
       background-color: var(--badge-increase);
       gap: 3px;
+      transition: all 200ms ease-in-out;
     }
 
     .increase {
       font-weight: 400;
       color: var(--bagde-increase-txt);
+      transition: all 200ms ease-in-out;
     }
   }
 }
@@ -106,8 +115,10 @@
     padding: 15px;
     border-radius: 10px;
     background-color: var(--card-bkg);
+    border: solid 1px var(--card-border);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
       rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+    transition: all 200ms ease-in-out;
   }
 
   .bento1 {
@@ -133,12 +144,14 @@
         0 -1vmin / 10vmin 6.5vmin;
       -webkit-mask: linear-gradient(0deg, transparent 25%, white);
       mask: linear-gradient(-35deg, transparent 45%, white);
+      transition: all 200ms ease-in-out;
     }
 
     .bento-content {
       font-size: 2.5rem;
       font-weight: 600;
       color: var(--primary);
+      transition: all 200ms ease-in-out;
     }
   }
 
@@ -216,6 +229,7 @@
   width: fit-content;
   border: none;
   padding: 8px 25px;
+  border: solid 1px var(--btn-border);
   border-radius: 20px;
   background-color: var(--btn-dark);
   color: white;
@@ -234,4 +248,5 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--font-color);
+  transition: all 200ms ease-in-out;
 }

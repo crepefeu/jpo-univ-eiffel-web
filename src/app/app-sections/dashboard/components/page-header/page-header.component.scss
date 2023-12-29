@@ -5,6 +5,7 @@
   font-weight: 500;
   color: rgb(117, 117, 117);
   background-color: var(--dash-bkg);
+  transition: all 200ms ease-in-out;
 }
 
 .section-title {
@@ -12,6 +13,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .toggle-checkbox {
@@ -61,7 +63,7 @@
 
 .toggle-checkbox:checked ~ .toggle-ctn {
   background-color: var(--btn-dark);
-  border: solid 1px #151515;
+  border: solid 1px var(--switch-toggle-border);
 }
 
 .toggle-checkbox:checked ~ .toggle-ctn .moon-icon {

@@ -6,6 +6,7 @@
   background-color: var(--dash-bkg);
   padding: 50px 50px;
   gap: 20px;
+  transition: all 200ms ease-in-out;
 }
 
 .setting-separator {
@@ -18,6 +19,7 @@
   font-size: 1.3rem;
   font-weight: 600;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .section-detail {
@@ -26,12 +28,14 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: rgb(117, 117, 117);
+  transition: all 200ms ease-in-out;
 }
 
 .section-subtitle {
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .settings-section-ctn {
@@ -48,8 +52,12 @@
   padding: 20px;
   border-radius: 10px;
   background-color: var(--card-bkg);
+  border: solid 1px var(--card-border);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  
+  transition: all 200ms ease-in-out;
+
 }
 
 .setting-ctn {
@@ -96,6 +104,7 @@
   background-color: var(--switch-toggle);
   border: 1px solid var(--switch-toggle-border);
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
 
 .switch-btn {
@@ -122,14 +131,15 @@
   font-size: 1rem;
   font-weight: 400;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .form-btn {
   width: fit-content;
-  border: none;
+  border: solid 1px var(--btn-border);
   padding: 8px 25px;
   border-radius: 30px;
-  background-color: var(--btn);
+  background-color: var(--btn-dark);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 400;
@@ -138,7 +148,7 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 
   &:hover {
-    background-color: var(--btn-hover);
+    background-color: var(--btn-hover-dark);
   }
 }
 
@@ -150,7 +160,7 @@
   border: none;
   padding: 8px 25px;
   border-radius: 30px;
-  background-color: var(--btn);
+  background-color: var(--btn-dark);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 400;
@@ -178,6 +188,7 @@
   border: solid 4px var(--theme-border);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 15px;
   gap: 10px;
+  transition: all 200ms ease-in-out;
 
   &.selected
   .check-ctn {
@@ -200,6 +211,7 @@
     background-color: var(--theme-border-selected);
     align-items: center;
     justify-content: center;
+    transition: all 200ms ease-in-out;
   }
 
   &.selected {
@@ -222,6 +234,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .sub-section-ctn {
@@ -232,20 +245,24 @@
 
 .sub-section-badge {
   width: fit-content;
+  border: solid 1px var(--setting-badge-border);
   border-radius: 30px;
   display: flex;
   background-color: var(--setting-badge);
   padding: 5px 15px;
+  transition: all 200ms ease-in-out;
 }
 
 .sub-section-title {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--white);
+  transition: all 200ms ease-in-out;
 }
 
 .sub-section-desc {
   font-size: 0.9rem;
   font-weight: 400;
   color: var(--primary);
+  transition: all 200ms ease-in-out;
 }

@@ -30,24 +30,33 @@ body {
 
   // background
   --bkg: #fff;
+  --nav-border: #d5d5d5;
 
   // lines
   --line: hsla(243, 100%, 50%, 0.35);
 
   // cards
   --card-bkg: #fff;
+  --card-border: transparent;
   --card-secondary-bkg: #0004ff61;
+
+  // charts
+  --chart-subtitle: #7e7e7e;
 
   // lists
   --list-bkg: #fff;
   --list-header: #fff;
   --list-item-bkg: #fff;
+  --list-border: #e7e7e7;
+  --list-badge: #2f2a86;
+  --list-badge-border: #fff;
 
   // dash pages background
   --dash-bkg: rgb(240, 238, 251);
 
   // buttons
   --btn: #2f2a86;
+  --btn-border: #2f2a86;
   --btn-hover: #211d5d;
   --btn-disabled: #2f2a86a0;
   --btn-dark: #2f2a86;
@@ -61,6 +70,7 @@ body {
 
   // badges
   --badges-ctn: #fff;
+  --badge-border: #2f2a86;
   --badge-info: #2f2a86;
   --badge-increase: #14da6639;
   --bagde-increase-txt: #2ecc71;
@@ -77,6 +87,7 @@ body {
   // dropdown
   --dropdown-bkg: #fff;
   --dropdown-item-hover: #f8f8f8;
+  --dropdown-border: #bfbfbf;
 
   // modals
   --modal-bkg: #fff;
@@ -104,17 +115,16 @@ body {
   --toast-success: #24a258;
   --toast-error: #ec0000;
 
-  // dropdown
-  --dropdown-border: #bfbfbf;
-
   // list switch btn
   --list-switch-bkg: rgb(241, 241, 241);
   --list-switch-toggled: #2f2a86;
   --list-switch-text-toggled: #fff;
   --list-switch-text-untoggled: rgb(145, 145, 145);
+  --list-switch-border: #c3c3c3;
 
   // settings
   --setting-badge: #2f2a86;
+  --setting-badge-border: transparent;
   --theme-border: #ffffff;
   --theme-border-selected: #3f3aa6;
   --separator: #eaeaea;
@@ -135,11 +145,11 @@ body.dark-theme {
   --form: #1d1d1d;
 
   //inputs
-  --input-bkg: #1d1d1d;
-  --input-border: #1d1d1d;
+  --input-bkg: #101010;
   --input-txt: #fff;
   --input-placeholder: #8b8b8b;
   --input-disabled: #494949;
+  --input-border: #3f3f3f;
 
   // colors
   --primary: rgb(255 255 255);
@@ -150,58 +160,69 @@ body.dark-theme {
   --secondary-hover: #a41f32;
 
   // background
-  --bkg: #393939;
+  --bkg: rgb(31, 31, 33);
+  --nav-border: #3f3f3f;
 
   // lines
   --line: hsla(0, 0%, 100%, 0.5);
 
   // cards
-  --card-bkg: #393939;
-  --card-secondary-bkg: #393939;
+  --card-bkg: #1e1e1e;
+  --card-border: #3f3f3f;
+  --card-secondary-bkg: #1e1e1e;
+
+  // charts
+  --chart-subtitle: #969696;
 
   // lists
-  --list-bkg: #393939;
-  --list-header: #393939;
-  --list-item-bkg: #393939;
+  --list-bkg: #1e1e1e;
+  --list-border: #3f3f3f;
+  --list-header: #1e1e1e;
+  --list-item-bkg: #1e1e1e;
+  --list-badge: #101010;
+  --list-badge-border: #3f3f3f;
 
   // dash pages background
-  --dash-bkg: #2a2a2a;
+  --dash-bkg: rgb(22, 22, 24);
 
   // buttons
   --btn: #393939;
-  --btn-dark: #1d1d1d;
+  --btn-dark: #101010;
   --btn-hover: #4b4b4b;
-  --btn-hover-dark: #0b0b0b;
-  --btn-disabled: #494949;
+  --btn-hover-dark: #000000;
+  --btn-disabled: #3a3a3a;
+  --btn-border: #3f3f3f;
 
   // switch
   --switch-toggle: #2a2a2a;
   --switch-toggle-btn: #fff;
   --switch-toggle-toggled: #0b0b0b;
-  --switch-toggle-border: #1d1d1d;
+  --switch-toggle-border: #3f3f3f;
 
   // badges
-  --badges-ctn: #2a2a2a;
+  --badges-ctn: #101010;
+  --badge-border: #3f3f3f;
   --badge-info: #1d1d1d;
   --badge-increase: #14da6639;
   --bagde-increase-txt: #2ecc71;
 
   // pagination
-  --pagination-item: #393939;
-  --pagination-item-hover: #1d1d1d;
-  --pagination-item-border: #1d1d1d;
-  --pagination-item-active: #1d1d1d;
-  --pagination-item-active-hover: #211d5d;
+  --pagination-item: #1e1e1e;
+  --pagination-item-hover: #101010;
+  --pagination-item-border: #3f3f3f;
+  --pagination-item-active: #101010;
+  --pagination-item-active-hover: #101010;
   --pagination-item-txt: #fff;
   --pagination-item-txt-active: #fff;
 
   // dropdown
   --dropdown-bkg: #1d1d1d;
   --dropdown-item-hover: #393939;
+  --dropdown-border: #090909;
 
   // modals
-  --modal-bkg: #393939;
-  --modal-border: #1d1d1d;
+  --modal-bkg: #1e1e1e;
+  --modal-border: #3f3f3f;
   --modal-close-btn: #fff;
   --modal-header: #393939;
 
@@ -211,18 +232,17 @@ body.dark-theme {
   --toast-success: #24a258;
   --toast-error: #ec0000;
 
-  // dropdown
-  --dropdown-border: #090909;
-
   // list switch btn
-  --list-switch-bkg: #393939;
+  --list-switch-bkg: #1d1d1d;
+  --list-switch-border: #3f3f3f;
   --list-switch-toggled: #0b0b0b;
   --list-switch-text-toggled: #fff;
   --list-switch-text-untoggled: rgb(145, 145, 145);
 
   // settings
-  --setting-badge: #1d1d1d;
-  --theme-border: #1d1d1d;
+  --setting-badge: #101010;
+  --setting-badge-border: #3f3f3f;
+  --theme-border: #3f3f3f;
   --theme-border-selected: #8984ed;
   --separator: #1d1d1d;
 }

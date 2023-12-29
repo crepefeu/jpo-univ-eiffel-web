@@ -22,7 +22,8 @@
     color: var(--white);
     padding: 5px 15px;
     background-color: var(--badge-info);
-    border-radius: 10px;
+    border: solid 1px var(--badge-border);
+    border-radius: 30px;
     cursor: default;
 }
 

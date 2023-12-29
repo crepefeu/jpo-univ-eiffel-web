@@ -100,7 +100,7 @@ select {
 
 .form-btn {
   width: fit-content;
-  border: none;
+  border: solid 1px var(--btn-border);
   padding: 8px 25px;
   border-radius: 30px;
   background-color: var(--btn-dark);

@@ -27,7 +27,7 @@
 .chart-subtitle {
   font-size: 0.85rem;
   font-weight: 400;
-  color: var(--font-color);
+  color: var(--chart-subtitle);
 }
 
 .statistics-card-grid {
@@ -46,6 +46,7 @@
   padding: 20px 30px;
   height: fit-content;
   background-color: var(--card-bkg);
+  border: solid 1px var(--card-border);
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;

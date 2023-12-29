@@ -307,7 +307,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
         ...this.frenchDepChartOptions,
         chart: {
           ...franceDepChart,
-          backgroundColor: "#393939",
+          backgroundColor: "#1e1e1e",
         }
       }
 
@@ -315,7 +315,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
         ...this.idfChartOptions,
         chart: {
           ...idfChart,
-          backgroundColor: "#393939",
+          backgroundColor: "#1e1e1e",
         }
       }
     } else {
@@ -384,7 +384,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
           ...this.frenchDepChartOptions,
           chart: {
             ...franceDepChart,
-            backgroundColor: "#393939",
+            backgroundColor: "#1e1e1e",
           }
         }
 
@@ -392,7 +392,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
           ...this.idfChartOptions,
           chart: {
             ...idfChart,
-            backgroundColor: "#393939",
+            backgroundColor: "#1e1e1e",
           }
         }
       } else {

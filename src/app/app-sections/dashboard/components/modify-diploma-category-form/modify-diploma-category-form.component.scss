@@ -89,10 +89,10 @@ select {
 
 .form-btn {
   width: fit-content;
-  border: none;
+  border: solid 1px var(--btn-border);
   padding: 8px 25px;
   border-radius: 30px;
-  background-color: var(--primary);
+  background-color: var(--btn-dark);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 400;
@@ -102,10 +102,10 @@ select {
 
   &:disabled {
     cursor: default;
-    background-color: var(--primary-disabled);
+    background-color: var(--btn-disabled);
 
     &:hover {
-      background-color: var(--primary-disabled);
+      background-color: var(--btn-disabled);
     }
   }
 
@@ -116,11 +116,11 @@ select {
 
     &:disabled {
       cursor: default;
-      background-color: var(--primary-disabled);
+      background-color: var(--btn-disabled);
     }
   }
 
   &:hover {
-    background-color: var(--primary-hover);
+    background-color: var(--btn-hover-dark);
   }
 }
