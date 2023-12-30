@@ -14,6 +14,7 @@ import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/ad
 import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-form/modify-diploma-category-form.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { defaultToastConfig } from 'src/app/configs/default-toast.config';
 
 @Component({
   selector: 'app-manage-list',
@@ -217,45 +218,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-error)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-success)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          duration: 4000,
-          position: 'bottom-center',
-          style: {
-            backgroundColor: 'var(--toast-bkg)',
-            color: 'var(--toast-txt)',
-            borderRadius: '30px',
-            border: '1.5px solid var(--toast-error)',
-            fontWeight: '400',
-            padding: '3px 10px'
-          }
+          ...defaultToastConfig
         }),
       });
     } else if (this.listType === ManageListTypes.Diplomas) {
@@ -263,44 +237,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-error)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-success)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
             this.deleteItemFromList(itemId);
+            this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          duration: 4000,
-          position: 'bottom-center',
-          style: {
-            backgroundColor: 'var(--toast-bkg)',
-            color: 'var(--toast-txt)',
-            borderRadius: '30px',
-            border: '1.5px solid var(--toast-error)',
-            fontWeight: '400',
-            padding: '3px 10px'
-          }
+          ...defaultToastConfig
         }),
       });
     } else if (this.listType === ManageListTypes.DiplomaCategories) {
@@ -308,44 +256,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-error)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              duration: 4000,
-              position: 'bottom-center',
-              style: {
-                backgroundColor: 'var(--toast-bkg)',
-                color: 'var(--toast-txt)',
-                borderRadius: '30px',
-                border: '1.5px solid var(--toast-success)',
-                fontWeight: '400',
-                padding: '3px 10px'
-              }
+              ...defaultToastConfig
             });
             this.deleteItemFromList(itemId);
+            this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          duration: 4000,
-          position: 'bottom-center',
-          style: {
-            backgroundColor: 'var(--toast-bkg)',
-            color: 'var(--toast-txt)',
-            borderRadius: '30px',
-            border: '1.5px solid var(--toast-error)',
-            fontWeight: '400',
-            padding: '3px 10px'
-          }
+          ...defaultToastConfig
         }),
       });
     }

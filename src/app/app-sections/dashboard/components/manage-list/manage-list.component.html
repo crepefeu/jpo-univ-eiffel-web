@@ -68,7 +68,7 @@
         </table>
         <div class="pagination-ctn">
             <app-pagination #pagination [collectionSize]="(data | search: searchString).length"
-                [pageSize]="10"></app-pagination>
+                [pageSize]="pageSize"></app-pagination>
         </div>
     </div>
 </ng-container>
@@ -146,7 +146,7 @@
         </table>
         <div class="pagination-ctn">
             <app-pagination #pagination [collectionSize]="(data | search: searchString).length"
-                [pageSize]="10"></app-pagination>
+                [pageSize]="pageSize"></app-pagination>
         </div>
     </div>
 </ng-container>

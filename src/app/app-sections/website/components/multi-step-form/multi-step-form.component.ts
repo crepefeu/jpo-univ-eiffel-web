@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
 import { HotToastService } from '@ngneat/hot-toast';
+import { defaultToastConfig } from 'src/app/configs/default-toast.config';
 import { Diploma } from 'src/app/models/diploma';
 import { Region } from 'src/app/models/region';
 import { AttendeesService } from 'src/app/services/attendees.service';
@@ -57,16 +58,18 @@ export class MultiStepFormComponent implements OnInit {
       next: data => {
         this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
-      error: err => console.error('An error occurred :', err),
-      complete: () => console.log('getAllDiplomas() completed')
+      error: err => this.toast.error('Une erreur est survenue', {
+        ...defaultToastConfig
+      })
     });
 
     this.regions.getAllRegions().subscribe({
       next: data => {
         this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
-      error: err => console.error('An error occurred :', err),
-      complete: () => console.log('getAllRegions() completed')
+      error: err => this.toast.error('Une erreur est survenue', {
+        ...defaultToastConfig
+      })
     })
   }
 
@@ -91,62 +94,26 @@ export class MultiStepFormComponent implements OnInit {
       next: data => {
         if (data.status == 'error') {
           this.toast.error(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-error)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
+            ...defaultToastConfig
           });
           return;
         } else if (data.status == 'success') {
           this.toast.success(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-success)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
+            ...defaultToastConfig
           });
           this.isSubmitting = false;
           this.modal.close();
         } else {
           this.isSubmitting = false;
-          this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-error)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
+          this.toast.error('Une erreur est survenue', {
+            ...defaultToastConfig
           });
         }
       },
       error: err => {
         this.isSubmitting = false;
-        this.toast.error('Une erreur est survenue lors de l\'enregistrement de votre participation.', {
-          duration: 4000,
-          position: 'bottom-center',
-          style: {
-            backgroundColor: 'var(--toast-bkg)',
-            color: 'var(--toast-txt)',
-            borderRadius: '30px',
-            border: '1.5px solid var(--toast-error)',
-            fontWeight: '400',
-            padding: '3px 10px'
-          }
+        this.toast.error('Une erreur est survenue', {
+          ...defaultToastConfig
         })
       },
       complete: () => {
