@@ -1,8 +1,10 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { DiplomasService } from 'src/app/services/diplomas.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-add-diploma-category-form',
@@ -11,12 +13,25 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
 })
 export class AddDiplomaCategoryFormComponent {
 
+  isHandheld = false;
+
   addDiplomaCategoryForm: FormGroup;
 
   isSubmitting = false;
 
   constructor(private toast: HotToastService,
-    private diplomas: DiplomasService) {
+    private diplomas: DiplomasService,
+    private responsive: BreakpointObserver,
+    private modal: ModalService) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
     this.addDiplomaCategoryForm = new FormGroup({
       diplomaCategoryName: new FormControl('', Validators.required),
     });
@@ -27,20 +42,57 @@ export class AddDiplomaCategoryFormComponent {
     this.diplomas.addDiplomaCategory(this.addDiplomaCategoryForm.value).subscribe({
       next: data => {
         if (data.status == 'error') {
-          this.toast.error(data.message, {
-            ...defaultErrorToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig
+            });
+          }
         } else if (data.status == 'success') {
-          this.toast.success(data.message, {
-            ...defaultSuccessToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
+          this.modal.close();
         }
         this.isSubmitting = false;
       },
       error: err => {
-        this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        });
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
         this.isSubmitting = false;
       },
       complete: () => this.isSubmitting = false

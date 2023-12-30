@@ -17,7 +17,7 @@ import { RegionsService } from 'src/app/services/regions.service';
 })
 export class ModifyAttendeeFormComponent implements OnInit {
 
-  isHandlheld = false;
+  isHandheld = false;
 
   data: any;
   modifyAttendeeForm!: FormGroup;
@@ -36,9 +36,9 @@ export class ModifyAttendeeFormComponent implements OnInit {
     this.responsive.observe(['(max-width: 500px)']).subscribe({
       next: data => {
         if (data.matches) {
-          this.isHandlheld = true;
+          this.isHandheld = true;
         } else {
-          this.isHandlheld = false;
+          this.isHandheld = false;
         }
       }
     });
@@ -98,20 +98,56 @@ export class ModifyAttendeeFormComponent implements OnInit {
     this.attendees.modifyAttendee(attendee).subscribe({
       next: data => {
         if (data.status === 'success') {
-          this.toast.success(data.message, {
-            ...defaultSuccessToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
           this.modal.close();
         } else if (data.status === 'error') {
-          this.toast.error(data.message, {
-            ...defaultErrorToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig
+            });
+          }
         }
       },
       error: err => {
-        this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        });
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
         this.isSubmitting = false;
       },
       complete: () => {

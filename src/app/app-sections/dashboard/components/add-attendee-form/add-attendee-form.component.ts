@@ -57,19 +57,47 @@ export class AddAttendeeFormComponent implements OnInit {
       next: data => {
         this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
-      error: err => this.toast.error('Une erreur est survenue', {
-        ...defaultErrorToastConfig
-      })
+      error: err => {
+        if (this.isHandlheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
+      }
     });
 
     this.regions.getAllRegions().subscribe({
       next: data => {
         this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
-      error: err => this.toast.error('Une erreur est survenue', {
-        ...defaultErrorToastConfig
-      })
-    })
+      error: err => {
+        if (this.isHandlheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
+      }
+    });
   }
 
   onSubmit() {
@@ -92,20 +120,56 @@ export class AddAttendeeFormComponent implements OnInit {
     this.attendees.registerAttendee(attendeeInfos).subscribe({
       next: data => {
         if (data.status === 'success') {
-          this.toast.success('Participant créé avec succès', {
-            ...defaultSuccessToastConfig
-          });
+          if (this.isHandlheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
           this.modal.close();
         } else if (data.status === 'error') {
-          this.toast.error(data.message, {
-            ...defaultErrorToastConfig
-          });
+          if (this.isHandlheld) {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig
+            });
+          }
         }
       },
       error: err => {
-        this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        });
+        if (this.isHandlheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
         this.isSubmitting = false;
       },
       complete: () => {

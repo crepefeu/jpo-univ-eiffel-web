@@ -217,58 +217,172 @@ export class ManageListComponent implements OnInit {
       this.attendees.deleteAttendee(itemId).subscribe({
         next: data => {
           if (data.status == 'error') {
-            this.toast.error(data.message, {
-              ...defaultErrorToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig,
+                style: {
+                  ...defaultErrorToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.error('Une erreur est survenue', {
+                ...defaultErrorToastConfig
+              });
+            }
           } else if (data.status == 'success') {
-            this.toast.success(data.message, {
-              ...defaultSuccessToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig,
+                style: {
+                  ...defaultSuccessToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig
+              });
+            }
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
-        error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        }),
+        error: err => {
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig
+            });
+          }
+        }
       });
     } else if (this.listType === ManageListTypes.Diplomas) {
       this.diplomas.deleteDiploma(itemId).subscribe({
         next: data => {
           if (data.status == 'error') {
-            this.toast.error(data.message, {
-              ...defaultErrorToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig,
+                style: {
+                  ...defaultErrorToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig
+              });
+            }
           } else if (data.status == 'success') {
-            this.toast.success(data.message, {
-              ...defaultSuccessToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig,
+                style: {
+                  ...defaultSuccessToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig
+              });
+            }
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
-        error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        }),
+        error: err => {
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig
+            });
+          }
+        },
       });
     } else if (this.listType === ManageListTypes.DiplomaCategories) {
       this.diplomas.deleteDiplomaCategory(itemId).subscribe({
         next: data => {
           if (data.status == 'error') {
-            this.toast.error(data.message, {
-              ...defaultErrorToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig,
+                style: {
+                  ...defaultErrorToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig
+              });
+            }
           } else if (data.status == 'success') {
-            this.toast.success(data.message, {
-              ...defaultSuccessToastConfig
-            });
+            if (this.isHandheld) {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig,
+                style: {
+                  ...defaultSuccessToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '65px',
+                }
+              });
+            } else {
+              this.toast.success(data.message, {
+                ...defaultSuccessToastConfig
+              });
+            }
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
-        error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        }),
+        error: err => {
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig
+            });
+          }
+        }
       });
     }
   }

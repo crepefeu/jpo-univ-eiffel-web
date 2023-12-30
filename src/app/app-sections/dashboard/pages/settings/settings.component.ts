@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
+import { defaultSuccessToastConfig } from 'src/app/configs/default-toast.configs';
 import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
@@ -54,51 +55,75 @@ export class SettingsComponent implements OnInit {
     this.adminsService.saveUserPreferences(newUserPreferences).subscribe({
       next: data => {
         if (data.status == 'error') {
-          this.toast.error(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-error)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
-          });
-          return;
+          if (this.isHandheld) {
+            this.toast.error(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
         } else if (data.status == 'success' && data.userPreferences) {
           localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
           this.userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
-          this.toast.success(data.message, {
-            duration: 4000,
-            position: 'bottom-center',
+          if (this.isHandheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
+        } else {
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultSuccessToastConfig
+            });
+          }
+        }
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultSuccessToastConfig,
             style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-success)',
-              fontWeight: '400',
-              padding: '3px 10px'
+              ...defaultSuccessToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
             }
           });
         } else {
-          this.toast.error('Une erreur est survenue lors de l\'enregistrement.', {
-            duration: 4000,
-            position: 'bottom-center',
-            style: {
-              backgroundColor: 'var(--toast-bkg)',
-              color: 'var(--toast-txt)',
-              borderRadius: '30px',
-              border: '1.5px solid var(--toast-error)',
-              fontWeight: '400',
-              padding: '3px 10px'
-            }
+          this.toast.error('Une erreur est survenue', {
+            ...defaultSuccessToastConfig
           });
         }
       },
-      error: err => console.error('An error occurred :', err),
       complete: () => this.isSaving = false
     });
   }

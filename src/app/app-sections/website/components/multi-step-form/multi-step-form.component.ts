@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -17,6 +18,8 @@ import { RegionsService } from 'src/app/services/regions.service';
 })
 export class MultiStepFormComponent implements OnInit {
 
+  isHandheld = false;
+
   infosForm: FormGroup;
   jpoForm: FormGroup;
   virtualTourSatisfactionForm: FormGroup;
@@ -31,7 +34,17 @@ export class MultiStepFormComponent implements OnInit {
     private diplomas: DiplomasService,
     private regions: RegionsService,
     private attendees: AttendeesService,
-    private toast: HotToastService) {
+    private toast: HotToastService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
     this.infosForm = new FormGroup({
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),
@@ -58,18 +71,46 @@ export class MultiStepFormComponent implements OnInit {
       next: data => {
         this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
-      error: err => this.toast.error('Une erreur est survenue', {
-        ...defaultErrorToastConfig
-      })
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
+      }
     });
 
     this.regions.getAllRegions().subscribe({
       next: data => {
         this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
-      error: err => this.toast.error('Une erreur est survenue', {
-        ...defaultErrorToastConfig
-      })
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
+      }
     })
   }
 
@@ -93,28 +134,75 @@ export class MultiStepFormComponent implements OnInit {
     this.attendees.registerAttendee(attendeeInfos).subscribe({
       next: data => {
         if (data.status == 'error') {
-          this.toast.error(data.message, {
-            ...defaultErrorToastConfig
-          });
-          return;
+          if (this.isHandheld) {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig
+            });
+          }
         } else if (data.status == 'success') {
-          this.toast.success(data.message, {
-            ...defaultSuccessToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
           this.isSubmitting = false;
           this.modal.close();
         } else {
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig
+            });
+          }
           this.isSubmitting = false;
+        }
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
           this.toast.error('Une erreur est survenue', {
             ...defaultErrorToastConfig
           });
         }
-      },
-      error: err => {
         this.isSubmitting = false;
-        this.toast.error('Une erreur est survenue', {
-          ...defaultErrorToastConfig
-        })
       },
       complete: () => {
         this.isSubmitting = false;

@@ -1,6 +1,6 @@
 <div class="form-ctn">
     <form [formGroup]="modifyDiplomaForm">
-        <ng-container *ngIf="!isHandlheld">
+        <ng-container *ngIf="!isHandheld">
             <div class="inputs-ctn flex">
                 <div class="input-ctn">
                     <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme*">
@@ -16,7 +16,7 @@
             </div>
         </ng-container>
 
-        <ng-container *ngIf="isHandlheld">
+        <ng-container *ngIf="isHandheld">
             <div class="input-ctn full">
                 <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme*">
             </div>
