@@ -1,0 +1,22 @@
+<div class="drawer-wrapper">
+    <div class="drawer" #drawer>
+        <div class="drawer-header">
+            <div class="gesture-indicator"></div>
+        </div>
+
+        <div class="drawer-infos-ctn">
+            <h1 class="drawer-title">{{title}}</h1>
+
+            <div class="drawer-confirmation-infos-ctn">
+                <h2 class="drawer-sentence">{{confirmationSentence}}</h2>
+                <h2 class="drawer-sentence">Cette action ne pourra pas être annulée</h2>
+            </div>
+        </div>
+
+        <div class="drawer-btns-ctn">
+            <button class="drawer-btn" (click)="onClose()">Annuler</button>
+            <button class="drawer-btn confirm" (click)="onConfirm()">{{confirmationLabel}}</button>
+        </div>
+    </div>
+</div>
+<div class="drawer-overlay" #overlay (click)="onClose()"></div>

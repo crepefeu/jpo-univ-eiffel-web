@@ -121,7 +121,7 @@
 
   &.confirm {
     background-color: var(--danger);
-    border: solid 1px var(--danger);
+    border: solid 1px var(--modal-confirm-border);
 
     &:hover {
       background-color: var(--danger-hover);

@@ -113,8 +113,9 @@ $jpo-univ-eiffel-theme: mat.define-light-theme(
 
 @import "/src/app/theme";
 
-// custom modal animations
+// custom modal and drawer animations
 @import "src/app/shared/components/modals/modal-animations.scss";
+@import "src/app/shared/components/drawers/drawer-animations.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
@@ -166,4 +167,20 @@ $jpo-univ-eiffel-theme: mat.define-light-theme(
   100% {
     transform: rotate(360deg);
   }
+}
+
+app-overview {
+  width: 100%;
+}
+
+app-attendees {
+  width: 100%;
+}
+
+app-diplomas {
+  width: 100%;
+}
+
+app-settings {
+  width: 100%;
 }

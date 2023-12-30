@@ -23,8 +23,8 @@
                 <tr>
                     <th class="header-badge">Prénom</th>
                     <th class="header-badge">Nom</th>
-                    <th class="header-badge">Email</th>
-                    <th class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
+                    <th *ngIf="!isHandheld" class="header-badge">Email</th>
+                    <th *ngIf="!isHandheld" class="header-badge filter" (click)="toggleDropdown(participationDropdownList)">
                         <div class="header-badge-inner">
                             Participation
                             <i class="bi bi bi-filter filter-btn"></i>
@@ -45,9 +45,9 @@
                     : pagination.currentPage * pagination.pageSize">
                         <td class="data">{{attendee.firstName}}</td>
                         <td class="data">{{attendee.lastName}}</td>
-                        <td class="data">{{attendee.email}}</td>
-                        <td class="data" *ngIf="attendee.isIrlAttendee">Présentielle</td>
-                        <td class="data" *ngIf="!attendee.isIrlAttendee">Distancielle</td>
+                        <td *ngIf="!isHandheld" class="data">{{attendee.email}}</td>
+                        <td class="data" *ngIf="attendee.isIrlAttendee && !isHandheld">Présentielle</td>
+                        <td class="data" *ngIf="!attendee.isIrlAttendee && !isHandheld">Distancielle</td>
                         <td class="action-buttons-ctn">
                             <button class="action-btn" (click)="openModifyModal(attendee)">
                                 <i class="bi bi-pencil-fill"></i>
@@ -109,7 +109,7 @@
             <thead *ngIf="(data | search: searchString).length !== 0" class="table-header">
                 <tr>
                     <th class="header-badge">Diplôme</th>
-                    <th class="header-badge">Catégorie</th>
+                    <th *ngIf="!isHandheld" class="header-badge">Catégorie</th>
                     <th class="header-badge">Actions</th>
                 </tr>
             </thead>
@@ -122,7 +122,7 @@
 
                         <ng-container *ngIf="data.length > 0">
                             <td class="data">{{diploma.name}}</td>
-                            <td class="data">{{diploma.category.name}}</td>
+                            <td *ngIf="!isHandheld" class="data">{{diploma.category.name}}</td>
                             <td class="action-buttons-ctn">
                                 <button class="action-btn" (click)="openModifyModal(diploma)">
                                     <i class="bi bi-pencil-fill"></i>
@@ -187,7 +187,7 @@
             <thead *ngIf="(data | search: searchString).length !== 0" class="table-header" class="table-header">
                 <tr>
                     <th class="header-badge">Catégorie</th>
-                    <th class="header-badge">Nombre de diplômes</th>
+                    <th *ngIf="!isHandheld" class="header-badge">Nombre de diplômes</th>
                     <th class="header-badge">Actions</th>
                 </tr>
             </thead>
@@ -198,9 +198,9 @@
                     : pagination.currentPage * pagination.pageSize">
                         <td class="data">{{diplomaCategory.name}}</td>
 
-                        <td *ngIf="diplomaCategory.diplomas !== null" class="data">{{diplomaCategory.diplomas.length}}
+                        <td *ngIf="diplomaCategory.diplomas !== null && !isHandheld" class="data">{{diplomaCategory.diplomas.length}}
                         </td>
-                        <td *ngIf="diplomaCategory.diplomas === null" class="data">Catégorie vide</td>
+                        <td *ngIf="diplomaCategory.diplomas === null && !isHandheld" class="data">Catégorie vide</td>
 
                         <td class="action-buttons-ctn">
                             <button class="action-btn" (click)="openModifyModal(diplomaCategory)">
@@ -222,7 +222,8 @@
         </table>
         <div class="pagination-ctn">
             <app-pagination #pagination [collectionSize]="(data | search: searchString).length"
-                [pageSize]="10"></app-pagination>
+                [pageSize]="pageSize">
+            </app-pagination>
         </div>
     </div>
 </ng-container>

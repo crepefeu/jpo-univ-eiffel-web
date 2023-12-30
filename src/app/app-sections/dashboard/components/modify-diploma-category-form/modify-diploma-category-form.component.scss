@@ -124,3 +124,23 @@ select {
     background-color: var(--btn-hover-dark);
   }
 }
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+  .form-btn {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .inputs-ctn.flex {
+    gap: 15px;
+  }
+
+  .input-ctn {
+    width: 100%;
+  }
+
+  input {
+    padding: 10px 15px;
+  }
+}

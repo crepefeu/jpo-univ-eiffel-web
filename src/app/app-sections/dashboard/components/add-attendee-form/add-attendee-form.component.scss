@@ -47,7 +47,7 @@ label {
 input {
   width: 100%;
   border-radius: 10px;
-  padding: 6px 10px;
+  padding: 8px 10px;
   border: solid 1px var(--input-border);
   font-size: 0.9rem;
   transition: border 200ms ease-in-out;
@@ -67,7 +67,7 @@ input {
 select {
   width: 100%;
   border-radius: 10px;
-  padding: 5px 5px;
+  padding: 7px 5px;
   border: solid 1px var(--input-border);
   font-size: 0.9rem;
   transition: border 200ms ease-in-out;
@@ -122,5 +122,29 @@ select {
 
   &:hover {
     background-color: var(--btn-hover-dark);
+  }
+}
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+  .form-btn {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .inputs-ctn.flex {
+    gap: 15px;
+  }
+
+  .input-ctn {
+    width: 100%;
+  }
+
+  input {
+    padding: 10px 15px;
+  }
+
+  select {
+    padding: 9px 15px;
   }
 }

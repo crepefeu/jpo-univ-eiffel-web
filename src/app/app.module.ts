@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // Material Modules
 import { MatStepperModule } from '@angular/material/stepper';
@@ -46,6 +47,8 @@ import { AddDiplomaCategoryFormComponent } from './app-sections/dashboard/compon
 import { ModifyDiplomaFormComponent } from './app-sections/dashboard/components/modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from './app-sections/dashboard/components/modify-diploma-category-form/modify-diploma-category-form.component';
 import { ConfirmationModalComponent } from './shared/components/modals/confirmation-modal/confirmation-modal.component';
+import { GenericDrawerComponent } from './shared/components/drawers/generic-drawer/generic-drawer.component';
+import { ConfirmationDrawerComponent } from './shared/components/drawers/confirmation-drawer/confirmation-drawer.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +82,9 @@ import { ConfirmationModalComponent } from './shared/components/modals/confirmat
     AddDiplomaCategoryFormComponent,
     ModifyDiplomaFormComponent,
     ModifyDiplomaCategoryFormComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    GenericDrawerComponent,
+    ConfirmationDrawerComponent
   ],
   imports: [
     BrowserModule,
@@ -87,6 +92,7 @@ import { ConfirmationModalComponent } from './shared/components/modals/confirmat
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    LayoutModule,
     MatStepperModule,
     NgChartsModule,
     HighchartsChartModule,

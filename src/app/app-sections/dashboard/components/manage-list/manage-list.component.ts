@@ -13,6 +13,7 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
 import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/add-diploma-category-form.component';
 import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-form/modify-diploma-category-form.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-manage-list',
@@ -21,20 +22,28 @@ import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-f
 })
 export class ManageListComponent implements OnInit {
 
-  @ViewChild('pagination') pagination?: PaginationComponent;
+  @ViewChild('pagination') pagination!: PaginationComponent;
 
   @Input() originalData: any[] = [];
   @Input() listType?: ManageListTypes;
   @Input() isLoading?: boolean;
 
+  isHandheld = false;
+
   data: any[] = [];
   searchString: string = "";
+  pageSize = 10;
 
   constructor(private search: SearchService,
     private modalService: ModalService,
     private attendees: AttendeesService,
     private toast: HotToastService,
-    private diplomas: DiplomasService) {
+    private diplomas: DiplomasService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe('(max-width: 500px)').subscribe(result => {
+      this.isHandheld = result.matches;
+      this.pageSize = this.isHandheld ? 5 : 10;
+    });
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
   }
 
@@ -44,6 +53,10 @@ export class ManageListComponent implements OnInit {
 
   closeDropDown(dropdownList: HTMLDivElement) {
     dropdownList.classList.remove('show');
+  }
+
+  close() {
+    this.modalService.close();
   }
 
   toggleDropdown(dropdownList: HTMLDivElement) {
@@ -100,139 +113,102 @@ export class ManageListComponent implements OnInit {
 
   openAddModal(entity?: string) {
     if (this.listType === ManageListTypes.Attendees) {
-      this.modalService.open(AddAttendeeFormComponent, {
-        title: 'Ajouter un participant',
-        displayHeader: true,
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: '80vw',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.open(AddAttendeeFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Ajouter un participant'
+        });
+      } else {
+        this.modalService.open(AddAttendeeFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Ajouter un participant',
+        });
+      }
     } else if (this.listType === ManageListTypes.Diplomas || this.listType === ManageListTypes.DiplomaCategories) {
       if (entity === 'diploma') {
-        this.modalService.open(AddDiplomaFormComponent, {
-          title: 'Ajouter un diplôme',
-          displayHeader: true,
-          animations: {
-            modal: {
-              enter: 'enter-scaling 0.1s ease-out',
-              leave: 'exit-scaling 0.1s ease-out',
-            },
-            overlay: {
-              enter: 'fade-in 0.1s',
-              leave: 'fade-out 0.1s forwards',
-            },
-          },
-          size: {
-            width: '80vw',
-            height: 'fit-content',
-          }
-        });
+        if (!this.isHandheld) {
+          this.modalService.open(AddDiplomaFormComponent, {
+            ...this.modalService.modalConfig,
+            title: 'Ajouter un diplôme'
+          });
+        } else {
+          this.modalService.open(AddDiplomaFormComponent, {
+            ...this.modalService.drawerConfig,
+            title: 'Ajouter un diplôme',
+          });
+        }
       } else if (entity === 'category') {
-        this.modalService.open(AddDiplomaCategoryFormComponent, {
-          title: 'Ajouter une catégorie',
-          displayHeader: true,
-          animations: {
-            modal: {
-              enter: 'enter-scaling 0.1s ease-out',
-              leave: 'exit-scaling 0.1s ease-out',
-            },
-            overlay: {
-              enter: 'fade-in 0.1s',
-              leave: 'fade-out 0.1s forwards',
-            },
-          },
-          size: {
-            width: '80vw',
-            height: 'fit-content',
-          }
-        });
+        if (!this.isHandheld) {
+          this.modalService.open(AddDiplomaCategoryFormComponent, {
+            ...this.modalService.modalConfig,
+            title: 'Ajouter une catégorie'
+          });
+        } else {
+          this.modalService.open(AddDiplomaCategoryFormComponent, {
+            ...this.modalService.drawerConfig,
+            title: 'Ajouter une catégorie',
+          });
+        }
       }
     }
   }
 
   openModifyModal(item: any) {
     if (this.listType === ManageListTypes.Attendees) {
-      this.modalService.open(ModifyAttendeeFormComponent, {
-        title: 'Modifier le participant',
-        displayHeader: true,
-        data: {
-          item
-        },
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: '80vw',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.open(ModifyAttendeeFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Modifier le participant',
+          data: {
+            item
+          }
+        });
+      } else {
+        this.modalService.open(ModifyAttendeeFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Modifier le participant',
+          data: {
+            item
+          }
+        });
+      }
     } else if (this.listType === ManageListTypes.Diplomas) {
-      this.modalService.open(ModifyDiplomaFormComponent, {
-        title: 'Modifier le diplôme',
-        displayHeader: true,
-        data: {
-          item
-        },
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: '80vw',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.open(ModifyDiplomaFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Modifier le diplôme',
+          data: {
+            item
+          }
+        });
+      } else {
+        this.modalService.open(ModifyDiplomaFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Modifier le diplôme',
+          data: {
+            item
+          }
+        });
+      }
     } else if (this.listType === ManageListTypes.DiplomaCategories) {
-      this.modalService.open(ModifyDiplomaCategoryFormComponent, {
-        title: 'Modifier la catégorie',
-        displayHeader: true,
-        data: {
-          item
-        },
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: '80vw',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.open(ModifyDiplomaCategoryFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Modifier la catégorie',
+          data: {
+            item
+          }
+        });
+      } else {
+        this.modalService.open(ModifyDiplomaCategoryFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Modifier la catégorie',
+          data: {
+            item
+          }
+        });
+      }
     }
-  }
-
-  close() {
-    this.modalService.close();
   }
 
   deleteItem(itemId: number) {
@@ -382,65 +358,68 @@ export class ManageListComponent implements OnInit {
 
   openConfirmationModal(itemId: number) {
     if (this.listType === ManageListTypes.Attendees) {
-      this.modalService.openConfirmationModal({
-        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce participant ?',
-        confirmationLabel: 'Supprimer',
-        onConfirm: () => this.deleteItem(itemId),
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: 'fit-content',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.modalConfig,
+          title: 'Supprimer le participant',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce participant ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId),
+          size: {
+            width: 'fit-content',
+          }
+        });
+      } else {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.drawerConfig,
+          title: 'Supprimer le participant',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce participant ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId),
+        });
+      }
     } else if (this.listType === ManageListTypes.Diplomas) {
-      this.modalService.openConfirmationModal({
-        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce diplôme ?',
-        confirmationLabel: 'Supprimer',
-        onConfirm: () => this.deleteItem(itemId),
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: 'fit-content',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.modalConfig,
+          title: 'Supprimer le diplôme',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce diplôme ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId),
+          size: {
+            width: 'fit-content',
+          }
+        });
+      } else {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.drawerConfig,
+          title: 'Supprimer le diplôme',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer ce diplôme ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId)
+        });
+      }
     } else if (this.listType === ManageListTypes.DiplomaCategories) {
-      this.modalService.openConfirmationModal({
-        confirmationSentence: 'Êtes-vous sûr de vouloir supprimer cette catégorie ?',
-        confirmationLabel: 'Supprimer',
-        onConfirm: () => this.deleteItem(itemId),
-        animations: {
-          modal: {
-            enter: 'enter-scaling 0.1s ease-out',
-            leave: 'exit-scaling 0.1s ease-out',
-          },
-          overlay: {
-            enter: 'fade-in 0.1s',
-            leave: 'fade-out 0.1s forwards',
-          },
-        },
-        size: {
-          width: 'fit-content',
-          height: 'fit-content',
-        }
-      });
+      if (!this.isHandheld) {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.modalConfig,
+          title: 'Supprimer la catégorie',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer cette catégorie ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId),
+          size: {
+            width: 'fit-content',
+          }
+        });
+      } else {
+        this.modalService.openConfirmationModal({
+          ...this.modalService.drawerConfig,
+          title: 'Supprimer la catégorie',
+          confirmationSentence: 'Êtes-vous sûr de vouloir supprimer cette catégorie ?',
+          confirmationLabel: 'Supprimer',
+          onConfirm: () => this.deleteItem(itemId),
+        });
+      }
     }
   }
 }

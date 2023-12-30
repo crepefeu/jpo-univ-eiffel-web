@@ -2,13 +2,11 @@
     <form [formGroup]="addDiplomaForm">
         <div class="inputs-ctn flex">
             <div class="input-ctn">
-                <label for="">Nom du diplôme*</label>
-                <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme">
+                <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme*">
             </div>
             <div class="input-ctn">
-                <label>Catégorie du diplôme*</label>
                 <select class="input" formControlName="diplomaCategoryId">
-                    <option value="" selected disabled hidden>Choisissez une catégorie</option>
+                    <option value="" selected disabled hidden>Catégorie*</option>
                     <option *ngFor="let category of diplomaCategories" [value]="category.id">
                         {{category.name}}
                     </option>

@@ -114,6 +114,7 @@ select {
   &:disabled {
     cursor: default;
     background-color: var(--btn-disabled);
+    border: solid 1px var(--btn-disabled);
 
     &:hover {
       background-color: var(--btn-disabled);
@@ -133,5 +134,17 @@ select {
 
   &:hover {
     background-color: var(--btn-hover-dark);
+  }
+}
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+  .form-btn {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .inputs-ctn.flex {
+    gap: 15px;
   }
 }

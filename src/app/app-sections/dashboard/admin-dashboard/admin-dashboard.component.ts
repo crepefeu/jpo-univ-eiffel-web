@@ -1,9 +1,8 @@
-import { Component, EventEmitter, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminsService } from 'src/app/services/admins.service';
-import { OverviewComponent } from '../pages/overview/overview.component';
-import { AttendeesComponent } from '../pages/attendees/attendees.component';
 import { SharedService } from 'src/app/services/shared.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -15,7 +14,19 @@ export class AdminDashboardComponent implements OnInit {
   activeTab = 'overview';
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
-  constructor(private adminsService: AdminsService, private router: Router, private sharedService: SharedService) { }
+  isHandheld = false;
+
+  constructor(private adminsService: AdminsService,
+    private router: Router,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe((state) => {
+      if (state.matches) {
+        this.isHandheld = true;
+      } else {
+        this.isHandheld = false;
+      }
+    });
+    }
 
   ngOnInit(): void {
     if (this.userPreferences && this.userPreferences.defaultTheme == 'system') {

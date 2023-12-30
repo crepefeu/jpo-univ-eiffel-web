@@ -56,3 +56,10 @@
     padding: 15px 0px 20px 25px;
   }
 }
+
+// mobile responsive
+@media screen and (max-width: 768px) {
+  .statistics-card-grid {
+    grid-template-columns: 1fr;
+  }
+}

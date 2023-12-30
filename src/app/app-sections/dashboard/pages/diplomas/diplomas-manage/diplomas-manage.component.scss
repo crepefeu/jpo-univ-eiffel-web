@@ -4,35 +4,38 @@
 }
 
 .section-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgb(117, 117, 117);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(117, 117, 117);
+  transition: all 0.2s ease-in-out;
 }
 
 .sub-section-title {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--primary);
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--primary);
+  transition: all 0.2s ease-in-out;
 }
 
 .data-badge {
-    font-size: 0.7rem;
-    color: var(--white);
-    padding: 5px 15px;
-    background-color: var(--badge-info);
-    border: solid 1px var(--badge-border);
-    border-radius: 30px;
-    cursor: default;
-    user-select: none;
+  font-size: 0.7rem;
+  color: var(--white);
+  padding: 5px 15px;
+  background-color: var(--badge-info);
+  border: solid 1px var(--badge-border);
+  border-radius: 30px;
+  cursor: default;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .list-toggle {
@@ -59,6 +62,7 @@
   background-color: var(--list-switch-bkg);
   border: 1px solid var(--list-switch-border);
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .switch-btn {
@@ -71,6 +75,7 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   background-color: var(--list-switch-toggled);
   z-index: 1;
+  transition: all 0.2s ease-in-out;
 }
 
 .toggle-values-ctn {
@@ -85,6 +90,7 @@
   color: white;
   z-index: 2;
   transition: color 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .toggle-value2 {

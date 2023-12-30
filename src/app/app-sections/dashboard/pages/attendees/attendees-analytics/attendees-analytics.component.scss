@@ -8,6 +8,7 @@
   font-size: 1.1rem;
   font-weight: 400;
   color: var(--primary);
+  transition: all 0.2s ease-in-out;
 }
 
 .chart-infos {
@@ -22,12 +23,14 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--font-color);
+  transition: all 0.2s ease-in-out;
 }
 
 .chart-subtitle {
   font-size: 0.85rem;
   font-weight: 400;
   color: var(--chart-subtitle);
+  transition: all 0.2s ease-in-out;
 }
 
 .statistics-card-grid {
@@ -52,4 +55,11 @@
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
   gap: 10px;
   transition: all 200ms ease-in-out;
+}
+
+// mobile responsive
+@media (max-width: 768px) {
+  .statistics-card-grid {
+    grid-template-columns: 1fr;
+  }
 }

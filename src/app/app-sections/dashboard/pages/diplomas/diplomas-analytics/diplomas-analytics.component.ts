@@ -52,10 +52,10 @@ export class DiplomasAnalyticsComponent implements OnInit{
       labels: [],
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 426,
           options: {
             chart: {
-              width: 200
+              height: 200,
             },
             legend: {
               position: "bottom"
@@ -88,10 +88,10 @@ export class DiplomasAnalyticsComponent implements OnInit{
       labels: [],
       responsive: [
         {
-          breakpoint: 480,
+          breakpoint: 426,
           options: {
             chart: {
-              width: 200
+              height: 200,
             },
             legend: {
               position: "bottom"

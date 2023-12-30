@@ -81,12 +81,6 @@ select {
   }
 }
 
-.form-help {
-  font-size: 0.7rem;
-  font-weight: 400;
-  color: var(--primary);
-}
-
 .form-btn {
   width: fit-content;
   border: solid 1px var(--btn-border);
@@ -122,5 +116,25 @@ select {
 
   &:hover {
     background-color: var(--btn-hover-dark);
+  }
+}
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+  .form-btn {
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .inputs-ctn.flex {
+    gap: 15px;
+  }
+
+  .input-ctn {
+    width: 100%;
+
+    input {
+      padding: 12px 15px;
+    }
   }
 }

@@ -126,6 +126,7 @@
 
 .no-data {
     position: absolute;
+    width: max-content;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -231,4 +232,11 @@
 
 .show {
     display: flex;
+}
+
+// mobile responsive design
+@media (max-width: 768px) {
+    .action-btn {
+        padding: 8px 10px;
+    }
 }

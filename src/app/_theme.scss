@@ -98,6 +98,19 @@ body {
   --modal-border: #fff;
   --modal-close-btn: #2f2a86;
   --modal-header: #fff;
+  --modal-confirm-border: #e23232;
+
+  // drawers
+  --drawer-bkg: #fff;
+  --drawer-border: #fff;
+  --drawer-close-btn: #2f2a86;
+  --drawer-close-btn-border: #fff;
+  --drawer-header: #fff;
+  --confirmation-sentence: #707070;
+  --confirm-border: #fff;
+
+  // gesture indicator
+  --gesture-indicator: #e6e6e6;
 
   // faq
   --card-size: clamp(350px, 40vw, 450px);
@@ -233,6 +246,19 @@ body.dark-theme {
   --modal-border: #3f3f3f;
   --modal-close-btn: #fff;
   --modal-header: #393939;
+  --modal-confirm-border: #1e1e1e;
+
+  // drawers
+  --drawer-bkg: #1e1e1e;
+  --drawer-border: #3f3f3f;
+  --drawer-close-btn: #fff;
+  --drawer-close-btn-border: #3f3f3f;
+  --drawer-header: #393939;
+  --confirmation-sentence: #9a9a9a;
+  --confirm-border: #1e1e1e;
+
+  // gesture indicator
+  --gesture-indicator: #545454;
 
   // toasts
   --toast-bkg: #1d1d1d;

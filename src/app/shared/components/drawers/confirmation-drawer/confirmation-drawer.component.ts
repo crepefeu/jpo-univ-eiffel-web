@@ -1,40 +1,41 @@
 import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Observable, fromEvent, zip } from 'rxjs';
-import { ModalOptions } from 'src/app/models/modalOptions';
+import { DrawerOptions } from 'src/app/models/drawerOptions';
 import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
-  selector: 'app-confirmation-modal',
-  templateUrl: './confirmation-modal.component.html',
-  styleUrls: ['./confirmation-modal.component.scss']
+  selector: 'app-confirmation-drawer',
+  templateUrl: './confirmation-drawer.component.html',
+  styleUrls: ['./confirmation-drawer.component.scss']
 })
-export class ConfirmationModalComponent implements AfterViewInit, OnInit {
+export class ConfirmationDrawerComponent implements AfterViewInit, OnInit {
 
-  @ViewChild('confirmationModal') confirmationModal!: ElementRef<HTMLDivElement>;
+  @ViewChild('drawer') drawer!: ElementRef<HTMLDivElement>;
   @ViewChild('overlay') overlay!: ElementRef<HTMLDivElement>;
 
-  title?: string;
-  displayHeader: boolean = false;
-  options?: ModalOptions | undefined;
+  options: DrawerOptions | undefined;
 
-  confirmationSentence!: string;
-  confirmationLabel!: string;
+  title?: string;
+  confirmationSentence?: string;
+  confirmationLabel?: string;
   onConfirm!: () => void;
 
-  modalAnimationEnd!: Observable<Event>;
-  modalLeaveAnimation!: string;
+  drawerAnimationEnd!: Observable<Event>;
+  drawerLeaveAnimation!: string;
   overlayLeaveAnimation!: string;
   overlayAnimationEnd!: Observable<Event>;
-  modalLeaveTiming!: number;
+  drawerLeaveTiming!: number;
   overlayLeaveTiming!: number;
 
-  constructor(private modalService: ModalService,
-    private element: ElementRef) { }
+  constructor(
+    private modalService: ModalService,
+    private element: ElementRef
+  ) { }
 
   @HostListener('document:keydown.escape')
   onEscape() {
-    // closing modal on escape     
-    this.modalService.closeConfirmationModal();
+    // closing drawer on escape     
+    this.modalService.close();
   }
 
   onClose() {
@@ -49,7 +50,7 @@ export class ConfirmationModalComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit() {
-    // Initializing variables from options passed to the modal
+    // Initializing variables from options passed to the drawer
     if (!this.options) {
       return;
     }
@@ -69,14 +70,10 @@ export class ConfirmationModalComponent implements AfterViewInit, OnInit {
     if (this.options?.onConfirm) {
       this.onConfirm = this.options?.onConfirm;
     }
-
-    if (this.options?.displayHeader) {
-      this.displayHeader = this.options?.displayHeader;
-    }
   }
 
   addEnterAnimations() {
-    this.confirmationModal.nativeElement.style.animation =
+    this.drawer.nativeElement.style.animation =
       this.options?.animations?.modal?.enter || '';
     this.overlay.nativeElement.style.animation =
       this.options?.animations?.overlay?.enter || '';
@@ -84,28 +81,23 @@ export class ConfirmationModalComponent implements AfterViewInit, OnInit {
 
   addOptions() {
     // Applying desired styles
-    this.confirmationModal.nativeElement.style.minWidth =
-      this.options?.size?.minWidth || 'auto';
-    this.confirmationModal.nativeElement.style.width = this.options?.size?.width || 'auto';
-    this.confirmationModal.nativeElement.style.maxWidth =
-      this.options?.size?.maxWidth || 'auto';
-    this.confirmationModal.nativeElement.style.minHeight =
+    this.drawer.nativeElement.style.minHeight =
       this.options?.size?.minHeight || 'auto';
-    this.confirmationModal.nativeElement.style.height =
+    this.drawer.nativeElement.style.height =
       this.options?.size?.height || 'auto';
-    this.confirmationModal.nativeElement.style.maxHeight =
+    this.drawer.nativeElement.style.maxHeight =
       this.options?.size?.maxHeight || 'auto';
 
     // Storing ending animation in variables
-    this.modalLeaveAnimation = this.options?.animations?.modal?.leave || '';
+    this.drawerLeaveAnimation = this.options?.animations?.modal?.leave || '';
     this.overlayLeaveAnimation = this.options?.animations?.overlay?.leave || '';
     // Adding an animationend event listener to know when animations ends     
-    this.modalAnimationEnd = this.animationendEvent(this.confirmationModal.nativeElement);
+    this.drawerAnimationEnd = this.animationendEvent(this.drawer.nativeElement);
     this.overlayAnimationEnd = this.animationendEvent(
       this.overlay.nativeElement
     );
     // Get to know how long animations are
-    this.modalLeaveTiming = this.getAnimationTime(this.modalLeaveAnimation);
+    this.drawerLeaveTiming = this.getAnimationTime(this.drawerLeaveAnimation);
     this.overlayLeaveTiming = this.getAnimationTime(this.overlayLeaveAnimation);
   }
 
@@ -120,10 +112,10 @@ export class ConfirmationModalComponent implements AfterViewInit, OnInit {
   }
 
   close() {
-    this.confirmationModal.nativeElement.style.animation = this.modalLeaveAnimation;
+    this.drawer.nativeElement.style.animation = this.drawerLeaveAnimation;
     this.overlay.nativeElement.style.animation = this.overlayLeaveAnimation;
 
-    // Goal here is to clean up the DOM to not keep unnecessary <app-modal> element
+    // Goal here is to clean up the DOM to not keep unnecessary <app-drawer> element
     // No animations on both elements:
     if (
       !this.options?.animations?.modal?.leave &&
@@ -136,25 +128,25 @@ export class ConfirmationModalComponent implements AfterViewInit, OnInit {
 
     // Remove element if not animated
     this.removeElementIfNoAnimation(
-      this.confirmationModal.nativeElement,
-      this.modalLeaveAnimation
+      this.drawer.nativeElement,
+      this.drawerLeaveAnimation
     );
     this.removeElementIfNoAnimation(
       this.overlay.nativeElement,
       this.overlayLeaveAnimation
     );
 
-    // Both elements are animated, remove modal as soon as longest one ends
-    if (this.modalLeaveTiming > this.overlayLeaveTiming) {
-      this.modalAnimationEnd.subscribe(() => {
+    // Both elements are animated, remove drawer as soon as longest one ends
+    if (this.drawerLeaveTiming > this.overlayLeaveTiming) {
+      this.drawerAnimationEnd.subscribe(() => {
         this.element.nativeElement.remove();
       });
-    } else if (this.modalLeaveTiming < this.overlayLeaveTiming) {
+    } else if (this.drawerLeaveTiming < this.overlayLeaveTiming) {
       this.overlayAnimationEnd.subscribe(() => {
         this.element.nativeElement.remove();
       });
     } else {
-      zip(this.modalAnimationEnd, this.overlayAnimationEnd).subscribe(() => {
+      zip(this.drawerAnimationEnd, this.overlayAnimationEnd).subscribe(() => {
         this.element.nativeElement.remove();
       });
     }

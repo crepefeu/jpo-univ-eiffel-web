@@ -1,6 +1,5 @@
 .content {
-  width: 85vw;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: var(--dash-bkg);
@@ -175,20 +174,23 @@
 .theme-ctn {
   display: flex;
   flex-direction: column;
+  height: auto;
   gap: 7px;
 }
 
 .theme-image-ctn {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   position: relative;
-  height: 150px;
+  height: fit-content;
   border-radius: 7px;
-  cursor: pointer;
   border: solid 4px var(--theme-border);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 15px;
-  gap: 10px;
+  max-height: 150px;
+  max-width: 250px;
   transition: all 200ms ease-in-out;
+  cursor: pointer;
 
   &.selected
   .check-ctn {
@@ -221,8 +223,6 @@
 
 .theme-image {
   height: 100%;
-  width: 100%;
-  object-fit: contain;
   border-radius: 2.5px;
 }
 
@@ -265,4 +265,34 @@
   font-weight: 400;
   color: var(--primary);
   transition: all 200ms ease-in-out;
+}
+
+// mobile responsive
+@media screen and (max-width: 500px) {
+  .content {
+    width: 100vw;
+    padding: 50px 30px;
+    padding-bottom: 100px;
+  }
+
+  .theme-setting-ctn {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .themes-ctn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-image-ctn {
+    max-height: 100px;
+    max-width: 150px;
+  }
+
+  .theme-name-ctn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
