@@ -3,12 +3,12 @@
     <div class="welcome-card">
         <div class="card-content-ctn">
             <div class="welcome-details">
-                <p class="welcome">Bienvenue sur votre dashboard {{displayName}} !</p>
-                <p class="welcome-detail">Ici, vous pouvez suivre les statistiques de votre visite virtuelle.</p>
+                <p class="welcome">Bienvenue {{displayName}} !</p>
+                <p class="welcome-detail">Ici, vous pouvez suivre les statistiques de votre JPO.</p>
             </div>
             <div class="registered-user-data-ctn">
                 <div class="registered-user-data-badge">
-                    <p>Participants enregistrés :
+                    <p>Participants :
                         <span *ngIf="attendeesList">
                             {{attendeesList.length}}
                             <span>
