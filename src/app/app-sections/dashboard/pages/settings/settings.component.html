@@ -1,18 +1,29 @@
 <div class="content">
     <app-page-header [title]="title"></app-page-header>
     <div class="settings-section-ctn" [formGroup]="preferencesForm">
-        <h2 class="section-subtitle">Préférences</h2>
+        <div class="section-head-ctn">
+            <h2 class="section-subtitle">Préférences</h2>
+            <ng-container *ngIf="isHandheld">
+                <div>
+                    <button *ngIf="!isSaving" class="form-btn" (click)="onSave()">Sauvegarder</button>
+                    <button *ngIf="isSaving" class="form-btn-w-loader" disabled>
+                        Sauvegarder
+                        <span class="loader"></span>
+                    </button>
+                </div>
+            </ng-container>
+        </div>
         <div class="settings-section">
             <div class="theme-setting-ctn">
                 <div class="sub-section-ctn">
                     <div class="sub-section-badge">
                         <h3 class="sub-section-title">Thème</h3>
                     </div>
-                    <p class="sub-section-desc">Choisissez votre thème par défaut.</p>    
+                    <p class="sub-section-desc">Choisissez votre thème par défaut.</p>
                 </div>
                 <div class="themes-ctn">
                     <div class="theme-ctn">
-                        <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'system'}" 
+                        <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'system'}"
                             (click)="switchSelectedTheme('system')">
                             <img class="theme-image" src="assets/system-default.png" alt="">
                             <div class="check-ctn">
@@ -36,7 +47,7 @@
                         </div>
                     </div>
                     <div class="theme-ctn">
-                        <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'dark'}" 
+                        <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'dark'}"
                             (click)="switchSelectedTheme('dark')">
                             <img class="theme-image" src="assets/dark-default.png" alt="">
                             <div class="check-ctn">
@@ -82,11 +93,22 @@
             </div>
         </div>
     </div>
-    <div>
-        <button *ngIf="!isSaving" class="form-btn" (click)="onSave()">Sauvegarder</button>
-        <button *ngIf="isSaving" class="form-btn-w-loader" disabled>
-            Sauvegarder
-            <span class="loader"></span>
-        </button>
-    </div>
+    <ng-container *ngIf="isHandheld">
+        <div>
+            <button class="form-btn" (click)="signOut()">
+                Se déconnecter
+                <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isHandheld">
+        <div>
+            <button *ngIf="!isSaving" class="form-btn" (click)="onSave()">Sauvegarder</button>
+            <button *ngIf="isSaving" class="form-btn-w-loader" disabled>
+                Sauvegarder
+                <span class="loader"></span>
+            </button>
+        </div>
+    </ng-container>
 </div>

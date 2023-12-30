@@ -14,6 +14,12 @@
   background-color: var(--separator);
 }
 
+.section-head-ctn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .section-title {
   font-size: 1.3rem;
   font-weight: 600;
@@ -293,6 +299,11 @@
   .theme-name-ctn {
     display: flex;
     align-items: center;
+    gap: 10px;
+  }
+
+  .form-btn {
+    display: flex;
     gap: 10px;
   }
 }

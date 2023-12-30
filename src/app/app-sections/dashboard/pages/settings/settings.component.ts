@@ -1,5 +1,7 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AdminsService } from 'src/app/services/admins.service';
 
@@ -9,6 +11,7 @@ import { AdminsService } from 'src/app/services/admins.service';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
+  isHandheld = false;
 
   title = "Paramètres";
 
@@ -19,14 +22,25 @@ export class SettingsComponent implements OnInit {
   selectedTheme = this.userPreferences.defaultTheme ?? 'system';
 
   constructor(private adminsService: AdminsService,
-    private toast: HotToastService) {
+    private toast: HotToastService,
+    private responsive: BreakpointObserver,
+    private router: Router) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
     this.preferencesForm = new FormGroup({
       showPercentagesOnCharts: new FormControl(this.userPreferences.showPercentagesOnCharts ?? false),
       showLegendOnCharts: new FormControl(this.userPreferences.showLegendOnCharts ?? false)
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onSave() {
     this.isSaving = true;
@@ -100,5 +114,10 @@ export class SettingsComponent implements OnInit {
       // set localstorage to system mode
       this.selectedTheme = 'system';
     }
+  }
+
+  signOut() {
+    this.adminsService.signOut()
+    this.router.navigate(['']);
   }
 }
