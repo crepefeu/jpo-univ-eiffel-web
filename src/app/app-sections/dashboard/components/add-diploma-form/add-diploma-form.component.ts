@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -10,6 +11,7 @@ import { DiplomasService } from 'src/app/services/diplomas.service';
   styleUrls: ['./add-diploma-form.component.scss']
 })
 export class AddDiplomaFormComponent implements OnInit {
+  isHandlheld = false;
 
   addDiplomaForm: FormGroup;
   diplomaCategories?: DiplomaCategory[];
@@ -17,7 +19,18 @@ export class AddDiplomaFormComponent implements OnInit {
   isSubmitting = false;
 
   constructor(private diplomas: DiplomasService,
-    private toast: HotToastService) {
+    private toast: HotToastService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandlheld = true;
+        } else {
+          this.isHandlheld = false;
+        }
+      }
+    });
+
     this.addDiplomaForm = new FormGroup({
       diplomaName: new FormControl('', Validators.required),
       diplomaCategoryId: new FormControl('', Validators.required),

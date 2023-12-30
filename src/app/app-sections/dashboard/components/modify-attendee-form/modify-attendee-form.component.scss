@@ -147,4 +147,16 @@ select {
   .inputs-ctn.flex {
     gap: 15px;
   }
+
+  .input-ctn {
+    width: 100%;
+  }
+
+  input {
+    padding: 10px 15px;
+  }
+
+  select {
+    padding: 9px 15px;
+  }
 }

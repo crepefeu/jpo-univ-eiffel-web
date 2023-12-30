@@ -1,10 +1,27 @@
 <div class="form-ctn">
     <form [formGroup]="addDiplomaForm">
-        <div class="inputs-ctn flex">
-            <div class="input-ctn">
+        <ng-container *ngIf="!isHandlheld">
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme*">
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="diplomaCategoryId">
+                        <option value="" selected disabled hidden>Catégorie*</option>
+                        <option *ngFor="let category of diplomaCategories" [value]="category.id">
+                            {{category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="isHandlheld">
+            <div class="input-ctn full">
                 <input type="text" formControlName="diplomaName" placeholder="Nom du diplôme*">
             </div>
-            <div class="input-ctn">
+
+            <div class="input-ctn full">
                 <select class="input" formControlName="diplomaCategoryId">
                     <option value="" selected disabled hidden>Catégorie*</option>
                     <option *ngFor="let category of diplomaCategories" [value]="category.id">
@@ -12,7 +29,7 @@
                     </option>
                 </select>
             </div>
-        </div>
+        </ng-container>
 
         <small class="form-help">*Champs obligatoires</small>
 

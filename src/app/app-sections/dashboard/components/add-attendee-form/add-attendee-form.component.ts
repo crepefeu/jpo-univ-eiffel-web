@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -15,6 +16,8 @@ import { RegionsService } from 'src/app/services/regions.service';
 })
 export class AddAttendeeFormComponent implements OnInit {
 
+  isHandlheld = false;
+
   addAttendeeForm: FormGroup;
   
   isSubmitting = false;
@@ -26,7 +29,18 @@ export class AddAttendeeFormComponent implements OnInit {
     private regions: RegionsService,
     private attendees: AttendeesService,
     private toast: HotToastService,
-    private modal: ModalService) {
+    private modal: ModalService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandlheld = true;
+        } else {
+          this.isHandlheld = false;
+        }
+      }
+    });
+
     this.addAttendeeForm = new FormGroup({
       email: new FormControl('', Validators.required),
       firstName: new FormControl('', Validators.required),

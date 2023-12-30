@@ -1,74 +1,98 @@
 <div class="form-ctn">
     <form [formGroup]="modifyAttendeeForm">
         <div class="input-ctn full">
-            <label for="">Email*</label>
             <input type="text" formControlName="email" placeholder="Email">
         </div>
         <div class="inputs-ctn flex">
             <div class="input-ctn">
-                <label for="">Prénom*</label>
                 <input type="text" formControlName="firstName" placeholder="Prénom">
             </div>
             <div class="input-ctn">
-                <label for="">Nom*</label>
                 <input type="text" formControlName="lastName" placeholder="Nom">
             </div>
         </div>
-        <div class="inputs-ctn flex">
-            <div class="input-ctn">
-                <label for="">Diplôme possédé*</label>
-                <select class="input" formControlName="diplomaId">
-                    <option value="" selected disabled hidden>Choisissez un diplôme</option>
-                    <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
-                        {{diploma.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="input-ctn">
-                <label for="">Département de résidence*</label>
+
+        <ng-container *ngIf="isHandlheld">
+            <div class="input-ctn full">
                 <select class="input" formControlName="region">
-                    <option value="" selected disabled hidden>Choisissez un département</option>
+                    <option value="" selected disabled hidden>Département*</option>
                     <option *ngFor="let region of regionsList" [value]="region.code">
                         {{region.name}}
                     </option>
                 </select>
             </div>
-            <div class="input-ctn">
-                <label for="">Participation à la JPO*</label>
-                <select class="input" formControlName="isIrlAttendee">
-                    <option value="" selected disabled hidden>Choisissez une valeur</option>
-                    <option [value]="true">Présentielle</option>
-                    <option [value]="false">Distancielle</option>
-                </select>
-            </div>
-        </div>
 
-        <div class="inputs-ctn flex">
-            <div class="input-ctn">
-                <label for="">Satisfaction visite virtuelle</label>
-                <select formControlName="virtualTourSatisfaction">
-                    <option value="" selected disabled hidden>Pas répondu</option>
-                    <option [value]="0">Agréable</option>
-                    <option [value]="1">Neutre</option>
-                    <option [value]="2">Désagréable</option>
-                </select>
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <select class="input" formControlName="diplomaId">
+                        <option value="" selected disabled hidden>Diplôme*</option>
+                        <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
+                            {{diploma.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="isIrlAttendee">
+                        <option value="" selected disabled hidden>Participation*</option>
+                        <option [value]="true">Présentielle</option>
+                        <option [value]="false">Distancielle</option>
+                    </select>
+                </div>
             </div>
-    
-            <div class="input-ctn">
-                <label for="">Satisfaction site</label>
-                <select formControlName="websiteSatisfaction">
-                    <option value="" selected disabled hidden>Pas répondu</option>
-                    <option [value]="0">Agréable</option>
-                    <option [value]="1">Neutre</option>
-                    <option [value]="2">Désagréable</option>
-                </select>
+        </ng-container>
+
+        <ng-container *ngIf="!isHandlheld">
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <select class="input" formControlName="diplomaId">
+                        <option value="" selected disabled hidden>Diplôme*</option>
+                        <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
+                            {{diploma.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="region">
+                        <option value="" selected disabled hidden>Département*</option>
+                        <option *ngFor="let region of regionsList" [value]="region.code">
+                            {{region.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="isIrlAttendee">
+                        <option value="" selected disabled hidden>Participation*</option>
+                        <option [value]="true">Présentielle</option>
+                        <option [value]="false">Distancielle</option>
+                    </select>
+                </div>
             </div>
-        </div>
+
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <select formControlName="virtualTourSatisfaction">
+                        <option value="" selected disabled hidden>Pas répondu</option>
+                        <option [value]="0">Agréable</option>
+                        <option [value]="1">Neutre</option>
+                        <option [value]="2">Désagréable</option>
+                    </select>
+                </div>
+
+                <div class="input-ctn">
+                    <select formControlName="websiteSatisfaction">
+                        <option value="" selected disabled hidden>Pas répondu</option>
+                        <option [value]="0">Agréable</option>
+                        <option [value]="1">Neutre</option>
+                        <option [value]="2">Désagréable</option>
+                    </select>
+                </div>
+            </div>
+        </ng-container>
 
         <div class="form-btns-ctn">
-            <button *ngIf="!isSubmitting" class="form-btn" type="button" 
-            [disabled]="!modifyAttendeeForm.valid || !modifyAttendeeForm.dirty" 
-            (click)="onSubmit()">Modifier</button>
+            <button *ngIf="!isSubmitting" class="form-btn" type="button"
+                [disabled]="!modifyAttendeeForm.valid || !modifyAttendeeForm.dirty"
+                (click)="onSubmit()">Modifier</button>
 
             <button *ngIf="isSubmitting" class="form-btn w-loader" type="button" disabled>
                 Modifier

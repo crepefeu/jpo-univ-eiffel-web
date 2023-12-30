@@ -11,16 +11,9 @@
                 <input type="text" formControlName="lastName" placeholder="Nom*">
             </div>
         </div>
-        <div class="inputs-ctn flex">
-            <div class="input-ctn">
-                <select class="input" formControlName="diplomaId">
-                    <option value="" selected disabled hidden>Diplôme*</option>
-                    <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
-                        {{diploma.name}}
-                    </option>
-                </select>
-            </div>
-            <div class="input-ctn">
+
+        <ng-container *ngIf="isHandlheld">
+            <div class="input-ctn full">
                 <select class="input" formControlName="region">
                     <option value="" selected disabled hidden>Département*</option>
                     <option *ngFor="let region of regionsList" [value]="region.code">
@@ -28,14 +21,53 @@
                     </option>
                 </select>
             </div>
-            <div class="input-ctn">
-                <select class="input" formControlName="isIrlAttendee">
-                    <option [value]="null" selected disabled hidden>Participation*</option>
-                    <option [value]="true">Présentielle</option>
-                    <option [value]="false">Distancielle</option>
-                </select>
+
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <select class="input" formControlName="diplomaId">
+                        <option value="" selected disabled hidden>Diplôme*</option>
+                        <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
+                            {{diploma.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="isIrlAttendee">
+                        <option [value]="null" selected disabled hidden>Participation*</option>
+                        <option [value]="true">Présentielle</option>
+                        <option [value]="false">Distancielle</option>
+                    </select>
+                </div>
             </div>
-        </div>
+        </ng-container>
+
+        <ng-container *ngIf="!isHandlheld">
+            <div class="inputs-ctn flex">
+                <div class="input-ctn">
+                    <select class="input" formControlName="diplomaId">
+                        <option value="" selected disabled hidden>Diplôme*</option>
+                        <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
+                            {{diploma.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="region">
+                        <option value="" selected disabled hidden>Département*</option>
+                        <option *ngFor="let region of regionsList" [value]="region.code">
+                            {{region.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="input-ctn">
+                    <select class="input" formControlName="isIrlAttendee">
+                        <option [value]="null" selected disabled hidden>Participation*</option>
+                        <option [value]="true">Présentielle</option>
+                        <option [value]="false">Distancielle</option>
+                    </select>
+                </div>
+            </div>
+        </ng-container>
 
         <small class="form-help">*Champs obligatoires</small>
 

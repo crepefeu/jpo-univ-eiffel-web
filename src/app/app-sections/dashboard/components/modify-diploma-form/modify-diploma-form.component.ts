@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -11,6 +12,8 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./modify-diploma-form.component.scss']
 })
 export class ModifyDiplomaFormComponent implements OnInit {
+  isHandlheld = false;
+  
   data: any;
 
   modifyDiplomaForm!: FormGroup;
@@ -21,7 +24,17 @@ export class ModifyDiplomaFormComponent implements OnInit {
 
   constructor(private diplomas: DiplomasService,
     private toast: HotToastService,
-    private modal: ModalService) {
+    private modal: ModalService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 500px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandlheld = true;
+        } else {
+          this.isHandlheld = false;
+        }
+      }
+    });
   }
 
   ngOnInit(): void {
