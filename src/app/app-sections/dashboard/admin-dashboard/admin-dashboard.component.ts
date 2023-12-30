@@ -16,6 +16,8 @@ export class AdminDashboardComponent implements OnInit {
 
   isHandheld = false;
 
+  showSidebar = false;
+
   constructor(private adminsService: AdminsService,
     private router: Router,
     private responsive: BreakpointObserver) {
