@@ -26,7 +26,7 @@ export class SettingsComponent implements OnInit {
     private toast: HotToastService,
     private responsive: BreakpointObserver,
     private router: Router) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe({
+    this.responsive.observe(['(max-width: 768px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;
