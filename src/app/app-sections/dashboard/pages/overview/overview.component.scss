@@ -247,7 +247,7 @@
   margin-top: 2px;
   font-size: 1.1rem;
   font-weight: 500;
-  color: var(--font-color);
+  color: var(--primary);
   transition: all 200ms ease-in-out;
 }
 
@@ -256,6 +256,116 @@
   .content {
     width: 100vw;
     padding: 50px 30px;
-    padding-bottom: 80px;
+    padding-bottom: 100px;
+  }
+
+  .welcome-card {
+    flex-direction: column;
+    padding: 20px 30px;
+    gap: 20px;
+
+    .card-content-ctn {
+      width: 100%;
+      gap: 20px;
+    }
+
+    .welcome-details {
+      gap: 10px;
+    }
+
+    .welcome {
+      font-size: 1.2rem;
+    }
+
+    .welcome-detail {
+      font-size: 0.9rem;
+    }
+
+    .card-image-ctn {
+      display: none;
+    }
+
+    .card-content-ctn {
+      width: 100%;
+    }
+
+    .card-welcome-image-ctn {
+      display: none;
+    }
+
+    .registered-user-data-ctn {
+      gap: 3px;
+
+      .registered-user-data-badge {
+        padding: 4px 10px;
+      }
+
+      .increase-details-badge {
+        padding: 4px 10px;
+        gap: 3px;
+      }
+    }
+  }
+
+  .registered-user-data-ctn {
+    font-size: 0.9rem;
+  }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+
+    .bento1 {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 2;
+
+      &::before {
+        background: linear-gradient(90deg,var(--line) 2px,transparent 1px 10vmin)
+          -2px -5vmin / 17% 10vmin,
+          linear-gradient(var(--line) 2px, transparent 1px 10vmin) 
+          0 -1vmin / 10vmin 24%;
+        -webkit-mask: linear-gradient(0deg, transparent 25%, white);
+        mask: linear-gradient(-35deg, transparent 45%, white);
+      }
+    }
+
+    .bento2 {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+
+    .bento3 {
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+
+    .bento4 {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+
+    .bento5 {
+      grid-row-start: 5;
+      grid-row-end: 6;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      padding: 15px 20px 0px 25px;
+    }
+
+    .bento6 {
+      grid-row-start: 6;
+      grid-row-end: 7;
+      grid-column-start: 1;
+      grid-column-end: 2;
+      padding: 15px 20px 0px 25px;
+    }
   }
 }
