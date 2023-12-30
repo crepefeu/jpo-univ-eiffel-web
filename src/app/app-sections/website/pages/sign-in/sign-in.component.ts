@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { defaultToastConfig } from 'src/app/configs/default-toast.config';
+import { defaultErrorToastConfig } from 'src/app/configs/default-toast.configs';
 import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
@@ -74,7 +74,7 @@ export class SignInComponent {
         },
         error: err => {
           this.toast.error('Une erreur est survenue', {
-            ...defaultToastConfig
+            ...defaultErrorToastConfig
           });
           this.isSubmitting = false;
         },

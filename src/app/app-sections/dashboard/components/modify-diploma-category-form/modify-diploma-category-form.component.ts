@@ -1,7 +1,7 @@
+import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { defaultToastConfig } from 'src/app/configs/default-toast.config';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -41,19 +41,19 @@ export class ModifyDiplomaCategoryFormComponent {
       next: data => {
         if (data.status == 'error') {
           this.toast.error(data.message, {
-            ...defaultToastConfig
+            ...defaultErrorToastConfig
           });
           return;
         } else if (data.status == 'success') {
           this.toast.success(data.message, {
-            ...defaultToastConfig
+            ...defaultSuccessToastConfig
           });
           this.modal.close();
         }
       },
       error: err => {
         this.toast.error('Une erreur est survenue', {
-          ...defaultToastConfig
+          ...defaultErrorToastConfig
         });
         this.isSubmitting = false;
       },

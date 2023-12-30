@@ -1,8 +1,8 @@
+import { defaultSuccessToastConfig, defaultErrorToastConfig } from './../../../../configs/default-toast.configs';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { defaultToastConfig } from 'src/app/configs/default-toast.config';
 import { Diploma } from 'src/app/models/diploma';
 import { Region } from 'src/app/models/region';
 import { AttendeesService } from 'src/app/services/attendees.service';
@@ -57,16 +57,18 @@ export class AddAttendeeFormComponent implements OnInit {
       next: data => {
         this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.name.localeCompare(b.name));
       },
-      error: err => console.error('An error occurred :', err),
-      complete: () => console.log('getAllDiplomas() completed')
+      error: err => this.toast.error('Une erreur est survenue', {
+        ...defaultErrorToastConfig
+      })
     });
 
     this.regions.getAllRegions().subscribe({
       next: data => {
         this.regionsList = data.sort((a: Region, b: Region) => a.name.localeCompare(b.name));
       },
-      error: err => console.error('An error occurred :', err),
-      complete: () => console.log('getAllRegions() completed')
+      error: err => this.toast.error('Une erreur est survenue', {
+        ...defaultErrorToastConfig
+      })
     })
   }
 
@@ -91,18 +93,18 @@ export class AddAttendeeFormComponent implements OnInit {
       next: data => {
         if (data.status === 'success') {
           this.toast.success('Participant créé avec succès', {
-            ...defaultToastConfig
+            ...defaultSuccessToastConfig
           });
           this.modal.close();
         } else if (data.status === 'error') {
           this.toast.error(data.message, {
-            ...defaultToastConfig
+            ...defaultErrorToastConfig
           });
         }
       },
       error: err => {
         this.toast.error('Une erreur est survenue', {
-          ...defaultToastConfig
+          ...defaultErrorToastConfig
         });
         this.isSubmitting = false;
       },

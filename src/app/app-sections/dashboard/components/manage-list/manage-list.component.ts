@@ -1,3 +1,4 @@
+import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { Attendee } from './../../../../models/attendee';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
@@ -14,7 +15,6 @@ import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/ad
 import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-form/modify-diploma-category-form.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { defaultToastConfig } from 'src/app/configs/default-toast.config';
 
 @Component({
   selector: 'app-manage-list',
@@ -218,18 +218,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              ...defaultToastConfig
+              ...defaultErrorToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              ...defaultToastConfig
+              ...defaultSuccessToastConfig
             });
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultToastConfig
+          ...defaultErrorToastConfig
         }),
       });
     } else if (this.listType === ManageListTypes.Diplomas) {
@@ -237,18 +237,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              ...defaultToastConfig
+              ...defaultErrorToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              ...defaultToastConfig
+              ...defaultSuccessToastConfig
             });
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultToastConfig
+          ...defaultErrorToastConfig
         }),
       });
     } else if (this.listType === ManageListTypes.DiplomaCategories) {
@@ -256,18 +256,18 @@ export class ManageListComponent implements OnInit {
         next: data => {
           if (data.status == 'error') {
             this.toast.error(data.message, {
-              ...defaultToastConfig
+              ...defaultErrorToastConfig
             });
           } else if (data.status == 'success') {
             this.toast.success(data.message, {
-              ...defaultToastConfig
+              ...defaultSuccessToastConfig
             });
             this.deleteItemFromList(itemId);
             this.modalService.closeConfirmationModal();
           }
         },
         error: err => this.toast.error('Une erreur est survenue', {
-          ...defaultToastConfig
+          ...defaultErrorToastConfig
         }),
       });
     }
