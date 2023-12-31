@@ -25,7 +25,8 @@
                     <div class="theme-ctn">
                         <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'system'}"
                             (click)="switchSelectedTheme('system')">
-                            <img class="theme-image" src="assets/system-default.png" alt="">
+                            <img *ngIf="!isHandheld" class="theme-image" src="assets/system-default.png" alt="">
+                            <img *ngIf="isHandheld" class="theme-image" src="assets/system-default-m.png" alt="">
                             <div class="check-ctn">
                                 <i class="bi bi-check-lg"></i>
                             </div>
@@ -37,7 +38,8 @@
                     <div class="theme-ctn">
                         <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'light'}"
                             (click)="switchSelectedTheme('light')">
-                            <img class="theme-image" src="assets/light-default.png" alt="">
+                            <img *ngIf="!isHandheld" class="theme-image" src="assets/light-default.png" alt="">
+                            <img *ngIf="isHandheld" class="theme-image" src="assets/light-default-m.png" alt="">
                             <div class="check-ctn">
                                 <i class="bi bi-check-lg"></i>
                             </div>
@@ -49,7 +51,8 @@
                     <div class="theme-ctn">
                         <div class="theme-image-ctn" [ngClass]="{'selected' : this.selectedTheme == 'dark'}"
                             (click)="switchSelectedTheme('dark')">
-                            <img class="theme-image" src="assets/dark-default.png" alt="">
+                            <img *ngIf="!isHandheld" class="theme-image" src="assets/dark-default.png" alt="">
+                            <img *ngIf="isHandheld" class="theme-image" src="assets/dark-default-m.png" alt="">
                             <div class="check-ctn">
                                 <i class="bi bi-check-lg"></i>
                             </div>

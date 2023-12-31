@@ -60,9 +60,8 @@
   border: solid 1px var(--card-border);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px,
     rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
-  
-  transition: all 200ms ease-in-out;
 
+  transition: all 200ms ease-in-out;
 }
 
 .setting-ctn {
@@ -202,13 +201,11 @@
   transition: all 200ms ease-in-out;
   cursor: pointer;
 
-  &.selected
-  .check-ctn {
+  &.selected .check-ctn {
     display: flex;
   }
 
-  &.selected
-  i {
+  &.selected i {
     color: #fff;
   }
 
@@ -278,8 +275,7 @@
   transition: all 200ms ease-in-out;
 }
 
-// small mobile responsive
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 320px) {
   .content {
     width: 100vw;
     padding: 40px 20px;
@@ -301,8 +297,8 @@
   }
 
   .theme-image-ctn {
-    max-height: 100px;
-    max-width: 150px;
+    max-width: 115px;
+    max-height: fit-content;
   }
 
   .theme-name-ctn {
@@ -314,6 +310,51 @@
   .form-btn {
     display: flex;
     gap: 10px;
+  }
+}
+
+// small mobile responsive
+@media screen and (min-width: 320.1px) and (max-width: 375px) {
+  .content {
+    width: 100vw;
+    padding: 40px 20px;
+    padding-bottom: 100px;
+  }
+
+  .sub-section-ctn {
+    width: 100%;
+  }
+
+  .theme-setting-ctn {
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .themes-ctn {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .theme-image-ctn {
+    max-width: 115px;
+    max-height: fit-content;
+  }
+
+  .theme-name-ctn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .form-btn {
+    display: flex;
+    gap: 10px;
+  }
+
+  .setting-label {
+    font-size: 0.9rem;
   }
 }
 
@@ -341,14 +382,18 @@
   }
 
   .theme-image-ctn {
-    max-height: 100px;
-    max-width: 150px;
+    max-width: 130px;
+    max-height: fit-content;
   }
 
   .theme-name-ctn {
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+  
+  .setting-label {
+    font-size: 0.9rem;
   }
 }
 
@@ -370,5 +415,10 @@
     display: flex;
     justify-content: space-between;
     gap: 30px;
+  }
+
+  .theme-image-ctn {
+    max-width: 140px;
+    max-height: fit-content;
   }
 }
