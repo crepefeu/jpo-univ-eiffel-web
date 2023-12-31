@@ -62,7 +62,7 @@ export class ModalService {
     private injector: EnvironmentInjector,
     private responsive: BreakpointObserver
   ) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe((state) => {
+    this.responsive.observe(['(max-width: 768px)']).subscribe((state) => {
       if (state.matches) {
         this.isHandheld = true;
       } else {

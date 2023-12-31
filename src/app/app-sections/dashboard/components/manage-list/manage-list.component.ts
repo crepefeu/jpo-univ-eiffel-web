@@ -1,6 +1,6 @@
 import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { Attendee } from './../../../../models/attendee';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';
@@ -21,7 +21,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './manage-list.component.html',
   styleUrls: ['./manage-list.component.scss']
 })
-export class ManageListComponent implements OnInit {
+export class ManageListComponent implements OnInit, OnChanges {
 
   @ViewChild('pagination') pagination!: PaginationComponent;
 
@@ -41,11 +41,17 @@ export class ManageListComponent implements OnInit {
     private toast: HotToastService,
     private diplomas: DiplomasService,
     private responsive: BreakpointObserver) {
-    this.responsive.observe('(max-width: 500px)').subscribe(result => {
+    this.responsive.observe('(max-width: 768px)').subscribe(result => {
       this.isHandheld = result.matches;
       this.pageSize = this.isHandheld ? 5 : 10;
     });
     this.search.getSearchString.subscribe((string: string) => this.searchString = string);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['originalData']) {
+      this.data = changes['originalData'].currentValue;
+    }
   }
 
   ngOnInit(): void {

@@ -6,6 +6,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { DiplomaCategory } from 'src/app/models/diplomaCategory';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-modify-diploma-form',
@@ -26,8 +27,9 @@ export class ModifyDiplomaFormComponent implements OnInit {
   constructor(private diplomas: DiplomasService,
     private toast: HotToastService,
     private modal: ModalService,
-    private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe({
+    private responsive: BreakpointObserver,
+    private sharedService: SharedService) {
+    this.responsive.observe(['(max-width: 768px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;
@@ -107,22 +109,11 @@ export class ModifyDiplomaFormComponent implements OnInit {
               }
             });
           } else {
-            if (this.isHandheld) {
-              this.toast.success(data.message, {
-                ...defaultSuccessToastConfig,
-                style: {
-                  ...defaultSuccessToastConfig.style,
-                  fontSize: '0.8rem',
-                  position: 'absolute',
-                  bottom: '65px',
-                }
-              });
-            } else {
-              this.toast.success(data.message, {
-                ...defaultSuccessToastConfig
-              });
-            }
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
           }
+          this.sharedService.updateData(true);
           this.modal.close();
         }
       },

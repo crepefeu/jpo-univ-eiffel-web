@@ -24,7 +24,7 @@ export class AddDiplomaFormComponent implements OnInit {
     private toast: HotToastService,
     private responsive: BreakpointObserver,
     private modal: ModalService) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe({
+    this.responsive.observe(['(max-width: 768px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;

@@ -5,6 +5,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-modify-diploma-category-form',
@@ -24,8 +25,9 @@ export class ModifyDiplomaCategoryFormComponent {
   constructor(private diplomas: DiplomasService,
     private toast: HotToastService,
     private modal: ModalService,
-    private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe({
+    private responsive: BreakpointObserver,
+    private sharedService: SharedService) {
+    this.responsive.observe(['(max-width: 768px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;
@@ -84,6 +86,7 @@ export class ModifyDiplomaCategoryFormComponent {
               ...defaultSuccessToastConfig
             });
           }
+          this.sharedService.updateData(true);
           this.modal.close();
         }
       },

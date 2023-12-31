@@ -1,6 +1,6 @@
 import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Diploma } from 'src/app/models/diploma';
@@ -9,6 +9,7 @@ import { AttendeesService } from 'src/app/services/attendees.service';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { RegionsService } from 'src/app/services/regions.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-modify-attendee-form',
@@ -32,8 +33,9 @@ export class ModifyAttendeeFormComponent implements OnInit {
     private attendees: AttendeesService,
     private toast: HotToastService,
     private modal: ModalService,
-    private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 500px)']).subscribe({
+    private responsive: BreakpointObserver,
+    private sharedService: SharedService) {
+    this.responsive.observe(['(max-width: 768px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;
@@ -113,6 +115,7 @@ export class ModifyAttendeeFormComponent implements OnInit {
               ...defaultSuccessToastConfig
             });
           }
+          this.sharedService.updateData(true);
           this.modal.close();
         } else if (data.status === 'error') {
           if (this.isHandheld) {
