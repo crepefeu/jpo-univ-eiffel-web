@@ -76,18 +76,8 @@
 <ng-container *ngIf="listType === 'Diplomas'">
     <div class="manage-list-ctn">
         <div class="list-header">
-            <button #dropdownBtn1 class="header-btn" (click)="toggleDropdown(dropdownMenu1)">
-                <div #dropdownMenu1 class="dropdown-menu left">
-                    <div class="dropdown-item" (click)="openAddModal('diploma')">
-                        <p>Ajouter un diplôme</p>
-                        <i class="bi bi-file-text"></i>
-                    </div>
-                    <div class="dropdown-item" (click)="openAddModal('category')">
-                        <p>Ajouter une catégorie</p>
-                        <i class="bi bi-files"></i>
-                    </div>
-                </div>
-                <i #dropdownIcon1 class="bi bi-database-fill-add"></i>
+            <button class="header-btn" (click)="openAddModal()">
+                <i class="bi bi-database-fill-add"></i>
             </button>
             <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown2)">
                 <i class="bi bi-funnel-fill"></i>
@@ -154,18 +144,8 @@
 <ng-container *ngIf="listType === 'DiplomaCategories'">
     <div class="manage-list-ctn">
         <div class="list-header">
-            <button #dropdownBtn1 class="header-btn" (click)="toggleDropdown(dropdownMenu1)">
-                <div #dropdownMenu1 class="dropdown-menu left">
-                    <div class="dropdown-item" (click)="openAddModal('diploma')">
-                        <p>Ajouter un diplôme</p>
-                        <i class="bi bi-file-text"></i>
-                    </div>
-                    <div class="dropdown-item" (click)="openAddModal('category')">
-                        <p>Ajouter une catégorie</p>
-                        <i class="bi bi-files"></i>
-                    </div>
-                </div>
-                <i #dropdownIcon1 class="bi bi-database-fill-add"></i>
+            <button class="header-btn" (click)="openAddModal()">
+                <i class="bi bi-database-fill-add"></i>
             </button>
             <button class="header-btn" (click)="toggleDropdown(headerBtnDropdown2)">
                 <i class="bi bi-funnel-fill"></i>

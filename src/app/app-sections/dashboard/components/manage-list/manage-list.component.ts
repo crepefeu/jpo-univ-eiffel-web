@@ -118,7 +118,7 @@ export class ManageListComponent implements OnInit, OnChanges {
     this.pagination?.selectPageNumber(1);
   }
 
-  openAddModal(entity?: string) {
+  openAddModal() {
     if (this.listType === ManageListTypes.Attendees) {
       if (!this.isHandheld) {
         this.modalService.open(AddAttendeeFormComponent, {
@@ -131,31 +131,29 @@ export class ManageListComponent implements OnInit, OnChanges {
           title: 'Ajouter un participant',
         });
       }
-    } else if (this.listType === ManageListTypes.Diplomas || this.listType === ManageListTypes.DiplomaCategories) {
-      if (entity === 'diploma') {
-        if (!this.isHandheld) {
-          this.modalService.open(AddDiplomaFormComponent, {
-            ...this.modalService.modalConfig,
-            title: 'Ajouter un diplôme'
-          });
-        } else {
-          this.modalService.open(AddDiplomaFormComponent, {
-            ...this.modalService.drawerConfig,
-            title: 'Ajouter un diplôme',
-          });
-        }
-      } else if (entity === 'category') {
-        if (!this.isHandheld) {
-          this.modalService.open(AddDiplomaCategoryFormComponent, {
-            ...this.modalService.modalConfig,
-            title: 'Ajouter une catégorie'
-          });
-        } else {
-          this.modalService.open(AddDiplomaCategoryFormComponent, {
-            ...this.modalService.drawerConfig,
-            title: 'Ajouter une catégorie',
-          });
-        }
+    } else if (this.listType === ManageListTypes.Diplomas) {
+      if (!this.isHandheld) {
+        this.modalService.open(AddDiplomaFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Ajouter un diplôme'
+        });
+      } else {
+        this.modalService.open(AddDiplomaFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Ajouter un diplôme',
+        });
+      }
+    } else if (this.listType === ManageListTypes.DiplomaCategories) {
+      if (!this.isHandheld) {
+        this.modalService.open(AddDiplomaCategoryFormComponent, {
+          ...this.modalService.modalConfig,
+          title: 'Ajouter une catégorie'
+        });
+      } else {
+        this.modalService.open(AddDiplomaCategoryFormComponent, {
+          ...this.modalService.drawerConfig,
+          title: 'Ajouter une catégorie',
+        });
       }
     }
   }
