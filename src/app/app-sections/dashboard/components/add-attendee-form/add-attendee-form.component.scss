@@ -118,6 +118,7 @@ select {
   &:disabled {
     cursor: default;
     background-color: var(--btn-disabled);
+    border: solid 1px var(--btn-disabled-border);
 
     &:hover {
       background-color: var(--btn-disabled);
@@ -132,6 +133,7 @@ select {
     &:disabled {
       cursor: default;
       background-color: var(--btn-disabled);
+      border: solid 1px var(--btn-disabled-border);
     }
   }
 
