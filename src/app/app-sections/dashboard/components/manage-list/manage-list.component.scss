@@ -234,8 +234,32 @@
     display: flex;
 }
 
+// small mobile responsive design
+@media (max-width: 320px) {
+    .action-btn {
+        padding: 6px 8px;
+    }
+
+    .list-header {
+        height: 35px;
+    }
+
+    .search-input {
+        height: 35px;
+    }
+
+    .header-btn {
+        height: 35px;
+        padding: 0px 10px;
+
+        i {
+            font-size: 0.8rem;
+        }
+    }
+}
+
 // mobile responsive design
-@media (max-width: 768px) {
+@media (min-width: 320.1px) and (max-width: 768px) {
     .action-btn {
         padding: 8px 10px;
     }
