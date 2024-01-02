@@ -16,6 +16,7 @@ export class AdminDashboardComponent implements OnInit {
 
   isHandheld = false;
 
+  isNavExtended = false;
   showSidebar = false;
 
   constructor(private adminsService: AdminsService,
