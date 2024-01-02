@@ -31,7 +31,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  border: solid 1px white;
+  border: solid 1px var(--btn-border);
   background-color: var(--btn-dark);
   color: white;
   height: var(--extend-btn-height);
@@ -51,7 +51,7 @@
   cursor: pointer;
 
   .dashboard-logo {
-    width: 70%;
+    width: 150px;
     fill: var(--logo);
     transition: all 200ms ease-in-out;
   }
@@ -68,13 +68,13 @@
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .dashboard-nav-link {
   margin-top: 20px;
   width: 100%;
-  padding: 15px 40px;
+  padding: 15px 30px;
   display: flex;
   flex-direction: column;
   transition: all 200ms ease-in-out;
@@ -89,10 +89,17 @@
 }
 
 .primary-nav-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   display: flex;
   gap: 30px;
   transition: all 200ms ease-in-out;
+
+  i {
+    font-size: 1.2rem;
+  }
 
   &:hover {
     color: var(--primary);
@@ -162,7 +169,6 @@
 }
 
 .dashboard-nav-btn {
-  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -191,6 +197,8 @@
 
 .sign-out-btn-ctn {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 30px;
   width: 100%;
   padding: 0px 40px;
@@ -324,9 +332,6 @@
 }
 
 @media screen and (min-width: 768.1px) and (max-width: 1300px) {
-  .dashboard-links {
-    padding-left: 10px;
-  }
   
   .dashboard-nav-link {
     font-size: 0.8rem;

@@ -225,7 +225,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
             format: "{point.name}"
           },
           allAreas: false,
-          data: []
+          data: [null]
         }
       ]
     };
@@ -276,7 +276,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
             format: "{point.name}"
           },
           allAreas: false,
-          data: []
+          data: [null]
         }
       ]
     };
