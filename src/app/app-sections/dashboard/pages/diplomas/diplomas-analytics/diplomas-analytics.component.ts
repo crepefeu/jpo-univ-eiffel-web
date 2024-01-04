@@ -1,3 +1,4 @@
+import { Diploma } from 'src/app/models/diploma';
 import { SharedService } from 'src/app/services/shared.service';
 import { AnalyticsService } from './../../../../../services/analytics.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,8 @@ export class DiplomasAnalyticsComponent implements OnInit{
   diplomaCategoriesRateChart: any;
   diplomasRateChart: any;
 
+  diplomas?: Diploma[];
+
   constructor(private analytics: AnalyticsService,
     private sharedService: SharedService) { }
 
@@ -24,6 +27,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
     });
 
     this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
+      this.diplomas = diplomas;
       this.diplomasRateChart.series = diplomas.counts
       this.diplomasRateChart.labels = diplomas.names;
     });

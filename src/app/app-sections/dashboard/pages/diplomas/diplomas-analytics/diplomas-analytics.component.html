@@ -21,7 +21,7 @@
                 <h1 class="chart-title">Taux de diplômes</h1>
                 <h2 class="chart-subtitle">En nombre de participants</h2>
             </div>
-            <apx-chart [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
+            <apx-chart *ngIf="diplomas" [series]="diplomasRateChart.series" [chart]="diplomasRateChart.chart"
                 [colors]="diplomasRateChart.colors" [labels]="diplomasRateChart.labels"
                 [legend]="diplomasRateChart.legend" [dataLabels]="diplomasRateChart.dataLabels"
                 [responsive]="diplomasRateChart.responsive">
