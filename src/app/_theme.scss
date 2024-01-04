@@ -3,8 +3,8 @@ body {
   --logo: #2f2a86;
 
   // text
-  --font-color: rgb(14, 14, 14);
   --white: #fff;
+  --font: #141313;
 
   // borders
   --border: #e7e7e7;
@@ -55,6 +55,9 @@ body {
   --list-border: #e7e7e7;
   --list-badge: #2f2a86;
   --list-badge-border: #fff;
+  --list-btn: rgb(245, 245, 245);
+  --list-btn-border: #d5d5d5;
+  --list-btn-color: #a3a3a3;
 
   // dash pages background
   --dash-bkg: rgb(240, 238, 251);
@@ -159,7 +162,7 @@ body.dark-theme {
   --logo: #fff;
 
   // text
-  --font-color: #fff;
+  --font: #fff;
   --white: #fff;
 
   // borders
@@ -210,6 +213,9 @@ body.dark-theme {
   --list-item-bkg: rgb(31, 31, 33);
   --list-badge: #101010;
   --list-badge-border: #3d4145;
+  --list-btn: rgb(22, 22, 24);
+  --list-btn-border: #3d4145;
+  --list-btn-color: #a3a3a3;
 
   // dash pages background
   --dash-bkg: rgb(22, 22, 24);
@@ -247,7 +253,7 @@ body.dark-theme {
 
   // dropdown
   --dropdown-bkg: #1d1d1d;
-  --dropdown-item-hover: #393939;
+  --dropdown-item-hover: rgb(22, 22, 24);
   --dropdown-border: #090909;
 
   // modals

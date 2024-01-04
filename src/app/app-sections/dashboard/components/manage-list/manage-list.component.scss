@@ -52,10 +52,10 @@
 .header-btn {
     height: 100%;
     position: relative;
-    border: solid 1px var(--btn-border);
+    border: solid 1px var(--list-btn-border);
     border-radius: 5px;
-    background-color: var(--btn-dark);
-    color: white;
+    background-color: var(--list-btn);
+    color: var(--list-btn-color);
     font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
@@ -69,7 +69,8 @@
     }
 
     &:hover {
-        background-color: var(--btn-hover-dark);
+        background-color: var(--btn-dark);
+        color: white;
     }
 
 }
@@ -132,14 +133,14 @@
     transform: translate(-50%, -50%);
     font-size: 1.2rem;
     font-weight: 500;
-    color: var(--primary);
+    color: var(--font);
 }
 
 .data-row {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: var(--list-item-bkg);
-    color: var(--primary);
+    color: var(--font);
     cursor: default;
     transition: all 200ms ease-in-out;
 }
@@ -159,10 +160,10 @@
     height: 100%;
     width: fit-content;
     padding: 10px 13px;
-    border: solid 1px var(--btn-border);
+    border: solid 1px var(--list-btn-border);
     border-radius: 5px;
-    background-color: var(--btn-dark);
-    color: white;
+    background-color: var(--list-btn);
+    color: var(--list-btn-color);
     font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
@@ -173,7 +174,8 @@
     }
 
     &:hover {
-        background-color: var(--btn-hover-dark);
+        background-color: var(--btn-dark);
+        color: white;
     }
 }
 
@@ -193,7 +195,7 @@
     width: max-content;
     min-width: 100%;
     max-width: max-content;
-    padding: 5px 0;
+    padding: 5px 5px;
     margin: 0.125rem 0 0;
     font-size: 1rem;
     color: #212529;
@@ -221,7 +223,7 @@
     font-weight: 400;
     text-align: inherit;
     background-color: transparent;
-    border: 0;
+    border-radius: 10px;
     cursor: pointer;
     color: var(--primary);
 

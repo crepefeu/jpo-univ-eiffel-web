@@ -79,6 +79,10 @@
     font-size: 1.1rem;
   }
 
+  p {
+    user-select: none;
+  }
+
   &:hover {
     color: var(--primary);
     background-color: var(--nav-link-hover);
@@ -124,6 +128,7 @@
 
   p {
     font-size: 0.8rem;
+    user-select: none;
   }
 
   &:hover {
@@ -166,7 +171,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;
   width: 100%;
   padding: 0px 7px;
 }
