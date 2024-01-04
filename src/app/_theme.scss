@@ -189,18 +189,18 @@ body.dark-theme {
   --line: hsla(0, 0%, 100%, 0.5);
 
   // cards
-  --card-bkg: #1e1e1e;
+  --card-bkg: rgb(31, 31, 33);
   --card-border: #3f3f3f;
-  --card-secondary-bkg: #1e1e1e;
+  --card-secondary-bkg: rgb(31, 31, 33);
 
   // charts
   --chart-subtitle: #969696;
 
   // lists
-  --list-bkg: #1e1e1e;
+  --list-bkg: rgb(31, 31, 33);
   --list-border: #3f3f3f;
-  --list-header: #1e1e1e;
-  --list-item-bkg: #1e1e1e;
+  --list-header: rgb(31, 31, 33);
+  --list-item-bkg: rgb(31, 31, 33);
   --list-badge: #101010;
   --list-badge-border: #3f3f3f;
 
@@ -230,7 +230,7 @@ body.dark-theme {
   --bagde-increase-txt: #2ecc71;
 
   // pagination
-  --pagination-item: #1e1e1e;
+  --pagination-item: rgb(31, 31, 33);
   --pagination-item-hover: #101010;
   --pagination-item-border: #3f3f3f;
   --pagination-item-active: #101010;
@@ -244,20 +244,20 @@ body.dark-theme {
   --dropdown-border: #090909;
 
   // modals
-  --modal-bkg: #1e1e1e;
+  --modal-bkg: rgb(31, 31, 33);
   --modal-border: #3f3f3f;
   --modal-close-btn: #fff;
   --modal-header: #393939;
-  --modal-confirm-border: #1e1e1e;
+  --modal-confirm-border: rgb(31, 31, 33);
 
   // drawers
-  --drawer-bkg: #1e1e1e;
+  --drawer-bkg: rgb(31, 31, 33);
   --drawer-border: #3f3f3f;
   --drawer-close-btn: #fff;
   --drawer-close-btn-border: #3f3f3f;
   --drawer-header: #393939;
   --confirmation-sentence: #9a9a9a;
-  --confirm-border: #1e1e1e;
+  --confirm-border: rgb(31, 31, 33);
 
   // gesture indicator
   --gesture-indicator: #545454;
