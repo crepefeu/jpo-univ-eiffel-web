@@ -13,12 +13,14 @@
                 <div class="sub-phrase">
                     <p>Prenez part à une expérience virtuelle afin de faire vos premiers pas dans l'établissement.</p>
                 </div>
-                <button class="hero-cta-btn">
-                    Démarrer la visite virtuelle
-                    <i class="bi bi-play-fill"></i>
-                </button>
+                <div class="hero-cta-btn-ctn">
+                    <button class="hero-cta-btn">
+                        Démarrer la visite virtuelle
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
             </div>
-            <div class="content">
+            <div class="content" *ngIf="!isHandheld">
                 <div class="hero-img-ctn">
                     <svg class="hero-img" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 939.8 653"
@@ -149,7 +151,7 @@
     </div>
 </div>
 
-<div class="pulse-ctn">
+<div class="pulse-ctn" *ngIf="!isHandheld">
     <div class="pulse">
         <div class="mouse" (click)="goToContent()"></div>
     </div>

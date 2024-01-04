@@ -365,3 +365,325 @@ canvas {
     background-color: var(--primary-hover);
   }
 }
+
+// small mobile responsive
+@media screen and (max-width: 320px) {
+  .hero-section {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content-w-gutter {
+    padding: 40px 30px 80px 30px;
+  }
+
+  .hero-phrase {
+    font-size: 2.8rem;
+    text-align: center;
+
+    p {
+      margin-top: -20px;
+  
+      &::after {
+        display: none; // TODO: fix this
+      }
+    }
+  }
+
+  .sub-phrase {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .hero-img-ctn {
+    margin-top: 0;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-cta-btn-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .hero-cta-btn {
+    margin-top: 20px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 0.8rem;
+    padding: 6px 20px;
+    width: fit-content;
+  }
+
+  .pulse-ctn {
+    margin-top: 50px;
+  }
+
+  .pulse {
+    height: 80%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-content-w-gutter {
+    padding: 80px 20px 80px 20px;
+  }
+
+  .card-primary {
+    height: 300px;
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .external-link-btn {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+
+  .btn-w-icon {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (min-width: 320.1px) and (max-width: 375px) {
+  .hero-section {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content-w-gutter {
+    padding: 40px 30px 80px 30px;
+  }
+
+  .hero-phrase {
+    font-size: 3rem;
+    text-align: center;
+
+    p {
+      margin-top: -20px;
+  
+      &::after {
+        display: none; // TODO: fix this
+      }
+    }
+  }
+
+  .sub-phrase {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .hero-img-ctn {
+    margin-top: 0;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-cta-btn-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .hero-cta-btn {
+    margin-top: 20px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 6px 20px;
+    width: fit-content;
+  }
+
+  .pulse-ctn {
+    margin-top: 50px;
+  }
+
+  .pulse {
+    height: 80%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-content-w-gutter {
+    padding: 80px 20px 80px 20px;
+  }
+
+  .card-primary {
+    height: 300px;
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .text-block {
+    font-size: 3.5rem;
+  }
+
+  .external-link-btn {
+    width: 100%;
+    font-size: 0.85rem;
+  }
+
+  .btn-w-icon {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 375.1px) and (max-width: 425px) {
+  .hero-section {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .content-w-gutter {
+    padding: 40px 30px 80px 30px;
+  }
+
+  .hero-phrase {
+    font-size: 3rem;
+    text-align: center;
+
+    p {
+      margin-top: -20px;
+  
+      &::after {
+        display: none; // TODO: fix this
+      }
+    }
+  }
+
+  .sub-phrase {
+    margin-top: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .hero-img-ctn {
+    margin-top: 0;
+  }
+
+  .hero-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-cta-btn-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .hero-cta-btn {
+    margin-top: 20px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 6px 20px;
+    width: fit-content;
+  }
+
+  .pulse-ctn {
+    margin-top: 50px;
+  }
+
+  .pulse {
+    height: 80%;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+
+    &::after {
+      display: none; // TODO: fix this
+    }
+  }
+
+  .section-content-w-gutter {
+    padding: 80px 30px 80px 30px;
+  }
+
+  .card-primary {
+    height: 300px;
+  }
+
+  .card {
+    height: 300px;
+  }
+
+  .text-block {
+    font-size: 3.5rem;
+  }
+
+  .external-link-btn {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  .btn-w-icon {
+    width: 100%;
+    font-size: 1rem;
+  }
+}

@@ -32,9 +32,10 @@ body {
   --warn: #ffa500;
   --success: #24a258;
 
-  // background
+  // nav
   --bkg: #fff;
   --nav-border: #d5d5d5;
+  --nav-link-hover: rgb(245, 245, 245);
 
   // lines
   --line: hsla(243, 100%, 50%, 0.35);
@@ -146,6 +147,11 @@ body {
   --theme-border: #ffffff;
   --theme-border-selected: #3f3aa6;
   --separator: #eaeaea;
+
+  // charts tooltip
+  --tooltip-bkg: #fff;
+  --tooltip-border: #d5d5d5;
+  --tooltip-txt: #000;
 }
 
 body.dark-theme {
@@ -167,7 +173,7 @@ body.dark-theme {
   --input-txt: #fff;
   --input-placeholder: #8b8b8b;
   --input-disabled: #494949;
-  --input-border: #3f3f3f;
+  --input-border: #3d4145;
 
   // colors
   --primary: rgb(255 255 255);
@@ -181,16 +187,17 @@ body.dark-theme {
   --warn: #ffa500;
   --success: #24a258;
 
-  // background
+  // nav
   --bkg: rgb(31, 31, 33);
-  --nav-border: #3f3f3f;
+  --nav-border: #3d4145;
+  --nav-link-hover: rgb(22, 22, 24);
 
   // lines
   --line: hsla(0, 0%, 100%, 0.5);
 
   // cards
   --card-bkg: rgb(31, 31, 33);
-  --card-border: #3f3f3f;
+  --card-border: #3d4145;
   --card-secondary-bkg: rgb(31, 31, 33);
 
   // charts
@@ -198,11 +205,11 @@ body.dark-theme {
 
   // lists
   --list-bkg: rgb(31, 31, 33);
-  --list-border: #3f3f3f;
+  --list-border: #3d4145;
   --list-header: rgb(31, 31, 33);
   --list-item-bkg: rgb(31, 31, 33);
   --list-badge: #101010;
-  --list-badge-border: #3f3f3f;
+  --list-badge-border: #3d4145;
 
   // dash pages background
   --dash-bkg: rgb(22, 22, 24);
@@ -214,17 +221,17 @@ body.dark-theme {
   --btn-hover-dark: #000000;
   --btn-disabled: #3a3a3a;
   --btn-disabled-border: #3a3a3a;
-  --btn-border: #3f3f3f;
+  --btn-border: #3d4145;
 
   // switch
   --switch-toggle: #2a2a2a;
   --switch-toggle-btn: #fff;
   --switch-toggle-toggled: #0b0b0b;
-  --switch-toggle-border: #3f3f3f;
+  --switch-toggle-border: #3d4145;
 
   // badges
   --badges-ctn: #101010;
-  --badge-border: #3f3f3f;
+  --badge-border: #3d4145;
   --badge-info: #1d1d1d;
   --badge-increase: #14da6639;
   --bagde-increase-txt: #2ecc71;
@@ -232,7 +239,7 @@ body.dark-theme {
   // pagination
   --pagination-item: rgb(31, 31, 33);
   --pagination-item-hover: #101010;
-  --pagination-item-border: #3f3f3f;
+  --pagination-item-border: #3d4145;
   --pagination-item-active: #101010;
   --pagination-item-active-hover: #101010;
   --pagination-item-txt: #fff;
@@ -245,16 +252,16 @@ body.dark-theme {
 
   // modals
   --modal-bkg: rgb(31, 31, 33);
-  --modal-border: #3f3f3f;
+  --modal-border: #3d4145;
   --modal-close-btn: #fff;
   --modal-header: #393939;
   --modal-confirm-border: rgb(31, 31, 33);
 
   // drawers
   --drawer-bkg: rgb(31, 31, 33);
-  --drawer-border: #3f3f3f;
+  --drawer-border: #3d4145;
   --drawer-close-btn: #fff;
-  --drawer-close-btn-border: #3f3f3f;
+  --drawer-close-btn-border: #3d4145;
   --drawer-header: #393939;
   --confirmation-sentence: #9a9a9a;
   --confirm-border: rgb(31, 31, 33);
@@ -270,15 +277,20 @@ body.dark-theme {
 
   // list switch btn
   --list-switch-bkg: #1d1d1d;
-  --list-switch-border: #3f3f3f;
+  --list-switch-border: #3d4145;
   --list-switch-toggled: #0b0b0b;
   --list-switch-text-toggled: #fff;
   --list-switch-text-untoggled: rgb(145, 145, 145);
 
   // settings
   --setting-badge: #101010;
-  --setting-badge-border: #3f3f3f;
-  --theme-border: #3f3f3f;
+  --setting-badge-border: #3d4145;
+  --theme-border: #3d4145;
   --theme-border-selected: #8984ed;
   --separator: #1d1d1d;
+
+  // charts tooltip
+  --tooltip-bkg: #1d1d1d;
+  --tooltip-border: #3d4145;
+  --tooltip-txt: #fff;
 }

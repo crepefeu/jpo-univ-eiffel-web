@@ -34,7 +34,7 @@ export class AddAttendeeFormComponent implements OnInit {
     private modal: ModalService,
     private responsive: BreakpointObserver,
     private sharedService: SharedService) {
-    this.responsive.observe(['(max-width: 768px)']).subscribe({
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandlheld = true;

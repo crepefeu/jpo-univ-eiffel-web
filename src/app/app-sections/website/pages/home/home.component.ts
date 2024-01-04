@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ModalService } from 'src/app/services/modal.service';
 import { MultiStepFormComponent } from '../../components/multi-step-form/multi-step-form.component';
 import gsap from 'gsap';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-home',
@@ -10,8 +11,19 @@ import gsap from 'gsap';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  isHandheld = false;
 
-  constructor(private router: Router, private modalService: ModalService) { }
+  constructor(private router: Router,
+    private modalService: ModalService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 820px)']).subscribe((result) => {
+      if (result.matches) {
+        this.isHandheld = true;
+      } else {
+        this.isHandheld = false;
+      }
+    });
+    }
 
   ngOnInit(): void {
 
@@ -24,7 +36,14 @@ export class HomeComponent implements OnInit {
     const getFontSize = () => {
       const REM = 6.9
       const VW = window.innerWidth / 100
-      const PX = gsap.utils.clamp(2 * REM, 12 * REM, 6 * VW + REM)
+
+      var PX = gsap.utils.clamp(2 * REM, 12 * REM, 12 * VW + REM)
+
+      if (this.isHandheld) {
+        var handHeldFontSize = gsap.utils.clamp(2 * REM, 12 * REM, 12 * VW + REM);
+        return Math.round(handHeldFontSize);
+      }
+
       return Math.round(PX)
     }
 
@@ -124,24 +143,11 @@ export class HomeComponent implements OnInit {
   }
 
   openRegisterForm() {
-    this.modalService.open(MultiStepFormComponent, {
-      title: 'Formulaire',
-      displayHeader: true,
-      animations: {
-        modal: {
-          enter: 'enter-scaling 0.1s ease-out',
-          leave: 'exit-scaling 0.1s ease-out',
-        },
-        overlay: {
-          enter: 'fade-in 0.1s',
-          leave: 'fade-out 0.1s forwards',
-        },
-      },
-      size: {
-        width: '60vw',
-        height: 'fit-content',
-      }
-    });
+    if (this.isHandheld) {
+      this.modalService.open(MultiStepFormComponent, this.modalService.drawerConfig)
+    } else {
+      this.modalService.open(MultiStepFormComponent, this.modalService.modalConfig);
+    }
   }
 
 }

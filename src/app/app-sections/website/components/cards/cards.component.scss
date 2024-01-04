@@ -106,3 +106,14 @@
     color: var(--primary);
   }
 }
+
+// small mobile responsive
+@media screen and (max-width: 820px) {
+  .wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  }
+
+  .card {
+    border: solid 1px var(--primary);
+  }
+}

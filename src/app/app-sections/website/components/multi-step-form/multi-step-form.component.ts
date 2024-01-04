@@ -36,7 +36,7 @@ export class MultiStepFormComponent implements OnInit {
     private attendees: AttendeesService,
     private toast: HotToastService,
     private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 768px)']).subscribe({
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;

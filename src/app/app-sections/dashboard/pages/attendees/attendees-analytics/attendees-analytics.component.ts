@@ -76,7 +76,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
       ],
       chart: {
         height: 170,
-        type: "donut",
+        type: "donut"
       },
       legend: {
         show: this.userPreferences.showLegendOnCharts,
@@ -214,7 +214,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
       series: [
         {
           type: "map",
-          name: "Visiteurs",
+          name: "Participants",
           states: {
             hover: {
               color: "#d2213c"
@@ -265,7 +265,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
       series: [
         {
           type: "map",
-          name: "Visiteurs",
+          name: "Participants",
           states: {
             hover: {
               color: "#d2213c"
@@ -307,7 +307,13 @@ export class AttendeesAnalyticsComponent implements OnInit {
         ...this.frenchDepChartOptions,
         chart: {
           ...franceDepChart,
-          backgroundColor: "#1e1e1e",
+          backgroundColor: "rgb(31, 31, 33)",
+        },
+        tooltip: {
+          backgroundColor: '#1d1d1d',
+          style: {
+            color: '#fff',
+          }
         }
       }
 
@@ -315,7 +321,13 @@ export class AttendeesAnalyticsComponent implements OnInit {
         ...this.idfChartOptions,
         chart: {
           ...idfChart,
-          backgroundColor: "#1e1e1e",
+          backgroundColor: "rgb(31, 31, 33)",
+        },
+        tooltip: {
+          backgroundColor: '#1d1d1d',
+          style: {
+            color: '#fff',
+          }
         }
       }
     } else {
@@ -345,6 +357,12 @@ export class AttendeesAnalyticsComponent implements OnInit {
         chart: {
           ...franceDepChart,
           backgroundColor: "#fff",
+        },
+        tooltip: {
+          backgroundColor: '#fff',
+          style: {
+            color: '#000',
+          }
         }
       }
 
@@ -353,6 +371,12 @@ export class AttendeesAnalyticsComponent implements OnInit {
         chart: {
           ...idfChart,
           backgroundColor: "#fff",
+        },
+        tooltip: {
+          backgroundColor: '#fff',
+          style: {
+            color: '#000',
+          }
         }
       }
     }
@@ -384,7 +408,13 @@ export class AttendeesAnalyticsComponent implements OnInit {
           ...this.frenchDepChartOptions,
           chart: {
             ...franceDepChart,
-            backgroundColor: "#1e1e1e",
+            backgroundColor: "rgb(31, 31, 33)",
+          },
+          tooltip: {
+            backgroundColor: '#1d1d1d',
+            style: {
+              color: '#fff',
+            }
           }
         }
 
@@ -392,7 +422,13 @@ export class AttendeesAnalyticsComponent implements OnInit {
           ...this.idfChartOptions,
           chart: {
             ...idfChart,
-            backgroundColor: "#1e1e1e",
+            backgroundColor: "rgb(31, 31, 33)",
+          },
+          tooltip: {
+            backgroundColor: '#1d1d1d',
+            style: {
+              color: '#fff',
+            }
           }
         }
       } else {
@@ -422,6 +458,12 @@ export class AttendeesAnalyticsComponent implements OnInit {
           chart: {
             ...franceDepChart,
             backgroundColor: "#fff",
+          },
+          tooltip: {
+            backgroundColor: '#fff',
+            style: {
+              color: '#000',
+            }
           }
         }
 
@@ -430,6 +472,12 @@ export class AttendeesAnalyticsComponent implements OnInit {
           chart: {
             ...idfChart,
             backgroundColor: "#fff",
+          },
+          tooltip: {
+            backgroundColor: '#fff',
+            style: {
+              color: '#000',
+            }
           }
         }
       }

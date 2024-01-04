@@ -136,13 +136,19 @@ export class OverviewComponent {
       },
       labels: [],
       xaxis: {
-        type: "datetime"
+        type: "datetime",
+        tooltip: {
+          enabled: false
+        }
       },
       yaxis: {
         opposite: true
       },
       legend: {
         horizontalAlign: "left"
+      },
+      tooltip: {
+        theme: false,
       }
     };
 
@@ -210,13 +216,19 @@ export class OverviewComponent {
       },
       labels: [],
       xaxis: {
-        type: "datetime"
+        type: "datetime",
+        tooltip: {
+          enabled: false
+        }
       },
       yaxis: {
         opposite: true
       },
       legend: {
         horizontalAlign: "left"
+      },
+      tooltip: {
+        theme: false,
       }
     };
 

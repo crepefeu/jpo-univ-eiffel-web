@@ -41,7 +41,7 @@ export class ManageListComponent implements OnInit, OnChanges {
     private toast: HotToastService,
     private diplomas: DiplomasService,
     private responsive: BreakpointObserver) {
-    this.responsive.observe('(max-width: 768px)').subscribe(result => {
+    this.responsive.observe('(max-width: 820px)').subscribe(result => {
       this.isHandheld = result.matches;
       this.pageSize = this.isHandheld ? 5 : 10;
     });

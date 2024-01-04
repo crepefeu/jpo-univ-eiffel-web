@@ -65,3 +65,28 @@ footer {
         color: white;
     }
 }
+
+// mobile responsive
+@media screen and (max-width: 820px) {
+    footer {
+        padding: 40px 30px;
+    }
+
+    .content {
+        grid-template-columns: repeat(6, 1fr);
+        row-gap: 50px;
+    }
+
+    .sub-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .socials {
+        margin-top: 10px;
+    }
+
+    .iut-logo {
+        margin-bottom: 70px;
+    }
+}

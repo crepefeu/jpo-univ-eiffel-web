@@ -25,7 +25,7 @@ export class AddDiplomaCategoryFormComponent {
     private responsive: BreakpointObserver,
     private modal: ModalService,
     private sharedService: SharedService) {
-    this.responsive.observe(['(max-width: 768px)']).subscribe({
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;

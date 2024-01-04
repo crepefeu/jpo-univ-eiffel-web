@@ -22,7 +22,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private adminsService: AdminsService,
     private router: Router,
     private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 768px)']).subscribe((state) => {
+    this.responsive.observe(['(max-width: 820px)']).subscribe((state) => {
       if (state.matches) {
         this.isHandheld = true;
       } else {

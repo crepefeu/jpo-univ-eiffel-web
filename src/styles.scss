@@ -146,6 +146,17 @@ $jpo-univ-eiffel-theme: mat.define-light-theme(
   }
 }
 
+.apexcharts-tooltip {
+  color: var(--tooltip-txt);
+  border: solid 1px var(--tooltip-border);
+  background-color: var(--tooltip-bkg);
+
+  .apexcharts-tooltip-title {
+    border-bottom: solid 1px var(--tooltip-border);
+    background-color: var(--tooltip-bkg);
+  }
+}
+
 app-overview {
   width: 100%;
 }

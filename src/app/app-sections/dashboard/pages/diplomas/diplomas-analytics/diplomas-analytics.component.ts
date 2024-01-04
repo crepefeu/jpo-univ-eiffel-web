@@ -40,7 +40,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
         ],
       chart: {
         height: 170,
-        type: "donut",
+        type: "donut"
       },
       legend: {
         show: this.userPreferences.showLegendOnCharts,
@@ -52,7 +52,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
       labels: [],
       responsive: [
         {
-          breakpoint: 1050,
+          breakpoint: 2000,
           options: {
             chart: {
               height: 200,
@@ -88,7 +88,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
       labels: [],
       responsive: [
         {
-          breakpoint: 1050,
+          breakpoint: 2000,
           options: {
             chart: {
               height: 200,
