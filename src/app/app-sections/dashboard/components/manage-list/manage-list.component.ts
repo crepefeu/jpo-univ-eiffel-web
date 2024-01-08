@@ -81,25 +81,49 @@ export class ManageListComponent implements OnInit, OnChanges {
 
   onOrderByChange(key: string) {
     if (key === 'asc') {
-      this.data?.sort(function (a, b) {
-        if (a.firstName < b.firstName) {
-          return -1;
-        }
-        if (a.firstName > b.firstName) {
-          return 1;
-        }
-        return 0;
-      });
+      if (this.listType === ManageListTypes.Attendees) {
+        this.data?.sort(function (a, b) {
+          if (a.firstName < b.firstName) {
+            return -1;
+          }
+          if (a.firstName > b.firstName) {
+            return 1;
+          }
+          return 0;
+        });
+      } else if (this.listType === ManageListTypes.Diplomas || this.listType === ManageListTypes.DiplomaCategories) {
+        this.data?.sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+      }
     } else if (key === 'desc') {
-      this.data?.sort(function (a, b) {
-        if (a.firstName < b.firstName) {
-          return 1;
-        }
-        if (a.firstName > b.firstName) {
-          return -1;
-        }
-        return 0;
-      });
+      if (this.listType === ManageListTypes.Attendees) {
+        this.data?.sort(function (a, b) {
+          if (a.firstName < b.firstName) {
+            return 1;
+          }
+          if (a.firstName > b.firstName) {
+            return -1;
+          }
+          return 0;
+        });
+      } else if (this.listType === ManageListTypes.Diplomas || this.listType === ManageListTypes.DiplomaCategories) {
+        this.data?.sort(function (a, b) {
+          if (a.name < b.name) {
+            return 1;
+          }
+          if (a.name > b.name) {
+            return -1;
+          }
+          return 0;
+        });
+      }
     }
   }
 
