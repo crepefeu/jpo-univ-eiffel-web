@@ -23,7 +23,7 @@ export class AdminsService {
   verifyAuth() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'isAuth', { headers: headers });
+    return this.http.get<any>(this.baseApiUrl + 'isAuth', { headers });
   }
 
   signOut() {

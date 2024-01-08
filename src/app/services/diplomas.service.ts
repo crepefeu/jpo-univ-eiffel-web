@@ -25,13 +25,13 @@ export class DiplomasService {
 
   addDiploma(diploma: any) {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
-    
+
     const formData = new FormData();
 
     formData.append('diplomaName', diploma.diplomaName);
     formData.append('diplomaCategoryId', diploma.diplomaCategoryId);
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'addDiploma', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'addDiploma', formData, { headers });
   }
 
   modifyDiploma(diploma: any) {
@@ -43,7 +43,7 @@ export class DiplomasService {
     formData.append('diplomaName', diploma.diplomaName);
     formData.append('diplomaCategoryId', diploma.diplomaCategoryId);
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'modifyDiploma', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'modifyDiploma', formData, { headers });
   }
 
   deleteDiploma(diplomaId: number) {
@@ -53,7 +53,7 @@ export class DiplomasService {
 
     formData.append('diplomaId', diplomaId.toString());
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiploma', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiploma', formData, { headers });
   }
 
   addDiplomaCategory(diplomaCategory: any) {
@@ -63,7 +63,7 @@ export class DiplomasService {
 
     formData.append('diplomaCategoryName', diplomaCategory.diplomaCategoryName);
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'addDiplomaCategory', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'addDiplomaCategory', formData, { headers });
   }
 
   modifyDiplomaCategory(diplomaCategory: any) {
@@ -74,7 +74,7 @@ export class DiplomasService {
     formData.append('id', diplomaCategory.id);
     formData.append('diplomaCategoryName', diplomaCategory.diplomaCategoryName);
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'modifyDiplomaCategory', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'modifyDiplomaCategory', formData, { headers });
   }
 
   deleteDiplomaCategory(diplomaCategoryId: number) {

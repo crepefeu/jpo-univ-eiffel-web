@@ -13,8 +13,8 @@ export class AttendeesService {
 
   getAllAttendees() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
-    
-    return this.http.get<any>(this.baseApiUrl + 'getAllAttendees');
+
+    return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', { headers });
   }
 
   registerAttendee(attendeeInfos: any) {
@@ -52,7 +52,7 @@ export class AttendeesService {
     formData.append('regionalCode', attendeeInfos.regionalCode);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
     
-    return this.http.post<any>(this.baseApiUrl + 'modifyAttendee', formData);
+    return this.http.post<any>(this.baseApiUrl + 'modifyAttendee', formData, { headers });
   }
 
   deleteAttendee(attendeeId: number) {
@@ -62,6 +62,6 @@ export class AttendeesService {
 
     formData.append('attendeeId', attendeeId.toString());
 
-    return this.http.post<any>(this.baseApiUrl + 'deleteAttendee', formData);
+    return this.http.post<any>(this.baseApiUrl + 'deleteAttendee', formData, { headers });
   }
 }

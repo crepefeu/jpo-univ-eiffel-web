@@ -14,42 +14,42 @@ export class AnalyticsService {
   getLatestSnapshot() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getLatestSnapshot', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getLatestSnapshot', { headers });
   }
 
   getAllSnapshots() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getAllSnapshots', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getAllSnapshots', { headers });
   }
 
   getAllAttendees() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', { headers });
   }
 
   getDiplomaCategoriesAnalytics() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getDiplomaCategoriesAnalytics', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getDiplomaCategoriesAnalytics', { headers });
   }
 
   getDiplomasAnalytics() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getDiplomasAnalytics', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getDiplomasAnalytics', { headers });
   }
 
   getMapAnalytics() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getMapAnalytics', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getMapAnalytics', { headers });
   }
 
   getSatisfactionAnalytics() {
     let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
 
-    return this.http.get<any>(this.baseApiUrl + 'getSatisfactionAnalytics', {headers: headers});
+    return this.http.get<any>(this.baseApiUrl + 'getSatisfactionAnalytics', { headers });
   }
 }
