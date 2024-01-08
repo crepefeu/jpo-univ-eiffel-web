@@ -101,7 +101,7 @@
   justify-content: space-between;
   padding: 2px 8px 2px 8px;
   height: 1.8rem;
-  width: 4rem;
+  width: 3.5rem;
   border-radius: 1rem;
   background-color: var(--switch-toggle);
   border: 1px solid var(--switch-toggle-border);
@@ -126,7 +126,7 @@
 }
 
 .toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
-  transform: translateX(35px);
+  transform: translateX(27px);
 }
 
 .setting-label {
