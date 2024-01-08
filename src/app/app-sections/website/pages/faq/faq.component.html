@@ -66,13 +66,15 @@
                   <li>
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer6, rotatingIcon)">
-                            <h2 class="accordion-question">Quelles spécialités proposéz-vous dans vos cursus d'apprentissage ?</h2>
+                            <h2 class="accordion-question">Est-il possible de faire de l'alternance pendant ce cursus ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
                         </div>
                         <div #faqAccordionAnswer6 class="accordion-answer">
                             <p>
-                                L'IUT de Meaux propose deux spécialités en apprentissage : <a routerLink="/but-mmi">BUT MMI</a> et <a routerLink="/but-gea">BUT GEA</a>.
-                                Ces deux spécialités sont accessibles en alternance dès la première année.
+                                Oui, il est possible de réaliser la dernière année du cursus en alternance. Les étudiants n'ayant 
+                                pas d'alternance ou ne souhaitant pas en effectuer peuvent réaliser l'année en formation initiale.
+                                Cependant, il est important de noter que ces derniers devront réaliser un stage en entreprise d'une 
+                                durée de 3 à 4 mois afin de valider leur année.
                             </p>
                         </div>
                     </article>
@@ -80,93 +82,4 @@
                 </ul>
               </section>
         </div>
-        <!-- <div class="faq-accordions-ctn">
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer, rotatingIcon)">
-                    <h2 class="accordion-question">Où est situé l'IUT ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer class="accordion-answer">
-                        L'IUT se situe dans le centre ville de Meaux, à 5 minutes à pied de la gare. La ligne P ainsi que de nombreuses lignes de bus rendent
-                        l'IUT ainsi que ses alentours très accessibles. Pour plus d'informations, rendez-vous sur la page <a routerLink="/about">Infos pratiques</a>.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer, rotatingIcon)">
-                    <h2 class="accordion-question">Quel est le programme de la journée portes ouvertes (JPO) ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer class="accordion-answer">
-                        L'IUT se situe dans le centre ville de Meaux, à 5 minutes à pied de la gare. La ligne P ainsi que de nombreuses lignes de bus rendent
-                        l'IUT ainsi que ses alentours très accessibles. Pour plus d'informations, rendez-vous sur la page <a routerLink="/about">Infos pratiques</a>.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer, rotatingIcon)">
-                    <h2 class="accordion-question">Comment puis-je déclarer ma participation à la JPO physique du 4 Février ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer class="accordion-answer">
-                        Pour déclarer votre participation à la JPO physique du 4 Février, il vous suffit de vous rendre sur la page <a routerLink="/jpo">JPO</a>
-                        et de remplir le formulaire de participation.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer2, rotatingIcon)">
-                    <h2 class="accordion-question">Quel type de matériel mettez-vous à la disposition des étudiants ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer2 class="accordion-answer">
-                        Afin que chaque étudiant puisse travailler dans les meilleures conditions, nous mettons à
-                        disposition des salles informatiques équipées de postes fixes et de logiciels professionnels.
-                        Les étudiants peuvent également emprunter du matériel (appareils photo, caméras, tablettes, casques de réalité virtuelle, etc.)
-                        pour réaliser leurs projets.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer3, rotatingIcon)">
-                    <h2 class="accordion-question">Quelles spécialités proposéz-vous dans vos cursus d'apprentissage ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer3 class="accordion-answer">
-                        L'IUT de Meaux propose deux spécialités en apprentissage : <a routerLink="/but-mmi">BUT MMI</a> et <a routerLink="/but-gea">BUT GEA</a>.
-                        Ces deux spécialités sont accessibles en alternance dès la première année.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer, rotatingIcon)">
-                    <h2 class="accordion-question">Où est situé l'IUT ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer class="accordion-answer">
-                        L'IUT se situe dans le centre ville de Meaux, à 5 minutes à pied de la gare. La ligne P ainsi que de nombreuses lignes de bus rendent
-                        l'IUT ainsi que ses alentours très accessibles. Pour plus d'informations, rendez-vous sur la page <a routerLink="/about">Infos pratiques</a>.
-                    </p>
-                </div>
-            </div>
-            <div  class="faq-accordion">
-                <div class="accordion-header" (click)="expand(faqAccordionAnswer, rotatingIcon)">
-                    <h2 class="accordion-question">Où est situé l'IUT ?</h2>
-                    <i #rotatingIcon class="bi bi-plus-lg"></i>
-                </div>
-                <div>
-                    <p #faqAccordionAnswer class="accordion-answer">
-                        L'IUT se situe dans le centre ville de Meaux, à 5 minutes à pied de la gare. La ligne P ainsi que de nombreuses lignes de bus rendent
-                        l'IUT ainsi que ses alentours très accessibles. Pour plus d'informations, rendez-vous sur la page <a routerLink="/about">Infos pratiques</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </div>

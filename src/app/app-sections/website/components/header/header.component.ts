@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   showSidebar = false
 
   constructor(private responsive: BreakpointObserver) {
-    responsive.observe(['(max-width: 860px)']).subscribe({
+    responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
           this.isHandheld = true;

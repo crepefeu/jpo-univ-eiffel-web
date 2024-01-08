@@ -118,7 +118,7 @@ body {
   --gesture-indicator: #e6e6e6;
 
   // faq
-  --card-size: clamp(350px, 40vw, 450px);
+  --card-size: clamp(250px, 50vw, 550px);
   --x: calc(50vw * 1);
   --y: calc((50vh - (var(--card-size) * 0.25)) * 1);
   --spotlight: 50vmin;

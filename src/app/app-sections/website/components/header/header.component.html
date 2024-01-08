@@ -24,7 +24,7 @@
         <i class="bi bi-list list-icon"></i>
     </div>
 
-    <div class="logo-min-ctn">
+    <div class="logo-min-ctn" routerLink="">
         <svg class="logo-min" id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102.5 102.09">
             <g id="b">
                 <path id="c"
@@ -52,20 +52,20 @@
                 <div (click)="showSidebar = !showSidebar">
                     <i class="bi bi-list list-icon"></i>
                 </div>
-                <img routerLink="" class="logo" src="assets/Logo_Université_Gustave_Eiffel_2020.svg" alt="">
+                <img routerLink="" class="logo" src="assets/univ-eiffel-logo-min.svg" alt="" (click)="showSidebar = !showSidebar">
             </div>
 
             <div class="nav-links">
 
-                <div class="nav-cta">
+                <div class="nav-cta" routerLink="/virtual-tour" (click)="showSidebar = !showSidebar">
                     <p>Visite virtuelle</p>
                 </div>
         
-                <div class="nav-link-ctn" routerLink="/but-mmi" routerLinkActive="active">
+                <div class="nav-link-ctn" routerLink="/but-mmi" routerLinkActive="active" (click)="showSidebar = !showSidebar">
                     <a class="nav-link">BUT MMI</a>
                 </div>
         
-                <div class="nav-link-ctn" routerLink="/faq">
+                <div class="nav-link-ctn" routerLink="/faq" (click)="showSidebar = !showSidebar">
                     <a class="nav-link">FAQ</a>
                 </div>
         
