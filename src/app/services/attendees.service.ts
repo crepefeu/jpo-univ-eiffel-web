@@ -12,6 +12,8 @@ export class AttendeesService {
   constructor(private http: HttpClient) { }
 
   getAllAttendees() {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    
     return this.http.get<any>(this.baseApiUrl + 'getAllAttendees');
   }
 
@@ -37,6 +39,8 @@ export class AttendeesService {
   }
 
   modifyAttendee(attendeeInfos: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('id', attendeeInfos.id);
@@ -52,6 +56,8 @@ export class AttendeesService {
   }
 
   deleteAttendee(attendeeId: number) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('attendeeId', attendeeId.toString());

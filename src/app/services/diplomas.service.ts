@@ -24,6 +24,8 @@ export class DiplomasService {
   }
 
   addDiploma(diploma: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    
     const formData = new FormData();
 
     formData.append('diplomaName', diploma.diplomaName);
@@ -33,6 +35,8 @@ export class DiplomasService {
   }
 
   modifyDiploma(diploma: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData= new FormData();
 
     formData.append('id', diploma.id);
@@ -43,6 +47,8 @@ export class DiplomasService {
   }
 
   deleteDiploma(diplomaId: number) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('diplomaId', diplomaId.toString());
@@ -51,6 +57,8 @@ export class DiplomasService {
   }
 
   addDiplomaCategory(diplomaCategory: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('diplomaCategoryName', diplomaCategory.diplomaCategoryName);
@@ -59,6 +67,8 @@ export class DiplomasService {
   }
 
   modifyDiplomaCategory(diplomaCategory: any) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('id', diplomaCategory.id);
@@ -68,10 +78,12 @@ export class DiplomasService {
   }
 
   deleteDiplomaCategory(diplomaCategoryId: number) {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
     const formData = new FormData();
 
     formData.append('diplomaCategoryId', diplomaCategoryId.toString());
 
-    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiplomaCategory', formData);
+    return this.httpClient.post<any>(this.baseApiUrl + 'deleteDiplomaCategory', formData, { headers });
   }
 }

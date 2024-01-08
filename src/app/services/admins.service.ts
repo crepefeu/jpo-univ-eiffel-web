@@ -39,6 +39,6 @@ export class AdminsService {
     formData.append('showPercentagesOnCharts', userPreferencesData.showPercentagesOnCharts);
     formData.append('showLegendOnCharts', userPreferencesData.showLegendOnCharts);
 
-    return this.http.post<any>(this.baseApiUrl + 'saveUserPreferences', formData, { headers: headers });
+    return this.http.post<any>(this.baseApiUrl + 'saveUserPreferences', formData, { headers });
   }
 }
