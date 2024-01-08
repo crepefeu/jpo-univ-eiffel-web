@@ -36,6 +36,7 @@
   background-color: rgb(241, 241, 241);
   border: 1px solid rgb(218, 218, 218);
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 }
 
 .switch-btn {
@@ -64,6 +65,7 @@
 .toggle-checkbox:checked ~ .toggle-ctn {
   background-color: var(--btn-dark);
   border: solid 1px var(--switch-toggle-border);
+  transition: all 200ms ease-in-out;
 }
 
 .toggle-checkbox:checked ~ .toggle-ctn .moon-icon {
@@ -73,4 +75,5 @@
 .toggle-checkbox:checked ~ .toggle-ctn .switch-btn {
   background-color: var(--btn);
   transform: translateX(39px);
+  transition: all 200ms ease-in-out;
 }
