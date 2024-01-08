@@ -37,7 +37,7 @@ export class SignInComponent {
             localStorage.setItem('token', data.token);
             localStorage.setItem('displayName', data.displayName);
             localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
-            this.router.navigate(['/admin/dashboard']);
+            this.router.navigate(['/dashboard']);
             if (data.userPreferences && data.userPreferences.defaultTheme == 'dark') {
               // set localstorage to dark mode
               localStorage.setItem('currentTheme', 'dark')

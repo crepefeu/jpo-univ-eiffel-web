@@ -28,7 +28,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin/dashboard',
+    path: 'dashboard',
     component: AdminDashboardComponent,
     canActivate: [isAuth()],
     children: [
