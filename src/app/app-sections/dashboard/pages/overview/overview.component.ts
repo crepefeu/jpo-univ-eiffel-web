@@ -82,6 +82,9 @@ export class OverviewComponent {
           opacityTo: 0
         }
       },
+      grid: {
+        show: false
+      },
       colors: ["#9395ff"],
       chart: {
         defaultLocale: 'fr',
@@ -161,6 +164,9 @@ export class OverviewComponent {
           opacityFrom: 0.55,
           opacityTo: 0
         }
+      },
+      grid: {
+        show: false
       },
       colors: ["#9395ff"],
       chart: {
