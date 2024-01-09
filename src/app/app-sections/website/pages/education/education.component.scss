@@ -92,7 +92,7 @@
 }
 
 .production-section {
-  margin-top: 160px;
+  margin-top: 130px;
 
   h1 {
     font-size: 3rem;
@@ -139,17 +139,30 @@
   }
 
   .hero-img-ctn {
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     img {
-      width: 80%;
+      width: 100%;
       filter: drop-shadow(5px 5px 5px #222);
+
+      // transform image to make it look like it's tilted down a bit
+      animation: tilt auto linear;
+      animation-timeline: scroll(root);
+      animation-range: entry 0% cover 10%;
+      transform: perspective(1000px) rotateX(0deg) scale(0.9);
+
+      @keyframes tilt {
+        0% {
+          transform: perspective(1000px) rotateX(25deg);
+        }
+        100% {
+          // reset transform and scale down a bit
+          transform: perspective(1000px) rotateX(0deg) scale(0.9);
+        }
+      }
     }
-    // border-radius: 10px;
-    // box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;    }
   }
 }
 
@@ -231,7 +244,7 @@
 
 .education-details-grid {
   margin-top: 70px;
-  width: 80%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 50px;
@@ -340,7 +353,7 @@
   background-color: white;
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
+  width: 60vw;
   height: fit-content;
   border-radius: 20px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
