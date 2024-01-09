@@ -68,7 +68,6 @@
 
       img {
         height: 20px;
-        width: 100%;
       }
 
       i {
@@ -155,7 +154,7 @@
 
       @keyframes tilt {
         0% {
-          transform: perspective(1000px) rotateX(25deg);
+          transform: perspective(1000px) rotateX(30deg);
         }
         100% {
           // reset transform and scale down a bit
@@ -426,7 +425,6 @@
 @keyframes slide-up {
   to {
     transform: translateY(-150px);
-    filter: brightness(var(--b, 1));
   }
 }
 
