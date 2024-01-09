@@ -381,18 +381,13 @@ body::before {
   .section-title {
     margin-top: 50px;
   }
+
+  .track__indicators {
+    margin-top: 30px
+  }
 }
 
 @media screen and (min-width: 425.1px) and (max-width: 820px) {
-  .background {
-    &::before {
-      background: linear-gradient(90deg, var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 15vmin 10vmin,
-      linear-gradient(var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 10vmin 15vmin;
-      -webkit-mask: linear-gradient(-35deg, transparent 40%, white);
-      mask: linear-gradient(-35deg, transparent 40%, white);
-    }
-  }
-
   .faq-accordion {
     width: 100%;
   }
