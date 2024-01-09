@@ -1,10 +1,9 @@
 <div class="background">
     <div class="content-w-gutter">
         <h1 class="section-title">FAQ</h1>
-        <div class="horizontal-scroller-ctn">
-            <section>
-                <ul>
-                  <li>
+        <div class="track">
+            <ul>
+                <li id="one">
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer1, rotatingIcon)">
                             <h2 class="accordion-question">Où est situé l'IUT ?</h2>
@@ -18,7 +17,7 @@
                         </div>
                     </article>
                   </li>
-                  <li>
+                  <li id="two">
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer2, rotatingIcon)">
                             <h2 class="accordion-question">Quel est le programme de la journée portes ouvertes (JPO) ?</h2>
@@ -33,21 +32,21 @@
                         </div>
                     </article>
                   </li>
-                  <li>
+                  <li id="three">
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer3, rotatingIcon)">
-                            <h2 class="accordion-question">Comment puis-je déclarer ma participation à la JPO physique du 4 Février ?</h2>
+                            <h2 class="accordion-question">Comment puis-je déclarer ma participation à la JPO physique du 3 Février ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
                         </div>
                         <div #faqAccordionAnswer3 class="accordion-answer">
                             <p>
-                                Pour déclarer votre participation à la JPO physique du 4 Février, il vous suffit de vous rendre sur la page <a routerLink="/jpo">JPO</a>
+                                Pour déclarer votre participation à la JPO physique du 3 Février, il vous suffit de vous rendre sur la page <a routerLink="/jpo">JPO</a>
                                 et de remplir le formulaire de participation.
                             </p>
                         </div>
                     </article>
                   </li>
-                  <li>
+                  <li id="four">
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer5, rotatingIcon)">
                             <h2 class="accordion-question">Quel type de matériel mettez-vous à la disposition des étudiants ?</h2>
@@ -63,7 +62,7 @@
                         </div>
                     </article>
                   </li>
-                  <li>
+                  <li id="five">
                     <article data-glow>
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer6, rotatingIcon)">
                             <h2 class="accordion-question">Est-il possible de faire de l'alternance pendant ce cursus ?</h2>
@@ -79,7 +78,13 @@
                         </div>
                     </article>
                   </li>
-                </ul>
-              </section>
+            </ul>
+            <div class="track__indicators" aria-hidden="true">
+                <a class="indicator" (click)="goToContent('one')"></a>
+                <a class="indicator" (click)="goToContent('two')"></a>
+                <a class="indicator" (click)="goToContent('three')"></a>
+                <a class="indicator" (click)="goToContent('four')"></a>
+                <a class="indicator" (click)="goToContent('five')"></a>
+            </div>
         </div>
-</div>
+    </div>
