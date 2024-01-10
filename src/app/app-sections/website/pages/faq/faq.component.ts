@@ -41,7 +41,7 @@ export class FaqComponent implements OnInit {
   goToContent(contentId: string) {
     document.getElementById(contentId)?.scrollIntoView({
       behavior: "smooth",
-      block: "center",
+      block: "end",
     });
   }
 
