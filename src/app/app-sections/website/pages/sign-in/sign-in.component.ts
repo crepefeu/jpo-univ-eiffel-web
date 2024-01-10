@@ -23,13 +23,6 @@ export class SignInComponent {
     private router: Router,
     private toast: HotToastService,
     private responsive: BreakpointObserver) {
-    this.form = new FormGroup({
-      login: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-    });
-  }
-
-  onSubmit() {
     this.responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
@@ -39,6 +32,14 @@ export class SignInComponent {
         }
       }
     });
+
+    this.form = new FormGroup({
+      login: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+  }
+
+  onSubmit() {
 
     this.submitted = false;
 
