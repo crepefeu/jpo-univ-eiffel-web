@@ -49,6 +49,7 @@ import { ModifyDiplomaCategoryFormComponent } from './app-sections/dashboard/com
 import { ConfirmationModalComponent } from './shared/components/modals/confirmation-modal/confirmation-modal.component';
 import { GenericDrawerComponent } from './shared/components/drawers/generic-drawer/generic-drawer.component';
 import { ConfirmationDrawerComponent } from './shared/components/drawers/confirmation-drawer/confirmation-drawer.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { ConfirmationDrawerComponent } from './shared/components/drawers/confirm
     ModifyDiplomaCategoryFormComponent,
     ConfirmationModalComponent,
     GenericDrawerComponent,
-    ConfirmationDrawerComponent
+    ConfirmationDrawerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
