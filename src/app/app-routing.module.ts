@@ -16,6 +16,7 @@ import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas
 import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplomas/diplomas-analytics/diplomas-analytics.component';
 import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/virtual-tour.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       { path: 'but-mmi', component: EducationComponent},
       { path: 'faq', component: FaqComponent},
       { path: 'admin/sign-in', component: SignInComponent},
+      { path: 'virtual-tour', component: VirtualTourComponent}
     ]
   },
   {

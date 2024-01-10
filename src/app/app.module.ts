@@ -9,7 +9,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatStepperModule } from '@angular/material/stepper';
 
 // Chart Modules
-import { NgChartsModule } from 'ng2-charts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -50,6 +49,7 @@ import { ConfirmationModalComponent } from './shared/components/modals/confirmat
 import { GenericDrawerComponent } from './shared/components/drawers/generic-drawer/generic-drawer.component';
 import { ConfirmationDrawerComponent } from './shared/components/drawers/confirmation-drawer/confirmation-drawer.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/virtual-tour.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +86,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
     ConfirmationModalComponent,
     GenericDrawerComponent,
     ConfirmationDrawerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    VirtualTourComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +97,6 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
     HttpClientModule,
     LayoutModule,
     MatStepperModule,
-    NgChartsModule,
     HighchartsChartModule,
     NgApexchartsModule,
     BrowserAnimationsModule

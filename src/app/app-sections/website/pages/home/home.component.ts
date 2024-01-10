@@ -10,7 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit {
   isHandheld = false;
 
   constructor(private router: Router,
@@ -25,7 +25,7 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     // select element with .text-block class
     const text = document.querySelector('.text-block') as HTMLSpanElement;
 
