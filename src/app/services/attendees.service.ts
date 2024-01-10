@@ -64,4 +64,10 @@ export class AttendeesService {
 
     return this.http.post<any>(this.baseApiUrl + 'deleteAttendee', formData, { headers });
   }
+
+  exportAttendeesList() {
+    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+
+    return this.http.get<any>(this.baseApiUrl + 'exportAttendees', { headers });
+  }
 }

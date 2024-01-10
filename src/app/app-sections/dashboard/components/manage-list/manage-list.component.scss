@@ -73,6 +73,12 @@
         color: white;
     }
 
+    &.w-icon {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
 }
 
 .data-list-ctn {

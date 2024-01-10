@@ -14,6 +14,7 @@ import { AddDiplomaCategoryFormComponent } from '../add-diploma-category-form/ad
 import { ModifyDiplomaFormComponent } from '../modify-diploma-form/modify-diploma-form.component';
 import { ModifyDiplomaCategoryFormComponent } from '../modify-diploma-category-form/modify-diploma-category-form.component';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-manage-list',
@@ -39,7 +40,8 @@ export class ManageListComponent implements OnInit, OnChanges {
     private attendees: AttendeesService,
     private toast: HotToastService,
     private diplomas: DiplomasService,
-    private responsive: BreakpointObserver) {
+    private responsive: BreakpointObserver,
+    private sharedService: SharedService) {
     this.responsive.observe('(max-width: 820px)').subscribe(result => {
       this.isHandheld = result.matches;
       this.pageSize = this.isHandheld ? 5 : 10;
@@ -484,5 +486,65 @@ export class ManageListComponent implements OnInit, OnChanges {
         });
       }
     }
+  }
+
+  exportList() {
+    this.attendees.exportAttendeesList().subscribe({
+      next: data => {
+        if (data.status == 'error') {
+          if (this.isHandheld) {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.error(data.message, {
+              ...defaultErrorToastConfig
+            });
+          }
+        } else if (data.status == 'success') {
+          if (this.isHandheld) {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig,
+              style: {
+                ...defaultSuccessToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '65px',
+              }
+            });
+          } else {
+            this.toast.success(data.message, {
+              ...defaultSuccessToastConfig
+            });
+          }
+        }
+        this.sharedService.downLoadFile(data.fileName);
+      },
+      error: err => {
+        console.log(err);
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig
+          });
+        }
+        
+      }
+    });
   }
 }

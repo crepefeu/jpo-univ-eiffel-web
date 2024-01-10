@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
@@ -27,4 +28,13 @@ export class SharedService {
     return this.dataChanges$.asObservable();
   }
 
+  downLoadFile(fileName: any) {
+    let link = document.createElement('a');
+    link.setAttribute('type', 'hidden');
+    link.href = environment.documentsUrl + fileName;
+    link.download = environment.documentsUrl + fileName;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+}
 }
