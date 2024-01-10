@@ -125,6 +125,8 @@
   width: 60%;
   z-index: 999;
   border-right: solid 1px var(--nav-border);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 
 .sidebar-overlay {
@@ -161,7 +163,7 @@
   display: flex;
   align-items: center;
   height: 70px;
-  padding-left: 30px;
+  padding-left: 20px;
   padding-right: 30px;
   margin-bottom: 30px;
 }
