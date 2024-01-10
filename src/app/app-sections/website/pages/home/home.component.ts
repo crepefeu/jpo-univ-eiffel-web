@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/services/modal.service';
 import { MultiStepFormComponent } from '../../components/multi-step-form/multi-step-form.component';
@@ -10,7 +10,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements AfterViewInit {
   isHandheld = false;
 
   constructor(private router: Router,
@@ -25,8 +25,7 @@ export class HomeComponent implements OnInit {
     });
     }
 
-  ngOnInit(): void {
-
+  ngAfterViewInit() {
     // select element with .text-block class
     const text = document.querySelector('.text-block') as HTMLSpanElement;
 
