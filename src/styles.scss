@@ -177,3 +177,9 @@ app-settings {
   align-self: auto;
   padding-top: 0;
 }
+
+@media screen and (max-width: 500px) {
+  .mat-horizontal-content-container {
+    padding: 0 !important;
+  }
+}

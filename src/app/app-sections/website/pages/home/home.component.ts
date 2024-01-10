@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router,
     private modalService: ModalService,
     private responsive: BreakpointObserver) {
-    this.responsive.observe(['(max-width: 1024px)']).subscribe((result) => {
+    this.responsive.observe(['(max-width: 820px)']).subscribe((result) => {
       if (result.matches) {
         this.isHandheld = true;
       } else {

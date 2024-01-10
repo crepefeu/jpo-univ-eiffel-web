@@ -846,6 +846,10 @@ canvas {
     width: 100%;
   }
 
+  .content.right {
+    display: none;
+  }
+
   .hero-phrase {
     display: flex;
     flex-direction: column;
