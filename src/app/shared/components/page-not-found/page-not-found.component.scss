@@ -9,6 +9,7 @@
   background-color: var(--content-bkg);
   transition: all 200ms ease-in-out;
   min-height: 80vh;
+  text-align: center;
 }
 
 .not-found-title {
@@ -18,6 +19,7 @@
 }
 
 .btn {
+  margin-top: 30px;
   height: fit-content;
   display: flex;
   align-items: center;
