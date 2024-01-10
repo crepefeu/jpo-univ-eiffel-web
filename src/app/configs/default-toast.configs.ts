@@ -8,7 +8,8 @@ const defaultToastConfig: ToastOptions<any> = {
         color: 'var(--toast-txt)',
         borderRadius: '30px',
         fontWeight: '400',
-        padding: '3px 10px'
+        marginBottom: '20px',
+        padding: '2px 6px'
     }
 }
 
@@ -16,7 +17,7 @@ export const defaultErrorToastConfig: ToastOptions<any> = {
     ...defaultToastConfig,
     style: {
         ...defaultToastConfig.style,
-        border: '1.5px solid var(--toast-error)',
+        border: '1.6px solid var(--toast-error)',
     }
 }
 
@@ -24,6 +25,6 @@ export const defaultSuccessToastConfig: ToastOptions<any> = {
     ...defaultToastConfig,
     style: {
         ...defaultToastConfig.style,
-        border: '1.5px solid var(--toast-success)',
+        border: '1.6px solid var(--toast-success)',
     }
 }

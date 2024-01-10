@@ -1,6 +1,5 @@
 import { defaultErrorToastConfig, defaultSuccessToastConfig } from './../../../../configs/default-toast.configs';
-import { Attendee } from './../../../../models/attendee';
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { ManageListTypes } from 'src/app/enums/manageListTypes.enum';
 import { ModalService } from 'src/app/services/modal.service';

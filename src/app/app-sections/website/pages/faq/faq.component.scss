@@ -162,7 +162,7 @@ li {
 [data-glow]::before {
   background-image: radial-gradient(
     calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
-      var(--x) var(--y),
+      50vw 50vh,
     hsl(
       var(--hue, 210) calc(var(--saturation, 100) * 1%)
         calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
@@ -325,10 +325,19 @@ body::before {
 
   article {
     width: 77vw;
+    border: solid 2px hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),;
   }
 
   .track__indicators {
     margin-top: 30px
+  }
+
+  [data-glow]::before,
+  [data-glow]::after {
+    content: none;
   }
 }
 
@@ -348,6 +357,10 @@ body::before {
 
   article {
     width: 70vw;
+    border: solid 2px hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),;
   }
 
   .track__indicators {
@@ -356,6 +369,11 @@ body::before {
 
   .section-title {
     margin-top: 45px;
+  }
+
+  [data-glow]::before,
+  [data-glow]::after {
+    content: none;
   }
 }
 
@@ -376,6 +394,10 @@ body::before {
 
   article {
     width: 330px;
+    border: solid 2px hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),;
   }
 
   .section-title {
@@ -384,6 +406,11 @@ body::before {
 
   .track__indicators {
     margin-top: 30px
+  }
+
+  [data-glow]::before,
+  [data-glow]::after {
+    content: none;
   }
 }
 
@@ -424,6 +451,15 @@ body::before {
 
   article {
     width: 50vw;
+    border: solid 2px hsl(
+      var(--hue, 210) calc(var(--saturation, 100) * 1%)
+        calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)
+    ),;
+  }
+
+  [data-glow]::before,
+  [data-glow]::after {
+    content: none;
   }
 }
 

@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Component } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { defaultErrorToastConfig } from 'src/app/configs/default-toast.configs';
 import { Attendee } from 'src/app/models/attendee';
 import { AnalyticsService } from 'src/app/services/analytics.service';
 import { SharedService } from 'src/app/services/shared.service';
@@ -11,6 +14,8 @@ import { SharedService } from 'src/app/services/shared.service';
 export class OverviewComponent {
 
   title = "Vue d'ensemble";
+
+  isHandheld = false;
 
   storedSnapshots: any;
   displayName = localStorage.getItem('displayName') ?? '';
@@ -25,51 +30,149 @@ export class OverviewComponent {
   latestSnapshot: any;
   attendeesList: Attendee[] = [];
 
-  constructor(private analytics: AnalyticsService, private sharedService: SharedService) { }
+  constructor(private analytics: AnalyticsService,
+    private sharedService: SharedService,
+    private responsive: BreakpointObserver,
+    private toast: HotToastService) { }
 
   ngOnInit(): void {
-    // Retrieve all the data from the API
-    this.analytics.getLatestSnapshot().subscribe((snapshot) => {
-      this.latestSnapshot = snapshot;
-    });
-
-    this.analytics.getAllSnapshots().subscribe((snapshots) => {
-      this.storedSnapshots = snapshots;
-      this.totalAttendeesChart.series = [{
-        name: 'Nombre total de participants',
-        data: snapshots.attendeesCounts
-      }];
-      this.totalAttendeesChart.labels = snapshots.dates;
-
-      this.totalNewAttendeesChart.series = [{
-        name: 'Nombre de nouvelles inscriptions',
-        data: snapshots.numberOfNewAttendees
-      }];
-      this.totalNewAttendeesChart.labels = snapshots.dates;
-    });
-
-    this.analytics.getAllAttendees().subscribe((attendees: Attendee[]) => {
-      this.attendeesList = attendees;
-
-      let irlAttendeesCount = 0;
-      attendees.forEach((attendee: Attendee) => {
-        if (attendee.isIrlAttendee) {
-          irlAttendeesCount++;
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
         }
-      });
-
-      this.irlAttendeesRateChart.series = [irlAttendeesCount, (this.attendeesList.length - irlAttendeesCount)];
-      this.irlAttendeesRateChart.labels = ['Présentiel', 'Distanciel'];
+      }
     });
 
-    this.analytics.getDiplomaCategoriesAnalytics().subscribe((diplomaCategories) => {
-      this.diplomaCategoriesRateChart.series = diplomaCategories.counts
-      this.diplomaCategoriesRateChart.labels = diplomaCategories.names;
+    // Retrieve all the data from the API
+    this.analytics.getLatestSnapshot().subscribe({
+      next: snapshot => {
+        this.latestSnapshot = snapshot;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
     });
 
-    this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
-      this.diplomasRateChart.series = diplomas.counts
-      this.diplomasRateChart.labels = diplomas.names;
+    this.analytics.getAllSnapshots().subscribe({
+      next: snapshots => {
+        this.storedSnapshots = snapshots;
+        this.totalAttendeesChart.series = [{
+          name: 'Nombre total de participants',
+          data: snapshots.attendeesCounts
+        }];
+        this.totalAttendeesChart.labels = snapshots.dates;
+  
+        this.totalNewAttendeesChart.series = [{
+          name: 'Nombre de nouvelles inscriptions',
+          data: snapshots.numberOfNewAttendees
+        }];
+        this.totalNewAttendeesChart.labels = snapshots.dates;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
+    });
+
+    this.analytics.getAllAttendees().subscribe({
+      next: (attendees: Attendee[]) => {
+        this.attendeesList = attendees;
+
+        let irlAttendeesCount = 0;
+        attendees.forEach((attendee: Attendee) => {
+          if (attendee.isIrlAttendee) {
+            irlAttendeesCount++;
+          }
+        });
+  
+        this.irlAttendeesRateChart.series = [irlAttendeesCount, (this.attendeesList.length - irlAttendeesCount)];
+        this.irlAttendeesRateChart.labels = ['Présentiel', 'Distanciel'];
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
+    });
+
+    this.analytics.getDiplomaCategoriesAnalytics().subscribe({
+      next: diplomaCategories => {
+        this.diplomaCategoriesRateChart.series = diplomaCategories.counts
+        this.diplomaCategoriesRateChart.labels = diplomaCategories.names;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
+    });
+
+    this.analytics.getDiplomasAnalytics().subscribe({
+      next: diplomas => {
+        this.diplomasRateChart.series = diplomas.counts
+        this.diplomasRateChart.labels = diplomas.names;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
     });
 
     // Total attendees chart configuration

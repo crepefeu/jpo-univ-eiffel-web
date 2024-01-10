@@ -4,6 +4,9 @@ import franceMap from "@highcharts/map-collection/countries/fr/fr-all-all.topo.j
 import idfMap from "@highcharts/map-collection/countries/fr/fr-idf-all.topo.json";
 import { SharedService } from 'src/app/services/shared.service';
 import { AnalyticsService } from 'src/app/services/analytics.service';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { HotToastService } from '@ngneat/hot-toast';
+import { defaultErrorToastConfig } from 'src/app/configs/default-toast.configs';
 
 @Component({
   selector: 'app-attendees-analytics',
@@ -11,6 +14,8 @@ import { AnalyticsService } from 'src/app/services/analytics.service';
   styleUrls: ['./attendees-analytics.component.scss']
 })
 export class AttendeesAnalyticsComponent implements OnInit {
+
+  isHandheld = false;
 
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
@@ -28,17 +33,46 @@ export class AttendeesAnalyticsComponent implements OnInit {
 
   constructor(
     private sharedService: SharedService,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private responsive: BreakpointObserver,
+    private toast: HotToastService
   ) { }
 
   ngOnInit(): void {
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
+
     // retrieve satisfaction rate data from API
-    this.analytics.getSatisfactionAnalytics().subscribe((satisfactionAnalytics) => {
+    this.analytics.getSatisfactionAnalytics().subscribe({
+      next: satisfactionAnalytics => {
       this.virtualTourSatisfactionRateChart.labels = satisfactionAnalytics.labels;
       this.websiteTourSatisfactionRateChart.labels = satisfactionAnalytics.labels;
 
       this.virtualTourSatisfactionRateChart.series = satisfactionAnalytics.virtualTourSatisfaction
       this.websiteTourSatisfactionRateChart.series = satisfactionAnalytics.websiteSatisfaction
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
     });
 
 
@@ -63,7 +97,21 @@ export class AttendeesAnalyticsComponent implements OnInit {
           ]
         }
       },
-      error: err => console.error('An error occurred :', err)
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
     });
 
     // diplomaCategories rate chart configuration

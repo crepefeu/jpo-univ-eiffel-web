@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -15,6 +16,8 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class DiplomasManageComponent implements OnInit {
 
+  isHandheld = false;
+
   listType = ManageListTypes.Diplomas;
   diplomasList?: Diploma[];
   diplomaCategoriesList?: DiplomaCategory[];
@@ -27,9 +30,20 @@ export class DiplomasManageComponent implements OnInit {
     private toast: HotToastService,
     private route: ActivatedRoute,
     private router: Router,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private responsive: BreakpointObserver) { }
 
   ngOnInit(): void {
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
+
     this.initListsData();
 
     this.route.queryParamMap.subscribe(params => {
@@ -59,8 +73,20 @@ export class DiplomasManageComponent implements OnInit {
         this.diplomasList = data.sort((a: Diploma, b: Diploma) => a.category.name.localeCompare(b.category.name));
       },
       error: err => {
-        this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
-        this.isDiplomasLoading = false
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+          this.isDiplomasLoading = false
+        }
       },
       complete: () => this.isDiplomasLoading = false
     });
@@ -71,7 +97,20 @@ export class DiplomasManageComponent implements OnInit {
         this.diplomaCategoriesList = data.sort((a: DiplomaCategory, b: DiplomaCategory) => a.name.localeCompare(b.name));
       },
       error: err => {
-        this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+          this.isDiplomasLoading = false
+        }
         this.isDiplomaCategoriesLoading = false
       },
       complete: () => this.isDiplomaCategoriesLoading = false

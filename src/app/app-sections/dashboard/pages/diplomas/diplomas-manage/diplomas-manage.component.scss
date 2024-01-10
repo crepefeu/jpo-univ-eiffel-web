@@ -113,3 +113,9 @@
 .toggle-checkbox:checked ~ .toggle-ctn .toggle-value2 {
   color: white;
 }
+
+@media screen and (max-width: 820px) {
+  .sub-section-title {
+    font-weight: 500;
+  }
+}

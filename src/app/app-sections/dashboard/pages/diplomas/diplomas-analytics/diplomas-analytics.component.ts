@@ -2,6 +2,9 @@ import { Diploma } from 'src/app/models/diploma';
 import { SharedService } from 'src/app/services/shared.service';
 import { AnalyticsService } from './../../../../../services/analytics.service';
 import { Component, OnInit } from '@angular/core';
+import { HotToastService } from '@ngneat/hot-toast';
+import { defaultErrorToastConfig } from 'src/app/configs/default-toast.configs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-diplomas-analytics',
@@ -9,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./diplomas-analytics.component.scss']
 })
 export class DiplomasAnalyticsComponent implements OnInit{
+
+  isHandheld = false;
 
   userPreferences = JSON.parse(localStorage.getItem('userPreferences') ?? '{}');
 
@@ -18,18 +23,64 @@ export class DiplomasAnalyticsComponent implements OnInit{
   diplomas?: Diploma[];
 
   constructor(private analytics: AnalyticsService,
-    private sharedService: SharedService) { }
+    private sharedService: SharedService,
+    private toast: HotToastService,
+    private responsive: BreakpointObserver) { }
 
   ngOnInit(): void {
-    this.analytics.getDiplomaCategoriesAnalytics().subscribe((diplomaCategories) => {
-      this.diplomaCategoriesRateChart.series = diplomaCategories.counts
-      this.diplomaCategoriesRateChart.labels = diplomaCategories.names;
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
     });
 
-    this.analytics.getDiplomasAnalytics().subscribe((diplomas) => {
-      this.diplomas = diplomas;
-      this.diplomasRateChart.series = diplomas.counts
-      this.diplomasRateChart.labels = diplomas.names;
+    this.analytics.getDiplomaCategoriesAnalytics().subscribe({
+      next: diplomaCategories => {
+      this.diplomaCategoriesRateChart.series = diplomaCategories.counts
+      this.diplomaCategoriesRateChart.labels = diplomaCategories.names;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
+    });
+
+    this.analytics.getDiplomasAnalytics().subscribe({
+      next: diplomas => {
+        this.diplomas = diplomas;
+        this.diplomasRateChart.series = diplomas.counts
+        this.diplomasRateChart.labels = diplomas.names;
+      },
+      error: err => {
+        if (this.isHandheld) {
+          this.toast.error('Une erreur est survenue', {
+            ...defaultErrorToastConfig,
+            style: {
+              ...defaultErrorToastConfig.style,
+              fontSize: '0.8rem',
+              position: 'absolute',
+              bottom: '65px',
+            }
+          });
+        } else {
+          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
+        }
+      }
     });
 
     // diplomaCategories rate chart configuration
