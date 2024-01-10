@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    baseApiUrl: 'http://localhost/jpo-api/api/',
+    baseApiUrl: 'https://api.sae-501-jpo.fr/',
 };
