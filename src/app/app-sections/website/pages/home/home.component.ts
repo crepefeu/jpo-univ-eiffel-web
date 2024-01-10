@@ -23,7 +23,7 @@ export class HomeComponent implements AfterViewInit {
         this.isHandheld = false;
       }
     });
-    }
+  }
 
   ngAfterViewInit() {
     // select element with .text-block class
@@ -61,8 +61,6 @@ export class HomeComponent implements AfterViewInit {
     // Set the heights
     RING_CANVAS.height = TEXT_CANVAS.height = CANVAS!.height = CANVAS!.offsetHeight * DPI
     RING_CANVAS.width = TEXT_CANVAS.width = CANVAS!.width = CANVAS!.offsetWidth * DPI
-
-
 
     const TEXT = "Découvrez"
     // Draw the text onto the text canvas

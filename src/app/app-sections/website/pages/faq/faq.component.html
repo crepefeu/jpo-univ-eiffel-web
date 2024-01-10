@@ -4,7 +4,7 @@
         <div class="track">
             <ul>
                 <li id="one">
-                    <article data-glow>
+                    <article data-glow (click)="goToContent('one')">
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer1, rotatingIcon)">
                             <h2 class="accordion-question">Où est situé l'IUT ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
@@ -18,7 +18,7 @@
                     </article>
                   </li>
                   <li id="two">
-                    <article data-glow>
+                    <article data-glow (click)="goToContent('two')">
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer2, rotatingIcon)">
                             <h2 class="accordion-question">Quel est le programme de la journée portes ouvertes (JPO) ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
@@ -33,7 +33,7 @@
                     </article>
                   </li>
                   <li id="three">
-                    <article data-glow>
+                    <article data-glow (click)="goToContent('three')">
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer3, rotatingIcon)">
                             <h2 class="accordion-question">Comment puis-je déclarer ma participation à la JPO physique du 3 Février ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
@@ -47,7 +47,7 @@
                     </article>
                   </li>
                   <li id="four">
-                    <article data-glow>
+                    <article data-glow (click)="goToContent('four')">
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer5, rotatingIcon)">
                             <h2 class="accordion-question">Quel type de matériel mettez-vous à la disposition des étudiants ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
@@ -63,7 +63,7 @@
                     </article>
                   </li>
                   <li id="five">
-                    <article data-glow>
+                    <article data-glow (click)="goToContent('five')">
                         <div class="accordion-header" (click)="expand(faqAccordionAnswer6, rotatingIcon)">
                             <h2 class="accordion-question">Est-il possible de faire de l'alternance pendant ce cursus ?</h2>
                             <i #rotatingIcon class="bi bi-plus-lg"></i>
