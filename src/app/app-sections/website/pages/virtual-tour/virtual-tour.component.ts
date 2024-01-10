@@ -382,9 +382,15 @@ export class VirtualTourComponent implements OnInit {
     requestAnimationFrame(this.animate.bind(this));
 
   }
+
+  exitPointLockOnReturn() {
+    // force exit full screen
+      document.exitFullscreen();
+  }
 }
 
 const container = document.getElementById('container');
 if (container) {
   new VirtualTourComponent();
 }
+
