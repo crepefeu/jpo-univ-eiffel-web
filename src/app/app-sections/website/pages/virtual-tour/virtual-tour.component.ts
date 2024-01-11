@@ -263,10 +263,10 @@ export class VirtualTourComponent implements OnInit {
       const table_pc = gltf.scene.children.find((child: any) => child.name === 'Table_PC') as THREE.Object3D;
 
       this.worldOctree.fromGraphNode(piece);
-      // this.worldOctree.fromGraphNode(table_r);
-      // this.worldOctree.fromGraphNode(table_l);
-      // this.worldOctree.fromGraphNode(fenetre);
-      // this.worldOctree.fromGraphNode(table_pc);
+      this.worldOctree.fromGraphNode(table_r);
+      this.worldOctree.fromGraphNode(table_l);
+      this.worldOctree.fromGraphNode(fenetre);
+      this.worldOctree.fromGraphNode(table_pc);
 
       gltf.scene.traverse((child :any) => {
 
