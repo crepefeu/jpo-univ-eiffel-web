@@ -294,8 +294,8 @@ export class VirtualTourComponent implements OnInit {
           dl_r.power = 15;
           dl_r.distance = 10;
           dl_r.castShadow = true;
-          dl_r.shadow.mapSize.width = 1024 * 2;
-          dl_r.shadow.mapSize.height = 1024 * 2;
+          dl_r.shadow.mapSize.width = 1024 * 4;
+          dl_r.shadow.mapSize.height = 1024 * 4;
           dl_r.shadow.camera.near = 0.1;
           dl_r.shadow.camera.far = 80;
           dl_r.shadow.bias = -0.005;
