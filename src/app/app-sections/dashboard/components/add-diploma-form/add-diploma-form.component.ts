@@ -6,6 +6,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { DiplomaCategory } from 'src/app/models/diplomaCategory';
 import { DiplomasService } from 'src/app/services/diplomas.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-add-diploma-form',
@@ -23,7 +24,8 @@ export class AddDiplomaFormComponent implements OnInit {
   constructor(private diplomas: DiplomasService,
     private toast: HotToastService,
     private responsive: BreakpointObserver,
-    private modal: ModalService) {
+    private modal: ModalService,
+    private sharedService: SharedService) {
     this.responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
@@ -100,6 +102,7 @@ export class AddDiplomaFormComponent implements OnInit {
               ...defaultSuccessToastConfig
             });
           }
+          this.sharedService.updateData(true);
           this.modal.close();
         }
       },

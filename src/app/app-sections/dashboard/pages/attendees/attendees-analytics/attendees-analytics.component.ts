@@ -123,7 +123,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
         "#de3c3c"
       ],
       chart: {
-        height: 170,
+        height: 200,
         type: "donut"
       },
       legend: {
@@ -158,7 +158,7 @@ export class AttendeesAnalyticsComponent implements OnInit {
         "#de3c3c"
       ],
       chart: {
-        height: 170,
+        height: 200,
         type: "donut"
       },
       legend: {

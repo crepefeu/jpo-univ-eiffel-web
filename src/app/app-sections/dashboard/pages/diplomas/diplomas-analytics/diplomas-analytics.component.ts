@@ -110,7 +110,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
           breakpoint: 2000,
           options: {
             chart: {
-              height: 200,
+              height: 250,
             },
             legend: {
               position: "bottom"
@@ -131,7 +131,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
         "#DCC3FF"
         ],
       chart: {
-        height: 170,
+        height: 300,
         type: "donut"
       },
       legend: {
@@ -146,7 +146,7 @@ export class DiplomasAnalyticsComponent implements OnInit{
           breakpoint: 2000,
           options: {
             chart: {
-              height: 200,
+              height: 250,
             },
             legend: {
               position: "bottom"
