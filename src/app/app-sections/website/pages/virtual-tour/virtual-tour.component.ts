@@ -254,7 +254,7 @@ export class VirtualTourComponent implements OnInit {
     this.dracoLoader.preload();
     this.gltfLoader.setDRACOLoader(this.dracoLoader);
 
-    this.gltfLoader.load('318.gltf', (gltf: any) => {
+    this.gltfLoader.load('318_final.gltf', (gltf: any) => {
 
       const piece = gltf.scene.children.find((child: any) => child.name === 'Pièce') as THREE.Mesh;
       const table_l = gltf.scene.children.find((child: any) => child.name === 'Table_L') as THREE.Object3D;
@@ -263,10 +263,10 @@ export class VirtualTourComponent implements OnInit {
       const table_pc = gltf.scene.children.find((child: any) => child.name === 'Table_PC') as THREE.Object3D;
 
       this.worldOctree.fromGraphNode(piece);
-      this.worldOctree.fromGraphNode(table_r);
-      this.worldOctree.fromGraphNode(table_l);
-      this.worldOctree.fromGraphNode(fenetre);
-      this.worldOctree.fromGraphNode(table_pc);
+      // this.worldOctree.fromGraphNode(table_r);
+      // this.worldOctree.fromGraphNode(table_l);
+      // this.worldOctree.fromGraphNode(fenetre);
+      // this.worldOctree.fromGraphNode(table_pc);
 
       gltf.scene.traverse((child :any) => {
 
@@ -314,7 +314,20 @@ export class VirtualTourComponent implements OnInit {
             child.material.side = THREE.DoubleSide;
             child.receiveShadow = false;
           }
+
+          if (child.name === 'Plane007_1'){
+            const  textureplafond = new THREE.TextureLoader().load('./assets/trou_plafond.jpg');
+            child.material = new THREE.MeshStandardMaterial({ map: textureplafond });
+            child.receiveShadow = false;
+          }
+
+          if (child.name === 'Plane008_1'){
+            const  texturemur = new THREE.TextureLoader().load('./assets/trou_mur.jpg');
+            child.material = new THREE.MeshStandardMaterial({ map: texturemur });
+            child.receiveShadow = false;
+          }
         }
+
 
       });
 
