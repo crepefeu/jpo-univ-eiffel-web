@@ -46,7 +46,7 @@ export class MultiStepFormComponent implements OnInit {
       }
     });
     this.infosForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       firstName: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       diplomaId: new FormControl('', Validators.required),
