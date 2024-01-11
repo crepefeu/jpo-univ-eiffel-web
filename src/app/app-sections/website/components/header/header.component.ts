@@ -1,5 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { ModalService } from 'src/app/services/modal.service';
+import { MultiStepFormComponent } from '../multi-step-form/multi-step-form.component';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +13,8 @@ export class HeaderComponent implements OnInit {
 
   showSidebar = false
 
-  constructor(private responsive: BreakpointObserver) {
+  constructor(private responsive: BreakpointObserver,
+    private modalService: ModalService) {
     responsive.observe(['(max-width: 820px)']).subscribe({
       next: data => {
         if (data.matches) {
@@ -25,5 +28,13 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.classList.toggle('dark-theme', false);
+  }
+
+  openRegisterForm() {
+    if (this.isHandheld) {
+      this.modalService.open(MultiStepFormComponent, this.modalService.drawerConfig)
+    } else {
+      this.modalService.open(MultiStepFormComponent, this.modalService.modalConfig);
+    }
   }
 }
