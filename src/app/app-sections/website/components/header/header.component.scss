@@ -99,7 +99,7 @@
   display: flex;
   align-items: center;
   border-radius: 30px;
-  padding: 10px 20px;
+  padding: 9px 20px;
   background-color: var(--primary);
   color: white;
   font-size: 0.9rem;
@@ -193,6 +193,11 @@
   .list-icon {
     font-size: 2rem;
   }
+
+  .right-cta {
+    // position at the right of the nav
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 425px) {
@@ -204,6 +209,11 @@
     position: absolute;
     right: 20px;
     height: 1.7rem;
+  }
+
+  .right-cta {
+    // position at the right of the nav
+    margin-left: 0;
   }
 }
 
@@ -217,5 +227,10 @@
     right: 50%;
     transform: translateX(50%);
     height: 1.7rem;
+  }
+
+  .right-cta {
+    // position at the right of the nav
+    margin-left: 0;
   }
 }

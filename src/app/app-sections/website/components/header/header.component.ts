@@ -10,6 +10,7 @@ import { MultiStepFormComponent } from '../multi-step-form/multi-step-form.compo
 })
 export class HeaderComponent implements OnInit {
   isHandheld = false;
+  compactMode: boolean = false;
 
   showSidebar = false
 
@@ -21,6 +22,16 @@ export class HeaderComponent implements OnInit {
           this.isHandheld = true;
         } else {
           this.isHandheld = false;
+        }
+      }
+    });
+
+    responsive.observe(['(max-width: 930.9px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.compactMode = true;
+        } else {
+          this.compactMode = false;
         }
       }
     });
