@@ -21,7 +21,7 @@ export class AdminsService {
   }
 
   verifyAuth() {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     return this.http.get<any>(this.baseApiUrl + 'isAuth', { headers });
   }
@@ -31,7 +31,7 @@ export class AdminsService {
   }
 
   saveUserPreferences(userPreferencesData: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer + ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
