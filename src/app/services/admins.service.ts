@@ -31,7 +31,7 @@ export class AdminsService {
   }
 
   saveUserPreferences(userPreferencesData: any) {
-    let headers = { 'Authorization': `Bearer + ${localStorage.getItem('token')}` };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
