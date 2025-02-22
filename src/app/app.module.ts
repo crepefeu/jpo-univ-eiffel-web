@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 
 // Material Modules
@@ -50,6 +50,7 @@ import { GenericDrawerComponent } from './shared/components/drawers/generic-draw
 import { ConfirmationDrawerComponent } from './shared/components/drawers/confirmation-drawer/confirmation-drawer.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/virtual-tour.component';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,14 @@ import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/
     NgApexchartsModule,
     BrowserAnimationsModule
   ],
-  providers: [provideHotToastConfig()],
+  providers: [
+    provideHotToastConfig(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
