@@ -24,7 +24,7 @@ export class DiplomasService {
   }
 
   addDiploma(diploma: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -35,7 +35,7 @@ export class DiplomasService {
   }
 
   modifyDiploma(diploma: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData= new FormData();
 
@@ -47,7 +47,7 @@ export class DiplomasService {
   }
 
   deleteDiploma(diplomaId: number) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -57,7 +57,7 @@ export class DiplomasService {
   }
 
   addDiplomaCategory(diplomaCategory: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -67,7 +67,7 @@ export class DiplomasService {
   }
 
   modifyDiplomaCategory(diplomaCategory: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -78,7 +78,7 @@ export class DiplomasService {
   }
 
   deleteDiplomaCategory(diplomaCategoryId: number) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 

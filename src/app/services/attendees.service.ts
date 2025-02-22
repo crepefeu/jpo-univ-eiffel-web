@@ -12,7 +12,7 @@ export class AttendeesService {
   constructor(private http: HttpClient) { }
 
   getAllAttendees() {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', { headers });
   }
@@ -39,7 +39,7 @@ export class AttendeesService {
   }
 
   modifyAttendee(attendeeInfos: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -51,12 +51,12 @@ export class AttendeesService {
     formData.append('diplomaCategoryId', attendeeInfos.diplomaCategoryId)
     formData.append('regionalCode', attendeeInfos.regionalCode);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
-    
+
     return this.http.post<any>(this.baseApiUrl + 'modifyAttendee', formData, { headers });
   }
 
   deleteAttendee(attendeeId: number) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -66,7 +66,7 @@ export class AttendeesService {
   }
 
   exportAttendeesList() {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     return this.http.get<any>(this.baseApiUrl + 'exportAttendees', { headers });
   }
