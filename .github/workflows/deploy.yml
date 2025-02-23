@@ -2,78 +2,96 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Deploy to EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ubuntu
-        key: ${{ secrets.SSH_KEY }}
-        script: |
-          # Install certbot if not already installed
-          if ! command -v certbot &> /dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y certbot python3-certbot-nginx
-          fi
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
 
-          # Check if certificates exist and generate if they don't
-          if [ ! -d "/etc/letsencrypt/live/jpo.3st3ban.dev" ]; then
-            sudo certbot --nginx -d jpo.3st3ban.dev --non-interactive --agree-tos -m erodriguez10@myges.fr
-          fi
-
-          # Setup application directory
-          cd /var/www
-          sudo rm -rf jpo
-          git clone https://github.com/username/jpo-univ-eiffel-web.git jpo
-          cd jpo
-
-          # Install dependencies and build
+      - name: Install dependencies and build
+        run: |
           npm install
-          npm run build --prod
+          npm run build
 
-          # Update web root
-          sudo rm -rf /var/www/html/*
-          sudo cp -r dist/jpo-univ-eiffel-web/* /var/www/html/
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            # Configure Nginx first
+            sudo tee /etc/nginx/sites-available/jpo.3st3ban.dev > /dev/null << 'EOF'
+            server {
+                listen 443 ssl;
+                server_name jpo.3st3ban.dev;
 
-          # Configure Nginx
-          sudo tee /etc/nginx/sites-available/jpo.3st3ban.dev > /dev/null << 'EOF'
-          server {
-              listen 443 ssl;
-              server_name jpo.3st3ban.dev;
+                ssl_certificate /etc/letsencrypt/live/jpo.3st3ban.dev/fullchain.pem;
+                ssl_certificate_key /etc/letsencrypt/live/jpo.3st3ban.dev/privkey.pem;
 
-              ssl_certificate /etc/letsencrypt/live/jpo.3st3ban.dev/fullchain.pem;
-              ssl_certificate_key /etc/letsencrypt/live/jpo.3st3ban.dev/privkey.pem;
+                ssl_protocols TLSv1.2 TLSv1.3;
+                ssl_prefer_server_ciphers on;
+                ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
 
-              ssl_protocols TLSv1.2 TLSv1.3;
-              ssl_prefer_server_ciphers on;
-              ssl_ciphers ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384;
+                root /var/www/html;
+                index index.html;
 
-              root /var/www/html;
-              index index.html;
+                location / {
+                    try_files $uri $uri/ /index.html;
+                }
+            }
 
-              location / {
-                  try_files $uri $uri/ /index.html;
-              }
-          }
+            server {
+                listen 80;
+                server_name jpo.3st3ban.dev;
+                return 301 https://$server_name$request_uri;
+            }
+            EOF
 
-          server {
-              listen 80;
-              server_name jpo.3st3ban.dev;
-              return 301 https://$server_name$request_uri;
-          }
-          EOF
+            sudo ln -sf /etc/nginx/sites-available/jpo.3st3ban.dev /etc/nginx/sites-enabled/
+            sudo systemctl restart nginx
 
-          # Enable site and restart Nginx
-          sudo ln -sf /etc/nginx/sites-available/jpo.3st3ban.dev /etc/nginx/sites-enabled/
-          sudo systemctl restart nginx
+            # Install certbot and get certificate
+            if ! command -v certbot &> /dev/null; then
+              sudo apt-get update
+              sudo apt-get install -y certbot python3-certbot-nginx
+            fi
 
-          # Setup auto-renewal
-          (crontab -l 2>/dev/null; echo "0 12 * * * /usr/bin/certbot renew --quiet") | crontab -
+            # Get SSL certificate
+            if [ ! -d "/etc/letsencrypt/live/jpo.3st3ban.dev" ]; then
+              sudo certbot --nginx -d jpo.3st3ban.dev --non-interactive --agree-tos -m erodriguez10@myges.fr
+            fi
+
+            # Setup application directory with proper permissions
+            sudo mkdir -p /var/www/html
+            sudo chown ubuntu:ubuntu /var/www/html
+
+            # Setup auto-renewal
+            (crontab -l 2>/dev/null; echo "0 12 * * * /usr/bin/certbot renew --quiet") | crontab -
+
+      - name: Copy build files to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          source: "dist/jpo-univ-eiffel-web/*"
+          target: "/var/www/html"
+          strip_components: 2
+
+      - name: Set permissions
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo chown -R www-data:www-data /var/www/html
