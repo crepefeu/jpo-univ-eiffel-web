@@ -21,14 +21,41 @@ jobs:
           npm install
           npm run build:prod
 
-      - name: Deploy to EC2
+      - name: Prepare remote directory
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           script: |
-            # Configure Nginx first
+            # Clean and prepare the target directory
+            sudo rm -rf /var/www/html/*
+            sudo mkdir -p /var/www/html
+            sudo chown -R ubuntu:ubuntu /var/www/html
+            sudo chmod -R 755 /var/www/html
+
+      - name: Copy build files to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          source: "dist/jpo-univ-eiffel-web/*"
+          target: "/var/www/html"
+          strip_components: 2
+
+      - name: Configure permissions and Nginx
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            # Set correct ownership and permissions
+            sudo chown -R www-data:www-data /var/www/html
+            sudo chmod -R 755 /var/www/html
+
+            # Configure Nginx
             sudo tee /etc/nginx/sites-available/jpo.3st3ban.dev > /dev/null << 'EOF'
             server {
                 listen 443 ssl;
@@ -57,41 +84,20 @@ jobs:
             EOF
 
             sudo ln -sf /etc/nginx/sites-available/jpo.3st3ban.dev /etc/nginx/sites-enabled/
-            sudo systemctl restart nginx
+            sudo nginx -t && sudo systemctl restart nginx
 
-            # Install certbot and get certificate
+            # Install certbot if not present
             if ! command -v certbot &> /dev/null; then
               sudo apt-get update
               sudo apt-get install -y certbot python3-certbot-nginx
             fi
 
-            # Get SSL certificate
+            # Get SSL certificate if not exists
             if [ ! -d "/etc/letsencrypt/live/jpo.3st3ban.dev" ]; then
               sudo certbot --nginx -d jpo.3st3ban.dev --non-interactive --agree-tos -m erodriguez10@myges.fr
             fi
 
-            # Setup application directory with proper permissions
-            sudo mkdir -p /var/www/html
-            sudo chown ubuntu:ubuntu /var/www/html
-
-            # Setup auto-renewal
-            (crontab -l 2>/dev/null; echo "0 12 * * * /usr/bin/certbot renew --quiet") | crontab -
-
-      - name: Copy build files to EC2
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.SSH_KEY }}
-          source: "dist/jpo-univ-eiffel-web/*"
-          target: "/var/www/html"
-          strip_components: 2
-
-      - name: Set permissions
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            sudo chown -R www-data:www-data /var/www/html
+            # Setup auto-renewal if not already configured
+            if ! crontab -l | grep -q "certbot renew"; then
+              (crontab -l 2>/dev/null; echo "0 12 * * * /usr/bin/certbot renew --quiet") | crontab -
+            fi
