@@ -3,8 +3,8 @@
         <div class="section-details">
             <h2 class="sub-section-title">Gestion</h2>
             <ng-container *ngIf="attendeesList">
-                <div class="data-badge" *ngIf="attendeesList">{{attendeesList.length}} données participants</div>
-                <div class="data-badge" *ngIf="attendeesList.length < 1">Aucunes données participants</div>    
+                <div class="data-badge" *ngIf="attendeesList && attendeesList.length > 0">{{attendeesList.length}} données participants</div>
+                <div class="data-badge" *ngIf="attendeesList.length < 1">Aucune donnée participant</div>    
             </ng-container>
         </div>
         <app-manage-list *ngIf="attendeesList" [isLoading]="isLoading" [originalData]="attendeesList" [listType]="listType"></app-manage-list>

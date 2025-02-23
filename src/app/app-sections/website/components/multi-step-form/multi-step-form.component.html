@@ -25,9 +25,9 @@
                     </div>
                     <div class="inputs-ctn flex">
                         <div class="input-ctn">
-                            <label for="">Diplôme possédé*</label>
+                            <label for="">Dernier diplôme possédé*</label>
                             <select class="input" formControlName="diplomaId">
-                                <option value="" selected disabled hidden>Choisissez un diplôme</option>
+                                <option value="" selected disabled hidden>Diplôme</option>
                                 <option *ngFor="let diploma of diplomasList" [value]="diploma.id">
                                     {{diploma.name}}
                                 </option>
@@ -36,7 +36,7 @@
                         <div class="input-ctn">
                             <label for="">Département de résidence*</label>
                             <select class="input" formControlName="region">
-                                <option value="" selected disabled hidden>Choisissez un département</option>
+                                <option value="" selected disabled hidden>Département</option>
                                 <option *ngFor="let region of regionsList" [value]="region.code">
                                     {{region.name}}
                                 </option>

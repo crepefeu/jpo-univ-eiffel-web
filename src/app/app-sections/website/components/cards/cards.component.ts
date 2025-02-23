@@ -12,5 +12,5 @@ export class CardsComponent {
     document.body.style.setProperty('--mx', e.clientX);
     document.body.style.setProperty('--my', e.clientY);
   }
-
+  
 }

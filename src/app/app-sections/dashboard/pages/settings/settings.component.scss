@@ -269,6 +269,12 @@
   font-weight: 400;
   color: var(--primary);
   transition: all 200ms ease-in-out;
+
+  &.alt {
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: var(--chart-subtitle);
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -278,6 +284,7 @@
     padding: 40px 15px;
     padding-bottom: 100px;
     border-radius: 0;
+    border: none;
   }
 
   .sub-section-ctn {
@@ -319,6 +326,7 @@
     padding: 40px 20px;
     padding-bottom: 100px;
     border-radius: 0;
+    border: none;
   }
 
   .sub-section-ctn {
@@ -338,7 +346,7 @@
   }
 
   .theme-image-ctn {
-    max-width: 115px;
+    max-width: 110px;
     max-height: fit-content;
   }
 
@@ -363,9 +371,10 @@
   .content {
     width: 100%;
     min-height: 100vh;
-    padding: 40px 30px;
+    padding: 40px 25px;
     padding-bottom: 100px;
     border-radius: 0;
+    border: none;
   }
 
   .theme-setting-ctn {
@@ -384,7 +393,7 @@
   }
 
   .theme-image-ctn {
-    max-width: 130px;
+    max-width: 120px;
     max-height: fit-content;
   }
 
@@ -397,6 +406,10 @@
   .setting-label {
     font-size: 0.9rem;
   }
+
+  .section-subtitle {
+    font-weight: 500;
+  }
 }
 
 // tablet responsive
@@ -407,6 +420,7 @@
     padding: 40px 30px;
     padding-bottom: 100px;
     border-radius: 0;
+    border: none;
   }
 
   .themes-ctn {

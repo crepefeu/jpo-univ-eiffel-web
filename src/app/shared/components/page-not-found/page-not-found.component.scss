@@ -1,0 +1,40 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: var(--content-bkg);
+  transition: all 200ms ease-in-out;
+  min-height: 80vh;
+  text-align: center;
+}
+
+.not-found-title {
+  font-size: 5rem;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.btn {
+  margin-top: 30px;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  padding: 10px 20px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: background-color 200ms ease-in-out;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary-hover);
+  }
+}

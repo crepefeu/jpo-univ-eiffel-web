@@ -14,13 +14,13 @@
                     <p>Prenez part à une expérience virtuelle afin de faire vos premiers pas dans l'établissement.</p>
                 </div>
                 <div class="hero-cta-btn-ctn">
-                    <button class="hero-cta-btn">
+                    <button class="hero-cta-btn" routerLink="/virtual-tour">
                         Démarrer la visite virtuelle
                         <i class="bi bi-play-fill"></i>
                     </button>
                 </div>
             </div>
-            <div class="content" *ngIf="!isHandheld">
+            <div class="content right" *ngIf="!isHandheld">
                 <div class="hero-img-ctn">
                     <svg class="hero-img" version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 939.8 653"
@@ -38,8 +38,12 @@
                                 fill: #E4E4E4;
                             }
 
+                            .st3.no-grad {
+                                fill: #2f2a86;
+                            }
+
                             .st3 {
-                                fill: #2F2A86;
+                                fill: url(#MyGradient);
                             }
 
                             .st4 {
@@ -58,6 +62,12 @@
                                 fill: #FFB6B6;
                             }
                         </style>
+                        <defs>
+                            <linearGradient id="MyGradient">
+                              <stop offset="5%" stop-color="#190fde52" />
+                              <stop offset="100%" stop-color="#2f2a86" />
+                            </linearGradient>
+                          </defs>
                         <ellipse class="st0" cx="481.2" cy="404" rx="450.6" ry="149" />
                         <ellipse class="st0" cx="147.2" cy="449.6" rx="45" ry="7" />
                         <rect x="631.1" y="-31.8" transform="matrix(0.1013 -0.9949 0.9949 0.1013 551.8754 646.2603)"
@@ -87,12 +97,12 @@
                             d="M172.6,440.2l-16.4,6.8l-0.1-0.2c-1.5-3.5,0.2-7.5,3.7-9l0,0l10-4.1L172.6,440.2z" />
                         <path class="st5"
                             d="M153.5,282c0,0,20.4,9.6,6.8,53.9l-1,35l-6.7,64.3l-11-0.7l-4.9-61.9l-16.2-51.1l3.2-24.7L153.5,282z" />
-                        <path class="st3" d="M122.4,303.3l1.7-32.1c-11.3-18.9,0.3-29.7,1.2-30.5l10.3-15.1l9-2.5c6.3-1.7,12.9,2,14.6,8.3
+                        <path class="st3 no-grad" d="M122.4,303.3l1.7-32.1c-11.3-18.9,0.3-29.7,1.2-30.5l10.3-15.1l9-2.5c6.3-1.7,12.9,2,14.6,8.3
                         c0.3,1.1,0.4,2.1,0.4,3.2l-0.4,52.6L122.4,303.3z" />
                         <polygon class="st5" points="143,381.9 154.3,429 167.3,423.7 149.7,381.1 " />
                         <path class="st4" d="M125.7,319.9c2.9-1.2,4.3-4.6,3-7.5c-0.1-0.3-0.3-0.6-0.5-0.9l11.5-16.3l-9.6-0.5L120,310.1
                         c-2.5,1.9-3.1,5.5-1.1,8C120.4,320.2,123.2,321,125.7,319.9L125.7,319.9z" />
-                        <polygon class="st3"
+                        <polygon class="st3 no-grad"
                             points="129.7,241.3 134.7,276.8 120.5,303.6 132.4,311 152.9,280.7 144.3,237.8 " />
                         <ellipse id="aaba450f-0f04-490f-b553-501192395cc8"
                             transform="matrix(7.088899e-02 -0.9975 0.9975 7.088899e-02 -71.3494 327.4661)" class="st4"
@@ -169,12 +179,12 @@
 
 <div class="section-content-w-gutter">
 
-    <h1 class="section-title">Programme de la JPO</h1>
+    <h1 class="section-title">Programme de la JPO - 3 Février</h1>
 
     <app-cards></app-cards>
 
     <a class="external-link-btn" href="assets/Programme_JPO.pdf" target="_blank">
-        Consulter le programme complet
+        Programme complet
         <i class="bi bi-box-arrow-up-right"></i>
     </a>
 

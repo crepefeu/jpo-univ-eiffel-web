@@ -1,3 +1,4 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -12,13 +13,26 @@ import { AdminsService } from 'src/app/services/admins.service';
 })
 export class SignInComponent {
 
+  isHandheld = false;
+
   isSubmitting = false;
   form: FormGroup;
   submitted = false
 
   constructor(private adminsService: AdminsService,
     private router: Router,
-    private toast: HotToastService) {
+    private toast: HotToastService,
+    private responsive: BreakpointObserver) {
+    this.responsive.observe(['(max-width: 820px)']).subscribe({
+      next: data => {
+        if (data.matches) {
+          this.isHandheld = true;
+        } else {
+          this.isHandheld = false;
+        }
+      }
+    });
+
     this.form = new FormGroup({
       login: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
@@ -26,6 +40,7 @@ export class SignInComponent {
   }
 
   onSubmit() {
+
     this.submitted = false;
 
     if (this.form.valid) {
@@ -37,7 +52,7 @@ export class SignInComponent {
             localStorage.setItem('token', data.token);
             localStorage.setItem('displayName', data.displayName);
             localStorage.setItem('userPreferences', JSON.stringify(data.userPreferences));
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['dashboard']);
             if (data.userPreferences && data.userPreferences.defaultTheme == 'dark') {
               // set localstorage to dark mode
               localStorage.setItem('currentTheme', 'dark')
@@ -67,15 +82,42 @@ export class SignInComponent {
                 // set localstorage to light mode
                 localStorage.setItem('currentTheme', 'light')
               }
-            } else {
-              console.log(data); // TODO : handle error with a toast
             }
+          } else {
+            if (this.isHandheld) {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig,
+                style: {
+                  ...defaultErrorToastConfig.style,
+                  fontSize: '0.8rem',
+                  position: 'absolute',
+                  bottom: '0',
+                }
+              });
+            } else {
+              this.toast.error(data.message, {
+                ...defaultErrorToastConfig
+              });
+            }
+            this.isSubmitting = false;
           }
         },
         error: err => {
-          this.toast.error('Une erreur est survenue', {
-            ...defaultErrorToastConfig
-          });
+          if (this.isHandheld) {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig,
+              style: {
+                ...defaultErrorToastConfig.style,
+                fontSize: '0.8rem',
+                position: 'absolute',
+                bottom: '0',
+              }
+            });
+          } else {
+            this.toast.error('Une erreur est survenue', {
+              ...defaultErrorToastConfig
+            });
+          }
           this.isSubmitting = false;
         },
         complete: () => this.isSubmitting = false

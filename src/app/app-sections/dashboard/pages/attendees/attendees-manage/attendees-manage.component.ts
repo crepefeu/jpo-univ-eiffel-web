@@ -44,7 +44,7 @@ export class AttendeesManageComponent implements OnInit {
         }
       }
     });
-    
+
     this.refreshData();
   }
 
@@ -56,20 +56,8 @@ export class AttendeesManageComponent implements OnInit {
         this.attendeesList = data;
         this.isLoading = false;
       },
-      error: err => {
-        if (this.isHandheld) {
-          this.toast.error('Une erreur est survenue', {
-            ...defaultErrorToastConfig,
-            style: {
-              ...defaultErrorToastConfig.style,
-              fontSize: '0.8rem',
-              position: 'absolute',
-              bottom: '65px',
-            }
-          });
-        } else {
-          this.toast.error('Une erreur est survenue', defaultErrorToastConfig);
-        }
+      error: () => {
+
         this.isLoading = false;
       }
     });

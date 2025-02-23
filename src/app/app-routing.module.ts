@@ -15,6 +15,8 @@ import { AttendeesManageComponent } from './app-sections/dashboard/pages/attende
 import { DiplomasManageComponent } from './app-sections/dashboard/pages/diplomas/diplomas-manage/diplomas-manage.component';
 import { DiplomasAnalyticsComponent } from './app-sections/dashboard/pages/diplomas/diplomas-analytics/diplomas-analytics.component';
 import { FaqComponent } from './app-sections/website/pages/faq/faq.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/virtual-tour.component';
 
 const routes: Routes = [
   {
@@ -24,7 +26,8 @@ const routes: Routes = [
       { path: '', component: HomeComponent},
       { path: 'but-mmi', component: EducationComponent},
       { path: 'faq', component: FaqComponent},
-      { path: 'admin/sign-in', component: SignInComponent}
+      { path: 'admin/sign-in', component: SignInComponent},
+      { path: 'virtual-tour', component: VirtualTourComponent}
     ]
   },
   {
@@ -47,6 +50,8 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent},
     ]
   },
+  //Wild Card Route for 404 request 
+  { path: '**', pathMatch: 'prefix', component: PageNotFoundComponent } 
 ];
 
 @NgModule({

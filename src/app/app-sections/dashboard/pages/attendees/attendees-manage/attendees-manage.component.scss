@@ -4,35 +4,40 @@
 }
 
 .section-details {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: rgb(117, 117, 117);
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgb(117, 117, 117);
 }
 
 .sub-section-title {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: var(--primary);
-    transition: all 200ms ease-in-out;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--primary);
+  transition: all 200ms ease-in-out;
 }
 
 .data-badge {
-    font-size: 0.7rem;
-    color: var(--white);
-    padding: 5px 15px;
-    background-color: var(--badge-info);
-    border: solid 1px var(--badge-border);
-    border-radius: 30px;
-    cursor: default;
-    transition: all 200ms ease-in-out;
+  font-size: 0.7rem;
+  color: var(--white);
+  padding: 5px 15px;
+  background-color: var(--badge-info);
+  border: solid 1px var(--badge-border);
+  border-radius: 30px;
+  cursor: default;
+  transition: all 200ms ease-in-out;
 }
 
 .section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 // mobile responsive
+@media screen and (max-width: 820px) {
+  .sub-section-title {
+    font-weight: 500;
+  }
+}

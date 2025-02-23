@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminsService } from 'src/app/services/admins.service';
-import { SharedService } from 'src/app/services/shared.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({

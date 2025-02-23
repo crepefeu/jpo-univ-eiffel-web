@@ -1,9 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HotToastService } from '@ngneat/hot-toast';
-import { defaultSuccessToastConfig } from 'src/app/configs/default-toast.configs';
+import { defaultSuccessToastConfig, defaultErrorToastConfig } from 'src/app/configs/default-toast.configs';
 import { AdminsService } from 'src/app/services/admins.service';
 
 @Component({
@@ -57,9 +57,9 @@ export class SettingsComponent implements OnInit {
         if (data.status == 'error') {
           if (this.isHandheld) {
             this.toast.error(data.message, {
-              ...defaultSuccessToastConfig,
+              ...defaultErrorToastConfig,
               style: {
-                ...defaultSuccessToastConfig.style,
+                ...defaultErrorToastConfig.style,
                 fontSize: '0.8rem',
                 position: 'absolute',
                 bottom: '65px',
@@ -67,7 +67,7 @@ export class SettingsComponent implements OnInit {
             });
           } else {
             this.toast.error(data.message, {
-              ...defaultSuccessToastConfig
+              ...defaultErrorToastConfig
             });
           }
         } else if (data.status == 'success' && data.userPreferences) {
@@ -110,9 +110,9 @@ export class SettingsComponent implements OnInit {
       error: err => {
         if (this.isHandheld) {
           this.toast.error('Une erreur est survenue', {
-            ...defaultSuccessToastConfig,
+            ...defaultErrorToastConfig,
             style: {
-              ...defaultSuccessToastConfig.style,
+              ...defaultErrorToastConfig.style,
               fontSize: '0.8rem',
               position: 'absolute',
               bottom: '65px',
@@ -120,9 +120,10 @@ export class SettingsComponent implements OnInit {
           });
         } else {
           this.toast.error('Une erreur est survenue', {
-            ...defaultSuccessToastConfig
+            ...defaultErrorToastConfig
           });
         }
+        this.isSaving = false
       },
       complete: () => this.isSaving = false
     });

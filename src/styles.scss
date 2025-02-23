@@ -172,3 +172,18 @@ app-diplomas {
 app-settings {
   width: 100%;
 }
+
+.hot-toast-icon {
+  align-self: auto;
+  padding-top: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .mat-horizontal-content-container {
+    padding: 0 !important;
+  }
+}
+
+img {
+  user-select: none;
+}

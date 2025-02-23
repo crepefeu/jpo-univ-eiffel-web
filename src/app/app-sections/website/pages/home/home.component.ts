@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService } from 'src/app/services/modal.service';
 import { MultiStepFormComponent } from '../../components/multi-step-form/multi-step-form.component';
@@ -23,10 +23,9 @@ export class HomeComponent implements OnInit {
         this.isHandheld = false;
       }
     });
-    }
+  }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
     // select element with .text-block class
     const text = document.querySelector('.text-block') as HTMLSpanElement;
 
@@ -62,8 +61,6 @@ export class HomeComponent implements OnInit {
     // Set the heights
     RING_CANVAS.height = TEXT_CANVAS.height = CANVAS!.height = CANVAS!.offsetHeight * DPI
     RING_CANVAS.width = TEXT_CANVAS.width = CANVAS!.width = CANVAS!.offsetWidth * DPI
-
-
 
     const TEXT = "Découvrez"
     // Draw the text onto the text canvas

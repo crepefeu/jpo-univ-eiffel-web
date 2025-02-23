@@ -1,0 +1,30 @@
+<div id="container">
+
+    <div id="menu" *ngIf="isMenuvisible">
+        <i class="bi bi-box-arrow-left" routerLink="/but-mmi" (click)="exitPointLockOnReturn()"></i>
+        <div id="info">
+
+            <h1>Commencer la visite virtuelle de la salle 318</h1><br>
+
+            Commencer/Mettre en pause : Espace<br />
+            Regarder : SOURIS <br />
+            Se déplacer : ZQSD<br /><br><br>
+
+            Le chargement peut prendre du temps, merci de
+            patienter...<br />
+        </div>
+    </div>
+    <div id="dialogBox">
+        <div id="context">
+            <h1>Appuyer sur E pour voir le programme de la JPO </h1>
+        </div>
+
+    </div>
+
+    <div id="modal" *ngIf="isModalVisible">
+
+        <img src="../../../../../assets/Programme_PNG.png" alt="jpo" />
+        <p>Quitter : Ne regarder plus le PC et appuyer sur E</p>
+    </div>
+
+</div>

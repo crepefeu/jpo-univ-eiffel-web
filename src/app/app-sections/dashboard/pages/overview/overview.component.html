@@ -45,7 +45,7 @@
                     }
 
                     .st4 {
-                        fill: #CCCCCC;
+                        fill: #dadada;
                     }
 
                     .st5 {
@@ -53,7 +53,7 @@
                     }
 
                     .st6 {
-                        fill: #D2213C;
+                        fill: #B09AFF;
                     }
 
                     .st7 {
@@ -147,7 +147,7 @@
                 <p>participants</p>
             </div>
             <div class="see-more-btn-ctn">
-                <button routerLink="dashboard/attendees/manage" routerLinkActive="router-link-active"
+                <button routerLink="/dashboard/attendees/manage" routerLinkActive="router-link-active"
                     class="see-more-btn">Voir plus</button>
             </div>
         </div>
@@ -159,7 +159,7 @@
                 [labels]="totalAttendeesChart.labels" [legend]="totalAttendeesChart.legend"
                 [title]="totalAttendeesChart.title" [subtitle]="totalAttendeesChart.subtitle"
                 [colors]="totalAttendeesChart.colors" [theme]="totalAttendeesChart.theme"
-                [tooltip]="totalAttendeesChart.tooltip">
+                [tooltip]="totalAttendeesChart.tooltip" [grid]="totalAttendeesChart.grid">
             </apx-chart>
         </div>
 
@@ -169,7 +169,8 @@
                 [dataLabels]="totalNewAttendeesChart.dataLabels" [yaxis]="totalNewAttendeesChart.yaxis"
                 [labels]="totalNewAttendeesChart.labels" [legend]="totalNewAttendeesChart.legend"
                 [title]="totalNewAttendeesChart.title" [subtitle]="totalNewAttendeesChart.subtitle"
-                [colors]="totalNewAttendeesChart.colors" [tooltip]="totalNewAttendeesChart.tooltip">
+                [colors]="totalNewAttendeesChart.colors" [tooltip]="totalNewAttendeesChart.tooltip"
+                [grid]="totalNewAttendeesChart.grid">
             </apx-chart>
         </div>
 

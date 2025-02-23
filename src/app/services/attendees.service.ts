@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment.development';
 
@@ -12,7 +12,7 @@ export class AttendeesService {
   constructor(private http: HttpClient) { }
 
   getAllAttendees() {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    const headers = new HttpHeaders({'Authorization': `Bearer ${localStorage.getItem('token')}`});
 
     return this.http.get<any>(this.baseApiUrl + 'getAllAttendees', { headers });
   }
@@ -39,7 +39,7 @@ export class AttendeesService {
   }
 
   modifyAttendee(attendeeInfos: any) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
@@ -51,17 +51,23 @@ export class AttendeesService {
     formData.append('diplomaCategoryId', attendeeInfos.diplomaCategoryId)
     formData.append('regionalCode', attendeeInfos.regionalCode);
     formData.append('isIrlAttendee', attendeeInfos.isIrlAttendee);
-    
+
     return this.http.post<any>(this.baseApiUrl + 'modifyAttendee', formData, { headers });
   }
 
   deleteAttendee(attendeeId: number) {
-    let headers = { 'Authorization': localStorage.getItem('token') ?? '' };
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
 
     const formData = new FormData();
 
     formData.append('attendeeId', attendeeId.toString());
 
     return this.http.post<any>(this.baseApiUrl + 'deleteAttendee', formData, { headers });
+  }
+
+  exportAttendeesList() {
+    let headers = { 'Authorization': `Bearer ${localStorage.getItem('token')}` };
+
+    return this.http.get<any>(this.baseApiUrl + 'exportAttendees', { headers });
   }
 }

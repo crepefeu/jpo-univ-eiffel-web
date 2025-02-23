@@ -19,8 +19,10 @@
             </label>
 
             <div>
-                <div class="data-badge" *ngIf="diplomasList && listType === 'Diplomas'">{{diplomasList.length}} diplômes</div>
-                <div class="data-badge" *ngIf="diplomasList && listType === 'DiplomaCategories'">{{diplomasList.length}} catégories</div>
+                <div class="data-badge" *ngIf="diplomasList && diplomasList.length > 0 && listType === 'Diplomas'">{{diplomasList.length}} diplômes</div>
+                <div class="data-badge" *ngIf="diplomasList && diplomasList.length < 1 && listType === 'Diplomas'">Aucun diplôme</div>
+                <div class="data-badge" *ngIf="diplomaCategoriesList && diplomaCategoriesList.length > 0 && listType === 'DiplomaCategories'">{{diplomaCategoriesList.length}} catégories</div>
+                <div class="data-badge" *ngIf="diplomaCategoriesList && diplomaCategoriesList.length < 1 && listType === 'Diplomas'">Aucune catégorie</div>
             </div>
         </div>
 

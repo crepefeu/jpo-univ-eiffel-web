@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LayoutModule } from '@angular/cdk/layout';
 
 // Material Modules
 import { MatStepperModule } from '@angular/material/stepper';
 
 // Chart Modules
-import { NgChartsModule } from 'ng2-charts';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { NgApexchartsModule } from 'ng-apexcharts';
 
@@ -49,6 +48,9 @@ import { ModifyDiplomaCategoryFormComponent } from './app-sections/dashboard/com
 import { ConfirmationModalComponent } from './shared/components/modals/confirmation-modal/confirmation-modal.component';
 import { GenericDrawerComponent } from './shared/components/drawers/generic-drawer/generic-drawer.component';
 import { ConfirmationDrawerComponent } from './shared/components/drawers/confirmation-drawer/confirmation-drawer.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { VirtualTourComponent } from './app-sections/website/pages/virtual-tour/virtual-tour.component';
+import { HttpErrorInterceptor } from './interceptors/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,9 @@ import { ConfirmationDrawerComponent } from './shared/components/drawers/confirm
     ModifyDiplomaCategoryFormComponent,
     ConfirmationModalComponent,
     GenericDrawerComponent,
-    ConfirmationDrawerComponent
+    ConfirmationDrawerComponent,
+    PageNotFoundComponent,
+    VirtualTourComponent
   ],
   imports: [
     BrowserModule,
@@ -94,12 +98,18 @@ import { ConfirmationDrawerComponent } from './shared/components/drawers/confirm
     HttpClientModule,
     LayoutModule,
     MatStepperModule,
-    NgChartsModule,
     HighchartsChartModule,
     NgApexchartsModule,
     BrowserAnimationsModule
   ],
-  providers: [provideHotToastConfig()],
+  providers: [
+    provideHotToastConfig(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

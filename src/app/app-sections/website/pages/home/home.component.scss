@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: column;
   padding: 80px;
+  color: #190fde52;
 }
 
 .content-wo-gutter {
@@ -88,7 +89,7 @@ canvas {
 
 .hero-img-ctn {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 60px;
   height: fit-content;
   display: flex;
   justify-content: center;
@@ -140,7 +141,7 @@ canvas {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-top: 75px;
+  margin-top: 35px;
 }
 
 .pulse {
@@ -368,6 +369,15 @@ canvas {
 
 // small mobile responsive
 @media screen and (max-width: 320px) {
+  .background {
+    &::before {
+      background: linear-gradient(90deg, var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 15vmin 10vmin,
+      linear-gradient(var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 10vmin 15vmin;
+      -webkit-mask: linear-gradient(-35deg, transparent 45%, white);
+      mask: linear-gradient(-35deg, transparent 45%, white);
+    }
+  }
+  
   .hero-section {
     flex-direction: column;
     gap: 0;
@@ -383,7 +393,7 @@ canvas {
   }
 
   .content-w-gutter {
-    padding: 40px 30px 80px 30px;
+    padding: 70px 30px 250px 30px;
   }
 
   .hero-phrase {
@@ -391,7 +401,8 @@ canvas {
     text-align: center;
 
     p {
-      margin-top: -20px;
+      font-size: 2.6rem;
+      margin-top: -15px;
   
       &::after {
         display: none; // TODO: fix this
@@ -471,6 +482,15 @@ canvas {
 }
 
 @media screen and (min-width: 320.1px) and (max-width: 375px) {
+  .background {
+    &::before {
+      background: linear-gradient(90deg, var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 15vmin 10vmin,
+      linear-gradient(var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 10vmin 15vmin;
+      -webkit-mask: linear-gradient(-35deg, transparent 45%, white);
+      mask: linear-gradient(-35deg, transparent 45%, white);
+    }
+  }
+
   .hero-section {
     flex-direction: column;
     gap: 0;
@@ -486,7 +506,7 @@ canvas {
   }
 
   .content-w-gutter {
-    padding: 40px 30px 80px 30px;
+    padding: 70px 30px 250px 30px;
   }
 
   .hero-phrase {
@@ -578,6 +598,15 @@ canvas {
 }
 
 @media screen and (min-width: 375.1px) and (max-width: 425px) {
+  .background {
+    &::before {
+      background: linear-gradient(90deg, var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 15vmin 10vmin,
+      linear-gradient(var(--line) 2px, transparent 1px 10vmin) 0 -5vmin / 10vmin 15vmin;
+      -webkit-mask: linear-gradient(-35deg, transparent 45%, white);
+      mask: linear-gradient(-35deg, transparent 45%, white);
+    }
+  }
+  
   .hero-section {
     flex-direction: column;
     gap: 0;
@@ -593,7 +622,7 @@ canvas {
   }
 
   .content-w-gutter {
-    padding: 40px 30px 80px 30px;
+    padding: 70px 30px 250px 30px;
   }
 
   .hero-phrase {
@@ -704,7 +733,7 @@ canvas {
   }
 
   .content-w-gutter {
-    padding: 40px 30px 80px 30px;
+    padding: 70px 30px 250px 30px;
   }
 
   .hero-phrase {
@@ -802,18 +831,62 @@ canvas {
 
 @media screen and (min-width: 820.1px) and (max-width: 1024px) {
   .content-w-gutter {
-    padding: 40px 30px 80px 30px;
+    padding: 80px 30px 110px 30px;
   }
 
   .hero-phrase {
-    font-size: 4rem;
+    font-size: 5rem;
   }
   
   .text-block {
-    font-size: 4rem;
+    font-size: 5rem;
   }
 
   .content {
     width: 100%;
+  }
+
+  .content.right {
+    display: none;
+  }
+
+  .hero-phrase {
+    display: flex;
+    flex-direction: column;
+    font-size: 5rem;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      position: relative;
+      width: fit-content;
+  
+      &::after {
+        position: absolute;
+        // display: none; // TODO: fix this
+      }
+    }
+  }
+
+  .sub-phrase {
+    margin-top: 50px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .hero-cta-btn-ctn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .hero-cta-btn {
+    margin-top: 20px;
+    padding: 9px 20px;
+    font-weight: 400;
+    font-size: 0.9rem;
+    padding: 6px 20px;
+    width: fit-content;
   }
 }
