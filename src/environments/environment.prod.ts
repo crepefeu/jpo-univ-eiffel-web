@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    baseApiUrl: 'https://api.sae-501-jpo.fr/api/',
-    documentsUrl: 'https://api.sae-501-jpo.fr/documents/',
+    baseApiUrl: 'https://api.jpo.3st3ban.dev/api/',
+    documentsUrl: 'https://api.jpo.3st3ban.dev/documents/',
 };
