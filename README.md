@@ -1,5 +1,3 @@
-# Copyrights 
-
 French : 
 Ce code source a été créé dans le cadre d'un devoir universitaire.
 L'entièreté de ce code source est protégée par les droits d'auteur et
