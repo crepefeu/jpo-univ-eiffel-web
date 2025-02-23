@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "jpo-univ-eiffel:build:production"
+              "browserTarget": "jpo-univ-eiffel-web:build:production"
             },
             "development": {
-              "browserTarget": "jpo-univ-eiffel:build:development"
+              "browserTarget": "jpo-univ-eiffel-web:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "jpo-univ-eiffel:build"
+            "browserTarget": "jpo-univ-eiffel-web:build"
           }
         },
         "test": {
